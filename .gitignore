@@ -1,0 +1,27 @@
+.DS_Store
+__pycache__/
+*.pyc
+.venv/
+.cache/
+
+# Model files and builds: downloadable or rebuildable, and too large for git.
+*.gguf
+*.pte
+*.safetensors
+*.pt
+*.pth
+*.bin
+*.onnx
+*.apk
+*.aab
+*.zst
+
+# Raw device logs: filter to the app's own tags first (AGENTS.md).
+*.logcat.txt
+.pull.err
+
+# What ExecuServe's phone runs write beside their results: start.txt holds the session's API key.
+start.txt
+start2.txt
+status.json
+crash-log.txt
