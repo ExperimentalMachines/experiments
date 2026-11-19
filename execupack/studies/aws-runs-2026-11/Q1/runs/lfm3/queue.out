@@ -1,0 +1,16 @@
+2026-10-31T21:07:32Z QUEUE START LiquidAI/LFM3-1.7B@ac2586a34f1a1c03329dbdcdefabd8b6478ddaa7 windows 32768 16384 8192 4096 2048
+2026-10-31T21:24:32Z SOLVED codes.pt 1944547603 B, gate.json present
+2026-10-31T21:24:32Z EXPORT 32768 attempt 1
+2026-10-31T21:24:52Z EXPORT 16384 attempt 1
+2026-10-31T21:25:12Z EXPORT 8192 attempt 1
+2026-10-31T21:33:36Z EXPORTED 32768 1270668160 /home/ubuntu/runs/lfm3/out-32768/xnnpack/LFM3-1.7B-8da4w-gptq-32k.pte
+2026-10-31T21:34:05Z EXPORTED 16384 1253890304 /home/ubuntu/runs/lfm3/out-16384/xnnpack/LFM3-1.7B-8da4w-gptq-16k.pte
+2026-10-31T21:34:37Z EXPORTED 8192 1245501696 /home/ubuntu/runs/lfm3/out-8192/xnnpack/LFM3-1.7B-8da4w-gptq-8k.pte
+2026-10-31T21:35:33Z VERIFY-FAILED 32768 attempt 1 (exit 2)
+2026-10-31T21:35:33Z GIVE-UP 32768 at verify: verify failed: decision gate failed: answered like fp32 on only 2 of 4 quiet rows: it is reaching for a tool on questions the unquantised model answers itself
+2026-10-31T21:36:03Z EXPORT 4096 attempt 1
+2026-10-31T21:36:03Z VERIFY-FAILED 16384 attempt 1 (exit 2)
+2026-10-31T21:36:03Z GIVE-UP 16384 at verify: verify failed: decision gate failed: answered like fp32 on only 2 of 4 quiet rows: it is reaching for a tool on questions the unquantised model answers itself
+2026-10-31T21:36:23Z EXPORT 2048 attempt 1
+2026-10-31T21:36:28Z VERIFY-FAILED 8192 attempt 1 (exit 2)
+2026-10-31T21:36:28Z GIVE-UP 8192 at verify: verify failed: decision gate failed: answered like fp32 on only 2 of 4 quiet rows: it is reaching for a tool on questions the unquantised model answers itself

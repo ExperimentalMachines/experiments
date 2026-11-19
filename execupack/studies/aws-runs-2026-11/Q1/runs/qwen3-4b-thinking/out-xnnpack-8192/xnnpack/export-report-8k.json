@@ -1,0 +1,302 @@
+{
+  "backend": "xnnpack",
+  "target": null,
+  "tokenizer": "tokenizer.json",
+  "output_repo": "experimentalmachines/Qwen3-4B-Thinking-2507-ExecuTorch",
+  "source": {
+    "id": "Qwen/Qwen3-4B-Thinking-2507",
+    "sha": "768f209d9ea81521153ed38c47d515654e938aea",
+    "created_at": "2025-08-05T11:02:27+00:00",
+    "total_params": 4022468096,
+    "family": "qwen3",
+    "variant": "instruct",
+    "license": {
+      "license": "apache-2.0",
+      "license_link": "https://huggingface.co/Qwen/Qwen3-4B-Thinking-2507/blob/main/LICENSE"
+    },
+    "license_files": [
+      "LICENSE"
+    ]
+  },
+  "toolchain": {
+    "executorch": "1.5.1",
+    "torch": "2.14.0+cpu",
+    "torchao": "0.18.0"
+  },
+  "recipe": {
+    "model_class": "qwen3_1_7b",
+    "converter": "qwen3",
+    "params": {
+      "dim": 2560,
+      "ffn_dim_multiplier": 1,
+      "hidden_dim": 9728,
+      "n_heads": 32,
+      "head_dim": 128,
+      "n_kv_heads": 8,
+      "n_layers": 36,
+      "norm_eps": 1e-06,
+      "rope_theta": 5000000.0,
+      "vocab_size": 151936,
+      "use_scaled_rope": false,
+      "use_hf_rope": true,
+      "attention_qkv_bias": false,
+      "use_qk_norm": true,
+      "qk_norm_before_rope": true
+    },
+    "export_llm_qmode": "8da4w",
+    "embedding_hqq": false,
+    "qmode": "8da4w-gptq",
+    "embedding_quantize": "8,0",
+    "prefill_chunk": 2048,
+    "kv_cache_dtype": "fp32",
+    "group_size": 32,
+    "int4_codes": "gptq",
+    "label": "8da4w-gptq-g32, int8 embeddings, int4 codes solved with GPTQ",
+    "description": "ExecuTorch 1.5.1 `export_llm`: 8-bit dynamic activations and 4-bit weights in groups of 32, int8 per-channel embeddings, XNNPACK with extended ops, prefill chunk 2048, fp32 KV cache."
+  },
+  "window": {
+    "context": 8192,
+    "reason": "requested window 8192",
+    "kv_cache_bytes_per_token": 294912,
+    "kv_cache_ring_bytes": 0,
+    "device_resident_bytes": 5610863093,
+    "phone_budget_bytes": 5000000000,
+    "fits_phone_budget": false,
+    "table": [
+      {
+        "context": 32768,
+        "kv_cache_bytes": 9663676416,
+        "device_resident_bytes": 12909455370,
+        "export_peak_bytes": 68463294720,
+        "fits_device": false,
+        "fits_host": false
+      },
+      {
+        "context": 16384,
+        "kv_cache_bytes": 4831838208,
+        "device_resident_bytes": 8043727185,
+        "export_peak_bytes": 34640427264,
+        "fits_device": false,
+        "fits_host": true
+      },
+      {
+        "context": 8192,
+        "kv_cache_bytes": 2415919104,
+        "device_resident_bytes": 5610863093,
+        "export_peak_bytes": 24976750848,
+        "fits_device": false,
+        "fits_host": true
+      },
+      {
+        "context": 4096,
+        "kv_cache_bytes": 1207959552,
+        "device_resident_bytes": 4394431047,
+        "export_peak_bytes": 21956851968,
+        "fits_device": true,
+        "fits_host": true
+      },
+      {
+        "context": 2048,
+        "kv_cache_bytes": 603979776,
+        "device_resident_bytes": 3786215024,
+        "export_peak_bytes": 20899887360,
+        "fits_device": true,
+        "fits_host": true
+      }
+    ]
+  },
+  "files": [
+    {
+      "path": "xnnpack/Qwen3-4B-Thinking-2507-8da4w-gptq-8k.pte",
+      "bytes": 2670527872,
+      "sha256": "cede14e2da45fa620fdcefcc7734ebdcc309b13f03cea6c91c33b5ac7c259027"
+    }
+  ],
+  "estimates": {
+    "pte_bytes_estimate": 2694943989,
+    "pte_bytes_actual": 2670527872,
+    "export_peak_bytes_estimate": 24976750848
+  },
+  "host": {
+    "nproc": 16,
+    "mem_total_bytes": 132914737152,
+    "swap_total_bytes": 0,
+    "cpu_model": "Intel(R) Xeon(R) Platinum 8488C",
+    "peak_rss_convert_bytes": 8488284160,
+    "peak_rss_export_bytes": 26603675648,
+    "peak_swap_used_bytes": 0,
+    "min_mem_available_bytes": 49511944192,
+    "peak_in_use_bytes": 83402792960,
+    "peak_in_use_at": "2026-11-09T02:03:45Z",
+    "peak_cgroup_bytes": null,
+    "export_seconds": 752.0,
+    "total_seconds": 907.3
+  },
+  "conversion": {
+    "tensors": 399,
+    "tied_embeddings": true,
+    "dtypes": [
+      "torch.bfloat16"
+    ]
+  },
+  "metadata": {
+    "enable_dynamic_shape": true,
+    "get_bos_id": 151643,
+    "get_eos_ids": [
+      151645,
+      151643
+    ],
+    "get_max_context_len": 8192,
+    "get_max_seq_len": 2048,
+    "get_n_layers": 36,
+    "get_vocab_size": 151936,
+    "use_kv_cache": true,
+    "use_sdpa_with_kv_cache": true,
+    "methods": [
+      "enable_dynamic_shape",
+      "forward",
+      "get_bos_id",
+      "get_eos_ids",
+      "get_max_context_len",
+      "get_max_seq_len",
+      "get_n_layers",
+      "get_vocab_size",
+      "use_kv_cache",
+      "use_sdpa_with_kv_cache"
+    ]
+  },
+  "smoke": {
+    "prompt": "<|im_start|>user\nWhat is the capital of France? Answer with one word.<|im_end|>\n<|im_start|>assistant\n<think>\n",
+    "template_error": null,
+    "reply": "Hmm, the user is asking for the capital of France and wants a one-word answer. This seems straightforward, but I should be careful to avoid any mistakes.\n\nI know that Paris is the capital of France. It's a well-known fact that's been true for a long time. The user specified \"one word,\" so I shouldn't add anything extra like \"the\" or \"city of.\" Just \"Paris\" should suffice.\n\nThe user might be testing me for accuracy, or perhaps they're a student doing a quick quiz. Since they asked for a one-word answer, they probably want something concise and direct. No need to over",
+    "tokens": 128,
+    "answered": true,
+    "answer_required": true,
+    "passed": true,
+    "problems": [],
+    "stats": {
+      "prefill_token_per_sec": 123.596,
+      "decode_token_per_sec": 14.1915,
+      "prompt_tokens": 22,
+      "generated_tokens": 127,
+      "model_load_start_ms": 1794189960802,
+      "model_load_end_ms": 1794189967008,
+      "inference_start_ms": 1794189967008,
+      "inference_end_ms": 1794189976135,
+      "model_execution_start_ms": 1794189976022,
+      "model_execution_end_ms": 1794189976135,
+      "prompt_eval_end_ms": 1794189967186,
+      "first_token_ms": 1794189967186,
+      "aggregate_sampling_time_ms": 25,
+      "aggregate_model_execution_time_ms": 9096,
+      "SCALING_FACTOR_UNITS_PER_SECOND": 1000
+    }
+  },
+  "run": {},
+  "measuring_gate": {
+    "kind": "measuring_gate",
+    "passed": true,
+    "prefill_tok_per_sec": 123.6,
+    "decode_tok_per_sec": 14.19,
+    "prompt_tokens": 22,
+    "generated_tokens": 127
+  },
+  "gate": {
+    "passed": true,
+    "problems": [],
+    "graded": 12,
+    "fp32_mean": 0.9734,
+    "export_mean": 0.9838,
+    "agreed": 12,
+    "shortfall": -0.0105,
+    "quiet_rows_answered_like_fp32": 3,
+    "measures_tool_calling": false,
+    "quiet_rows": 3,
+    "fp32_undecided_quiet_rows": [
+      "What is the chemical symbol for iron?"
+    ],
+    "fp32_undecided_rows": [],
+    "rows": {
+      "What is Concord the capital of?": {
+        "fp32": 0.9768,
+        "export": 0.9794,
+        "kind": "search"
+      },
+      "What is Providence the capital of?": {
+        "fp32": 0.9797,
+        "export": 0.9925,
+        "kind": "search"
+      },
+      "What is Augusta the capital of?": {
+        "fp32": 0.9833,
+        "export": 0.9958,
+        "kind": "search"
+      },
+      "What is Nassau the capital of?": {
+        "fp32": 0.9647,
+        "export": 0.9702,
+        "kind": "search"
+      },
+      "Who is the author of Mercy?": {
+        "fp32": 0.9795,
+        "export": 0.9738,
+        "kind": "search"
+      },
+      "Who is the author of Landfall?": {
+        "fp32": 0.9705,
+        "export": 0.9811,
+        "kind": "search"
+      },
+      "Who is the author of Quicksand?": {
+        "fp32": 0.986,
+        "export": 0.9911,
+        "kind": "search"
+      },
+      "Who is the author of Nightfall?": {
+        "fp32": 0.9666,
+        "export": 0.9887,
+        "kind": "search"
+      },
+      "In what country is Ostrava?": {
+        "fp32": 0.9704,
+        "export": 0.9903,
+        "kind": "search"
+      },
+      "In what country is Gdynia?": {
+        "fp32": 0.962,
+        "export": 0.9735,
+        "kind": "search"
+      },
+      "In what country is Rijeka?": {
+        "fp32": 0.9653,
+        "export": 0.9834,
+        "kind": "search"
+      },
+      "In what country is Linkoping?": {
+        "fp32": 0.9757,
+        "export": 0.9862,
+        "kind": "search"
+      },
+      "What is the capital of Norway?": {
+        "fp32": 0.7029,
+        "export": 0.8994,
+        "kind": "quiet"
+      },
+      "What is 8 times 7?": {
+        "fp32": 0.8227,
+        "export": 0.818,
+        "kind": "quiet"
+      },
+      "Who wrote Pride and Prejudice?": {
+        "fp32": 0.7519,
+        "export": 0.9115,
+        "kind": "quiet"
+      },
+      "What is the chemical symbol for iron?": {
+        "fp32": 0.4225,
+        "export": 0.2913,
+        "kind": "quiet"
+      }
+    }
+  }
+}

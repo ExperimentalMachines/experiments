@@ -1,0 +1,7 @@
+2026-11-09T06:44:24Z START vkc meta-llama/Llama-3.2-1B-Instruct 2048
+2026-11-09T06:48:01Z export attempt 1 exited 0
+2026-11-09T06:48:01Z exported 1195713920 /home/ubuntu/runs/gptq-llama-32-1b-instruct/out-vulkan-2048/vulkan/Llama-3.2-1B-Instruct-vulkan-8da4w-gptq-2k.pte
+2026-11-09T06:48:17Z codesmatch ok: 113 of 113 int4 linears exact
+2026-11-09T06:48:17Z REPORT {"file": "vulkan/Llama-3.2-1B-Instruct-vulkan-8da4w-gptq-2k.pte", "bytes": 1195713920, "recipe": "8da4w-gptq-g32, int8 embeddings, int4 codes solved with GPTQ", "smoke": true, "reply": "", "gate": null, "agreed": null, "graded": null, "quiet": null, "fp32_mean": null, "export_mean": null, "tool_calling": null, "override": null, "proxy": {"passed": true, "graded": 12, "agreed": 12, "fp32_mean": 0.8777, "export_mean": 0.8293, "override": null}, "fits_phone": null}
+2026-11-09T06:48:29Z published
+2026-11-09T06:48:29Z END rc=0

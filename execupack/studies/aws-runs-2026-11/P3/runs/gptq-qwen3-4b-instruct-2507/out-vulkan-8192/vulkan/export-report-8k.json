@@ -1,0 +1,234 @@
+{
+  "backend": "vulkan",
+  "target": null,
+  "tokenizer": "tokenizer.json",
+  "output_repo": "experimentalmachines/Qwen3-4B-Instruct-2507-ExecuTorch",
+  "source": {
+    "id": "Qwen/Qwen3-4B-Instruct-2507",
+    "sha": "cdbee75f17c01a7cc42f958dc650907174af0554",
+    "created_at": "2025-08-05T10:58:03+00:00",
+    "total_params": 4022468096,
+    "family": "qwen3",
+    "variant": "instruct",
+    "license": {
+      "license": "apache-2.0",
+      "license_link": "https://huggingface.co/Qwen/Qwen3-4B-Instruct-2507/blob/main/LICENSE"
+    },
+    "license_files": [
+      "LICENSE"
+    ]
+  },
+  "toolchain": {
+    "executorch": "1.5.1",
+    "torch": "2.14.0+cpu",
+    "torchao": "0.18.0"
+  },
+  "recipe": {
+    "model_class": "qwen3_1_7b",
+    "converter": "qwen3",
+    "params": {
+      "dim": 2560,
+      "ffn_dim_multiplier": 1,
+      "hidden_dim": 9728,
+      "n_heads": 32,
+      "head_dim": 128,
+      "n_kv_heads": 8,
+      "n_layers": 36,
+      "norm_eps": 1e-06,
+      "rope_theta": 5000000.0,
+      "vocab_size": 151936,
+      "use_scaled_rope": false,
+      "use_hf_rope": true,
+      "attention_qkv_bias": false,
+      "use_qk_norm": true,
+      "qk_norm_before_rope": true
+    },
+    "export_llm_qmode": "8da4w",
+    "embedding_hqq": false,
+    "qmode": "8da4w-gptq",
+    "embedding_quantize": "8,0",
+    "prefill_chunk": 2048,
+    "kv_cache_dtype": "fp32",
+    "group_size": 32,
+    "int4_codes": "gptq",
+    "label": "8da4w-gptq-g32, int8 embeddings, int4 codes solved with GPTQ",
+    "description": "ExecuTorch 1.5.1 `export_llm`: 8-bit dynamic activations and 4-bit weights in groups of 32, int8 per-channel embeddings, the Vulkan delegate, prefill chunk 2048, fp32 KV cache.",
+    "codes_sha256": "9be97bacd6e1a2c698cabd2aa8a36ef374e852e0d68da794f4aa43d2d32044d5"
+  },
+  "window": {
+    "context": 8192,
+    "reason": "requested window 8192",
+    "kv_cache_bytes_per_token": 294912,
+    "kv_cache_ring_bytes": 0,
+    "device_resident_bytes": 5610863093,
+    "phone_budget_bytes": 5000000000,
+    "fits_phone_budget": false,
+    "table": [
+      {
+        "context": 32768,
+        "kv_cache_bytes": 9663676416,
+        "device_resident_bytes": 12909455370,
+        "export_peak_bytes": 68463294720,
+        "fits_device": false,
+        "fits_host": true
+      },
+      {
+        "context": 16384,
+        "kv_cache_bytes": 4831838208,
+        "device_resident_bytes": 8043727185,
+        "export_peak_bytes": 34640427264,
+        "fits_device": false,
+        "fits_host": true
+      },
+      {
+        "context": 8192,
+        "kv_cache_bytes": 2415919104,
+        "device_resident_bytes": 5610863093,
+        "export_peak_bytes": 24976750848,
+        "fits_device": false,
+        "fits_host": true
+      },
+      {
+        "context": 4096,
+        "kv_cache_bytes": 1207959552,
+        "device_resident_bytes": 4394431047,
+        "export_peak_bytes": 21956851968,
+        "fits_device": true,
+        "fits_host": true
+      },
+      {
+        "context": 2048,
+        "kv_cache_bytes": 603979776,
+        "device_resident_bytes": 3786215024,
+        "export_peak_bytes": 20899887360,
+        "fits_device": true,
+        "fits_host": true
+      }
+    ]
+  },
+  "files": [
+    {
+      "path": "vulkan/Qwen3-4B-Instruct-2507-vulkan-8da4w-gptq-8k.pte",
+      "bytes": 3457870080,
+      "sha256": "1c3ded471c00ab1c8c424d16ac6685b86439428880ff4b8431a36b8b54ea7133"
+    }
+  ],
+  "estimates": {
+    "pte_bytes_estimate": 2694943989,
+    "pte_bytes_actual": 3457870080,
+    "export_peak_bytes_estimate": 24976750848
+  },
+  "host": {
+    "nproc": 32,
+    "mem_total_bytes": 265985806336,
+    "swap_total_bytes": 0,
+    "cpu_model": "Intel(R) Xeon(R) Platinum 8488C",
+    "peak_rss_convert_bytes": 8477511680,
+    "peak_rss_export_bytes": 28768800768,
+    "peak_swap_used_bytes": 0,
+    "min_mem_available_bytes": 188487012352,
+    "peak_in_use_bytes": 77498793984,
+    "peak_in_use_at": "2026-11-09T06:14:13Z",
+    "peak_cgroup_bytes": null,
+    "export_seconds": 307.3,
+    "total_seconds": 419.6
+  },
+  "conversion": {
+    "tensors": 399,
+    "tied_embeddings": true,
+    "dtypes": [
+      "torch.bfloat16"
+    ]
+  },
+  "metadata": {
+    "enable_dynamic_shape": true,
+    "get_bos_id": 151643,
+    "get_eos_ids": [
+      151645,
+      151643
+    ],
+    "get_max_context_len": 8192,
+    "get_max_seq_len": 2048,
+    "get_n_layers": 36,
+    "get_vocab_size": 151936,
+    "use_kv_cache": true,
+    "use_sdpa_with_kv_cache": true,
+    "methods": [
+      "enable_dynamic_shape",
+      "forward",
+      "get_bos_id",
+      "get_eos_ids",
+      "get_max_context_len",
+      "get_max_seq_len",
+      "get_n_layers",
+      "get_vocab_size",
+      "use_kv_cache",
+      "use_sdpa_with_kv_cache"
+    ]
+  },
+  "smoke": {
+    "kind": "structural",
+    "passed": true,
+    "problems": [],
+    "methods": [
+      "enable_dynamic_shape",
+      "forward",
+      "get_bos_id",
+      "get_eos_ids",
+      "get_max_context_len",
+      "get_max_seq_len",
+      "get_n_layers",
+      "get_vocab_size",
+      "use_kv_cache",
+      "use_sdpa_with_kv_cache"
+    ],
+    "delegates": {
+      "forward": {
+        "backends": [
+          "VulkanBackend"
+        ],
+        "delegate_calls": 1
+      }
+    },
+    "metadata": {
+      "enable_dynamic_shape": true,
+      "get_bos_id": 151643,
+      "get_eos_ids": [
+        151645,
+        151643
+      ],
+      "get_max_context_len": 8192,
+      "get_max_seq_len": 2048,
+      "get_n_layers": 36,
+      "get_vocab_size": 151936,
+      "use_kv_cache": true,
+      "use_sdpa_with_kv_cache": true,
+      "methods": [
+        "enable_dynamic_shape",
+        "forward",
+        "get_bos_id",
+        "get_eos_ids",
+        "get_max_context_len",
+        "get_max_seq_len",
+        "get_n_layers",
+        "get_vocab_size",
+        "use_kv_cache",
+        "use_sdpa_with_kv_cache"
+      ]
+    }
+  },
+  "gate_proxy": {
+    "report": "export-report-8k.json",
+    "file": "xnnpack/Qwen3-4B-Instruct-2507-8da4w-gptq-8k.pte",
+    "sha256": "737b87cc6b78fba1db9342ec7d63c9d528d44e3bf5ddf411d26a5ba5300e29ce",
+    "gate": {
+      "passed": true,
+      "graded": 12,
+      "agreed": 12,
+      "fp32_mean": 0.9974,
+      "export_mean": 0.9954,
+      "override": null
+    }
+  },
+  "run": {}
+}

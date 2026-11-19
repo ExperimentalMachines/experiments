@@ -1,0 +1,8 @@
+2026-11-09T06:53:31Z START xnn meta-llama/Llama-3.2-1B-Instruct 32768
+2026-11-09T06:59:53Z export attempt 1 exited 0
+2026-11-09T06:59:53Z exported 975702144 /home/ubuntu/runs/gptq-llama-32-1b-instruct/out-xnnpack-32768/xnnpack/Llama-3.2-1B-Instruct-8da4w-gptq-32k.pte
+2026-11-09T07:01:24Z verify attempt 1 exited 0
+2026-11-09T07:01:38Z codesmatch ok: 113 of 113 int4 linears exact
+2026-11-09T07:01:38Z REPORT {"file": "xnnpack/Llama-3.2-1B-Instruct-8da4w-gptq-32k.pte", "bytes": 975702144, "recipe": "8da4w-gptq-g32, int8 embeddings, int4 codes solved with GPTQ", "smoke": true, "reply": "Paris.<|eot_id|>", "gate": true, "agreed": 12, "graded": 12, "quiet": 4, "fp32_mean": 0.8777, "export_mean": 0.8293, "tool_calling": false, "override": null, "proxy": null, "fits_phone": null}
+2026-11-09T07:01:47Z published
+2026-11-09T07:01:47Z END rc=0

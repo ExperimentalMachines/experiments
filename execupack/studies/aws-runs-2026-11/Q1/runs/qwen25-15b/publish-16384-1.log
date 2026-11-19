@@ -1,0 +1,38 @@
+Processing Files (0 / 0)      : |          |  0.00B /  0.00B            
+New Data Upload               : |          |  0.00B /  0.00B            [A
+
+  ...struct-8da4w-gptq-16k.pte:   6%|▌         | 63.6MB / 1.14GB            [A[A
+
+  ...struct-8da4w-gptq-16k.pte:   6%|▌         | 63.6MB / 1.14GB            [A[AProcessing Files (0 / 1)      :   6%|▌         | 63.6MB / 1.14GB,   ???B/s  
+
+  ...struct-8da4w-gptq-16k.pte:  13%|█▎        |  152MB / 1.14GB            [A[AProcessing Files (0 / 1)      :  13%|█▎        |  152MB / 1.14GB,   ???B/s  
+
+  ...struct-8da4w-gptq-16k.pte:  22%|██▏       |  248MB / 1.14GB            [A[AProcessing Files (0 / 1)      :  22%|██▏       |  248MB / 1.14GB,   ???B/s  
+
+  ...struct-8da4w-gptq-16k.pte:  30%|███       |  343MB / 1.14GB            [A[AProcessing Files (0 / 1)      :  30%|███       |  343MB / 1.14GB, 33.7MB/s  
+
+  ...struct-8da4w-gptq-16k.pte:  38%|███▊      |  431MB / 1.14GB            [A[AProcessing Files (0 / 1)      :  38%|███▊      |  431MB / 1.14GB, 42.1MB/s  
+
+  ...struct-8da4w-gptq-16k.pte:  45%|████▍     |  511MB / 1.14GB            [A[AProcessing Files (0 / 1)      :  45%|████▍     |  511MB / 1.14GB, 49.5MB/s  
+
+  ...struct-8da4w-gptq-16k.pte:  53%|█████▎    |  607MB / 1.14GB            [A[AProcessing Files (0 / 1)      :  53%|█████▎    |  607MB / 1.14GB, 58.5MB/s  
+
+  ...struct-8da4w-gptq-16k.pte:  62%|██████▏   |  703MB / 1.14GB            [A[AProcessing Files (0 / 1)      :  62%|██████▏   |  703MB / 1.14GB, 67.3MB/s  
+
+  ...struct-8da4w-gptq-16k.pte:  76%|███████▌  |  863MB / 1.14GB            [A[AProcessing Files (0 / 1)      :  76%|███████▌  |  863MB / 1.14GB, 82.2MB/s  
+
+  ...struct-8da4w-gptq-16k.pte:  90%|█████████ | 1.02GB / 1.14GB            [A[AProcessing Files (0 / 1)      :  90%|█████████ | 1.02GB / 1.14GB, 97.0MB/s  
+
+  ...struct-8da4w-gptq-16k.pte: 100%|██████████| 1.14GB / 1.14GB            [A[AProcessing Files (1 / 1)      : 100%|██████████| 1.14GB / 1.14GB,  107MB/s  
+New Data Upload               : 100%|██████████|  636kB /  636kB, 61.7kB/s  [A
+
+  ...struct-8da4w-gptq-16k.pte: 100%|██████████| 1.14GB / 1.14GB            [A[A
+
+  ...struct-8da4w-gptq-16k.pte: 100%|██████████| 1.14GB / 1.14GB            [A[A
+
+  ...struct-8da4w-gptq-16k.pte: 100%|██████████| 1.14GB / 1.14GB            [A[A
+
+  ...struct-8da4w-gptq-16k.pte: 100%|██████████| 1.14GB / 1.14GB            [A[AProcessing Files (1 / 1)      : 100%|██████████| 1.14GB / 1.14GB,  103MB/s  
+New Data Upload               : 100%|██████████|  636kB /  636kB, 59.4kB/s  
+  ...struct-8da4w-gptq-16k.pte: 100%|██████████| 1.14GB / 1.14GB            
+https://huggingface.co/experimentalmachines/Qwen2.5-1.5B-Instruct-ExecuTorch/commit/69fc72f8e40bcf6bece310d0e85a3206a2b7c1f0

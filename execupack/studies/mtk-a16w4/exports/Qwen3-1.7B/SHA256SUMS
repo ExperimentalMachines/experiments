@@ -1,0 +1,9 @@
+832dd9e00a68dd83b3c3fb9f5588dad7dcf337a0db50f7d9483f310cd292e92e  ./LICENSE
+cf2246e739c364c6f5f25903ed189ec059b3fbe894f3d3b879169b9cc10d7486  ./mtk/mt6991/Qwen3-1.7B-neuropilot-a16w4-2k-chunk1of4.pte
+bdc03c9ac8414c423e082ab2140221840ea0a073066950f4255e685431be6313  ./mtk/mt6991/Qwen3-1.7B-neuropilot-a16w4-2k-chunk2of4.pte
+3b29de9c5dd58db45d336bada9455eecf8ee47cb67a0828bcf097d50a702542d  ./mtk/mt6991/Qwen3-1.7B-neuropilot-a16w4-2k-chunk3of4.pte
+98d7ae6d51bfb684894ae6632c742bcfa65139d6e67d250d3562f1cff6240888  ./mtk/mt6991/Qwen3-1.7B-neuropilot-a16w4-2k-chunk4of4.pte
+e34c089b2eb8f48998a06ba14f5d120c23b26f42bf95a8e8f0eb8b1c650a9c15  ./mtk/mt6991/Qwen3-1.7B-neuropilot-embedding-fp32.bin
+c7c8ffb94321972d94a2c0a986583fd640505c99d279181821e2e143b1150283  ./mtk/mt6991/config.json
+da8604c28947254efe547c7a3f5a5b8ef385e5ff164deb3b3da5bdd74bc9be43  ./mtk/mt6991/export-report-2k.json
+aeb13307a71acd8fe81861d94ad54ab689df773318809eed3cbe794b4492dae4  ./tokenizer.json

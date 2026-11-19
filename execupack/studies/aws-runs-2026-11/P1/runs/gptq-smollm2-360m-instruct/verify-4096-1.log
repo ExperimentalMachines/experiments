@@ -1,0 +1,46 @@
+==> smoke test, window 4096
+Failed to load /home/ubuntu/execupack/.venv/lib/python3.11/site-packages/torchao/_C_cutlass_90a.abi3.so: Could not load this library: /home/ubuntu/execupack/.venv/lib/python3.11/site-packages/torchao/_C_cutlass_90a.abi3.so
+Failed to load /home/ubuntu/execupack/.venv/lib/python3.11/site-packages/torchao/_C_mxfp8.cpython-310-x86_64-linux-gnu.so: Could not load this library: /home/ubuntu/execupack/.venv/lib/python3.11/site-packages/torchao/_C_mxfp8.cpython-310-x86_64-linux-gnu.so
+W1109 05:37:39.573000 4115 torch/utils/_pytree.py:630] <enum 'KernelPreference'> is an Enum subclass and is now natively supported by torch.compile as an opaque value type. Calling register_constant() on Enum subclasses is deprecated and will be an error in a future release.
+I tokenizers:regex.cpp:40] Registering override fallback regex
+[llm_runner_helper.cpp:55] Loaded json tokenizer
+[llm_runner_helper.cpp:258] Reading metadata from model
+[llm_runner_helper.cpp:137] Metadata: use_kv_cache = 1
+[llm_runner_helper.cpp:137] Metadata: get_max_context_len = 4096
+[llm_runner_helper.cpp:137] Metadata: get_max_seq_len = 2048
+[llm_runner_helper.cpp:137] Metadata: use_sdpa_with_kv_cache = 1
+[llm_runner_helper.cpp:137] Metadata: enable_dynamic_shape = 1
+[llm_runner_helper.cpp:179] eos_id = 2
+[llm_runner_helper.cpp:294] Using method: forward
+[cpuinfo_utils.cpp:71] Reading file /sys/devices/soc0/image_version
+[cpuinfo_utils.cpp:87] Failed to open midr file /sys/devices/soc0/image_version
+[cpuinfo_utils.cpp:100] Reading file /sys/devices/system/cpu/cpu0/regs/identification/midr_el1
+[cpuinfo_utils.cpp:109] Failed to open midr file /sys/devices/system/cpu/cpu0/regs/identification/midr_el1
+[cpuinfo_utils.cpp:125] CPU info and manual query on # of cpus dont match.
+[text_llm_runner.cpp:89] RSS after loading model: 1069.679688 MiB (0 if unsupported)
+[text_prefiller.cpp:121] Prefill token result numel(): 49152
+[text_llm_runner.cpp:201] Max new tokens resolved: 128, given pos_ 42, num_prompt_tokens 42, max_context_len 4096
+F[text_llm_runner.cpp:228] RSS after prompt prefill: 1073.117188 MiB (0 if unsupported)
+.<|im_end|>
+[text_token_generator.h:181] 
+Reached to the end of generation
+
+[text_llm_runner.cpp:258] RSS after finishing text generation: 1073.117188 MiB (0 if unsupported)
+PyTorchObserver {"prefill_token_per_sec":352.941,"decode_token_per_sec":58.8235,"prompt_tokens":42,"generated_tokens":2,"model_load_start_ms":1794202661348,"model_load_end_ms":1794202662433,"inference_start_ms":1794202662433,"inference_end_ms":1794202662586,"model_execution_start_ms":1794202662569,"model_execution_end_ms":1794202662585,"prompt_eval_end_ms":1794202662552,"first_token_ms":1794202662552,"aggregate_sampling_time_ms":1,"aggregate_model_execution_time_ms":148,"SCALING_FACTOR_UNITS_PER_SECOND":1000}
+[stats.h:175] 	Prompt Tokens: 42    Generated Tokens: 2
+[stats.h:181] 	Model Load Time:		1.085000 (seconds)
+[stats.h:188] 	Total inference time:		0.153000 (seconds)		 Rate: 	13.071895 (tokens/second)
+[stats.h:197] 		Prompt evaluation:	0.119000 (seconds)		 Rate: 	352.941176 (tokens/second)
+[stats.h:207] 		Generated 2 tokens:	0.034000 (seconds)		 Rate: 	58.823529 (tokens/second)
+[stats.h:219] 	Time to first generated token:	0.119000 (seconds)
+[stats.h:225] 	Sampling time over 44 tokens:	0.001000 (seconds)
+    measuring gate: prefill 352.94 tok/s, decode 58.82 tok/s
+==> decision gate
+W1109 05:37:43.403000 4115 torch/utils/_pytree.py:630] <enum 'ScaleCalculationMode'> is an Enum subclass and is now natively supported by torch.compile as an opaque value type. Calling register_constant() on Enum subclasses is deprecated and will be an error in a future release.
+I tokenizers:regex.cpp:40] Registering override fallback regex
+    fp32 0.5698 against the export's 0.5554 on 2 rows, same choice on 2
+{
+  "windows": 1,
+  "passed": true,
+  "gated": 1
+}

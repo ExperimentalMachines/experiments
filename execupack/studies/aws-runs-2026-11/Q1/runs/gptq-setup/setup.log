@@ -1,0 +1,11 @@
+/home/ubuntu/.local/bin/uv
+Using CPython 3.11.18
+Creating virtual environment at: .venv
+Activate with: source .venv/bin/activate
+Checked 1 package in 101ms
+Checked 9 packages in 110ms
+2.14.0+cpu None 5.22.1
+Failed to load /home/ubuntu/execupack/.venv/lib/python3.11/site-packages/torchao/_C_cutlass_90a.abi3.so: Could not load this library: /home/ubuntu/execupack/.venv/lib/python3.11/site-packages/torchao/_C_cutlass_90a.abi3.so
+Failed to load /home/ubuntu/execupack/.venv/lib/python3.11/site-packages/torchao/_C_mxfp8.cpython-310-x86_64-linux-gnu.so: Could not load this library: /home/ubuntu/execupack/.venv/lib/python3.11/site-packages/torchao/_C_mxfp8.cpython-310-x86_64-linux-gnu.so
+W1109 03:57:22.753000 1275 torch/utils/_pytree.py:630] <enum 'KernelPreference'> is an Enum subclass and is now natively supported by torch.compile as an opaque value type. Calling register_constant() on Enum subclasses is deprecated and will be an error in a future release.
+flatc /home/ubuntu/execupack/.venv/lib/python3.11/site-packages/executorch/data/bin/flatc

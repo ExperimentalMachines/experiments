@@ -1,0 +1,13 @@
+{
+ "file": "Qwen2.5-3B-Instruct-vulkan-8da4w-gptq-4k.pte",
+ "sha256": "1a03ee37cd83e5aaead7b29b0e13c5d1c6f105259c7e36813e399b5dee285cf6",
+ "backend": "vulkan",
+ "int4_linears": 253,
+ "matched_exactly": 253,
+ "codes_entries": 253,
+ "unused_allowed": [],
+ "low_nibble_first": true,
+ "order_checked": true,
+ "ok": true,
+ "problems": []
+}

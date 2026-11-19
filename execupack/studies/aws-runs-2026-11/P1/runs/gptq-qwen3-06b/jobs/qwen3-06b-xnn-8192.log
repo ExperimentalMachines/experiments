@@ -1,0 +1,5 @@
+2026-11-09T06:06:33Z START xnn Qwen/Qwen3-0.6B 8192
+2026-11-09T06:16:27Z export attempt 1 exited 0
+2026-11-09T06:16:27Z exported 509154816 /home/ubuntu/runs/gptq-qwen3-06b/out-xnnpack-8192/xnnpack/Qwen3-0.6B-8da4w-gptq-8k.pte
+2026-11-09T06:17:54Z verify attempt 1 exited 2
+2026-11-09T06:17:54Z END rc=10

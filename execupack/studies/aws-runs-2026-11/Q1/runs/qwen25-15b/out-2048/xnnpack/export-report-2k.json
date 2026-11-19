@@ -1,0 +1,298 @@
+{
+  "backend": "xnnpack",
+  "target": null,
+  "tokenizer": "tokenizer.json",
+  "output_repo": "experimentalmachines/Qwen2.5-1.5B-Instruct-ExecuTorch",
+  "source": {
+    "id": "Qwen/Qwen2.5-1.5B-Instruct",
+    "sha": "989aa7980e4cf806f80c7fef2b1adb7bc71aa306",
+    "created_at": "2024-09-17T14:10:29+00:00",
+    "total_params": 1543714304,
+    "family": "qwen2_5",
+    "variant": "instruct",
+    "license": {
+      "license": "apache-2.0",
+      "license_link": "https://huggingface.co/Qwen/Qwen2.5-1.5B-Instruct/blob/main/LICENSE"
+    },
+    "license_files": [
+      "LICENSE"
+    ]
+  },
+  "toolchain": {
+    "executorch": "1.5.1",
+    "torch": "2.14.0+cpu",
+    "torchao": "0.18.0"
+  },
+  "recipe": {
+    "model_class": "qwen2_5_1_5b",
+    "converter": "qwen2",
+    "params": {
+      "dim": 1536,
+      "ffn_dim_multiplier": 1,
+      "hidden_dim": 8960,
+      "n_heads": 12,
+      "head_dim": 128,
+      "n_kv_heads": 2,
+      "n_layers": 28,
+      "norm_eps": 1e-06,
+      "rope_theta": 1000000.0,
+      "vocab_size": 151936,
+      "use_scaled_rope": false,
+      "use_hf_rope": true,
+      "attention_qkv_bias": true
+    },
+    "export_llm_qmode": "8da4w",
+    "embedding_hqq": false,
+    "qmode": "8da4w-gptq",
+    "embedding_quantize": "8,0",
+    "prefill_chunk": 2048,
+    "kv_cache_dtype": "fp32",
+    "group_size": 32,
+    "int4_codes": "gptq",
+    "label": "8da4w-gptq-g32, int8 embeddings, int4 codes solved with GPTQ",
+    "description": "ExecuTorch 1.5.1 `export_llm`: 8-bit dynamic activations and 4-bit weights in groups of 32, int8 per-channel embeddings, XNNPACK with extended ops, prefill chunk 2048, fp32 KV cache."
+  },
+  "window": {
+    "context": 2048,
+    "reason": "requested window 2048",
+    "kv_cache_bytes_per_token": 57344,
+    "kv_cache_ring_bytes": 0,
+    "device_resident_bytes": 1734324561,
+    "phone_budget_bytes": 5000000000,
+    "fits_phone_budget": true,
+    "table": [
+      {
+        "context": 32768,
+        "kv_cache_bytes": 1879048192,
+        "device_resident_bytes": 3559475947,
+        "export_peak_bytes": 41551591680,
+        "fits_device": true,
+        "fits_host": true
+      },
+      {
+        "context": 16384,
+        "kv_cache_bytes": 939524096,
+        "device_resident_bytes": 2586061875,
+        "export_peak_bytes": 18063489280,
+        "fits_device": true,
+        "fits_host": true
+      },
+      {
+        "context": 8192,
+        "kv_cache_bytes": 469762048,
+        "device_resident_bytes": 2099354839,
+        "export_peak_bytes": 11956582656,
+        "fits_device": true,
+        "fits_host": true
+      },
+      {
+        "context": 4096,
+        "kv_cache_bytes": 234881024,
+        "device_resident_bytes": 1856001320,
+        "export_peak_bytes": 10312415488,
+        "fits_device": true,
+        "fits_host": true
+      },
+      {
+        "context": 2048,
+        "kv_cache_bytes": 117440512,
+        "device_resident_bytes": 1734324561,
+        "export_peak_bytes": 9842653440,
+        "fits_device": true,
+        "fits_host": true
+      }
+    ]
+  },
+  "files": [
+    {
+      "path": "xnnpack/Qwen2.5-1.5B-Instruct-8da4w-gptq-2k.pte",
+      "bytes": 1107613952,
+      "sha256": "e540ee66ce1d5efcff68aee7d51705a993acb6ffc54de1c39125c3ee53ce34c4"
+    }
+  ],
+  "estimates": {
+    "pte_bytes_estimate": 1116884049,
+    "pte_bytes_actual": 1107613952,
+    "export_peak_bytes_estimate": 9842653440
+  },
+  "host": {
+    "nproc": 16,
+    "mem_total_bytes": 132914733056,
+    "swap_total_bytes": 0,
+    "cpu_model": "Intel(R) Xeon(R) Platinum 8488C",
+    "peak_rss_convert_bytes": 3918594048,
+    "peak_rss_export_bytes": 9038876672,
+    "peak_swap_used_bytes": 0,
+    "min_mem_available_bytes": 111338385408,
+    "peak_in_use_bytes": 21576347648,
+    "peak_in_use_at": "2026-11-09T00:00:51Z",
+    "peak_cgroup_bytes": null,
+    "export_seconds": 449.2,
+    "total_seconds": 487.3
+  },
+  "conversion": {
+    "tensors": 339,
+    "tied_embeddings": true,
+    "dtypes": [
+      "torch.bfloat16"
+    ]
+  },
+  "metadata": {
+    "enable_dynamic_shape": true,
+    "get_bos_id": 151643,
+    "get_eos_ids": [
+      151645,
+      151643
+    ],
+    "get_max_context_len": 2048,
+    "get_max_seq_len": 2048,
+    "get_n_layers": 28,
+    "get_vocab_size": 151936,
+    "use_kv_cache": true,
+    "use_sdpa_with_kv_cache": true,
+    "methods": [
+      "enable_dynamic_shape",
+      "forward",
+      "get_bos_id",
+      "get_eos_ids",
+      "get_max_context_len",
+      "get_max_seq_len",
+      "get_n_layers",
+      "get_vocab_size",
+      "use_kv_cache",
+      "use_sdpa_with_kv_cache"
+    ]
+  },
+  "smoke": {
+    "prompt": "<|im_start|>system\nYou are Qwen, created by Alibaba Cloud. You are a helpful assistant.<|im_end|>\n<|im_start|>user\nWhat is the capital of France? Answer with one word.<|im_end|>\n<|im_start|>assistant\n",
+    "template_error": null,
+    "reply": "Paris<|im_end|>",
+    "tokens": 2,
+    "answered": true,
+    "answer_required": true,
+    "passed": true,
+    "problems": [],
+    "stats": {
+      "prefill_token_per_sec": 333.333,
+      "decode_token_per_sec": 71.4286,
+      "prompt_tokens": 41,
+      "generated_tokens": 1,
+      "model_load_start_ms": 1794182575519,
+      "model_load_end_ms": 1794182577771,
+      "inference_start_ms": 1794182577771,
+      "inference_end_ms": 1794182577908,
+      "model_execution_start_ms": 1794182577894,
+      "model_execution_end_ms": 1794182577907,
+      "prompt_eval_end_ms": 1794182577894,
+      "first_token_ms": 1794182577894,
+      "aggregate_sampling_time_ms": 1,
+      "aggregate_model_execution_time_ms": 134,
+      "SCALING_FACTOR_UNITS_PER_SECOND": 1000
+    }
+  },
+  "run": {},
+  "measuring_gate": {
+    "kind": "measuring_gate",
+    "passed": true,
+    "prefill_tok_per_sec": 333.33,
+    "decode_tok_per_sec": 71.43,
+    "prompt_tokens": 41,
+    "generated_tokens": 1
+  },
+  "gate": {
+    "passed": true,
+    "problems": [],
+    "graded": 12,
+    "fp32_mean": 0.934,
+    "export_mean": 0.7435,
+    "agreed": 12,
+    "shortfall": 0.1904,
+    "quiet_rows_answered_like_fp32": 4,
+    "measures_tool_calling": true,
+    "quiet_rows": 4,
+    "fp32_undecided_quiet_rows": [],
+    "fp32_undecided_rows": [],
+    "rows": {
+      "What is Concord the capital of?": {
+        "fp32": 0.9736,
+        "export": 0.9042,
+        "kind": "search"
+      },
+      "What is Providence the capital of?": {
+        "fp32": 0.9669,
+        "export": 0.8982,
+        "kind": "search"
+      },
+      "What is Augusta the capital of?": {
+        "fp32": 0.9435,
+        "export": 0.832,
+        "kind": "search"
+      },
+      "What is Nassau the capital of?": {
+        "fp32": 0.9461,
+        "export": 0.5756,
+        "kind": "search"
+      },
+      "Who is the author of Mercy?": {
+        "fp32": 0.9609,
+        "export": 0.4434,
+        "kind": "search"
+      },
+      "Who is the author of Landfall?": {
+        "fp32": 0.9447,
+        "export": 0.6631,
+        "kind": "search"
+      },
+      "Who is the author of Quicksand?": {
+        "fp32": 0.9334,
+        "export": 0.8892,
+        "kind": "search"
+      },
+      "Who is the author of Nightfall?": {
+        "fp32": 0.9419,
+        "export": 0.5883,
+        "kind": "search"
+      },
+      "In what country is Ostrava?": {
+        "fp32": 0.903,
+        "export": 0.697,
+        "kind": "search"
+      },
+      "In what country is Gdynia?": {
+        "fp32": 0.8792,
+        "export": 0.6888,
+        "kind": "search"
+      },
+      "In what country is Rijeka?": {
+        "fp32": 0.8995,
+        "export": 0.8353,
+        "kind": "search"
+      },
+      "In what country is Linkoping?": {
+        "fp32": 0.9149,
+        "export": 0.9069,
+        "kind": "search"
+      },
+      "What is the capital of Norway?": {
+        "fp32": 0.9194,
+        "export": 0.9376,
+        "kind": "quiet"
+      },
+      "What is 8 times 7?": {
+        "fp32": 0.531,
+        "export": 0.6002,
+        "kind": "quiet"
+      },
+      "Who wrote Pride and Prejudice?": {
+        "fp32": 0.7475,
+        "export": 0.5194,
+        "kind": "quiet"
+      },
+      "What is the chemical symbol for iron?": {
+        "fp32": 0.7731,
+        "export": 0.8834,
+        "kind": "quiet"
+      }
+    }
+  }
+}

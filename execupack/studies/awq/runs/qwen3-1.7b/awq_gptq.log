@@ -1,0 +1,512 @@
+uploaded 1 input(s) to execupack-runs:/local-1-fb5e31b1/in
+Modal Sandbox: 40960 MiB, 8 cores, timeout 330 min
+Failed to load /usr/local/lib/python3.11/site-packages/torchao/_C_cutlass_90a.abi3.so: Could not load this library: /usr/local/lib/python3.11/site-packages/torchao/_C_cutlass_90a.abi3.so
+Failed to load /usr/local/lib/python3.11/site-packages/torchao/_C_mxfp8.cpython-310-x86_64-linux-gnu.so: Could not load this library: /usr/local/lib/python3.11/site-packages/torchao/_C_mxfp8.cpython-310-x86_64-linux-gnu.so
+W1119 04:47:59.832000 5 site-packages/torch/utils/_pytree.py:646] <enum 'KernelPreference'> is an Enum subclass and is now natively supported by torch.compile as an opaque value type. Calling register_constant() on Enum subclasses is deprecated and will be an error in a future release.
+W1119 04:47:59.890000 5 site-packages/torch/utils/_pytree.py:646] <enum 'ScaleCalculationMode'> is an Enum subclass and is now natively supported by torch.compile as an opaque value type. Calling register_constant() on Enum subclasses is deprecated and will be an error in a future release.
+layer 0 scaled, 69s
+layer 1 scaled, 139s
+layer 2 scaled, 201s
+layer 3 scaled, 270s
+layer 4 scaled, 341s
+layer 5 scaled, 406s
+layer 6 scaled, 470s
+layer 7 scaled, 535s
+layer 8 scaled, 602s
+layer 9 scaled, 669s
+layer 10 scaled, 735s
+layer 11 scaled, 797s
+layer 12 scaled, 862s
+layer 13 scaled, 927s
+layer 14 scaled, 992s
+layer 15 scaled, 1057s
+layer 16 scaled, 1125s
+layer 17 scaled, 1192s
+layer 18 scaled, 1259s
+layer 19 scaled, 1325s
+layer 20 scaled, 1392s
+layer 21 scaled, 1459s
+layer 22 scaled, 1528s
+layer 23 scaled, 1596s
+layer 24 scaled, 1663s
+layer 25 scaled, 1732s
+layer 26 scaled, 1799s
+layer 27 scaled, 1865s
+layer 0 solved, 23s
+layer 1 solved, 45s
+layer 2 solved, 70s
+layer 3 solved, 93s
+layer 4 solved, 117s
+layer 5 solved, 141s
+layer 6 solved, 165s
+layer 7 solved, 190s
+layer 8 solved, 213s
+layer 9 solved, 237s
+layer 10 solved, 260s
+layer 11 solved, 282s
+layer 12 solved, 306s
+layer 13 solved, 330s
+layer 14 solved, 353s
+layer 15 solved, 376s
+layer 16 solved, 399s
+layer 17 solved, 422s
+layer 18 solved, 445s
+layer 19 solved, 469s
+layer 20 solved, 492s
+layer 21 solved, 515s
+layer 22 solved, 538s
+layer 23 solved, 561s
+layer 24 solved, 584s
+layer 25 solved, 608s
+layer 26 solved, 630s
+layer 27 solved, 653s
+output head solved, 675s
+==> Qwen/Qwen3-1.7B@70d244cc86cc: family qwen3, class qwen3_1_7b, window 2048
+==> converting checkpoint
+==> export_llm (codes: gptq, state fix: False, lfm3: False)
+Failed to load /usr/local/lib/python3.11/site-packages/torchao/_C_cutlass_90a.abi3.so: Could not load this library: /usr/local/lib/python3.11/site-packages/torchao/_C_cutlass_90a.abi3.so
+Failed to load /usr/local/lib/python3.11/site-packages/torchao/_C_mxfp8.cpython-310-x86_64-linux-gnu.so: Could not load this library: /usr/local/lib/python3.11/site-packages/torchao/_C_mxfp8.cpython-310-x86_64-linux-gnu.so
+W1119 05:30:45.920000 135 site-packages/torch/utils/_pytree.py:646] <enum 'KernelPreference'> is an Enum subclass and is now natively supported by torch.compile as an opaque value type. Calling register_constant() on Enum subclasses is deprecated and will be an error in a future release.
+W1119 05:30:45.968000 135 site-packages/torch/utils/_pytree.py:646] <enum 'ScaleCalculationMode'> is an Enum subclass and is now natively supported by torch.compile as an opaque value type. Calling register_constant() on Enum subclasses is deprecated and will be an error in a future release.
+I tokenizers:regex.cpp:40] Registering override fallback regex
+[2026-11-19 05:30:51,705][root][INFO] - Applying quantizers: []
+[2026-11-19 05:30:51,914][root][INFO] - Checkpoint dtype: torch.bfloat16
+quantize ('tok_embeddings', Embedding(151936, 2048)) with group_size None, bitwidth 8
+applied 56 fp32 overrides from the solve
+injected calibrated codes into 197 linears
+[2026-11-19 05:30:56,899][root][INFO] - Looking for libcustom_ops_aot_lib.so in /usr/local/lib/python3.11/site-packages/executorch/extension/llm/custom_ops
+[2026-11-19 05:30:56,900][root][INFO] - Loading custom ops library: /usr/local/lib/python3.11/site-packages/executorch/extension/llm/custom_ops/libcustom_ops_aot_lib.so
+[2026-11-19 05:30:56,910][root][INFO] - Replacing KVCache with CustomKVCache. This modifies the model in place.
+[2026-11-19 05:30:56,981][root][INFO] - Model after source transforms: Transformer(
+  (tok_embeddings): QuantizedGroupEmbedding()
+  (layers): ModuleList(
+    (0-27): 28 x TransformerBlock(
+      (attention): AttentionMHA(
+        (q_norm_fn): RMSNorm()
+        (k_norm_fn): RMSNorm()
+        (wq): Linear(in_features=2048, out_features=2048, bias=False, weight=IntxUnpackedToInt8Tensor(target_dtype=torch.int4, block_size=(1, 32), shape=torch.Size([2048, 2048]), dtype=torch.float32, device=cpu, activation_quantization=int8_asym_per_token))
+        (wk): Linear(in_features=2048, out_features=1024, bias=False, weight=IntxUnpackedToInt8Tensor(target_dtype=torch.int4, block_size=(1, 32), shape=torch.Size([1024, 2048]), dtype=torch.float32, device=cpu, activation_quantization=int8_asym_per_token))
+        (wv): Linear(in_features=2048, out_features=1024, bias=False, weight=IntxUnpackedToInt8Tensor(target_dtype=torch.int4, block_size=(1, 32), shape=torch.Size([1024, 2048]), dtype=torch.float32, device=cpu, activation_quantization=int8_asym_per_token))
+        (wo): Linear(in_features=2048, out_features=2048, bias=False, weight=IntxUnpackedToInt8Tensor(target_dtype=torch.int4, block_size=(1, 32), shape=torch.Size([2048, 2048]), dtype=torch.float32, device=cpu, activation_quantization=int8_asym_per_token))
+        (rope): Rope()
+        (kv_cache): CustomKVCache()
+        (SDPA): SDPACustom()
+      )
+      (feed_forward): FeedForward(
+        (w1): Linear(in_features=2048, out_features=6144, bias=False, weight=IntxUnpackedToInt8Tensor(target_dtype=torch.int4, block_size=(1, 32), shape=torch.Size([6144, 2048]), dtype=torch.float32, device=cpu, activation_quantization=int8_asym_per_token))
+        (w2): Linear(in_features=6144, out_features=2048, bias=False, weight=IntxUnpackedToInt8Tensor(target_dtype=torch.int4, block_size=(1, 32), shape=torch.Size([2048, 6144]), dtype=torch.float32, device=cpu, activation_quantization=int8_asym_per_token))
+        (w3): Linear(in_features=2048, out_features=6144, bias=False, weight=IntxUnpackedToInt8Tensor(target_dtype=torch.int4, block_size=(1, 32), shape=torch.Size([6144, 2048]), dtype=torch.float32, device=cpu, activation_quantization=int8_asym_per_token))
+      )
+      (attention_norm): RMSNorm()
+      (ffn_norm): RMSNorm()
+    )
+  )
+  (rope): Rope()
+  (norm): RMSNorm()
+  (output): Linear(in_features=2048, out_features=151936, bias=False, weight=IntxUnpackedToInt8Tensor(target_dtype=torch.int4, block_size=(1, 32), shape=torch.Size([151936, 2048]), dtype=torch.float32, device=cpu, activation_quantization=int8_asym_per_token))
+)
+[2026-11-19 05:30:56,981][root][INFO] - Exporting with:
+[2026-11-19 05:30:56,983][root][INFO] - inputs: (tensor([[2, 3, 4]]), {'input_pos': tensor([0])})
+[2026-11-19 05:30:56,983][root][INFO] - kwargs: None
+[2026-11-19 05:30:56,983][root][INFO] - dynamic shapes: ({1: Dim('token_dim', min=0, max=2047)}, {'input_pos': {0: 1}})
+/usr/local/lib/python3.11/site-packages/torch/_dynamo/utils.py:4549: FutureWarning: _check_is_size will be removed in a future PyTorch release along with guard_size_oblivious.     Use _check(i >= 0) instead.
+  return node.target(*args, **kwargs)  # type: ignore[operator]
+/usr/local/lib/python3.11/site-packages/executorch/extension/llm/custom_ops/custom_ops.py:317: FutureWarning: _check_is_size will be removed in a future PyTorch release along with guard_size_oblivious.     Use _check(i >= 0) instead.
+  torch._check_is_size(start_pos)
+/usr/local/lib/python3.11/site-packages/torch/fx/interpreter.py:377: FutureWarning: _check_is_size will be removed in a future PyTorch release along with guard_size_oblivious.     Use _check(i >= 0) instead.
+  return target(*args, **kwargs)
+/usr/local/lib/python3.11/site-packages/executorch/extension/llm/custom_ops/custom_ops.py:317: FutureWarning: _check_is_size will be removed in a future PyTorch release along with guard_size_oblivious.     Use _check(i >= 0) instead.
+  torch._check_is_size(start_pos)
+/usr/local/lib/python3.11/site-packages/executorch/extension/llm/custom_ops/custom_ops.py:317: FutureWarning: _check_is_size will be removed in a future PyTorch release along with guard_size_oblivious.     Use _check(i >= 0) instead.
+  torch._check_is_size(start_pos)
+/usr/local/lib/python3.11/site-packages/executorch/extension/llm/custom_ops/custom_ops.py:317: FutureWarning: _check_is_size will be removed in a future PyTorch release along with guard_size_oblivious.     Use _check(i >= 0) instead.
+  torch._check_is_size(start_pos)
+[2026-11-19 05:32:03,276][root][INFO] - Running canonical pass: RemoveRedundantTransposes
+[2026-11-19 05:32:03,463][root][INFO] - Lowering model using following partitioner(s): 
+[2026-11-19 05:32:03,463][root][INFO] - --> XnnpackDynamicallyQuantizedPartitioner
+[2026-11-19 05:32:03,463][root][INFO] - --> XnnpackPartitioner
+[2026-11-19 05:32:03,463][root][INFO] - Using pt2e [] to quantizing the model...
+[2026-11-19 05:32:03,463][root][INFO] - No quantizer provided, passing...
+[2026-11-19 05:32:03,463][root][INFO] - Re-exporting with:
+[2026-11-19 05:32:03,464][root][INFO] - inputs: (tensor([[2, 3, 4]]), {'input_pos': tensor([0])})
+[2026-11-19 05:32:03,464][root][INFO] - kwargs: None
+[2026-11-19 05:32:03,464][root][INFO] - dynamic shapes: ({1: Dim('token_dim', min=0, max=2047)}, {'input_pos': {0: 1}})
+/usr/local/lib/python3.11/site-packages/executorch/extension/llm/custom_ops/custom_ops.py:317: FutureWarning: _check_is_size will be removed in a future PyTorch release along with guard_size_oblivious.     Use _check(i >= 0) instead.
+  torch._check_is_size(start_pos)
+/usr/local/lib/python3.11/site-packages/executorch/extension/llm/custom_ops/custom_ops.py:317: FutureWarning: _check_is_size will be removed in a future PyTorch release along with guard_size_oblivious.     Use _check(i >= 0) instead.
+  torch._check_is_size(start_pos)
+/usr/local/lib/python3.11/site-packages/executorch/extension/llm/custom_ops/custom_ops.py:317: FutureWarning: _check_is_size will be removed in a future PyTorch release along with guard_size_oblivious.     Use _check(i >= 0) instead.
+  torch._check_is_size(start_pos)
+/usr/local/lib/python3.11/site-packages/executorch/extension/llm/custom_ops/custom_ops.py:317: FutureWarning: _check_is_size will be removed in a future PyTorch release along with guard_size_oblivious.     Use _check(i >= 0) instead.
+  torch._check_is_size(start_pos)
+/usr/local/lib/python3.11/site-packages/executorch/extension/llm/custom_ops/custom_ops.py:317: FutureWarning: _check_is_size will be removed in a future PyTorch release along with guard_size_oblivious.     Use _check(i >= 0) instead.
+  torch._check_is_size(start_pos)
+/usr/local/lib/python3.11/site-packages/executorch/extension/llm/custom_ops/custom_ops.py:317: FutureWarning: _check_is_size will be removed in a future PyTorch release along with guard_size_oblivious.     Use _check(i >= 0) instead.
+  torch._check_is_size(start_pos)
+/usr/local/lib/python3.11/site-packages/executorch/extension/llm/custom_ops/custom_ops.py:317: FutureWarning: _check_is_size will be removed in a future PyTorch release along with guard_size_oblivious.     Use _check(i >= 0) instead.
+  torch._check_is_size(start_pos)
+/usr/local/lib/python3.11/site-packages/executorch/extension/llm/custom_ops/custom_ops.py:317: FutureWarning: _check_is_size will be removed in a future PyTorch release along with guard_size_oblivious.     Use _check(i >= 0) instead.
+  torch._check_is_size(start_pos)
+/usr/local/lib/python3.11/site-packages/executorch/extension/llm/custom_ops/custom_ops.py:317: FutureWarning: _check_is_size will be removed in a future PyTorch release along with guard_size_oblivious.     Use _check(i >= 0) instead.
+  torch._check_is_size(start_pos)
+/usr/local/lib/python3.11/site-packages/executorch/extension/llm/custom_ops/custom_ops.py:317: FutureWarning: _check_is_size will be removed in a future PyTorch release along with guard_size_oblivious.     Use _check(i >= 0) instead.
+  torch._check_is_size(start_pos)
+/usr/local/lib/python3.11/site-packages/executorch/extension/llm/custom_ops/custom_ops.py:317: FutureWarning: _check_is_size will be removed in a future PyTorch release along with guard_size_oblivious.     Use _check(i >= 0) instead.
+  torch._check_is_size(start_pos)
+/usr/local/lib/python3.11/site-packages/executorch/extension/llm/custom_ops/custom_ops.py:317: FutureWarning: _check_is_size will be removed in a future PyTorch release along with guard_size_oblivious.     Use _check(i >= 0) instead.
+  torch._check_is_size(start_pos)
+/usr/local/lib/python3.11/site-packages/executorch/extension/llm/custom_ops/custom_ops.py:317: FutureWarning: _check_is_size will be removed in a future PyTorch release along with guard_size_oblivious.     Use _check(i >= 0) instead.
+  torch._check_is_size(start_pos)
+/usr/local/lib/python3.11/site-packages/executorch/extension/llm/custom_ops/custom_ops.py:317: FutureWarning: _check_is_size will be removed in a future PyTorch release along with guard_size_oblivious.     Use _check(i >= 0) instead.
+  torch._check_is_size(start_pos)
+/usr/local/lib/python3.11/site-packages/executorch/extension/llm/custom_ops/custom_ops.py:317: FutureWarning: _check_is_size will be removed in a future PyTorch release along with guard_size_oblivious.     Use _check(i >= 0) instead.
+  torch._check_is_size(start_pos)
+/usr/local/lib/python3.11/site-packages/executorch/extension/llm/custom_ops/custom_ops.py:317: FutureWarning: _check_is_size will be removed in a future PyTorch release along with guard_size_oblivious.     Use _check(i >= 0) instead.
+  torch._check_is_size(start_pos)
+/usr/local/lib/python3.11/site-packages/executorch/extension/llm/custom_ops/custom_ops.py:317: FutureWarning: _check_is_size will be removed in a future PyTorch release along with guard_size_oblivious.     Use _check(i >= 0) instead.
+  torch._check_is_size(start_pos)
+/usr/local/lib/python3.11/site-packages/executorch/extension/llm/custom_ops/custom_ops.py:317: FutureWarning: _check_is_size will be removed in a future PyTorch release along with guard_size_oblivious.     Use _check(i >= 0) instead.
+  torch._check_is_size(start_pos)
+/usr/local/lib/python3.11/site-packages/executorch/extension/llm/custom_ops/custom_ops.py:317: FutureWarning: _check_is_size will be removed in a future PyTorch release along with guard_size_oblivious.     Use _check(i >= 0) instead.
+  torch._check_is_size(start_pos)
+/usr/local/lib/python3.11/site-packages/executorch/extension/llm/custom_ops/custom_ops.py:317: FutureWarning: _check_is_size will be removed in a future PyTorch release along with guard_size_oblivious.     Use _check(i >= 0) instead.
+  torch._check_is_size(start_pos)
+/usr/local/lib/python3.11/site-packages/executorch/extension/llm/custom_ops/custom_ops.py:317: FutureWarning: _check_is_size will be removed in a future PyTorch release along with guard_size_oblivious.     Use _check(i >= 0) instead.
+  torch._check_is_size(start_pos)
+/usr/local/lib/python3.11/site-packages/executorch/extension/llm/custom_ops/custom_ops.py:317: FutureWarning: _check_is_size will be removed in a future PyTorch release along with guard_size_oblivious.     Use _check(i >= 0) instead.
+  torch._check_is_size(start_pos)
+/usr/local/lib/python3.11/site-packages/executorch/extension/llm/custom_ops/custom_ops.py:317: FutureWarning: _check_is_size will be removed in a future PyTorch release along with guard_size_oblivious.     Use _check(i >= 0) instead.
+  torch._check_is_size(start_pos)
+/usr/local/lib/python3.11/site-packages/executorch/extension/llm/custom_ops/custom_ops.py:317: FutureWarning: _check_is_size will be removed in a future PyTorch release along with guard_size_oblivious.     Use _check(i >= 0) instead.
+  torch._check_is_size(start_pos)
+/usr/local/lib/python3.11/site-packages/executorch/extension/llm/custom_ops/custom_ops.py:317: FutureWarning: _check_is_size will be removed in a future PyTorch release along with guard_size_oblivious.     Use _check(i >= 0) instead.
+  torch._check_is_size(start_pos)
+/usr/local/lib/python3.11/site-packages/executorch/extension/llm/custom_ops/custom_ops.py:317: FutureWarning: _check_is_size will be removed in a future PyTorch release along with guard_size_oblivious.     Use _check(i >= 0) instead.
+  torch._check_is_size(start_pos)
+/usr/local/lib/python3.11/site-packages/executorch/extension/llm/custom_ops/custom_ops.py:317: FutureWarning: _check_is_size will be removed in a future PyTorch release along with guard_size_oblivious.     Use _check(i >= 0) instead.
+  torch._check_is_size(start_pos)
+/usr/local/lib/python3.11/site-packages/executorch/extension/llm/custom_ops/custom_ops.py:317: FutureWarning: _check_is_size will be removed in a future PyTorch release along with guard_size_oblivious.     Use _check(i >= 0) instead.
+  torch._check_is_size(start_pos)
+/usr/local/lib/python3.11/site-packages/executorch/extension/llm/custom_ops/custom_ops.py:317: FutureWarning: _check_is_size will be removed in a future PyTorch release along with guard_size_oblivious.     Use _check(i >= 0) instead.
+  torch._check_is_size(start_pos)
+/usr/local/lib/python3.11/site-packages/executorch/extension/llm/custom_ops/custom_ops.py:317: FutureWarning: _check_is_size will be removed in a future PyTorch release along with guard_size_oblivious.     Use _check(i >= 0) instead.
+  torch._check_is_size(start_pos)
+/usr/local/lib/python3.11/site-packages/executorch/extension/llm/custom_ops/custom_ops.py:317: FutureWarning: _check_is_size will be removed in a future PyTorch release along with guard_size_oblivious.     Use _check(i >= 0) instead.
+  torch._check_is_size(start_pos)
+/usr/local/lib/python3.11/site-packages/executorch/extension/llm/custom_ops/custom_ops.py:317: FutureWarning: _check_is_size will be removed in a future PyTorch release along with guard_size_oblivious.     Use _check(i >= 0) instead.
+  torch._check_is_size(start_pos)
+/usr/local/lib/python3.11/site-packages/executorch/extension/llm/custom_ops/custom_ops.py:317: FutureWarning: _check_is_size will be removed in a future PyTorch release along with guard_size_oblivious.     Use _check(i >= 0) instead.
+  torch._check_is_size(start_pos)
+/usr/local/lib/python3.11/site-packages/executorch/extension/llm/custom_ops/custom_ops.py:317: FutureWarning: _check_is_size will be removed in a future PyTorch release along with guard_size_oblivious.     Use _check(i >= 0) instead.
+  torch._check_is_size(start_pos)
+/usr/local/lib/python3.11/site-packages/executorch/extension/llm/custom_ops/custom_ops.py:317: FutureWarning: _check_is_size will be removed in a future PyTorch release along with guard_size_oblivious.     Use _check(i >= 0) instead.
+  torch._check_is_size(start_pos)
+/usr/local/lib/python3.11/site-packages/executorch/extension/llm/custom_ops/custom_ops.py:317: FutureWarning: _check_is_size will be removed in a future PyTorch release along with guard_size_oblivious.     Use _check(i >= 0) instead.
+  torch._check_is_size(start_pos)
+/usr/local/lib/python3.11/site-packages/executorch/extension/llm/custom_ops/custom_ops.py:317: FutureWarning: _check_is_size will be removed in a future PyTorch release along with guard_size_oblivious.     Use _check(i >= 0) instead.
+  torch._check_is_size(start_pos)
+/usr/local/lib/python3.11/site-packages/executorch/extension/llm/custom_ops/custom_ops.py:317: FutureWarning: _check_is_size will be removed in a future PyTorch release along with guard_size_oblivious.     Use _check(i >= 0) instead.
+  torch._check_is_size(start_pos)
+/usr/local/lib/python3.11/site-packages/executorch/extension/llm/custom_ops/custom_ops.py:317: FutureWarning: _check_is_size will be removed in a future PyTorch release along with guard_size_oblivious.     Use _check(i >= 0) instead.
+  torch._check_is_size(start_pos)
+/usr/local/lib/python3.11/site-packages/executorch/extension/llm/custom_ops/custom_ops.py:317: FutureWarning: _check_is_size will be removed in a future PyTorch release along with guard_size_oblivious.     Use _check(i >= 0) instead.
+  torch._check_is_size(start_pos)
+/usr/local/lib/python3.11/site-packages/executorch/extension/llm/custom_ops/custom_ops.py:317: FutureWarning: _check_is_size will be removed in a future PyTorch release along with guard_size_oblivious.     Use _check(i >= 0) instead.
+  torch._check_is_size(start_pos)
+/usr/local/lib/python3.11/site-packages/executorch/extension/llm/custom_ops/custom_ops.py:317: FutureWarning: _check_is_size will be removed in a future PyTorch release along with guard_size_oblivious.     Use _check(i >= 0) instead.
+  torch._check_is_size(start_pos)
+/usr/local/lib/python3.11/site-packages/executorch/extension/llm/custom_ops/custom_ops.py:317: FutureWarning: _check_is_size will be removed in a future PyTorch release along with guard_size_oblivious.     Use _check(i >= 0) instead.
+  torch._check_is_size(start_pos)
+/usr/local/lib/python3.11/site-packages/executorch/extension/llm/custom_ops/custom_ops.py:317: FutureWarning: _check_is_size will be removed in a future PyTorch release along with guard_size_oblivious.     Use _check(i >= 0) instead.
+  torch._check_is_size(start_pos)
+/usr/local/lib/python3.11/site-packages/executorch/extension/llm/custom_ops/custom_ops.py:317: FutureWarning: _check_is_size will be removed in a future PyTorch release along with guard_size_oblivious.     Use _check(i >= 0) instead.
+  torch._check_is_size(start_pos)
+/usr/local/lib/python3.11/site-packages/executorch/extension/llm/custom_ops/custom_ops.py:317: FutureWarning: _check_is_size will be removed in a future PyTorch release along with guard_size_oblivious.     Use _check(i >= 0) instead.
+  torch._check_is_size(start_pos)
+/usr/local/lib/python3.11/site-packages/executorch/extension/llm/custom_ops/custom_ops.py:317: FutureWarning: _check_is_size will be removed in a future PyTorch release along with guard_size_oblivious.     Use _check(i >= 0) instead.
+  torch._check_is_size(start_pos)
+/usr/local/lib/python3.11/site-packages/executorch/extension/llm/custom_ops/custom_ops.py:317: FutureWarning: _check_is_size will be removed in a future PyTorch release along with guard_size_oblivious.     Use _check(i >= 0) instead.
+  torch._check_is_size(start_pos)
+/usr/local/lib/python3.11/site-packages/executorch/extension/llm/custom_ops/custom_ops.py:317: FutureWarning: _check_is_size will be removed in a future PyTorch release along with guard_size_oblivious.     Use _check(i >= 0) instead.
+  torch._check_is_size(start_pos)
+/usr/local/lib/python3.11/site-packages/executorch/extension/llm/custom_ops/custom_ops.py:317: FutureWarning: _check_is_size will be removed in a future PyTorch release along with guard_size_oblivious.     Use _check(i >= 0) instead.
+  torch._check_is_size(start_pos)
+/usr/local/lib/python3.11/site-packages/executorch/extension/llm/custom_ops/custom_ops.py:317: FutureWarning: _check_is_size will be removed in a future PyTorch release along with guard_size_oblivious.     Use _check(i >= 0) instead.
+  torch._check_is_size(start_pos)
+/usr/local/lib/python3.11/site-packages/executorch/extension/llm/custom_ops/custom_ops.py:317: FutureWarning: _check_is_size will be removed in a future PyTorch release along with guard_size_oblivious.     Use _check(i >= 0) instead.
+  torch._check_is_size(start_pos)
+/usr/local/lib/python3.11/site-packages/executorch/extension/llm/custom_ops/custom_ops.py:317: FutureWarning: _check_is_size will be removed in a future PyTorch release along with guard_size_oblivious.     Use _check(i >= 0) instead.
+  torch._check_is_size(start_pos)
+/usr/local/lib/python3.11/site-packages/executorch/extension/llm/custom_ops/custom_ops.py:317: FutureWarning: _check_is_size will be removed in a future PyTorch release along with guard_size_oblivious.     Use _check(i >= 0) instead.
+  torch._check_is_size(start_pos)
+/usr/local/lib/python3.11/site-packages/executorch/extension/llm/custom_ops/custom_ops.py:317: FutureWarning: _check_is_size will be removed in a future PyTorch release along with guard_size_oblivious.     Use _check(i >= 0) instead.
+  torch._check_is_size(start_pos)
+/usr/local/lib/python3.11/site-packages/executorch/extension/llm/custom_ops/custom_ops.py:317: FutureWarning: _check_is_size will be removed in a future PyTorch release along with guard_size_oblivious.     Use _check(i >= 0) instead.
+  torch._check_is_size(start_pos)
+/usr/local/lib/python3.11/site-packages/executorch/extension/llm/custom_ops/custom_ops.py:317: FutureWarning: _check_is_size will be removed in a future PyTorch release along with guard_size_oblivious.     Use _check(i >= 0) instead.
+  torch._check_is_size(start_pos)
+/usr/local/lib/python3.11/site-packages/executorch/extension/llm/custom_ops/custom_ops.py:317: FutureWarning: _check_is_size will be removed in a future PyTorch release along with guard_size_oblivious.     Use _check(i >= 0) instead.
+  torch._check_is_size(start_pos)
+/usr/local/lib/python3.11/site-packages/executorch/extension/llm/custom_ops/custom_ops.py:317: FutureWarning: _check_is_size will be removed in a future PyTorch release along with guard_size_oblivious.     Use _check(i >= 0) instead.
+  torch._check_is_size(start_pos)
+/usr/local/lib/python3.11/site-packages/executorch/extension/llm/custom_ops/custom_ops.py:317: FutureWarning: _check_is_size will be removed in a future PyTorch release along with guard_size_oblivious.     Use _check(i >= 0) instead.
+  torch._check_is_size(start_pos)
+/usr/local/lib/python3.11/site-packages/executorch/extension/llm/custom_ops/custom_ops.py:317: FutureWarning: _check_is_size will be removed in a future PyTorch release along with guard_size_oblivious.     Use _check(i >= 0) instead.
+  torch._check_is_size(start_pos)
+/usr/local/lib/python3.11/site-packages/executorch/extension/llm/custom_ops/custom_ops.py:317: FutureWarning: _check_is_size will be removed in a future PyTorch release along with guard_size_oblivious.     Use _check(i >= 0) instead.
+  torch._check_is_size(start_pos)
+/usr/local/lib/python3.11/site-packages/executorch/extension/llm/custom_ops/custom_ops.py:317: FutureWarning: _check_is_size will be removed in a future PyTorch release along with guard_size_oblivious.     Use _check(i >= 0) instead.
+  torch._check_is_size(start_pos)
+/usr/local/lib/python3.11/site-packages/executorch/extension/llm/custom_ops/custom_ops.py:317: FutureWarning: _check_is_size will be removed in a future PyTorch release along with guard_size_oblivious.     Use _check(i >= 0) instead.
+  torch._check_is_size(start_pos)
+/usr/local/lib/python3.11/site-packages/executorch/extension/llm/custom_ops/custom_ops.py:317: FutureWarning: _check_is_size will be removed in a future PyTorch release along with guard_size_oblivious.     Use _check(i >= 0) instead.
+  torch._check_is_size(start_pos)
+/usr/local/lib/python3.11/site-packages/executorch/extension/llm/custom_ops/custom_ops.py:317: FutureWarning: _check_is_size will be removed in a future PyTorch release along with guard_size_oblivious.     Use _check(i >= 0) instead.
+  torch._check_is_size(start_pos)
+/usr/local/lib/python3.11/site-packages/executorch/extension/llm/custom_ops/custom_ops.py:317: FutureWarning: _check_is_size will be removed in a future PyTorch release along with guard_size_oblivious.     Use _check(i >= 0) instead.
+  torch._check_is_size(start_pos)
+/usr/local/lib/python3.11/site-packages/executorch/extension/llm/custom_ops/custom_ops.py:317: FutureWarning: _check_is_size will be removed in a future PyTorch release along with guard_size_oblivious.     Use _check(i >= 0) instead.
+  torch._check_is_size(start_pos)
+/usr/local/lib/python3.11/site-packages/executorch/extension/llm/custom_ops/custom_ops.py:317: FutureWarning: _check_is_size will be removed in a future PyTorch release along with guard_size_oblivious.     Use _check(i >= 0) instead.
+  torch._check_is_size(start_pos)
+/usr/local/lib/python3.11/site-packages/executorch/extension/llm/custom_ops/custom_ops.py:317: FutureWarning: _check_is_size will be removed in a future PyTorch release along with guard_size_oblivious.     Use _check(i >= 0) instead.
+  torch._check_is_size(start_pos)
+/usr/local/lib/python3.11/site-packages/executorch/extension/llm/custom_ops/custom_ops.py:317: FutureWarning: _check_is_size will be removed in a future PyTorch release along with guard_size_oblivious.     Use _check(i >= 0) instead.
+  torch._check_is_size(start_pos)
+/usr/local/lib/python3.11/site-packages/executorch/extension/llm/custom_ops/custom_ops.py:317: FutureWarning: _check_is_size will be removed in a future PyTorch release along with guard_size_oblivious.     Use _check(i >= 0) instead.
+  torch._check_is_size(start_pos)
+/usr/local/lib/python3.11/site-packages/executorch/extension/llm/custom_ops/custom_ops.py:317: FutureWarning: _check_is_size will be removed in a future PyTorch release along with guard_size_oblivious.     Use _check(i >= 0) instead.
+  torch._check_is_size(start_pos)
+/usr/local/lib/python3.11/site-packages/executorch/extension/llm/custom_ops/custom_ops.py:317: FutureWarning: _check_is_size will be removed in a future PyTorch release along with guard_size_oblivious.     Use _check(i >= 0) instead.
+  torch._check_is_size(start_pos)
+/usr/local/lib/python3.11/site-packages/executorch/extension/llm/custom_ops/custom_ops.py:317: FutureWarning: _check_is_size will be removed in a future PyTorch release along with guard_size_oblivious.     Use _check(i >= 0) instead.
+  torch._check_is_size(start_pos)
+/usr/local/lib/python3.11/site-packages/executorch/extension/llm/custom_ops/custom_ops.py:317: FutureWarning: _check_is_size will be removed in a future PyTorch release along with guard_size_oblivious.     Use _check(i >= 0) instead.
+  torch._check_is_size(start_pos)
+/usr/local/lib/python3.11/site-packages/executorch/extension/llm/custom_ops/custom_ops.py:317: FutureWarning: _check_is_size will be removed in a future PyTorch release along with guard_size_oblivious.     Use _check(i >= 0) instead.
+  torch._check_is_size(start_pos)
+/usr/local/lib/python3.11/site-packages/executorch/extension/llm/custom_ops/custom_ops.py:317: FutureWarning: _check_is_size will be removed in a future PyTorch release along with guard_size_oblivious.     Use _check(i >= 0) instead.
+  torch._check_is_size(start_pos)
+/usr/local/lib/python3.11/site-packages/executorch/extension/llm/custom_ops/custom_ops.py:317: FutureWarning: _check_is_size will be removed in a future PyTorch release along with guard_size_oblivious.     Use _check(i >= 0) instead.
+  torch._check_is_size(start_pos)
+/usr/local/lib/python3.11/site-packages/executorch/extension/llm/custom_ops/custom_ops.py:317: FutureWarning: _check_is_size will be removed in a future PyTorch release along with guard_size_oblivious.     Use _check(i >= 0) instead.
+  torch._check_is_size(start_pos)
+/usr/local/lib/python3.11/site-packages/executorch/extension/llm/custom_ops/custom_ops.py:317: FutureWarning: _check_is_size will be removed in a future PyTorch release along with guard_size_oblivious.     Use _check(i >= 0) instead.
+  torch._check_is_size(start_pos)
+/usr/local/lib/python3.11/site-packages/executorch/extension/llm/custom_ops/custom_ops.py:317: FutureWarning: _check_is_size will be removed in a future PyTorch release along with guard_size_oblivious.     Use _check(i >= 0) instead.
+  torch._check_is_size(start_pos)
+/usr/local/lib/python3.11/site-packages/executorch/extension/llm/custom_ops/custom_ops.py:317: FutureWarning: _check_is_size will be removed in a future PyTorch release along with guard_size_oblivious.     Use _check(i >= 0) instead.
+  torch._check_is_size(start_pos)
+/usr/local/lib/python3.11/site-packages/executorch/extension/llm/custom_ops/custom_ops.py:317: FutureWarning: _check_is_size will be removed in a future PyTorch release along with guard_size_oblivious.     Use _check(i >= 0) instead.
+  torch._check_is_size(start_pos)
+/usr/local/lib/python3.11/site-packages/executorch/extension/llm/custom_ops/custom_ops.py:317: FutureWarning: _check_is_size will be removed in a future PyTorch release along with guard_size_oblivious.     Use _check(i >= 0) instead.
+  torch._check_is_size(start_pos)
+/usr/local/lib/python3.11/site-packages/executorch/extension/llm/custom_ops/custom_ops.py:317: FutureWarning: _check_is_size will be removed in a future PyTorch release along with guard_size_oblivious.     Use _check(i >= 0) instead.
+  torch._check_is_size(start_pos)
+/usr/local/lib/python3.11/site-packages/executorch/extension/llm/custom_ops/custom_ops.py:317: FutureWarning: _check_is_size will be removed in a future PyTorch release along with guard_size_oblivious.     Use _check(i >= 0) instead.
+  torch._check_is_size(start_pos)
+/usr/local/lib/python3.11/site-packages/executorch/extension/llm/custom_ops/custom_ops.py:317: FutureWarning: _check_is_size will be removed in a future PyTorch release along with guard_size_oblivious.     Use _check(i >= 0) instead.
+  torch._check_is_size(start_pos)
+/usr/local/lib/python3.11/site-packages/executorch/extension/llm/custom_ops/custom_ops.py:317: FutureWarning: _check_is_size will be removed in a future PyTorch release along with guard_size_oblivious.     Use _check(i >= 0) instead.
+  torch._check_is_size(start_pos)
+/usr/local/lib/python3.11/site-packages/executorch/extension/llm/custom_ops/custom_ops.py:317: FutureWarning: _check_is_size will be removed in a future PyTorch release along with guard_size_oblivious.     Use _check(i >= 0) instead.
+  torch._check_is_size(start_pos)
+/usr/local/lib/python3.11/site-packages/executorch/extension/llm/custom_ops/custom_ops.py:317: FutureWarning: _check_is_size will be removed in a future PyTorch release along with guard_size_oblivious.     Use _check(i >= 0) instead.
+  torch._check_is_size(start_pos)
+/usr/local/lib/python3.11/site-packages/executorch/extension/llm/custom_ops/custom_ops.py:317: FutureWarning: _check_is_size will be removed in a future PyTorch release along with guard_size_oblivious.     Use _check(i >= 0) instead.
+  torch._check_is_size(start_pos)
+/usr/local/lib/python3.11/site-packages/executorch/extension/llm/custom_ops/custom_ops.py:317: FutureWarning: _check_is_size will be removed in a future PyTorch release along with guard_size_oblivious.     Use _check(i >= 0) instead.
+  torch._check_is_size(start_pos)
+/usr/local/lib/python3.11/site-packages/executorch/extension/llm/custom_ops/custom_ops.py:317: FutureWarning: _check_is_size will be removed in a future PyTorch release along with guard_size_oblivious.     Use _check(i >= 0) instead.
+  torch._check_is_size(start_pos)
+/usr/local/lib/python3.11/site-packages/executorch/extension/llm/custom_ops/custom_ops.py:317: FutureWarning: _check_is_size will be removed in a future PyTorch release along with guard_size_oblivious.     Use _check(i >= 0) instead.
+  torch._check_is_size(start_pos)
+/usr/local/lib/python3.11/site-packages/executorch/extension/llm/custom_ops/custom_ops.py:317: FutureWarning: _check_is_size will be removed in a future PyTorch release along with guard_size_oblivious.     Use _check(i >= 0) instead.
+  torch._check_is_size(start_pos)
+/usr/local/lib/python3.11/site-packages/executorch/extension/llm/custom_ops/custom_ops.py:317: FutureWarning: _check_is_size will be removed in a future PyTorch release along with guard_size_oblivious.     Use _check(i >= 0) instead.
+  torch._check_is_size(start_pos)
+/usr/local/lib/python3.11/site-packages/executorch/extension/llm/custom_ops/custom_ops.py:317: FutureWarning: _check_is_size will be removed in a future PyTorch release along with guard_size_oblivious.     Use _check(i >= 0) instead.
+  torch._check_is_size(start_pos)
+/usr/local/lib/python3.11/site-packages/executorch/extension/llm/custom_ops/custom_ops.py:317: FutureWarning: _check_is_size will be removed in a future PyTorch release along with guard_size_oblivious.     Use _check(i >= 0) instead.
+  torch._check_is_size(start_pos)
+/usr/local/lib/python3.11/site-packages/executorch/extension/llm/custom_ops/custom_ops.py:317: FutureWarning: _check_is_size will be removed in a future PyTorch release along with guard_size_oblivious.     Use _check(i >= 0) instead.
+  torch._check_is_size(start_pos)
+/usr/local/lib/python3.11/site-packages/executorch/exir/emit/_emitter.py:2008: UserWarning: Mutation on a buffer in the model is detected. ExecuTorch assumes buffers that are mutated in the graph have a meaningless initial state, only the shape and dtype will be serialized, unless a pass which sets meta["et_init_buffer"] to True such as InitializedMutableBufferPass is run.
+  warnings.warn(
+[2026-11-19 05:38:36,693][root][INFO] - Required memory for activation in bytes: [0, 639548480]
+[2026-11-19 05:38:37,520][root][INFO] - Saved exported program to /__modal/volumes/vo-Move1WmckXLzFv6XUEnfPJ/local-1-fb5e31b1/out/export/xnnpack/Qwen3-1.7B-8da4w-gptq-2k.pte
+==> reading metadata
+==> smoke test
+I tokenizers:regex.cpp:40] Registering override fallback regex
+WARNING: All log messages before absl::InitializeLog() is called are written to STDERR
+E0000 00:00:1795066724.928836       5 re2.cc:237] Error parsing '((?i:'s|'t|'re|'ve|'m|'ll|'d)|[^\r\n\p{L}\p{N}]?\p{L}+|\p{N}| ?[^\s\p{L}\p{N}]+[\r\n]*|\s*[\r\n]+|\s...': invalid perl operator: (?!
+I tokenizers:re2_regex.cpp:23] Re2 failed to compile regex: ((?i:'s|'t|'re|'ve|'m|'ll|'d)|[^\r\n\p{L}\p{N}]?\p{L}+|\p{N}| ?[^\s\p{L}\p{N}]+[\r\n]*|\s*[\r\n]+|\s+(?!\S)|\s+), error: invalid perl operator: (?!
+This may be ok if a fallback regex is used.
+I tokenizers:regex_lookahead.cpp:26] Creating PCRE2 regex
+[llm_runner_helper.cpp:55] Loaded json tokenizer
+[llm_runner_helper.cpp:258] Reading metadata from model
+[llm_runner_helper.cpp:137] Metadata: use_kv_cache = 1
+[llm_runner_helper.cpp:137] Metadata: get_max_context_len = 2048
+[llm_runner_helper.cpp:137] Metadata: get_max_seq_len = 2048
+[llm_runner_helper.cpp:137] Metadata: use_sdpa_with_kv_cache = 1
+[llm_runner_helper.cpp:137] Metadata: enable_dynamic_shape = 1
+[llm_runner_helper.cpp:179] eos_id = 151645
+[llm_runner_helper.cpp:179] eos_id = 151643
+[llm_runner_helper.cpp:294] Using method: forward
+[text_llm_runner.cpp:89] RSS after loading model: 16080.546875 MiB (0 if unsupported)
+[text_prefiller.cpp:121] Prefill token result numel(): 151936
+[text_llm_runner.cpp:201] Max new tokens resolved: 128, given pos_ 20, num_prompt_tokens 20, max_context_len 2048
+[text_llm_runner.cpp:228] RSS after prompt prefill: 16080.546875 MiB (0 if unsupported)
+<think>
+Okay, the user is asking for the capital of France and wants the answer in one word. Let me think. I know that France's capital is Paris. But wait, I should make sure there's no confusion with other capitals. For example, Germany's capital is Berlin, Italy's is Rome, etc. Paris is the capital of France, yes. The answer is straightforward. Just need to confirm that there's no alternative answer. No, I'm confident it's Paris. So the answer is Paris.
+</think>
+
+Paris<|im_end|>
+
+PyTorchObserver {"prefill_token_per_sec":250,"decode_token_per_sec":54.5179,"prompt_tokens":20,"generated_tokens":108,"model_load_start_ms":1795066725085,"model_load_end_ms":1795066728054,"inference_start_ms":1795066728054,"inference_end_ms":1795066730115,"model_execution_start_ms":1795066730095,"model_execution_end_ms":1795066730115,"prompt_eval_end_ms":1795066728134,"first_token_ms":1795066728134,"aggregate_sampling_time_ms":26,"aggregate_model_execution_time_ms":2031,"SCALING_FACTOR_UNITS_PER_SECOND":1000}
+[text_token_generator.h:181] 
+Reached to the end of generation
+[text_llm_runner.cpp:258] RSS after finishing text generation: 16080.546875 MiB (0 if unsupported)
+[stats.h:175] 	Prompt Tokens: 20    Generated Tokens: 108
+[stats.h:181] 	Model Load Time:		2.969000 (seconds)
+[stats.h:188] 	Total inference time:		2.061000 (seconds)		 Rate: 	52.401747 (tokens/second)
+[stats.h:197] 		Prompt evaluation:	0.080000 (seconds)		 Rate: 	250.000000 (tokens/second)
+[stats.h:207] 		Generated 108 tokens:	1.981000 (seconds)		 Rate: 	54.517920 (tokens/second)
+[stats.h:219] 	Time to first generated token:	0.080000 (seconds)
+[stats.h:225] 	Sampling time over 128 tokens:	0.026000 (seconds)
+    reply: "<think>\nOkay, the user is asking for the capital of France and wants the answer in one word. Let me think. I know that France's capital is Paris. But wait, I should make sure there's no confusion with other capitals. For example, Germany's capital is Berlin, Italy's is Rome, etc. Paris is the capital of France, yes. The answer is straightforward. Just need to confirm that there's no alternative answer. No, I'm confident it's Paris. So the answer is Paris.\n</think>\n\nParis<|im_end|>"
+I tokenizers:regex.cpp:40] Registering override fallback regex
+{
+  "model_id": "Qwen/Qwen3-1.7B",
+  "method": "awq_gptq",
+  "revision": "70d244cc86ccca08cf5af4e1e306ecf908b1ad5e",
+  "awq": {
+    "mean_error_vs_plain": 0.6644375284576847
+  },
+  "smoke": {
+    "passed": true,
+    "reply": "<think>\nOkay, the user is asking for the capital of France and wants the answer in one word. Let me think. I know that France's capital is Paris. But wait, I should make sure there's no confusion with other capitals. For example, Germany's capital is Berlin, Italy's is Rome, etc. Paris is the capital of France, yes. The answer is straightforward. Just need to confirm that there's no alternative answer. No, I'm confident it's Paris. So the answer is Paris.\n</think>\n\nParis<|im_end|>",
+    "problems": []
+  },
+  "bytes": 1284873600,
+  "gate": {
+    "passed": true,
+    "problems": [],
+    "graded": 12,
+    "fp32_mean": 0.9988,
+    "export_mean": 0.9983,
+    "agreed": 12,
+    "shortfall": 0.0005,
+    "quiet_rows_answered_like_fp32": 3,
+    "measures_tool_calling": true,
+    "quiet_rows": 3,
+    "fp32_undecided_quiet_rows": [
+      "Who wrote Pride and Prejudice?"
+    ],
+    "fp32_undecided_rows": [],
+    "rows": {
+      "What is Concord the capital of?": {
+        "fp32": 0.998,
+        "export": 0.9979,
+        "kind": "search"
+      },
+      "What is Providence the capital of?": {
+        "fp32": 0.9982,
+        "export": 0.995,
+        "kind": "search"
+      },
+      "What is Augusta the capital of?": {
+        "fp32": 0.9983,
+        "export": 0.9961,
+        "kind": "search"
+      },
+      "What is Nassau the capital of?": {
+        "fp32": 0.9988,
+        "export": 0.9977,
+        "kind": "search"
+      },
+      "Who is the author of Mercy?": {
+        "fp32": 0.9993,
+        "export": 0.9992,
+        "kind": "search"
+      },
+      "Who is the author of Landfall?": {
+        "fp32": 0.9994,
+        "export": 0.9992,
+        "kind": "search"
+      },
+      "Who is the author of Quicksand?": {
+        "fp32": 0.9992,
+        "export": 0.9993,
+        "kind": "search"
+      },
+      "Who is the author of Nightfall?": {
+        "fp32": 0.9992,
+        "export": 0.9993,
+        "kind": "search"
+      },
+      "In what country is Ostrava?": {
+        "fp32": 0.999,
+        "export": 0.9992,
+        "kind": "search"
+      },
+      "In what country is Gdynia?": {
+        "fp32": 0.9986,
+        "export": 0.999,
+        "kind": "search"
+      },
+      "In what country is Rijeka?": {
+        "fp32": 0.9991,
+        "export": 0.9993,
+        "kind": "search"
+      },
+      "In what country is Linkoping?": {
+        "fp32": 0.9986,
+        "export": 0.9977,
+        "kind": "search"
+      },
+      "What is the capital of Norway?": {
+        "fp32": 1.0,
+        "export": 1.0,
+        "kind": "quiet"
+      },
+      "What is 8 times 7?": {
+        "fp32": 1.0,
+        "export": 1.0,
+        "kind": "quiet"
+      },
+      "Who wrote Pride and Prejudice?": {
+        "fp32": 0.4317,
+        "export": 0.0001,
+        "kind": "quiet"
+      },
+      "What is the chemical symbol for iron?": {
+        "fp32": 1.0,
+        "export": 1.0,
+        "kind": "quiet"
+      }
+    }
+  },
+  "heldout": {
+    "rows": 141,
+    "top1_agree": 0.8368794326241135,
+    "mean_kl": 0.5864507622929719,
+    "mean_p_fp32_top": 0.8197643282943948
+  },
+  "replies": {
+    "rows": 47,
+    "positions": 1416,
+    "top1_agree": 0.9081920903954802,
+    "mean_kl": 0.22913685485018076
+  },
+  "timings_s": {
+    "download_convert": 18.7,
+    "eager_model": 3.2,
+    "solve": 2540.2,
+    "export_and_smoke": 508.4,
+    "gate": 74.0,
+    "eval": 854.1
+  }
+}
+Modal Sandbox exited 0 after 66.8 min
+downloaded 6 file(s) to work/awq/qwen3-1.7b/awq_gptq

@@ -1,0 +1,85 @@
+{
+  "rows": {
+    "What is Concord the capital of?": {
+      "token": 32313,
+      "p": 0.9767842888832092,
+      "text": "Okay"
+    },
+    "What is Providence the capital of?": {
+      "token": 32313,
+      "p": 0.9796596169471741,
+      "text": "Okay"
+    },
+    "What is Augusta the capital of?": {
+      "token": 32313,
+      "p": 0.9833438992500305,
+      "text": "Okay"
+    },
+    "What is Nassau the capital of?": {
+      "token": 32313,
+      "p": 0.9646921753883362,
+      "text": "Okay"
+    },
+    "Who is the author of Mercy?": {
+      "token": 32313,
+      "p": 0.9794800281524658,
+      "text": "Okay"
+    },
+    "Who is the author of Landfall?": {
+      "token": 32313,
+      "p": 0.970505952835083,
+      "text": "Okay"
+    },
+    "Who is the author of Quicksand?": {
+      "token": 32313,
+      "p": 0.9860077500343323,
+      "text": "Okay"
+    },
+    "Who is the author of Nightfall?": {
+      "token": 32313,
+      "p": 0.9666065573692322,
+      "text": "Okay"
+    },
+    "In what country is Ostrava?": {
+      "token": 32313,
+      "p": 0.9704400300979614,
+      "text": "Okay"
+    },
+    "In what country is Gdynia?": {
+      "token": 32313,
+      "p": 0.9619849920272827,
+      "text": "Okay"
+    },
+    "In what country is Rijeka?": {
+      "token": 32313,
+      "p": 0.9652538299560547,
+      "text": "Okay"
+    },
+    "In what country is Linkoping?": {
+      "token": 32313,
+      "p": 0.9756941199302673,
+      "text": "Okay"
+    },
+    "What is the capital of Norway?": {
+      "token": 32313,
+      "p": 0.7028936147689819,
+      "text": "Okay"
+    },
+    "What is 8 times 7?": {
+      "token": 32313,
+      "p": 0.8227282762527466,
+      "text": "Okay"
+    },
+    "Who wrote Pride and Prejudice?": {
+      "token": 32313,
+      "p": 0.7519031763076782,
+      "text": "Okay"
+    },
+    "What is the chemical symbol for iron?": {
+      "token": 80022,
+      "p": 0.4224802851676941,
+      "text": "Hmm"
+    }
+  },
+  "confident": 15
+}

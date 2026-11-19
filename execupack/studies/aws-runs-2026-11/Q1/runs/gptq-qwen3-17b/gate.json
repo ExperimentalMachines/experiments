@@ -1,0 +1,85 @@
+{
+  "rows": {
+    "What is Concord the capital of?": {
+      "token": 151657,
+      "p": 0.9979952573776245,
+      "text": "<tool_call>"
+    },
+    "What is Providence the capital of?": {
+      "token": 151657,
+      "p": 0.9982309937477112,
+      "text": "<tool_call>"
+    },
+    "What is Augusta the capital of?": {
+      "token": 151657,
+      "p": 0.9983036518096924,
+      "text": "<tool_call>"
+    },
+    "What is Nassau the capital of?": {
+      "token": 151657,
+      "p": 0.998835027217865,
+      "text": "<tool_call>"
+    },
+    "Who is the author of Mercy?": {
+      "token": 151657,
+      "p": 0.9992766976356506,
+      "text": "<tool_call>"
+    },
+    "Who is the author of Landfall?": {
+      "token": 151657,
+      "p": 0.9993680119514465,
+      "text": "<tool_call>"
+    },
+    "Who is the author of Quicksand?": {
+      "token": 151657,
+      "p": 0.9992259740829468,
+      "text": "<tool_call>"
+    },
+    "Who is the author of Nightfall?": {
+      "token": 151657,
+      "p": 0.9991503953933716,
+      "text": "<tool_call>"
+    },
+    "In what country is Ostrava?": {
+      "token": 151657,
+      "p": 0.9989615678787231,
+      "text": "<tool_call>"
+    },
+    "In what country is Gdynia?": {
+      "token": 151657,
+      "p": 0.9986294507980347,
+      "text": "<tool_call>"
+    },
+    "In what country is Rijeka?": {
+      "token": 151657,
+      "p": 0.99910968542099,
+      "text": "<tool_call>"
+    },
+    "In what country is Linkoping?": {
+      "token": 151657,
+      "p": 0.9985887408256531,
+      "text": "<tool_call>"
+    },
+    "What is the capital of Norway?": {
+      "token": 785,
+      "p": 0.9999998807907104,
+      "text": "The"
+    },
+    "What is 8 times 7?": {
+      "token": 23,
+      "p": 0.9999953508377075,
+      "text": "8"
+    },
+    "Who wrote Pride and Prejudice?": {
+      "token": 2610,
+      "p": 0.43167245388031006,
+      "text": "You"
+    },
+    "What is the chemical symbol for iron?": {
+      "token": 785,
+      "p": 1.0,
+      "text": "The"
+    }
+  },
+  "confident": 15
+}

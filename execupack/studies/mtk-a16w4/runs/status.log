@@ -1,0 +1,23 @@
+04:53:37 qwen prepared: {"model": "Qwen/Qwen3-1.7B", "sha": "70d244cc86ccca08cf5af4e1e306ecf908b1ad5e", "script": "qwen.py", "preformatter": "qwen3.json", "chunks": 4, "params": 2031739904}
+04:53:44 llama prepared: {"model": "meta-llama/Llama-3.2-1B-Instruct", "sha": "9213176726f574b556790deb65791e0c5aa438b6", "script": "llama.py", "preformatter": "llama3.json", "chunks": 4, "params": 1235814400}
+04:53:56 lfm prepared: {"model": "LiquidAI/LFM2.5-1.2B-Instruct", "sha": "b9d816ab510f9a28dca37cb182e9da8b0226e13c", "script": "lfm2.py", "preformatter": "qwen3.json", "chunks": 4, "params": 1170340608}
+04:54:07 lfm corpus built: 23 samples
+04:54:07 qwen gptq start
+05:03:24 qwen gptq DONE: wrote /workspace/runs/qwen/gptq in 550 s
+05:03:24 llama gptq start
+05:03:24 qwen export start
+05:03:24 qwen export FAILED (2)
+05:03:28 qwen eval start
+05:04:56 qwen export start (rerun)
+05:08:36 llama gptq DONE: wrote /workspace/runs/llama/gptq in 307 s
+05:08:36 lfm gptq start
+05:08:36 llama export start
+05:09:05 qwen eval DONE:  a16w8 KL 0.2663 ppl 33.47 (fp32 28.71) top1 0.751 gate FAIL 9/12 mean 0.7321 (fp32 0.9988) first-token KL 1.59413| a16w4 KL 0.9849 ppl 71.80 (fp32 28.71) top1 0.546 gate FAIL 1/12 mean 0.1727 (fp32 0.9988) first-token KL 3.95573| a16w4-gptq KL 0.8258 ppl 57.25 (fp32 28.71) top1 0.588 gate PASS 11/12 mean 0.8884 (fp32 0.9988) first-token KL 1.8787|
+05:09:05 llama eval start
+05:12:48 qwen a16w16 diag DONE:  a16w16 KL 0.2704 ppl 33.85 (fp32 28.71) top1 0.761 gate PASS 12/12 mean 0.9968 (fp32 0.9988) first-token KL 0.728
+05:13:08 llama eval DONE:  a16w8 KL 0.0462 ppl 29.36 (fp32 29.14) top1 0.889 gate FAIL 7/12 mean 0.4812 (fp32 0.8843) first-token KL 0.40039| a16w4 KL 0.9367 ppl 65.83 (fp32 29.14) top1 0.511 gate FAIL 0/12 mean 0.0005 (fp32 0.8843) first-token KL 6.5949| a16w4-gptq KL 0.6745 ppl 53.73 (fp32 29.14) top1 0.572 gate PASS 12/12 mean 0.9026 (fp32 0.8843) first-token KL 0.16526|
+05:13:58 lfm gptq DONE: wrote /workspace/runs/lfm/gptq in 316 s
+05:13:58 lfm export start
+05:14:08 lfm eval start
+05:17:19 lfm eval DONE:  a16w8 KL 0.0054 ppl 134.52 (fp32 134.99) top1 0.956 gate PASS 12/12 mean 0.8143 (fp32 0.8212) first-token KL 0.00445| a16w4 KL 0.7620 ppl 194.37 (fp32 134.99) top1 0.562 gate FAIL 0/12 mean 0.0234 (fp32 0.8212) first-token KL 2.36599| a16w4-gptq KL 0.9166 ppl 139.96 (fp32 134.99) top1 0.542 gate FAIL 8/12 mean 0.4591 (fp32 0.8212) first-token KL 0.56774|
+05:17:19 ALL DONE

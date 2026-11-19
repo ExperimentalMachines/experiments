@@ -1,0 +1,8 @@
+2026-11-09T04:59:02Z START xnn HuggingFaceTB/SmolLM2-135M-Instruct 4096
+2026-11-09T05:08:24Z export attempt 1 exited 0
+2026-11-09T05:08:24Z exported 107066624 /home/ubuntu/runs/gptq-smollm2-135m-instruct/out-xnnpack-4096/xnnpack/SmolLM2-135M-Instruct-8da4w-gptq-4k.pte
+2026-11-09T05:09:47Z verify attempt 1 exited 0
+2026-11-09T05:09:54Z codesmatch ok: 211 of 211 int4 linears exact
+2026-11-09T05:09:54Z REPORT {"file": "xnnpack/SmolLM2-135M-Instruct-8da4w-gptq-4k.pte", "bytes": 107066624, "recipe": "8da4w-gptq-g32, int8 embeddings, int4 codes solved with GPTQ", "smoke": true, "reply": "The capital of France is Paris.<|im_end|>", "gate": true, "agreed": 4, "graded": 4, "quiet": 2, "fp32_mean": 0.5834, "export_mean": 0.5078, "tool_calling": true, "override": null, "proxy": null, "fits_phone": null}
+2026-11-09T05:10:14Z published
+2026-11-09T05:10:14Z END rc=0

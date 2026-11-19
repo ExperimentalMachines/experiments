@@ -1,0 +1,13 @@
+{
+ "file": "Qwen2.5-Math-1.5B-Instruct-8da4w-gptq-32k.pte",
+ "sha256": "535b42eaa60a9bdacfeb3f6067fd888023bb2b268a3c1c5069ad59de98a9f1da",
+ "backend": "xnnpack",
+ "int4_linears": 197,
+ "matched_exactly": 197,
+ "codes_entries": 197,
+ "unused_allowed": [],
+ "low_nibble_first": true,
+ "order_checked": true,
+ "ok": true,
+ "problems": []
+}

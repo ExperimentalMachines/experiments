@@ -1,0 +1,160 @@
+==> solve Qwen/Qwen2.5-1.5B-Instruct@989aa7980e4c: family qwen2_5, class qwen2_5_1_5b
+Fetching 7 files:   0%|          | 0/7 [00:00<?, ?it/s]Fetching 7 files:  14%|█▍        | 1/7 [00:00<00:00,  7.50it/s]Fetching 7 files:  86%|████████▌ | 6/7 [00:00<00:00, 18.83it/s]Fetching 7 files:  86%|████████▌ | 6/7 [00:19<00:00, 18.83it/s]Fetching 7 files: 100%|██████████| 7/7 [00:30<00:00,  6.02s/it]Fetching 7 files: 100%|██████████| 7/7 [00:30<00:00,  4.31s/it]
+==> converting checkpoint
+==> calibration
+Failed to load /home/ubuntu/execupack/.venv/lib/python3.11/site-packages/torchao/_C_cutlass_90a.abi3.so: Could not load this library: /home/ubuntu/execupack/.venv/lib/python3.11/site-packages/torchao/_C_cutlass_90a.abi3.so
+Failed to load /home/ubuntu/execupack/.venv/lib/python3.11/site-packages/torchao/_C_mxfp8.cpython-310-x86_64-linux-gnu.so: Could not load this library: /home/ubuntu/execupack/.venv/lib/python3.11/site-packages/torchao/_C_mxfp8.cpython-310-x86_64-linux-gnu.so
+W1108 23:27:45.907000 1368 torch/utils/_pytree.py:630] <enum 'KernelPreference'> is an Enum subclass and is now natively supported by torch.compile as an opaque value type. Calling register_constant() on Enum subclasses is deprecated and will be an error in a future release.
+W1108 23:27:45.987000 1368 torch/utils/_pytree.py:630] <enum 'ScaleCalculationMode'> is an Enum subclass and is now natively supported by torch.compile as an opaque value type. Calling register_constant() on Enum subclasses is deprecated and will be an error in a future release.
+Loading weights:   0%|          | 0/338 [00:00<?, ?it/s]Loading weights:  33%|███▎      | 111/338 [00:00<00:00, 1105.59it/s]Loading weights:  75%|███████▌  | 255/338 [00:00<00:00, 1295.55it/s]Loading weights: 100%|██████████| 338/338 [00:00<00:00, 1336.17it/s]
+calibration row 1/104: 632 prompt + 22 reply tokens, counting from 0
+calibration row 2/104: 632 prompt + 22 reply tokens, counting from 594
+calibration row 3/104: 632 prompt + 21 reply tokens, counting from 594
+calibration row 4/104: 632 prompt + 21 reply tokens, counting from 594
+calibration row 5/104: 632 prompt + 22 reply tokens, counting from 594
+calibration row 6/104: 632 prompt + 22 reply tokens, counting from 594
+calibration row 7/104: 632 prompt + 23 reply tokens, counting from 594
+calibration row 8/104: 632 prompt + 22 reply tokens, counting from 594
+calibration row 9/104: 632 prompt + 22 reply tokens, counting from 594
+calibration row 10/104: 636 prompt + 24 reply tokens, counting from 594
+calibration row 11/104: 634 prompt + 25 reply tokens, counting from 594
+calibration row 12/104: 634 prompt + 22 reply tokens, counting from 594
+calibration row 13/104: 634 prompt + 22 reply tokens, counting from 594
+calibration row 14/104: 634 prompt + 24 reply tokens, counting from 594
+calibration row 15/104: 636 prompt + 23 reply tokens, counting from 594
+calibration row 16/104: 636 prompt + 23 reply tokens, counting from 594
+calibration row 17/104: 634 prompt + 22 reply tokens, counting from 594
+calibration row 18/104: 634 prompt + 22 reply tokens, counting from 594
+calibration row 19/104: 636 prompt + 23 reply tokens, counting from 594
+calibration row 20/104: 634 prompt + 26 reply tokens, counting from 594
+calibration row 21/104: 641 prompt + 26 reply tokens, counting from 594
+calibration row 22/104: 635 prompt + 23 reply tokens, counting from 594
+calibration row 23/104: 641 prompt + 26 reply tokens, counting from 594
+calibration row 24/104: 635 prompt + 23 reply tokens, counting from 594
+calibration row 25/104: 635 prompt + 23 reply tokens, counting from 594
+calibration row 26/104: 635 prompt + 24 reply tokens, counting from 594
+calibration row 27/104: 635 prompt + 23 reply tokens, counting from 594
+calibration row 28/104: 633 prompt + 22 reply tokens, counting from 594
+calibration row 29/104: 639 prompt + 25 reply tokens, counting from 594
+calibration row 30/104: 633 prompt + 23 reply tokens, counting from 594
+calibration row 31/104: 636 prompt + 22 reply tokens, counting from 594
+calibration row 32/104: 647 prompt + 28 reply tokens, counting from 594
+calibration row 33/104: 636 prompt + 24 reply tokens, counting from 594
+calibration row 34/104: 638 prompt + 23 reply tokens, counting from 594
+calibration row 35/104: 636 prompt + 25 reply tokens, counting from 594
+calibration row 36/104: 634 prompt + 24 reply tokens, counting from 594
+calibration row 37/104: 638 prompt + 24 reply tokens, counting from 594
+calibration row 38/104: 636 prompt + 23 reply tokens, counting from 594
+calibration row 39/104: 640 prompt + 25 reply tokens, counting from 594
+calibration row 40/104: 642 prompt + 26 reply tokens, counting from 594
+calibration row 41/104: 647 prompt + 27 reply tokens, counting from 594
+calibration row 42/104: 639 prompt + 24 reply tokens, counting from 594
+calibration row 43/104: 646 prompt + 28 reply tokens, counting from 594
+calibration row 44/104: 646 prompt + 28 reply tokens, counting from 594
+calibration row 45/104: 641 prompt + 27 reply tokens, counting from 594
+calibration row 46/104: 643 prompt + 28 reply tokens, counting from 594
+calibration row 47/104: 637 prompt + 26 reply tokens, counting from 594
+calibration row 48/104: 643 prompt + 28 reply tokens, counting from 594
+calibration row 49/104: 606 prompt + 8 reply tokens, counting from 594
+calibration row 50/104: 607 prompt + 12 reply tokens, counting from 594
+calibration row 51/104: 607 prompt + 9 reply tokens, counting from 594
+calibration row 52/104: 607 prompt + 16 reply tokens, counting from 594
+calibration row 53/104: 610 prompt + 14 reply tokens, counting from 594
+calibration row 54/104: 605 prompt + 11 reply tokens, counting from 594
+calibration row 55/104: 605 prompt + 26 reply tokens, counting from 594
+calibration row 56/104: 608 prompt + 13 reply tokens, counting from 594
+calibration row 57/104: 611 prompt + 48 reply tokens, counting from 594
+calibration row 58/104: 605 prompt + 15 reply tokens, counting from 594
+calibration row 59/104: 608 prompt + 10 reply tokens, counting from 594
+calibration row 60/104: 608 prompt + 9 reply tokens, counting from 594
+calibration row 61/104: 609 prompt + 11 reply tokens, counting from 594
+calibration row 62/104: 608 prompt + 48 reply tokens, counting from 594
+calibration row 63/104: 609 prompt + 48 reply tokens, counting from 594
+calibration row 64/104: 607 prompt + 10 reply tokens, counting from 594
+calibration row 65/104: 608 prompt + 13 reply tokens, counting from 594
+calibration row 66/104: 610 prompt + 17 reply tokens, counting from 594
+calibration row 67/104: 609 prompt + 14 reply tokens, counting from 594
+calibration row 68/104: 606 prompt + 11 reply tokens, counting from 594
+calibration row 69/104: 608 prompt + 16 reply tokens, counting from 594
+calibration row 70/104: 606 prompt + 30 reply tokens, counting from 594
+calibration row 71/104: 608 prompt + 12 reply tokens, counting from 594
+calibration row 72/104: 606 prompt + 13 reply tokens, counting from 594
+calibration row 73/104: 36 prompt + 8 reply tokens, counting from 0
+calibration row 74/104: 36 prompt + 13 reply tokens, counting from 0
+calibration row 75/104: 43 prompt + 29 reply tokens, counting from 0
+calibration row 76/104: 36 prompt + 95 reply tokens, counting from 0
+calibration row 77/104: 39 prompt + 35 reply tokens, counting from 0
+calibration row 78/104: 36 prompt + 55 reply tokens, counting from 0
+calibration row 79/104: 43 prompt + 72 reply tokens, counting from 0
+calibration row 80/104: 37 prompt + 47 reply tokens, counting from 0
+calibration row 81/104: 35 prompt + 62 reply tokens, counting from 0
+calibration row 82/104: 43 prompt + 6 reply tokens, counting from 0
+calibration row 83/104: 44 prompt + 9 reply tokens, counting from 0
+calibration row 84/104: 44 prompt + 15 reply tokens, counting from 0
+calibration row 85/104: 36 prompt + 2 reply tokens, counting from 0
+calibration row 86/104: 49 prompt + 128 reply tokens, counting from 0
+calibration row 87/104: 44 prompt + 128 reply tokens, counting from 0
+calibration row 88/104: 50 prompt + 25 reply tokens, counting from 0
+calibration row 89/104: 55 prompt + 128 reply tokens, counting from 0
+calibration row 90/104: 43 prompt + 128 reply tokens, counting from 0
+calibration row 91/104: 48 prompt + 128 reply tokens, counting from 0
+calibration row 92/104: 48 prompt + 128 reply tokens, counting from 0
+calibration row 93/104: 42 prompt + 27 reply tokens, counting from 0
+calibration row 94/104: 37 prompt + 34 reply tokens, counting from 0
+calibration row 95/104: 100 prompt + 128 reply tokens, counting from 0
+calibration row 96/104: 61 prompt + 128 reply tokens, counting from 0
+calibration row 97/104: 38 prompt + 71 reply tokens, counting from 0
+calibration row 98/104: 48 prompt + 13 reply tokens, counting from 0
+calibration row 99/104: 41 prompt + 77 reply tokens, counting from 0
+calibration row 100/104: 36 prompt + 72 reply tokens, counting from 0
+calibration row 101/104: 40 prompt + 62 reply tokens, counting from 0
+calibration row 102/104: 39 prompt + 92 reply tokens, counting from 0
+calibration row 103/104: 38 prompt + 8 reply tokens, counting from 0
+calibration row 104/104: 37 prompt + 14 reply tokens, counting from 0
+==> 104 calibration rows, 7918 counted positions
+==> gate reference
+    fp32 is confident on 16 of 16 gate rows
+==> building the eager model
+==> solving 197 linears
+layer 0 solved, 20s
+layer 1 solved, 40s
+layer 2 solved, 60s
+layer 3 solved, 80s
+layer 4 solved, 99s
+layer 5 solved, 119s
+layer 6 solved, 138s
+layer 7 solved, 158s
+layer 8 solved, 177s
+layer 9 solved, 197s
+layer 10 solved, 217s
+layer 11 solved, 237s
+layer 12 solved, 256s
+layer 13 solved, 276s
+layer 14 solved, 295s
+layer 15 solved, 316s
+layer 16 solved, 337s
+layer 17 solved, 358s
+layer 18 solved, 378s
+layer 19 solved, 397s
+layer 20 solved, 417s
+layer 21 solved, 438s
+layer 22 solved, 458s
+layer 23 solved, 478s
+layer 24 solved, 498s
+layer 25 solved, 518s
+layer 26 solved, 538s
+layer 27 solved, 557s
+output head solved, 566s
+==> wrote /home/ubuntu/runs/qwen25-15b/codes.pt (197 linears) in 567s
+{
+  "model_id": "Qwen/Qwen2.5-1.5B-Instruct",
+  "revision": "989aa7980e4cf806f80c7fef2b1adb7bc71aa306",
+  "linears": 197,
+  "calibration_rows": 104,
+  "calibration_positions": 7918,
+  "calibration_app_rows": 72,
+  "seconds": 567.3,
+  "damp": 0.01,
+  "gate_rows": 16,
+  "gate_confident_rows": 16
+}

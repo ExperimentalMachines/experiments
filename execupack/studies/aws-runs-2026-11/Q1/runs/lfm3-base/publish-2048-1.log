@@ -1,0 +1,72 @@
+Processing Files (0 / 0)      : |          |  0.00B /  0.00B            
+New Data Upload               : |          |  0.00B /  0.00B            [A
+
+  ...e/out-2048/tokenizer.json: 100%|██████████| 17.9MB / 17.9MB            [A[A
+
+
+  ...7B-Base-8da4w-gptq-2k.pte:   9%|▉         |  112MB / 1.24GB            [A[A[A
+
+  ...e/out-2048/tokenizer.json: 100%|██████████| 17.9MB / 17.9MB            [A[A
+
+
+  ...7B-Base-8da4w-gptq-2k.pte:   9%|▉         |  112MB / 1.24GB            [A[A[AProcessing Files (1 / 2)      :  10%|█         |  130MB / 1.26GB,   ???B/s  
+
+  ...e/out-2048/tokenizer.json: 100%|██████████| 17.9MB / 17.9MB            [A[A
+
+
+  ...7B-Base-8da4w-gptq-2k.pte:  21%|██        |  256MB / 1.24GB            [A[A[AProcessing Files (1 / 2)      :  22%|██▏       |  274MB / 1.26GB,   ???B/s  
+
+  ...e/out-2048/tokenizer.json: 100%|██████████| 17.9MB / 17.9MB            [A[A
+
+
+  ...7B-Base-8da4w-gptq-2k.pte:  32%|███▏      |  392MB / 1.24GB            [A[A[AProcessing Files (1 / 2)      :  33%|███▎      |  410MB / 1.26GB,   ???B/s  
+
+  ...e/out-2048/tokenizer.json: 100%|██████████| 17.9MB / 17.9MB            [A[A
+
+
+  ...7B-Base-8da4w-gptq-2k.pte:  43%|████▎     |  536MB / 1.24GB            [A[A[AProcessing Files (1 / 2)      :  44%|████▍     |  554MB / 1.26GB, 54.3MB/s  
+
+  ...e/out-2048/tokenizer.json: 100%|██████████| 17.9MB / 17.9MB            [A[A
+
+
+  ...7B-Base-8da4w-gptq-2k.pte:  55%|█████▍    |  680MB / 1.24GB            [A[A[AProcessing Files (1 / 2)      :  55%|█████▌    |  698MB / 1.26GB, 68.0MB/s  
+
+  ...e/out-2048/tokenizer.json: 100%|██████████| 17.9MB / 17.9MB            [A[A
+
+
+  ...7B-Base-8da4w-gptq-2k.pte:  67%|██████▋   |  832MB / 1.24GB            [A[A[AProcessing Files (1 / 2)      :  68%|██████▊   |  850MB / 1.26GB, 82.3MB/s  
+
+  ...e/out-2048/tokenizer.json: 100%|██████████| 17.9MB / 17.9MB            [A[A
+
+
+  ...7B-Base-8da4w-gptq-2k.pte:  79%|███████▊  |  976MB / 1.24GB            [A[A[AProcessing Files (1 / 2)      :  79%|███████▉  |  994MB / 1.26GB, 95.6MB/s  
+
+  ...e/out-2048/tokenizer.json: 100%|██████████| 17.9MB / 17.9MB            [A[A
+
+
+  ...7B-Base-8da4w-gptq-2k.pte:  90%|█████████ | 1.12GB / 1.24GB            [A[A[AProcessing Files (1 / 2)      :  90%|█████████ | 1.14GB / 1.26GB,  109MB/s  
+
+  ...e/out-2048/tokenizer.json: 100%|██████████| 17.9MB / 17.9MB            [A[A
+
+
+  ...7B-Base-8da4w-gptq-2k.pte: 100%|██████████| 1.24GB / 1.24GB            [A[A[AProcessing Files (2 / 2)      : 100%|██████████| 1.26GB / 1.26GB,  119MB/s  
+New Data Upload               : 100%|██████████|  321kB /  321kB, 31.3kB/s  [A
+
+  ...e/out-2048/tokenizer.json: 100%|██████████| 17.9MB / 17.9MB            [A[A
+
+
+  ...7B-Base-8da4w-gptq-2k.pte: 100%|██████████| 1.24GB / 1.24GB            [A[A[A
+
+  ...e/out-2048/tokenizer.json: 100%|██████████| 17.9MB / 17.9MB            [A[A
+
+
+  ...7B-Base-8da4w-gptq-2k.pte: 100%|██████████| 1.24GB / 1.24GB            [A[A[A
+
+  ...e/out-2048/tokenizer.json: 100%|██████████| 17.9MB / 17.9MB            [A[A
+
+
+  ...7B-Base-8da4w-gptq-2k.pte: 100%|██████████| 1.24GB / 1.24GB            [A[A[AProcessing Files (2 / 2)      : 100%|██████████| 1.26GB / 1.26GB,  116MB/s  
+New Data Upload               : 100%|██████████|  321kB /  321kB, 30.5kB/s  
+  ...e/out-2048/tokenizer.json: 100%|██████████| 17.9MB / 17.9MB            
+  ...7B-Base-8da4w-gptq-2k.pte: 100%|██████████| 1.24GB / 1.24GB            
+https://huggingface.co/experimentalmachines/LFM3-1.7B-Base-ExecuTorch/commit/e2c7b71881cd2bd320d6a39e25f159cef147328b

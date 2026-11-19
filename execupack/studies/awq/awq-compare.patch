@@ -1,0 +1,1038 @@
+From b4177ee7bf34f36f455eb1ee0162456d13eeb4b5 Mon Sep 17 00:00:00 2001
+From: Alpha Romer Coma <108984668+alpharomercoma@users.noreply.github.com>
+Date: Thu, 19 Nov 2026 11:12:50 +0800
+Subject: [PATCH 1/3] AWQ beside GPTQ: an AWQ solve on the same int4 grid,
+ scaled norms carried through the export, and a driver that compares the two
+
+pipeline/awq.py follows AutoAWQ (duo-scaled input scales per group of linears sharing an
+input, folded into the RMSNorm or the linear before; clip search per linear) on the grid
+solve.py solves: symmetric int4 in groups of 32, bf16 scales, int8 per-token activations.
+export_with_codes applies the fp32 parameters a solve changed besides the int4 linears
+(codes["__fp32__"]) before quantising, and refuses any that match no parameter.
+scripts/awq_compare.py builds one fp32 reference per model, then solves, exports and
+measures each method against it: the publish gate, and first-token and teacher-forced KL
+on the phone benchmark's 141 held-out questions under the app's prompt.
+
+Co-Authored-By: Claude Opus 5.5 <noreply@anthropic.com>
+---
+ pipeline/awq.py               | 348 +++++++++++++++++++++++++++++++++
+ pipeline/export_with_codes.py |  36 +++-
+ scripts/awq_compare.py        | 358 ++++++++++++++++++++++++++++++++++
+ 3 files changed, 739 insertions(+), 3 deletions(-)
+ create mode 100644 pipeline/awq.py
+ create mode 100644 scripts/awq_compare.py
+
+diff --git a/pipeline/awq.py b/pipeline/awq.py
+new file mode 100644
+index 0000000..adc3acc
+--- /dev/null
++++ b/pipeline/awq.py
+@@ -0,0 +1,348 @@
++"""AWQ onto the grid XNNPACK runs, as an experiment beside GPTQ (scripts/awq_compare.py).
++
++Activation-aware weight quantization (Lin et al., arXiv 2306.00978), following AutoAWQ's
++implementation of it, adapted to this delegate the way ``solve.py`` adapts GPTQ: symmetric
++int4 in contiguous groups of 32, bf16 scales, and int8 per-token activations in front of
++every int4 linear. Per layer, on the fp32 model with the scales found so far folded in:
++
++1. Scale search, per group of linears that share an input (AutoAWQ's ``_search_best_scale``
++   with duo scaling): ``s = x_mean^a / w_mean^(1-a)``, normalised by ``sqrt(max * min)``,
++   for ``a`` on a grid of 20, plus ``s = 1`` so the search can never pick worse than plain
++   rounding on its own objective. The objective is the group's output against fp32 with the
++   group's linears at int4 and their inputs int8-rounded: the linears' own outputs for the
++   attention and short-convolution projections, and the whole feed-forward for its gate and
++   up projections (AutoAWQ inspects the MLP there, so the gate x up product is what is
++   protected, which a per-linear solve such as GPTQ cannot see).
++2. Folding: ``1/s`` goes into the producing op (an RMSNorm's weight, or the rows of the
++   linear before), ``s`` into the linear's input columns. Exact in fp32.
++3. Clip search per linear (AutoAWQ's ``_search_best_clip``), except ``wq`` and ``wk``,
++   which AutoAWQ leaves unclipped: per row and group, the clip in 1.0, 0.95, ..., 0.55 whose
++   output error over up to 512 sampled positions is smallest.
++4. Codes: round to nearest at the chosen scale.
++
++The output head gets the clip search only; AutoAWQ does not scale it.
++
++What changes besides the int4 codes is returned as fp32 overrides (the RMSNorm weights), and
++``export_with_codes`` applies them before quantising. ``scale_only`` stops after step 2, for
++GPTQ to solve on the scaled model (the AWQ + GPTQ arm).
++"""
++
++from __future__ import annotations
++
++import time
++
++from pipeline.solve import GROUP, INT4_HALF_RANGE, bf16_storage, fake_act
++
++# The scale search's grid of exponents, as AutoAWQ's n_grid.
++N_GRID = 20
++# AutoAWQ's clip search: max_shrink 0.5 over n_grid 20, so 1.0 down to 0.55.
++CLIPS = tuple(1.0 - i / 20 for i in range(10))
++# Positions the clip search samples, and output rows per batch (AutoAWQ's n_sample_token and
++# oc_batch_size).
++CLIP_TOKENS = 512
++CLIP_ROWS = 64
++# Positions per chunk when a candidate scale is scored, to bound memory.
++CHUNK = 2048
++# Linears AutoAWQ never clips: the attention scores are too sensitive to them.
++NO_CLIP = ("attention.wq", "attention.wk")
++
++
++def _torch():
++    import torch
++
++    return torch
++
++
++def rtn(w, clip: float = 1.0):
++    """Symmetric int4 round to nearest per row and group of 32, at ``clip`` of each group's
++    largest magnitude, with the scale as bf16 stores it: the weight the delegate computes with."""
++    torch = _torch()
++    rows, cols = w.shape
++    g = w.reshape(rows, cols // GROUP, GROUP)
++    scale = bf16_storage(g.abs().amax(-1, keepdim=True).clamp(min=1e-8) * clip / INT4_HALF_RANGE)
++    return (torch.clamp(torch.round(g / scale), -8, 7) * scale).reshape(rows, cols)
++
++
++class Group:
++    """Linears that read one input, the op that produces it, and what the search scores."""
++
++    def __init__(self, name, linears, prev_norm=None, prev_linear=None, ffn=None):
++        self.name = name
++        self.linears = linears  # [(fqn, module)]
++        self.prev_norm = prev_norm  # (fqn, RMSNorm) whose weight takes 1/s
++        self.prev_linear = prev_linear  # (fqn, nn.Linear) whose rows take 1/s
++        self.ffn = ffn  # the FeedForward, when the objective is its whole output
++
++
++def groups(layer, prefix: str) -> list[Group]:
++    """The scaling groups of one decoder layer, in AutoAWQ's order."""
++    from torch import nn
++
++    out: list[Group] = []
++    conv = getattr(layer, "conv", None)
++    attention = getattr(layer, "attention", None)
++    if conv is not None and hasattr(conv, "B_proj"):
++        # LFM2's short convolution: B, C and x read the operator norm; out_proj reads
++        # C * conv(B * x), so its input scale folds into C's rows.
++        out.append(
++            Group(
++                "conv_in",
++                [(f"{prefix}conv.{n}", getattr(conv, n)) for n in ("B_proj", "C_proj", "x_proj")],
++                prev_norm=(f"{prefix}attention_norm", layer.attention_norm),
++            )
++        )
++        out.append(
++            Group(
++                "conv_out",
++                [(f"{prefix}conv.out_proj", conv.out_proj)],
++                prev_linear=(f"{prefix}conv.C_proj", conv.C_proj),
++            )
++        )
++    elif attention is not None and isinstance(getattr(attention, "wq", None), nn.Linear):
++        names = [n for n in ("wq", "wk", "wv") if isinstance(getattr(attention, n, None), nn.Linear)]
++        if names != ["wq", "wk", "wv"]:
++            raise ValueError(f"{prefix}attention: expected wq, wk and wv linears, found {names}")
++        out.append(
++            Group(
++                "qkv",
++                [(f"{prefix}attention.{n}", getattr(attention, n)) for n in names],
++                prev_norm=(f"{prefix}attention_norm", layer.attention_norm),
++            )
++        )
++        wv, wo = attention.wv, attention.wo
++        # Only without grouped-query attention, as AutoAWQ: with fewer value heads than query
++        # heads, wo's input channels are not wv's output channels one to one.
++        if wv.out_features == wo.in_features:
++            out.append(Group("o", [(f"{prefix}attention.wo", wo)], prev_linear=(f"{prefix}attention.wv", wv)))
++    else:
++        raise ValueError(f"{prefix}: neither a short convolution nor an attention block AWQ knows")
++
++    ff = getattr(layer, "feed_forward", None)
++    if ff is None or not all(isinstance(getattr(ff, n, None), nn.Linear) for n in ("w1", "w2", "w3")):
++        raise ValueError(f"{prefix}: no w1/w2/w3 feed-forward")
++    out.append(
++        Group(
++            "gate_up",
++            [(f"{prefix}feed_forward.w1", ff.w1), (f"{prefix}feed_forward.w3", ff.w3)],
++            prev_norm=(f"{prefix}ffn_norm", layer.ffn_norm),
++            ffn=ff,
++        )
++    )
++    out.append(Group("down", [(f"{prefix}feed_forward.w2", ff.w2)], prev_linear=(f"{prefix}feed_forward.w3", ff.w3)))
++    return out
++
++
++def _w_mean(linears):
++    """AutoAWQ's w_mean: each weight relative to its group's largest, averaged per input channel."""
++    torch = _torch()
++    w = torch.cat([m.weight.data for _, m in linears], 0)
++    g = w.reshape(-1, GROUP).abs()
++    g = g / g.amax(1, keepdim=True).clamp(min=1e-8)
++    return g.reshape(w.shape).mean(0)
++
++
++def _score(group: Group, x, s) -> float:
++    """Squared error of the group's output at int4 with input scale ``s``, against fp32."""
++    import torch.nn.functional as F
++
++    total, count = 0.0, 0
++    if group.ffn is not None:
++        ff = group.ffn
++        w1q = rtn(ff.w1.weight.data * s)
++        w3q = rtn(ff.w3.weight.data * s)
++        for c0 in range(0, x.shape[0], CHUNK):
++            xc = x[c0 : c0 + CHUNK]
++            ref = ff.w2(ff.act_fn(F.linear(xc, ff.w1.weight)) * F.linear(xc, ff.w3.weight))
++            xq = fake_act(xc / s)
++            got = ff.w2(ff.act_fn(F.linear(xq, w1q)) * F.linear(xq, w3q))
++            total += float(((got - ref) ** 2).sum())
++            count += ref.numel()
++        return total / count
++    quantised = [(m, rtn(m.weight.data * s)) for _, m in group.linears]
++    for c0 in range(0, x.shape[0], CHUNK):
++        xc = x[c0 : c0 + CHUNK]
++        xq = fake_act(xc / s)
++        for m, wq in quantised:
++            ref = F.linear(xc, m.weight)
++            got = F.linear(xq, wq)
++            if m.bias is not None:
++                ref, got = ref + m.bias, got + m.bias
++            total += float(((got - ref) ** 2).sum())
++            count += ref.numel()
++    return total / count
++
++
++def search_scale(group: Group, x):
++    """The input scale for ``group`` that scores best, and that score against plain rounding's."""
++    torch = _torch()
++    x_mean = x.abs().mean(0)
++    w_mean = _w_mean(group.linears)
++    ones = torch.ones_like(x_mean)
++    best_s, best = ones, _score(group, x, ones)
++    plain = best
++    for i in range(N_GRID):
++        a = i / N_GRID
++        s = (x_mean.pow(a) / w_mean.pow(1 - a).clamp(min=1e-4)).clamp(min=1e-4)
++        s = s / (s.max() * s.min()).sqrt()
++        if not bool(torch.isfinite(s).all()):
++            continue
++        err = _score(group, x, s)
++        if err < best:
++            best_s, best = s, err
++    return best_s, best, plain
++
++
++def fold(group: Group, s) -> None:
++    """Divide the producing op by ``s`` and multiply the linears' input columns by it."""
++    if group.prev_norm is not None:
++        _, norm = group.prev_norm
++        if getattr(norm, "add_unit_offset", False):
++            norm.weight.data = (1.0 + norm.weight.data) / s - 1.0
++        else:
++            norm.weight.data = norm.weight.data / s
++    elif group.prev_linear is not None:
++        _, prev = group.prev_linear
++        prev.weight.data = prev.weight.data / s.unsqueeze(1)
++        if prev.bias is not None:
++            prev.bias.data = prev.bias.data / s
++    else:
++        raise ValueError(f"{group.name}: nothing to fold the scale into")
++    for _, m in group.linears:
++        m.weight.data = m.weight.data * s
++
++
++def clip_codes(w, x, clip_search: bool = True):
++    """int4 codes and scales for ``w``, with each row and group's clip chosen by the error of
++    its partial output over sampled positions of ``x`` (already int8-rounded)."""
++    torch = _torch()
++    rows, cols = w.shape
++    groups_n = cols // GROUP
++    clip = torch.ones(rows, groups_n)
++    if clip_search and x is not None and x.shape[0] > 0:
++        step = max(1, x.shape[0] // CLIP_TOKENS)
++        xs = x[::step][:CLIP_TOKENS].reshape(-1, groups_n, GROUP)  # [T, G, 32]
++        for r0 in range(0, rows, CLIP_ROWS):
++            wb = w[r0 : r0 + CLIP_ROWS].reshape(-1, groups_n, GROUP)  # [B, G, 32]
++            amax = wb.abs().amax(-1, keepdim=True).clamp(min=1e-8)
++            ref = torch.einsum("tgk,bgk->btg", xs, wb)
++            best_err = None
++            best_clip = torch.ones(wb.shape[0], groups_n)
++            for c in CLIPS:
++                scale = bf16_storage(amax * c / INT4_HALF_RANGE)
++                q = torch.clamp(torch.round(wb / scale), -8, 7) * scale
++                err = ((torch.einsum("tgk,bgk->btg", xs, q) - ref) ** 2).mean(1)  # [B, G]
++                if best_err is None:
++                    best_err = err
++                else:
++                    better = err < best_err
++                    best_err = torch.where(better, err, best_err)
++                    best_clip = torch.where(better, torch.full_like(best_clip, c), best_clip)
++            clip[r0 : r0 + CLIP_ROWS] = best_clip
++    g = w.reshape(rows, groups_n, GROUP)
++    amax = g.abs().amax(-1).clamp(min=1e-8)
++    scale = bf16_storage(amax * clip / INT4_HALF_RANGE)  # [rows, G]
++    codes = torch.clamp(torch.round(g / scale.unsqueeze(-1)), -8, 7).to(torch.int8).reshape(rows, cols)
++    return codes, scale.to(torch.float32)
++
++
++def awq_model(model, rows, scale_only: bool = False, log=print) -> tuple[dict, dict, dict]:
++    """AWQ every layer of the eager ``model`` in place; returns (codes, fp32 overrides, stats).
++
++    ``rows`` as ``solve.solve_model`` takes them. With ``scale_only`` no codes are made: the
++    model is left scaled for GPTQ to solve, and only the overrides and stats come back.
++    """
++    torch = _torch()
++    from torch import nn
++
++    class _Stop(Exception):
++        pass
++
++    captured: list = []
++
++    def grab(module, args, kwargs):
++        captured.append((args, kwargs))
++        raise _Stop
++
++    keeps = [keep for _, keep in rows]
++    handle = model.layers[0].register_forward_pre_hook(grab, with_kwargs=True)
++    with torch.no_grad():
++        for ids, _ in rows:
++            try:
++                model(torch.tensor([ids], dtype=torch.long))
++            except _Stop:
++                pass
++    handle.remove()
++    hidden = [call[0][0] for call in captured]
++    row = [0]
++
++    def counted(x):
++        start = keeps[row[0]]
++        return (x[:, start:, :] if x.dim() == 3 else x[start:]).reshape(-1, x.shape[-1])
++
++    codes: dict = {}
++    overrides: dict = {}
++    stats: dict = {"groups": {}}
++    started = time.time()
++    with torch.no_grad():
++        for index, layer in enumerate(model.layers):
++            prefix = f"layers.{index}."
++            layer_groups = groups(layer, prefix)
++            # Inputs of every int4 linear in the layer, from the fp32 layer as it stands.
++            linears = {f"{prefix}{n}": m for n, m in layer.named_modules() if isinstance(m, nn.Linear)}
++            inputs: dict = {name: [] for name in linears}
++            hooks = []
++            for name, module in linears.items():
++
++                def keep_input(mod, args, name=name, store=inputs):
++                    x = counted(args[0])
++                    if x.shape[0]:
++                        store[name].append(x.clone())
++
++                hooks.append(module.register_forward_pre_hook(keep_input))
++            outputs = []
++            for i, (args, kwargs) in enumerate(captured):
++                row[0] = i
++                out = layer(hidden[i], *args[1:], **kwargs)
++                outputs.append(out[0] if isinstance(out, tuple | list) else out)
++            for hook in hooks:
++                hook.remove()
++            x_of = {name: torch.cat(parts, 0) for name, parts in inputs.items() if parts}
++
++            for group in layer_groups:
++                first = group.linears[0][0]
++                x = x_of[first]
++                s, err, plain = search_scale(group, x)
++                fold(group, s)
++                for name, _ in group.linears:
++                    x_of[name] = x_of[name] / s
++                stats["groups"][f"{prefix}{group.name}"] = {"error": err, "plain_error": plain}
++                if group.prev_norm is not None:
++                    fqn, norm = group.prev_norm
++                    overrides[f"{fqn}.weight"] = norm.weight.data.clone()
++
++            if not scale_only:
++                for name, module in linears.items():
++                    x = x_of.get(name)
++                    xq = fake_act(x) if x is not None else None
++                    search = not name.endswith(NO_CLIP)
++                    q, sc = clip_codes(module.weight.data, xq, clip_search=search)
++                    codes[name] = {"qdata": q, "scale": sc}
++            hidden = outputs
++            del x_of, inputs
++            log(f"layer {index} {'scaled' if scale_only else 'quantised'}, {time.time() - started:.0f}s")
++
++        head = getattr(model, "output", None)
++        if not scale_only and isinstance(head, nn.Linear):
++            parts = []
++            for index, state in enumerate(hidden):
++                row[0] = index
++                x = counted(model.norm(state))
++                if x.shape[0]:
++                    parts.append(x)
++            x = fake_act(torch.cat(parts, 0)) if parts else None
++            q, sc = clip_codes(head.weight.data, x)
++            codes["output"] = {"qdata": q, "scale": sc}
++            log(f"output head quantised, {time.time() - started:.0f}s")
++    errs = [g["error"] / g["plain_error"] for g in stats["groups"].values() if g["plain_error"] > 0]
++    stats["mean_error_vs_plain"] = sum(errs) / len(errs) if errs else None
++    return codes, overrides, stats
+diff --git a/pipeline/export_with_codes.py b/pipeline/export_with_codes.py
+index 40fb622..b45fb33 100644
+--- a/pipeline/export_with_codes.py
++++ b/pipeline/export_with_codes.py
+@@ -63,9 +63,33 @@ def inject(model, codes: dict, log=print) -> tuple[int, list[str]]:
+     return injected, left
+ 
+ 
+-def quantizer(upstream, codes: dict, output_int8: bool):
++# Key of a codes file's fp32 parameters that the solve changed besides the int4 linears:
++# AWQ divides each RMSNorm by the scale it multiplies into the linears after it
++# (pipeline/awq.py). GPTQ writes none.
++FP32_KEY = "__fp32__"
++
++
++def apply_fp32(model, overrides: dict, log=print) -> int:
++    """Copy the solve's fp32 parameters into the eager model, before anything is quantised."""
++    params = dict(model.named_parameters())
++    missing = sorted(set(overrides) - set(params))
++    if missing:
++        raise ValueError(f"{len(missing)} fp32 overrides match no parameter: {missing[:5]}")
++    for name, value in overrides.items():
++        param = params[name]
++        if tuple(value.shape) != tuple(param.shape):
++            raise ValueError(f"{name}: override is {tuple(value.shape)}, the parameter is {tuple(param.shape)}")
++        if not bool(value.isfinite().all()):
++            raise ValueError(f"{name}: an override is not finite")
++        param.data.copy_(value.to(param.dtype))
++    log(f"applied {len(overrides)} fp32 overrides from the solve")
++    return len(overrides)
++
++
++def quantizer(upstream, codes: dict, output_int8: bool, fp32: dict | None = None):
+     """``upstream`` (source_transformation.quantize.quantize) with the solved codes put in,
+-    and for ``output_int8`` the output head at int8 per channel rather than int4."""
++    and for ``output_int8`` the output head at int8 per channel rather than int4. ``fp32``
++    holds parameters the solve changed outside the int4 linears (AWQ's scaled norms)."""
+     import torch
+ 
+     codes_given = bool(codes)  # main() refuses an empty codes file before this
+@@ -76,6 +100,11 @@ def quantizer(upstream, codes: dict, output_int8: bool):
+     def quantize(model, qmode, *rest, **kwargs):
+         if qmode != "8da4w":
+             return upstream(model, qmode, *rest, **kwargs)
++        if fp32:
++            # Before quantising: the codes were solved for the linears' inputs as these
++            # norms produce them, and a norm left at its checkpoint value would feed them
++            # inputs off by the scale.
++            apply_fp32(model, fp32)
+         head = None
+         if output_int8:
+             # Hidden from the int4 pass, which takes every nn.Linear, then given int8 weights
+@@ -157,10 +186,11 @@ def main(argv: list[str] | None = None) -> int:
+         # weights_only: the codes file is an artifact passed between CI jobs, and it holds
+         # nothing but tensors, so there is no reason to let it unpickle arbitrary objects.
+         codes = torch.load(args.codes, map_location="cpu", weights_only=True) if args.codes else {}
++        fp32 = codes.pop(FP32_KEY, {})
+         if args.codes and not codes:
+             # An empty codes file would export every linear rounded under a GPTQ label.
+             raise ValueError(f"{args.codes} holds no codes")
+-        quantize_module.quantize = quantizer(quantize_module.quantize, codes, args.output_int8)
++        quantize_module.quantize = quantizer(quantize_module.quantize, codes, args.output_int8, fp32)
+ 
+     from executorch.extension.llm.export.export_llm import main as export_llm_main
+ 
+diff --git a/scripts/awq_compare.py b/scripts/awq_compare.py
+new file mode 100644
+index 0000000..f96aeb0
+--- /dev/null
++++ b/scripts/awq_compare.py
+@@ -0,0 +1,358 @@
++"""AWQ against GPTQ on the CPU recipe: same model, same calibration rows, same window, same
++file format, only the int4 codes differ. An experiment, not a pipeline stage.
++
++    python scripts/awq_compare.py reference MODEL --revision SHA --heldout heldout.json --out OUT --work WORK
++    python scripts/awq_compare.py arm MODEL --revision SHA --method {rtn,gptq,awq,awq_gptq,published} \\
++        --ref REF_DIR --out OUT --work WORK [--published-file xnnpack/NAME.pte]
++
++``reference`` runs once per model: the calibration rows (the fp32 model's own replies, as
++``pipeline solve`` builds them), the publish gate's fp32 reference, and the fp32 model's
++next-token distributions on held-out prompts. ``arm`` solves one method on those rows
++(timed), exports the 2k window through the pipeline's own exporter (smoke test included),
++and measures the file against the reference: the publish gate, first-token agreement and KL
++on the 141 held-out questions of the phone benchmark under the app's prompt, and teacher-
++forced agreement and KL along the fp32 model's own replies to a third of them.
++
++KL is taken over fp32's 64 most likely tokens plus one bucket for the rest, which bounds
++the full KL from below and keeps the reference small enough to upload to every arm.
++"""
++
++from __future__ import annotations
++
++import argparse
++import gc
++import json
++import sys
++import time
++from pathlib import Path
++
++sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
++
++TOP = 64
++REPLY_EVERY = 3  # every third held-out question also gets its fp32 reply teacher-forced
++REPLY_TOKENS = 48
++WINDOW = 2048
++PUBLISHED_ORG = "experimentalmachines"
++
++
++def _top(logits):
++    import torch
++
++    logp = torch.log_softmax(logits.float(), -1)
++    vals, idx = torch.topk(logp, TOP)
++    return idx.to(torch.int32), vals.to(torch.float32)
++
++
++def _prompt(tokenizer, question: str) -> str:
++    from pipeline import calibration, gate
++
++    return gate.close_open_think(calibration.render_app(tokenizer, question, thinking=False))
++
++
++def _prepare(model_id: str, revision: str, work: Path):
++    from pipeline import convert, families, hub
++
++    source = hub.fetch(model_id, revision)
++    family = families.family_for(source.config)
++    plan = families.xnnpack_plan(family, source.config)
++    src_dir = work / "source"
++    checkpoint = work / "checkpoint" / "consolidated.pth"
++    hub.download(source, src_dir)
++    convert.convert(src_dir, checkpoint, plan.converter, families.text_config(source.config))
++    return source, plan, src_dir, checkpoint
++
++
++def reference(args) -> int:
++    import torch
++    from transformers import AutoTokenizer
++
++    from pipeline import calibration, gate, solve
++
++    out, work = Path(args.out).resolve(), Path(args.work).resolve()
++    out.mkdir(parents=True, exist_ok=True)
++    work.mkdir(parents=True, exist_ok=True)
++    timings = {}
++    t = time.time()
++    source, plan, src_dir, _ = _prepare(args.model, args.revision, work)
++    timings["download_convert"] = time.time() - t
++    tokenizer = AutoTokenizer.from_pretrained(str(src_dir))
++    fp32, generate = solve.teacher(src_dir, trust_remote_code=plan.lfm3)
++
++    t = time.time()
++    rows = calibration.sequences(generate, tokenizer)
++    timings["calibration"] = time.time() - t
++    torch.save(rows, out / "rows.pt")
++
++    t = time.time()
++    ref = gate.reference(fp32, tokenizer)
++    (out / "gate.json").write_text(json.dumps(ref, indent=2) + "\n", encoding="utf-8")
++    timings["gate_reference"] = time.time() - t
++
++    t = time.time()
++    questions = json.loads(Path(args.heldout).read_text(encoding="utf-8"))
++    if args.limit:
++        questions = questions[: args.limit]
++    heldout, replies = [], []
++    eos = fp32.config.eos_token_id
++    eos = set(eos if isinstance(eos, list | tuple) else [eos])
++    with torch.no_grad():
++        for i, q in enumerate(questions):
++            ids = tokenizer(_prompt(tokenizer, q), add_special_tokens=False)["input_ids"]
++            logits = fp32(torch.tensor([ids])).logits[0, -1]
++            top_ids, top_logp = _top(logits)
++            heldout.append({"question": q, "ids": ids, "top_ids": top_ids, "top_logp": top_logp})
++            if i % REPLY_EVERY == 0:
++                reply = generate(ids, REPLY_TOKENS)
++                cut = next((k + 1 for k, tok in enumerate(reply) if tok in eos), len(reply))
++                reply = reply[:cut]
++                if len(reply) < 2:
++                    continue
++                seq = torch.tensor([ids + reply])
++                full = fp32(seq).logits[0]
++                tops = [_top(full[len(ids) - 1 + k]) for k in range(len(reply))]
++                replies.append(
++                    {
++                        "question": q,
++                        "prompt": ids,
++                        "reply": reply,
++                        "top_ids": torch.stack([a for a, _ in tops]),
++                        "top_logp": torch.stack([b for _, b in tops]),
++                    }
++                )
++    timings["eval_reference"] = time.time() - t
++    torch.save({"heldout": heldout, "replies": replies}, out / "evalref.pt")
++    meta = {
++        "model_id": args.model,
++        "revision": source.sha,
++        "calibration_rows": len(rows),
++        "calibration_positions": sum(len(ids) - keep for ids, keep in rows),
++        "gate_confident_rows": ref["confident"],
++        "heldout_rows": len(heldout),
++        "reply_rows": len(replies),
++        "reply_positions": sum(len(r["reply"]) for r in replies),
++        "timings_s": {k: round(v, 1) for k, v in timings.items()},
++    }
++    (out / "reference.json").write_text(json.dumps(meta, indent=2) + "\n", encoding="utf-8")
++    print(json.dumps(meta, indent=2))
++    return 0
++
++
++def _kl(top_ids, top_logp, logq) -> float:
++    """KL(fp32 || export) over fp32's top tokens plus one bucket for everything else."""
++    p = top_logp.double().exp()
++    lq = logq.double()[top_ids.long()]
++    p_tail = (1 - p.sum()).clamp(min=1e-12)
++    q_tail = (1 - lq.exp().sum()).clamp(min=1e-12)
++    return float((p * (top_logp.double() - lq)).sum() + p_tail * (p_tail.log() - q_tail.log()))
++
++
++def _runner(pte: Path, tokenizer_path: Path, vocab: int, scratch: Path):
++    import types
++
++    from executorch.examples.models.llama.runner.native import NativeLlamaRunner
++
++    params = scratch / "params.json"
++    params.write_text(json.dumps({"vocab_size": vocab}))
++    return NativeLlamaRunner(
++        types.SimpleNamespace(
++            pte=str(pte),
++            params=str(params),
++            tokenizer=str(tokenizer_path),
++            tokenizer_config=None,
++            max_len=WINDOW,
++            kv_cache=True,
++        )
++    )
++
++
++def _last(logits):
++    return (logits[0, -1] if logits.dim() == 3 else logits[-1]).float()
++
++
++def evaluate(pte: Path, tokenizer_path: Path, tokenizer, evalref: dict, scratch: Path) -> dict:
++    """The file against fp32 on the held-out prompts and along fp32's replies."""
++    import torch
++
++    vocab = len(tokenizer)
++    rows = []
++    for r in evalref["heldout"]:
++        # A fresh runner per prompt, as the gate does: an LFM2 file carries convolution state.
++        runner = _runner(pte, tokenizer_path, vocab, scratch)
++        logits = _last(runner.forward(torch.tensor([r["ids"]]), torch.tensor([0])))
++        logq = torch.log_softmax(logits, -1)
++        want = int(r["top_ids"][0])
++        rows.append(
++            {
++                "question": r["question"],
++                "fp32_top": want,
++                "top": int(logq.argmax()),
++                "p_fp32_top": float(logq[want].exp()),
++                "fp32_p": float(r["top_logp"][0].exp()),
++                "kl": _kl(r["top_ids"], r["top_logp"], logq),
++            }
++        )
++        del runner
++    replies = []
++    for r in evalref["replies"]:
++        runner = _runner(pte, tokenizer_path, vocab, scratch)
++        prompt, reply = r["prompt"], r["reply"]
++        logits = _last(runner.forward(torch.tensor([prompt]), torch.tensor([0])))
++        per = []
++        for k in range(len(reply)):
++            logq = torch.log_softmax(logits, -1)
++            per.append(
++                {
++                    "agree": int(logq.argmax()) == int(r["top_ids"][k][0]),
++                    "kl": _kl(r["top_ids"][k], r["top_logp"][k], logq),
++                }
++            )
++            if k + 1 < len(reply):
++                logits = _last(runner.forward(torch.tensor([[reply[k]]]), torch.tensor([len(prompt) + k])))
++        replies.append({"question": r["question"], "positions": per})
++        del runner
++    n = len(rows)
++    flat = [p for r in replies for p in r["positions"]]
++    return {
++        "heldout": {
++            "rows": n,
++            "top1_agree": sum(r["top"] == r["fp32_top"] for r in rows) / n,
++            "mean_kl": sum(r["kl"] for r in rows) / n,
++            "mean_p_fp32_top": sum(r["p_fp32_top"] for r in rows) / n,
++        },
++        "replies": {
++            "rows": len(replies),
++            "positions": len(flat),
++            "top1_agree": sum(p["agree"] for p in flat) / max(len(flat), 1),
++            "mean_kl": sum(p["kl"] for p in flat) / max(len(flat), 1),
++        },
++        "per_row": rows,
++        "per_reply": replies,
++    }
++
++
++def arm(args) -> int:
++    import torch
++    from transformers import AutoTokenizer
++
++    from pipeline import awq, export_xnnpack, gate, solve
++    from pipeline.export_with_codes import FP32_KEY
++
++    out, work, ref_dir = Path(args.out).resolve(), Path(args.work).resolve(), Path(args.ref).resolve()
++    out.mkdir(parents=True, exist_ok=True)
++    work.mkdir(parents=True, exist_ok=True)
++    result: dict = {"model_id": args.model, "method": args.method, "revision": args.revision}
++    timings: dict = {}
++
++    t = time.time()
++    source, plan, src_dir, checkpoint = _prepare(args.model, args.revision, work / "solve")
++    timings["download_convert"] = time.time() - t
++    codes_path = None
++    reuse = work / f"codes-{args.method}.pt"
++    if args.method in ("gptq", "awq", "awq_gptq") and args.reuse_codes and reuse.exists():
++        codes_path = reuse
++        prior = json.loads((work / "solve-timings.json").read_text(encoding="utf-8"))
++        timings.update(prior.get("timings", {}))
++        result.update(prior.get("result", {}))
++    elif args.method in ("gptq", "awq", "awq_gptq"):
++        rows = torch.load(ref_dir / "rows.pt", weights_only=True)
++        t = time.time()
++        model = solve.eager_model(plan.model_class, plan.params, checkpoint, work / "solve", lfm3=plan.lfm3)
++        timings["eager_model"] = time.time() - t
++        t = time.time()
++        fp32_overrides: dict = {}
++        if args.method == "gptq":
++            codes = solve.solve_model(model, rows)
++        elif args.method == "awq":
++            codes, fp32_overrides, stats = awq.awq_model(model, rows)
++            result["awq"] = {"mean_error_vs_plain": stats["mean_error_vs_plain"]}
++        else:
++            _, fp32_overrides, stats = awq.awq_model(model, rows, scale_only=True)
++            result["awq"] = {"mean_error_vs_plain": stats["mean_error_vs_plain"]}
++            codes = solve.solve_model(model, rows)
++        timings["solve"] = time.time() - t
++        if fp32_overrides:
++            codes[FP32_KEY] = fp32_overrides
++        codes_path = work / f"codes-{args.method}.pt"
++        torch.save(codes, codes_path)
++        (work / "solve-timings.json").write_text(
++            json.dumps({"timings": timings, "result": {k: v for k, v in result.items() if k == "awq"}}),
++            encoding="utf-8",
++        )
++        del model, codes
++        gc.collect()
++
++    tokenizer = AutoTokenizer.from_pretrained(str(src_dir))
++    if args.method == "published":
++        from huggingface_hub import hf_hub_download
++
++        repo = f"{PUBLISHED_ORG}/{args.model.split('/')[-1]}-ExecuTorch"
++        t = time.time()
++        pte = Path(hf_hub_download(repo, args.published_file, local_dir=str(work / "published")))
++        timings["download_published"] = time.time() - t
++        result["published"] = f"{repo}/{args.published_file}"
++    else:
++        t = time.time()
++        report = export_xnnpack.run(
++            args.model, args.revision, out / "export", work / "export", context=WINDOW, codes=codes_path
++        )
++        timings["export_and_smoke"] = time.time() - t
++        pte = out / "export" / report["files"][0]["path"] if "files" in report else None
++        if pte is None or not pte.exists():
++            found = sorted((out / "export").rglob("*.pte"))
++            pte = found[0]
++        result["smoke"] = {k: report.get("smoke", {}).get(k) for k in ("passed", "reply", "problems")}
++    result["bytes"] = pte.stat().st_size
++
++    tokenizer_path = src_dir / "tokenizer.json"
++    ref = json.loads((ref_dir / "gate.json").read_text(encoding="utf-8"))
++    t = time.time()
++    result["gate"] = gate.check(ref, gate.measure(pte, tokenizer_path, tokenizer, ref))
++    timings["gate"] = time.time() - t
++
++    evalref = torch.load(ref_dir / "evalref.pt", weights_only=True)
++    t = time.time()
++    scratch = work / "eval"
++    scratch.mkdir(parents=True, exist_ok=True)
++    ev = evaluate(pte, tokenizer_path, tokenizer, evalref, scratch)
++    timings["eval"] = time.time() - t
++    result.update({k: ev[k] for k in ("heldout", "replies")})
++    result["timings_s"] = {k: round(v, 1) for k, v in timings.items()}
++    (out / f"result-{args.method}.json").write_text(json.dumps(result, indent=2) + "\n", encoding="utf-8")
++    (out / f"rows-{args.method}.json").write_text(
++        json.dumps({"per_row": ev["per_row"], "per_reply": ev["per_reply"]}) + "\n", encoding="utf-8"
++    )
++    if not args.keep_pte and args.method != "published":
++        for f in (out / "export").rglob("*.pte"):
++            f.unlink()
++    print(json.dumps({k: v for k, v in result.items()}, indent=2))
++    return 0
++
++
++def main(argv=None) -> int:
++    p = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
++    sub = p.add_subparsers(dest="cmd", required=True)
++    r = sub.add_parser("reference")
++    r.add_argument("model")
++    r.add_argument("--revision", default="main")
++    r.add_argument("--heldout", required=True, help="JSON list of held-out questions")
++    r.add_argument("--limit", type=int, default=None, help="only the first N questions (a plumbing test)")
++    r.add_argument("--out", required=True)
++    r.add_argument("--work", required=True)
++    r.set_defaults(func=reference)
++    a = sub.add_parser("arm")
++    a.add_argument("model")
++    a.add_argument("--revision", default="main")
++    a.add_argument("--method", required=True, choices=("rtn", "gptq", "awq", "awq_gptq", "published"))
++    a.add_argument("--ref", required=True, help="the reference command's --out")
++    a.add_argument("--published-file", help="the published .pte's path in its repo (method published)")
++    a.add_argument("--keep-pte", action="store_true")
++    a.add_argument("--reuse-codes", action="store_true", help="reuse work/codes-METHOD.pt from an earlier run")
++    a.add_argument("--out", required=True)
++    a.add_argument("--work", required=True)
++    a.set_defaults(func=arm)
++    args = p.parse_args(argv)
++    return args.func(args)
++
++
++if __name__ == "__main__":
++    raise SystemExit(main())
+-- 
+2.54.0 (Apple Git-157)
+
+
+From ad658acde848d05e0100eb2e84c9b5cc5f6218ac Mon Sep 17 00:00:00 2001
+From: Alpha Romer Coma <108984668+alpharomercoma@users.noreply.github.com>
+Date: Thu, 19 Nov 2026 12:37:16 +0800
+Subject: [PATCH 2/3] awq_compare: a reference can resume from the rows and
+ gate reference of one that stopped
+
+Co-Authored-By: Claude Opus 5.5 <noreply@anthropic.com>
+---
+ scripts/awq_compare.py | 29 +++++++++++++++++++++--------
+ 1 file changed, 21 insertions(+), 8 deletions(-)
+
+diff --git a/scripts/awq_compare.py b/scripts/awq_compare.py
+index f96aeb0..03b2283 100644
+--- a/scripts/awq_compare.py
++++ b/scripts/awq_compare.py
+@@ -78,15 +78,27 @@ def reference(args) -> int:
+     tokenizer = AutoTokenizer.from_pretrained(str(src_dir))
+     fp32, generate = solve.teacher(src_dir, trust_remote_code=plan.lfm3)
+ 
+-    t = time.time()
+-    rows = calibration.sequences(generate, tokenizer)
+-    timings["calibration"] = time.time() - t
+-    torch.save(rows, out / "rows.pt")
++    resume = Path(args.resume).resolve() if args.resume else None
++    if resume and (resume / "rows.pt").exists() and (resume / "gate.json").exists():
++        # A reference stopped after its calibration: the rows and the gate's fp32 reference are
++        # deterministic (greedy), so they are taken as they were and only the rest is run.
++        import shutil
++
++        rows = torch.load(resume / "rows.pt", weights_only=True)
++        ref = json.loads((resume / "gate.json").read_text(encoding="utf-8"))
++        shutil.copyfile(resume / "rows.pt", out / "rows.pt")
++        shutil.copyfile(resume / "gate.json", out / "gate.json")
++        timings["resumed_calibration_and_gate"] = 0.0
++    else:
++        t = time.time()
++        rows = calibration.sequences(generate, tokenizer)
++        timings["calibration"] = time.time() - t
++        torch.save(rows, out / "rows.pt")
+ 
+-    t = time.time()
+-    ref = gate.reference(fp32, tokenizer)
+-    (out / "gate.json").write_text(json.dumps(ref, indent=2) + "\n", encoding="utf-8")
+-    timings["gate_reference"] = time.time() - t
++        t = time.time()
++        ref = gate.reference(fp32, tokenizer)
++        (out / "gate.json").write_text(json.dumps(ref, indent=2) + "\n", encoding="utf-8")
++        timings["gate_reference"] = time.time() - t
+ 
+     t = time.time()
+     questions = json.loads(Path(args.heldout).read_text(encoding="utf-8"))
+@@ -336,6 +348,7 @@ def main(argv=None) -> int:
+     r.add_argument("--revision", default="main")
+     r.add_argument("--heldout", required=True, help="JSON list of held-out questions")
+     r.add_argument("--limit", type=int, default=None, help="only the first N questions (a plumbing test)")
++    r.add_argument("--resume", help="a directory with rows.pt and gate.json from a reference that stopped")
+     r.add_argument("--out", required=True)
+     r.add_argument("--work", required=True)
+     r.set_defaults(func=reference)
+-- 
+2.54.0 (Apple Git-157)
+
+
+From 9a883e99594219e77918c38cade4d68403db5fc0 Mon Sep 17 00:00:00 2001
+From: Alpha Romer Coma <108984668+alpharomercoma@users.noreply.github.com>
+Date: Thu, 19 Nov 2026 14:11:28 +0800
+Subject: [PATCH 3/3] calibration: an option to render every row with a
+ reasoning template's thinking off, as the app sends a Qwen3 turn
+
+The default is unchanged. Qwen3-1.7B's GPTQ exports, the published one included, keep none
+of the 12 held-out questions fp32 opens with a tool call on (AWQ keeps 7), while their
+calibration replies are all reasoning: the template's default opens <think>, and the app and
+the gate close it. scripts/awq_compare.py calib builds the rows either way, to test whether
+that is why.
+
+Co-Authored-By: Claude Opus 5.5 <noreply@anthropic.com>
+---
+ pipeline/calibration.py | 46 ++++++++++++++++++++++++++++-------------
+ scripts/awq_compare.py  | 38 ++++++++++++++++++++++++++++++++++
+ 2 files changed, 70 insertions(+), 14 deletions(-)
+
+diff --git a/pipeline/calibration.py b/pipeline/calibration.py
+index 5422503..da67d2a 100644
+--- a/pipeline/calibration.py
++++ b/pipeline/calibration.py
+@@ -259,11 +259,22 @@ MAX_REPLY_TOKENS = 128
+ APP_REPLY_TOKENS = 48
+ 
+ 
+-def render(tokenizer, prompt: str) -> str:
+-    """The prompt in the model's own chat template, ready for the assistant's turn."""
+-    return tokenizer.apply_chat_template(
+-        [{"role": "user", "content": prompt}], tokenize=False, add_generation_prompt=True
++def render(tokenizer, prompt: str, thinking: bool = True) -> str:
++    """The prompt in the model's own chat template, ready for the assistant's turn.
++
++    ``thinking=False`` as ``render_app``'s, with an open think block closed as the gate closes
++    it (gate.close_open_think)."""
++    extra = {} if thinking else {"enable_thinking": False}
++    text = tokenizer.apply_chat_template(
++        [{"role": "user", "content": prompt}], tokenize=False, add_generation_prompt=True, **extra
+     )
++    return text if thinking else _closed(text)
++
++
++def _closed(text: str) -> str:
++    from pipeline.gate import close_open_think
++
++    return close_open_think(text)
+ 
+ 
+ def render_app(tokenizer, user_turn: str, thinking: bool = True) -> str:
+@@ -297,10 +308,10 @@ def system_carries_tools(tokenizer) -> bool:
+     return isinstance(template, str) and "'tools' in message" in template
+ 
+ 
+-def app_head(tokenizer) -> str:
++def app_head(tokenizer, thinking: bool = True) -> str:
+     """Everything the app-shaped rows share, up to where the question starts."""
+     marker = "\x00question\x00"
+-    return render_app(tokenizer, marker).split(marker)[0]
++    return render_app(tokenizer, marker, thinking=thinking).split(marker)[0]
+ 
+ 
+ def app_turns() -> list[str]:
+@@ -308,27 +319,34 @@ def app_turns() -> list[str]:
+     return [f"{q}\n\n{TRAILER.format(subject=s)}" for q, s in SEARCH_ROWS] + list(KNOWN_ROWS)
+ 
+ 
+-def build(tokenizer) -> list[tuple[str, int]]:
+-    """Every calibration row as (prompt text, characters of shared head), app rows first."""
+-    head = app_head(tokenizer)
+-    rows = [(render_app(tokenizer, turn), len(head)) for turn in app_turns()]
+-    rows += [(render(tokenizer, prompt), 0) for prompt in PROMPTS]
++def build(tokenizer, thinking: bool = True) -> list[tuple[str, int]]:
++    """Every calibration row as (prompt text, characters of shared head), app rows first.
++
++    ``thinking=False`` renders every row with a reasoning template's think block closed, as
++    the app sends a Qwen3 turn and as the gate asks; templates without the switch render the
++    same either way."""
++    head = app_head(tokenizer, thinking)
++    if thinking:
++        rows = [(render_app(tokenizer, turn), len(head)) for turn in app_turns()]
++    else:
++        rows = [(_closed(render_app(tokenizer, turn, thinking=False)), len(head)) for turn in app_turns()]
++    rows += [(render(tokenizer, prompt, thinking), 0) for prompt in PROMPTS]
+     return rows
+ 
+ 
+-def sequences(generate, tokenizer, log=print) -> list[tuple[list[int], int]]:
++def sequences(generate, tokenizer, log=print, thinking: bool = True) -> list[tuple[list[int], int]]:
+     """Each row, continued by the fp32 model, as (token ids, first position to count).
+ 
+     ``generate(ids, max_new_tokens)`` returns the greedy continuation's ids. Positions before
+     ``keep_from`` are in the sequence -- the row would not be the app's distribution without
+     them -- but are not accumulated into any Hessian after the first row that carries them.
+     """
+-    head = app_head(tokenizer)
++    head = app_head(tokenizer, thinking)
+     head_ids = tokenizer(head, add_special_tokens=False)["input_ids"]
+     rows: list[tuple[list[int], int]] = []
+     empty = 0
+     seen_head = False
+-    for index, (text, head_chars) in enumerate(build(tokenizer)):
++    for index, (text, head_chars) in enumerate(build(tokenizer, thinking)):
+         ids = tokenizer(text, add_special_tokens=False)["input_ids"]
+         limit = MAX_PROMPT_TOKENS + len(head_ids) if head_chars else MAX_PROMPT_TOKENS
+         if len(ids) > limit:
+diff --git a/scripts/awq_compare.py b/scripts/awq_compare.py
+index 03b2283..87c5603 100644
+--- a/scripts/awq_compare.py
++++ b/scripts/awq_compare.py
+@@ -149,6 +149,37 @@ def reference(args) -> int:
+     return 0
+ 
+ 
++def calib(args) -> int:
++    """The calibration rows alone, rendered with the template's thinking on or off."""
++    import torch
++    from transformers import AutoTokenizer
++
++    from pipeline import calibration, solve
++
++    out, work = Path(args.out).resolve(), Path(args.work).resolve()
++    out.mkdir(parents=True, exist_ok=True)
++    work.mkdir(parents=True, exist_ok=True)
++    source, plan, src_dir, _ = _prepare(args.model, args.revision, work)
++    tokenizer = AutoTokenizer.from_pretrained(str(src_dir))
++    _, generate = solve.teacher(src_dir, trust_remote_code=plan.lfm3)
++    t = time.time()
++    rows = calibration.sequences(generate, tokenizer, thinking=args.thinking == "on")
++    seconds = time.time() - t
++    torch.save(rows, out / "rows.pt")
++    meta = {
++        "model_id": args.model,
++        "revision": source.sha,
++        "thinking": args.thinking,
++        "calibration_rows": len(rows),
++        "calibration_positions": sum(len(ids) - keep for ids, keep in rows),
++        "seconds": round(seconds, 1),
++        "first_app_row_tail": tokenizer.decode(rows[0][0][-60:]),
++    }
++    (out / "calib.json").write_text(json.dumps(meta, indent=2) + "\n", encoding="utf-8")
++    print(json.dumps(meta, indent=2))
++    return 0
++
++
+ def _kl(top_ids, top_logp, logq) -> float:
+     """KL(fp32 || export) over fp32's top tokens plus one bucket for everything else."""
+     p = top_logp.double().exp()
+@@ -352,6 +383,13 @@ def main(argv=None) -> int:
+     r.add_argument("--out", required=True)
+     r.add_argument("--work", required=True)
+     r.set_defaults(func=reference)
++    c = sub.add_parser("calib", help="only the calibration rows, e.g. with a reasoning template's thinking off")
++    c.add_argument("model")
++    c.add_argument("--revision", default="main")
++    c.add_argument("--thinking", choices=("on", "off"), default="on")
++    c.add_argument("--out", required=True)
++    c.add_argument("--work", required=True)
++    c.set_defaults(func=calib)
+     a = sub.add_parser("arm")
+     a.add_argument("model")
+     a.add_argument("--revision", default="main")
+-- 
+2.54.0 (Apple Git-157)
+

@@ -1,0 +1,630 @@
+==> LiquidAI/LFM3-1.7B@ac2586a34f1a: family lfm3, class lfm2_5_1_2b, window 16384
+Fetching 12 files:   0%|          | 0/12 [00:00<?, ?it/s]Fetching 12 files:  42%|████▏     | 5/12 [00:00<00:00, 47.72it/s]Fetching 12 files:  92%|█████████▏| 11/12 [00:00<00:00, 14.25it/s]Fetching 12 files:  92%|█████████▏| 11/12 [00:20<00:00, 14.25it/s]Fetching 12 files: 100%|██████████| 12/12 [00:50<00:00,  6.58s/it]Fetching 12 files: 100%|██████████| 12/12 [00:50<00:00,  4.22s/it]
+==> converting checkpoint
+==> export_llm (codes: gptq, state fix: False, lfm3: True)
+Failed to load /home/ubuntu/execupack/.venv/lib/python3.11/site-packages/torchao/_C_cutlass_90a.abi3.so: Could not load this library: /home/ubuntu/execupack/.venv/lib/python3.11/site-packages/torchao/_C_cutlass_90a.abi3.so
+Failed to load /home/ubuntu/execupack/.venv/lib/python3.11/site-packages/torchao/_C_mxfp8.cpython-310-x86_64-linux-gnu.so: Could not load this library: /home/ubuntu/execupack/.venv/lib/python3.11/site-packages/torchao/_C_mxfp8.cpython-310-x86_64-linux-gnu.so
+W1031 21:25:48.404000 6152 .venv/lib/python3.11/site-packages/torch/utils/_pytree.py:630] <enum 'KernelPreference'> is an Enum subclass and is now natively supported by torch.compile as an opaque value type. Calling register_constant() on Enum subclasses is deprecated and will be an error in a future release.
+W1031 21:25:48.435000 6152 .venv/lib/python3.11/site-packages/torch/utils/_pytree.py:630] <enum 'ScaleCalculationMode'> is an Enum subclass and is now natively supported by torch.compile as an opaque value type. Calling register_constant() on Enum subclasses is deprecated and will be an error in a future release.
+applied the LFM3 model definition (pipeline/lfm3_model.py)
+I tokenizers:regex.cpp:40] Registering override fallback regex
+[2026-10-31 21:25:51,856][root][INFO] - Applying quantizers: []
+[2026-10-31 21:25:51,887][root][INFO] - Looking for libcustom_ops_aot_lib.so in /home/ubuntu/execupack/.venv/lib/python3.11/site-packages/executorch/extension/llm/custom_ops
+[2026-10-31 21:25:51,887][root][INFO] - Loading custom ops library: /home/ubuntu/execupack/.venv/lib/python3.11/site-packages/executorch/extension/llm/custom_ops/libcustom_ops_aot_lib.so
+[2026-10-31 21:25:51,954][root][INFO] - Checkpoint dtype: torch.bfloat16
+quantize ('tok_embeddings', Embedding(128000, 2048)) with group_size None, bitwidth 8
+injected calibrated codes into 180 linears
+[2026-10-31 21:25:56,218][root][INFO] - Replacing KVCache with CustomKVCache. This modifies the model in place.
+[2026-10-31 21:25:56,284][root][INFO] - Model after source transforms: Transformer(
+  (tok_embeddings): QuantizedGroupEmbedding()
+  (layers): ModuleList(
+    (0-1): 2 x Block(
+      (conv): ShortConv(
+        (B_proj): Linear(in_features=2048, out_features=2048, bias=False, weight=IntxUnpackedToInt8Tensor(target_dtype=torch.int4, block_size=(1, 32), shape=torch.Size([2048, 2048]), dtype=torch.float32, device=cpu, activation_quantization=int8_asym_per_token))
+        (C_proj): Linear(in_features=2048, out_features=2048, bias=False, weight=IntxUnpackedToInt8Tensor(target_dtype=torch.int4, block_size=(1, 32), shape=torch.Size([2048, 2048]), dtype=torch.float32, device=cpu, activation_quantization=int8_asym_per_token))
+        (x_proj): Linear(in_features=2048, out_features=2048, bias=False, weight=IntxUnpackedToInt8Tensor(target_dtype=torch.int4, block_size=(1, 32), shape=torch.Size([2048, 2048]), dtype=torch.float32, device=cpu, activation_quantization=int8_asym_per_token))
+        (out_proj): Linear(in_features=2048, out_features=2048, bias=False, weight=IntxUnpackedToInt8Tensor(target_dtype=torch.int4, block_size=(1, 32), shape=torch.Size([2048, 2048]), dtype=torch.float32, device=cpu, activation_quantization=int8_asym_per_token))
+        (conv): Conv1d(2048, 2048, kernel_size=(7,), stride=(1,), groups=2048, bias=False)
+      )
+      (feed_forward): FeedForward(
+        (w1): Linear(in_features=2048, out_features=7680, bias=False, weight=IntxUnpackedToInt8Tensor(target_dtype=torch.int4, block_size=(1, 32), shape=torch.Size([7680, 2048]), dtype=torch.float32, device=cpu, activation_quantization=int8_asym_per_token))
+        (w2): Linear(in_features=7680, out_features=2048, bias=False, weight=IntxUnpackedToInt8Tensor(target_dtype=torch.int4, block_size=(1, 32), shape=torch.Size([2048, 7680]), dtype=torch.float32, device=cpu, activation_quantization=int8_asym_per_token))
+        (w3): Linear(in_features=2048, out_features=7680, bias=False, weight=IntxUnpackedToInt8Tensor(target_dtype=torch.int4, block_size=(1, 32), shape=torch.Size([7680, 2048]), dtype=torch.float32, device=cpu, activation_quantization=int8_asym_per_token))
+      )
+      (attention_norm): RMSNorm()
+      (ffn_norm): RMSNorm()
+      (post_attention_norm): RMSNorm()
+      (post_ffn_norm): RMSNorm()
+    )
+    (2): Block(
+      (attention): Lfm3Attention(
+        (wq): Linear(in_features=2048, out_features=2048, bias=False, weight=IntxUnpackedToInt8Tensor(target_dtype=torch.int4, block_size=(1, 32), shape=torch.Size([2048, 2048]), dtype=torch.float32, device=cpu, activation_quantization=int8_asym_per_token))
+        (wk): Linear(in_features=2048, out_features=512, bias=False, weight=IntxUnpackedToInt8Tensor(target_dtype=torch.int4, block_size=(1, 32), shape=torch.Size([512, 2048]), dtype=torch.float32, device=cpu, activation_quantization=int8_asym_per_token))
+        (wv): Linear(in_features=2048, out_features=512, bias=False, weight=IntxUnpackedToInt8Tensor(target_dtype=torch.int4, block_size=(1, 32), shape=torch.Size([512, 2048]), dtype=torch.float32, device=cpu, activation_quantization=int8_asym_per_token))
+        (wo): Linear(in_features=2048, out_features=2048, bias=False, weight=IntxUnpackedToInt8Tensor(target_dtype=torch.int4, block_size=(1, 32), shape=torch.Size([2048, 2048]), dtype=torch.float32, device=cpu, activation_quantization=int8_asym_per_token))
+        (gate_proj): Linear(in_features=2048, out_features=16, bias=False, weight=IntxUnpackedToInt8Tensor(target_dtype=torch.int4, block_size=(1, 32), shape=torch.Size([16, 2048]), dtype=torch.float32, device=cpu, activation_quantization=int8_asym_per_token))
+        (q_norm_fn): RMSNorm()
+        (k_norm_fn): RMSNorm()
+        (kv_cache): CustomKVCache()
+        (SDPA): SDPACustom()
+      )
+      (feed_forward): FeedForward(
+        (w1): Linear(in_features=2048, out_features=7680, bias=False, weight=IntxUnpackedToInt8Tensor(target_dtype=torch.int4, block_size=(1, 32), shape=torch.Size([7680, 2048]), dtype=torch.float32, device=cpu, activation_quantization=int8_asym_per_token))
+        (w2): Linear(in_features=7680, out_features=2048, bias=False, weight=IntxUnpackedToInt8Tensor(target_dtype=torch.int4, block_size=(1, 32), shape=torch.Size([2048, 7680]), dtype=torch.float32, device=cpu, activation_quantization=int8_asym_per_token))
+        (w3): Linear(in_features=2048, out_features=7680, bias=False, weight=IntxUnpackedToInt8Tensor(target_dtype=torch.int4, block_size=(1, 32), shape=torch.Size([7680, 2048]), dtype=torch.float32, device=cpu, activation_quantization=int8_asym_per_token))
+      )
+      (attention_norm): RMSNorm()
+      (ffn_norm): RMSNorm()
+      (post_attention_norm): RMSNorm()
+      (post_ffn_norm): RMSNorm()
+    )
+    (3): Block(
+      (conv): ShortConv(
+        (B_proj): Linear(in_features=2048, out_features=2048, bias=False, weight=IntxUnpackedToInt8Tensor(target_dtype=torch.int4, block_size=(1, 32), shape=torch.Size([2048, 2048]), dtype=torch.float32, device=cpu, activation_quantization=int8_asym_per_token))
+        (C_proj): Linear(in_features=2048, out_features=2048, bias=False, weight=IntxUnpackedToInt8Tensor(target_dtype=torch.int4, block_size=(1, 32), shape=torch.Size([2048, 2048]), dtype=torch.float32, device=cpu, activation_quantization=int8_asym_per_token))
+        (x_proj): Linear(in_features=2048, out_features=2048, bias=False, weight=IntxUnpackedToInt8Tensor(target_dtype=torch.int4, block_size=(1, 32), shape=torch.Size([2048, 2048]), dtype=torch.float32, device=cpu, activation_quantization=int8_asym_per_token))
+        (out_proj): Linear(in_features=2048, out_features=2048, bias=False, weight=IntxUnpackedToInt8Tensor(target_dtype=torch.int4, block_size=(1, 32), shape=torch.Size([2048, 2048]), dtype=torch.float32, device=cpu, activation_quantization=int8_asym_per_token))
+        (conv): Conv1d(2048, 2048, kernel_size=(7,), stride=(1,), groups=2048, bias=False)
+      )
+      (feed_forward): FeedForward(
+        (w1): Linear(in_features=2048, out_features=7680, bias=False, weight=IntxUnpackedToInt8Tensor(target_dtype=torch.int4, block_size=(1, 32), shape=torch.Size([7680, 2048]), dtype=torch.float32, device=cpu, activation_quantization=int8_asym_per_token))
+        (w2): Linear(in_features=7680, out_features=2048, bias=False, weight=IntxUnpackedToInt8Tensor(target_dtype=torch.int4, block_size=(1, 32), shape=torch.Size([2048, 7680]), dtype=torch.float32, device=cpu, activation_quantization=int8_asym_per_token))
+        (w3): Linear(in_features=2048, out_features=7680, bias=False, weight=IntxUnpackedToInt8Tensor(target_dtype=torch.int4, block_size=(1, 32), shape=torch.Size([7680, 2048]), dtype=torch.float32, device=cpu, activation_quantization=int8_asym_per_token))
+      )
+      (attention_norm): RMSNorm()
+      (ffn_norm): RMSNorm()
+      (post_attention_norm): RMSNorm()
+      (post_ffn_norm): RMSNorm()
+    )
+    (4): Block(
+      (attention): Lfm3Attention(
+        (wq): Linear(in_features=2048, out_features=2048, bias=False, weight=IntxUnpackedToInt8Tensor(target_dtype=torch.int4, block_size=(1, 32), shape=torch.Size([2048, 2048]), dtype=torch.float32, device=cpu, activation_quantization=int8_asym_per_token))
+        (wk): Linear(in_features=2048, out_features=512, bias=False, weight=IntxUnpackedToInt8Tensor(target_dtype=torch.int4, block_size=(1, 32), shape=torch.Size([512, 2048]), dtype=torch.float32, device=cpu, activation_quantization=int8_asym_per_token))
+        (wv): Linear(in_features=2048, out_features=512, bias=False, weight=IntxUnpackedToInt8Tensor(target_dtype=torch.int4, block_size=(1, 32), shape=torch.Size([512, 2048]), dtype=torch.float32, device=cpu, activation_quantization=int8_asym_per_token))
+        (wo): Linear(in_features=2048, out_features=2048, bias=False, weight=IntxUnpackedToInt8Tensor(target_dtype=torch.int4, block_size=(1, 32), shape=torch.Size([2048, 2048]), dtype=torch.float32, device=cpu, activation_quantization=int8_asym_per_token))
+        (gate_proj): Linear(in_features=2048, out_features=16, bias=False, weight=IntxUnpackedToInt8Tensor(target_dtype=torch.int4, block_size=(1, 32), shape=torch.Size([16, 2048]), dtype=torch.float32, device=cpu, activation_quantization=int8_asym_per_token))
+        (q_norm_fn): RMSNorm()
+        (k_norm_fn): RMSNorm()
+        (ring): RingCache(
+          (positions): CachePositionsManager()
+        )
+      )
+      (feed_forward): FeedForward(
+        (w1): Linear(in_features=2048, out_features=7680, bias=False, weight=IntxUnpackedToInt8Tensor(target_dtype=torch.int4, block_size=(1, 32), shape=torch.Size([7680, 2048]), dtype=torch.float32, device=cpu, activation_quantization=int8_asym_per_token))
+        (w2): Linear(in_features=7680, out_features=2048, bias=False, weight=IntxUnpackedToInt8Tensor(target_dtype=torch.int4, block_size=(1, 32), shape=torch.Size([2048, 7680]), dtype=torch.float32, device=cpu, activation_quantization=int8_asym_per_token))
+        (w3): Linear(in_features=2048, out_features=7680, bias=False, weight=IntxUnpackedToInt8Tensor(target_dtype=torch.int4, block_size=(1, 32), shape=torch.Size([7680, 2048]), dtype=torch.float32, device=cpu, activation_quantization=int8_asym_per_token))
+      )
+      (attention_norm): RMSNorm()
+      (ffn_norm): RMSNorm()
+      (post_attention_norm): RMSNorm()
+      (post_ffn_norm): RMSNorm()
+    )
+    (5): Block(
+      (conv): ShortConv(
+        (B_proj): Linear(in_features=2048, out_features=2048, bias=False, weight=IntxUnpackedToInt8Tensor(target_dtype=torch.int4, block_size=(1, 32), shape=torch.Size([2048, 2048]), dtype=torch.float32, device=cpu, activation_quantization=int8_asym_per_token))
+        (C_proj): Linear(in_features=2048, out_features=2048, bias=False, weight=IntxUnpackedToInt8Tensor(target_dtype=torch.int4, block_size=(1, 32), shape=torch.Size([2048, 2048]), dtype=torch.float32, device=cpu, activation_quantization=int8_asym_per_token))
+        (x_proj): Linear(in_features=2048, out_features=2048, bias=False, weight=IntxUnpackedToInt8Tensor(target_dtype=torch.int4, block_size=(1, 32), shape=torch.Size([2048, 2048]), dtype=torch.float32, device=cpu, activation_quantization=int8_asym_per_token))
+        (out_proj): Linear(in_features=2048, out_features=2048, bias=False, weight=IntxUnpackedToInt8Tensor(target_dtype=torch.int4, block_size=(1, 32), shape=torch.Size([2048, 2048]), dtype=torch.float32, device=cpu, activation_quantization=int8_asym_per_token))
+        (conv): Conv1d(2048, 2048, kernel_size=(7,), stride=(1,), groups=2048, bias=False)
+      )
+      (feed_forward): FeedForward(
+        (w1): Linear(in_features=2048, out_features=7680, bias=False, weight=IntxUnpackedToInt8Tensor(target_dtype=torch.int4, block_size=(1, 32), shape=torch.Size([7680, 2048]), dtype=torch.float32, device=cpu, activation_quantization=int8_asym_per_token))
+        (w2): Linear(in_features=7680, out_features=2048, bias=False, weight=IntxUnpackedToInt8Tensor(target_dtype=torch.int4, block_size=(1, 32), shape=torch.Size([2048, 7680]), dtype=torch.float32, device=cpu, activation_quantization=int8_asym_per_token))
+        (w3): Linear(in_features=2048, out_features=7680, bias=False, weight=IntxUnpackedToInt8Tensor(target_dtype=torch.int4, block_size=(1, 32), shape=torch.Size([7680, 2048]), dtype=torch.float32, device=cpu, activation_quantization=int8_asym_per_token))
+      )
+      (attention_norm): RMSNorm()
+      (ffn_norm): RMSNorm()
+      (post_attention_norm): RMSNorm()
+      (post_ffn_norm): RMSNorm()
+    )
+    (6): Block(
+      (attention): Lfm3Attention(
+        (wq): Linear(in_features=2048, out_features=2048, bias=False, weight=IntxUnpackedToInt8Tensor(target_dtype=torch.int4, block_size=(1, 32), shape=torch.Size([2048, 2048]), dtype=torch.float32, device=cpu, activation_quantization=int8_asym_per_token))
+        (wk): Linear(in_features=2048, out_features=512, bias=False, weight=IntxUnpackedToInt8Tensor(target_dtype=torch.int4, block_size=(1, 32), shape=torch.Size([512, 2048]), dtype=torch.float32, device=cpu, activation_quantization=int8_asym_per_token))
+        (wv): Linear(in_features=2048, out_features=512, bias=False, weight=IntxUnpackedToInt8Tensor(target_dtype=torch.int4, block_size=(1, 32), shape=torch.Size([512, 2048]), dtype=torch.float32, device=cpu, activation_quantization=int8_asym_per_token))
+        (wo): Linear(in_features=2048, out_features=2048, bias=False, weight=IntxUnpackedToInt8Tensor(target_dtype=torch.int4, block_size=(1, 32), shape=torch.Size([2048, 2048]), dtype=torch.float32, device=cpu, activation_quantization=int8_asym_per_token))
+        (gate_proj): Linear(in_features=2048, out_features=16, bias=False, weight=IntxUnpackedToInt8Tensor(target_dtype=torch.int4, block_size=(1, 32), shape=torch.Size([16, 2048]), dtype=torch.float32, device=cpu, activation_quantization=int8_asym_per_token))
+        (q_norm_fn): RMSNorm()
+        (k_norm_fn): RMSNorm()
+        (kv_cache): CustomKVCache()
+        (SDPA): SDPACustom()
+      )
+      (feed_forward): FeedForward(
+        (w1): Linear(in_features=2048, out_features=7680, bias=False, weight=IntxUnpackedToInt8Tensor(target_dtype=torch.int4, block_size=(1, 32), shape=torch.Size([7680, 2048]), dtype=torch.float32, device=cpu, activation_quantization=int8_asym_per_token))
+        (w2): Linear(in_features=7680, out_features=2048, bias=False, weight=IntxUnpackedToInt8Tensor(target_dtype=torch.int4, block_size=(1, 32), shape=torch.Size([2048, 7680]), dtype=torch.float32, device=cpu, activation_quantization=int8_asym_per_token))
+        (w3): Linear(in_features=2048, out_features=7680, bias=False, weight=IntxUnpackedToInt8Tensor(target_dtype=torch.int4, block_size=(1, 32), shape=torch.Size([7680, 2048]), dtype=torch.float32, device=cpu, activation_quantization=int8_asym_per_token))
+      )
+      (attention_norm): RMSNorm()
+      (ffn_norm): RMSNorm()
+      (post_attention_norm): RMSNorm()
+      (post_ffn_norm): RMSNorm()
+    )
+    (7): Block(
+      (conv): ShortConv(
+        (B_proj): Linear(in_features=2048, out_features=2048, bias=False, weight=IntxUnpackedToInt8Tensor(target_dtype=torch.int4, block_size=(1, 32), shape=torch.Size([2048, 2048]), dtype=torch.float32, device=cpu, activation_quantization=int8_asym_per_token))
+        (C_proj): Linear(in_features=2048, out_features=2048, bias=False, weight=IntxUnpackedToInt8Tensor(target_dtype=torch.int4, block_size=(1, 32), shape=torch.Size([2048, 2048]), dtype=torch.float32, device=cpu, activation_quantization=int8_asym_per_token))
+        (x_proj): Linear(in_features=2048, out_features=2048, bias=False, weight=IntxUnpackedToInt8Tensor(target_dtype=torch.int4, block_size=(1, 32), shape=torch.Size([2048, 2048]), dtype=torch.float32, device=cpu, activation_quantization=int8_asym_per_token))
+        (out_proj): Linear(in_features=2048, out_features=2048, bias=False, weight=IntxUnpackedToInt8Tensor(target_dtype=torch.int4, block_size=(1, 32), shape=torch.Size([2048, 2048]), dtype=torch.float32, device=cpu, activation_quantization=int8_asym_per_token))
+        (conv): Conv1d(2048, 2048, kernel_size=(7,), stride=(1,), groups=2048, bias=False)
+      )
+      (feed_forward): FeedForward(
+        (w1): Linear(in_features=2048, out_features=7680, bias=False, weight=IntxUnpackedToInt8Tensor(target_dtype=torch.int4, block_size=(1, 32), shape=torch.Size([7680, 2048]), dtype=torch.float32, device=cpu, activation_quantization=int8_asym_per_token))
+        (w2): Linear(in_features=7680, out_features=2048, bias=False, weight=IntxUnpackedToInt8Tensor(target_dtype=torch.int4, block_size=(1, 32), shape=torch.Size([2048, 7680]), dtype=torch.float32, device=cpu, activation_quantization=int8_asym_per_token))
+        (w3): Linear(in_features=2048, out_features=7680, bias=False, weight=IntxUnpackedToInt8Tensor(target_dtype=torch.int4, block_size=(1, 32), shape=torch.Size([7680, 2048]), dtype=torch.float32, device=cpu, activation_quantization=int8_asym_per_token))
+      )
+      (attention_norm): RMSNorm()
+      (ffn_norm): RMSNorm()
+      (post_attention_norm): RMSNorm()
+      (post_ffn_norm): RMSNorm()
+    )
+    (8): Block(
+      (attention): Lfm3Attention(
+        (wq): Linear(in_features=2048, out_features=2048, bias=False, weight=IntxUnpackedToInt8Tensor(target_dtype=torch.int4, block_size=(1, 32), shape=torch.Size([2048, 2048]), dtype=torch.float32, device=cpu, activation_quantization=int8_asym_per_token))
+        (wk): Linear(in_features=2048, out_features=512, bias=False, weight=IntxUnpackedToInt8Tensor(target_dtype=torch.int4, block_size=(1, 32), shape=torch.Size([512, 2048]), dtype=torch.float32, device=cpu, activation_quantization=int8_asym_per_token))
+        (wv): Linear(in_features=2048, out_features=512, bias=False, weight=IntxUnpackedToInt8Tensor(target_dtype=torch.int4, block_size=(1, 32), shape=torch.Size([512, 2048]), dtype=torch.float32, device=cpu, activation_quantization=int8_asym_per_token))
+        (wo): Linear(in_features=2048, out_features=2048, bias=False, weight=IntxUnpackedToInt8Tensor(target_dtype=torch.int4, block_size=(1, 32), shape=torch.Size([2048, 2048]), dtype=torch.float32, device=cpu, activation_quantization=int8_asym_per_token))
+        (gate_proj): Linear(in_features=2048, out_features=16, bias=False, weight=IntxUnpackedToInt8Tensor(target_dtype=torch.int4, block_size=(1, 32), shape=torch.Size([16, 2048]), dtype=torch.float32, device=cpu, activation_quantization=int8_asym_per_token))
+        (q_norm_fn): RMSNorm()
+        (k_norm_fn): RMSNorm()
+        (ring): RingCache(
+          (positions): CachePositionsManager()
+        )
+      )
+      (feed_forward): FeedForward(
+        (w1): Linear(in_features=2048, out_features=7680, bias=False, weight=IntxUnpackedToInt8Tensor(target_dtype=torch.int4, block_size=(1, 32), shape=torch.Size([7680, 2048]), dtype=torch.float32, device=cpu, activation_quantization=int8_asym_per_token))
+        (w2): Linear(in_features=7680, out_features=2048, bias=False, weight=IntxUnpackedToInt8Tensor(target_dtype=torch.int4, block_size=(1, 32), shape=torch.Size([2048, 7680]), dtype=torch.float32, device=cpu, activation_quantization=int8_asym_per_token))
+        (w3): Linear(in_features=2048, out_features=7680, bias=False, weight=IntxUnpackedToInt8Tensor(target_dtype=torch.int4, block_size=(1, 32), shape=torch.Size([7680, 2048]), dtype=torch.float32, device=cpu, activation_quantization=int8_asym_per_token))
+      )
+      (attention_norm): RMSNorm()
+      (ffn_norm): RMSNorm()
+      (post_attention_norm): RMSNorm()
+      (post_ffn_norm): RMSNorm()
+    )
+    (9): Block(
+      (conv): ShortConv(
+        (B_proj): Linear(in_features=2048, out_features=2048, bias=False, weight=IntxUnpackedToInt8Tensor(target_dtype=torch.int4, block_size=(1, 32), shape=torch.Size([2048, 2048]), dtype=torch.float32, device=cpu, activation_quantization=int8_asym_per_token))
+        (C_proj): Linear(in_features=2048, out_features=2048, bias=False, weight=IntxUnpackedToInt8Tensor(target_dtype=torch.int4, block_size=(1, 32), shape=torch.Size([2048, 2048]), dtype=torch.float32, device=cpu, activation_quantization=int8_asym_per_token))
+        (x_proj): Linear(in_features=2048, out_features=2048, bias=False, weight=IntxUnpackedToInt8Tensor(target_dtype=torch.int4, block_size=(1, 32), shape=torch.Size([2048, 2048]), dtype=torch.float32, device=cpu, activation_quantization=int8_asym_per_token))
+        (out_proj): Linear(in_features=2048, out_features=2048, bias=False, weight=IntxUnpackedToInt8Tensor(target_dtype=torch.int4, block_size=(1, 32), shape=torch.Size([2048, 2048]), dtype=torch.float32, device=cpu, activation_quantization=int8_asym_per_token))
+        (conv): Conv1d(2048, 2048, kernel_size=(7,), stride=(1,), groups=2048, bias=False)
+      )
+      (feed_forward): FeedForward(
+        (w1): Linear(in_features=2048, out_features=7680, bias=False, weight=IntxUnpackedToInt8Tensor(target_dtype=torch.int4, block_size=(1, 32), shape=torch.Size([7680, 2048]), dtype=torch.float32, device=cpu, activation_quantization=int8_asym_per_token))
+        (w2): Linear(in_features=7680, out_features=2048, bias=False, weight=IntxUnpackedToInt8Tensor(target_dtype=torch.int4, block_size=(1, 32), shape=torch.Size([2048, 7680]), dtype=torch.float32, device=cpu, activation_quantization=int8_asym_per_token))
+        (w3): Linear(in_features=2048, out_features=7680, bias=False, weight=IntxUnpackedToInt8Tensor(target_dtype=torch.int4, block_size=(1, 32), shape=torch.Size([7680, 2048]), dtype=torch.float32, device=cpu, activation_quantization=int8_asym_per_token))
+      )
+      (attention_norm): RMSNorm()
+      (ffn_norm): RMSNorm()
+      (post_attention_norm): RMSNorm()
+      (post_ffn_norm): RMSNorm()
+    )
+    (10): Block(
+      (attention): Lfm3Attention(
+        (wq): Linear(in_features=2048, out_features=2048, bias=False, weight=IntxUnpackedToInt8Tensor(target_dtype=torch.int4, block_size=(1, 32), shape=torch.Size([2048, 2048]), dtype=torch.float32, device=cpu, activation_quantization=int8_asym_per_token))
+        (wk): Linear(in_features=2048, out_features=512, bias=False, weight=IntxUnpackedToInt8Tensor(target_dtype=torch.int4, block_size=(1, 32), shape=torch.Size([512, 2048]), dtype=torch.float32, device=cpu, activation_quantization=int8_asym_per_token))
+        (wv): Linear(in_features=2048, out_features=512, bias=False, weight=IntxUnpackedToInt8Tensor(target_dtype=torch.int4, block_size=(1, 32), shape=torch.Size([512, 2048]), dtype=torch.float32, device=cpu, activation_quantization=int8_asym_per_token))
+        (wo): Linear(in_features=2048, out_features=2048, bias=False, weight=IntxUnpackedToInt8Tensor(target_dtype=torch.int4, block_size=(1, 32), shape=torch.Size([2048, 2048]), dtype=torch.float32, device=cpu, activation_quantization=int8_asym_per_token))
+        (gate_proj): Linear(in_features=2048, out_features=16, bias=False, weight=IntxUnpackedToInt8Tensor(target_dtype=torch.int4, block_size=(1, 32), shape=torch.Size([16, 2048]), dtype=torch.float32, device=cpu, activation_quantization=int8_asym_per_token))
+        (q_norm_fn): RMSNorm()
+        (k_norm_fn): RMSNorm()
+        (kv_cache): CustomKVCache()
+        (SDPA): SDPACustom()
+      )
+      (feed_forward): FeedForward(
+        (w1): Linear(in_features=2048, out_features=7680, bias=False, weight=IntxUnpackedToInt8Tensor(target_dtype=torch.int4, block_size=(1, 32), shape=torch.Size([7680, 2048]), dtype=torch.float32, device=cpu, activation_quantization=int8_asym_per_token))
+        (w2): Linear(in_features=7680, out_features=2048, bias=False, weight=IntxUnpackedToInt8Tensor(target_dtype=torch.int4, block_size=(1, 32), shape=torch.Size([2048, 7680]), dtype=torch.float32, device=cpu, activation_quantization=int8_asym_per_token))
+        (w3): Linear(in_features=2048, out_features=7680, bias=False, weight=IntxUnpackedToInt8Tensor(target_dtype=torch.int4, block_size=(1, 32), shape=torch.Size([7680, 2048]), dtype=torch.float32, device=cpu, activation_quantization=int8_asym_per_token))
+      )
+      (attention_norm): RMSNorm()
+      (ffn_norm): RMSNorm()
+      (post_attention_norm): RMSNorm()
+      (post_ffn_norm): RMSNorm()
+    )
+    (11): Block(
+      (conv): ShortConv(
+        (B_proj): Linear(in_features=2048, out_features=2048, bias=False, weight=IntxUnpackedToInt8Tensor(target_dtype=torch.int4, block_size=(1, 32), shape=torch.Size([2048, 2048]), dtype=torch.float32, device=cpu, activation_quantization=int8_asym_per_token))
+        (C_proj): Linear(in_features=2048, out_features=2048, bias=False, weight=IntxUnpackedToInt8Tensor(target_dtype=torch.int4, block_size=(1, 32), shape=torch.Size([2048, 2048]), dtype=torch.float32, device=cpu, activation_quantization=int8_asym_per_token))
+        (x_proj): Linear(in_features=2048, out_features=2048, bias=False, weight=IntxUnpackedToInt8Tensor(target_dtype=torch.int4, block_size=(1, 32), shape=torch.Size([2048, 2048]), dtype=torch.float32, device=cpu, activation_quantization=int8_asym_per_token))
+        (out_proj): Linear(in_features=2048, out_features=2048, bias=False, weight=IntxUnpackedToInt8Tensor(target_dtype=torch.int4, block_size=(1, 32), shape=torch.Size([2048, 2048]), dtype=torch.float32, device=cpu, activation_quantization=int8_asym_per_token))
+        (conv): Conv1d(2048, 2048, kernel_size=(7,), stride=(1,), groups=2048, bias=False)
+      )
+      (feed_forward): FeedForward(
+        (w1): Linear(in_features=2048, out_features=7680, bias=False, weight=IntxUnpackedToInt8Tensor(target_dtype=torch.int4, block_size=(1, 32), shape=torch.Size([7680, 2048]), dtype=torch.float32, device=cpu, activation_quantization=int8_asym_per_token))
+        (w2): Linear(in_features=7680, out_features=2048, bias=False, weight=IntxUnpackedToInt8Tensor(target_dtype=torch.int4, block_size=(1, 32), shape=torch.Size([2048, 7680]), dtype=torch.float32, device=cpu, activation_quantization=int8_asym_per_token))
+        (w3): Linear(in_features=2048, out_features=7680, bias=False, weight=IntxUnpackedToInt8Tensor(target_dtype=torch.int4, block_size=(1, 32), shape=torch.Size([7680, 2048]), dtype=torch.float32, device=cpu, activation_quantization=int8_asym_per_token))
+      )
+      (attention_norm): RMSNorm()
+      (ffn_norm): RMSNorm()
+      (post_attention_norm): RMSNorm()
+      (post_ffn_norm): RMSNorm()
+    )
+    (12): Block(
+      (attention): Lfm3Attention(
+        (wq): Linear(in_features=2048, out_features=2048, bias=False, weight=IntxUnpackedToInt8Tensor(target_dtype=torch.int4, block_size=(1, 32), shape=torch.Size([2048, 2048]), dtype=torch.float32, device=cpu, activation_quantization=int8_asym_per_token))
+        (wk): Linear(in_features=2048, out_features=512, bias=False, weight=IntxUnpackedToInt8Tensor(target_dtype=torch.int4, block_size=(1, 32), shape=torch.Size([512, 2048]), dtype=torch.float32, device=cpu, activation_quantization=int8_asym_per_token))
+        (wv): Linear(in_features=2048, out_features=512, bias=False, weight=IntxUnpackedToInt8Tensor(target_dtype=torch.int4, block_size=(1, 32), shape=torch.Size([512, 2048]), dtype=torch.float32, device=cpu, activation_quantization=int8_asym_per_token))
+        (wo): Linear(in_features=2048, out_features=2048, bias=False, weight=IntxUnpackedToInt8Tensor(target_dtype=torch.int4, block_size=(1, 32), shape=torch.Size([2048, 2048]), dtype=torch.float32, device=cpu, activation_quantization=int8_asym_per_token))
+        (gate_proj): Linear(in_features=2048, out_features=16, bias=False, weight=IntxUnpackedToInt8Tensor(target_dtype=torch.int4, block_size=(1, 32), shape=torch.Size([16, 2048]), dtype=torch.float32, device=cpu, activation_quantization=int8_asym_per_token))
+        (q_norm_fn): RMSNorm()
+        (k_norm_fn): RMSNorm()
+        (ring): RingCache(
+          (positions): CachePositionsManager()
+        )
+      )
+      (feed_forward): FeedForward(
+        (w1): Linear(in_features=2048, out_features=7680, bias=False, weight=IntxUnpackedToInt8Tensor(target_dtype=torch.int4, block_size=(1, 32), shape=torch.Size([7680, 2048]), dtype=torch.float32, device=cpu, activation_quantization=int8_asym_per_token))
+        (w2): Linear(in_features=7680, out_features=2048, bias=False, weight=IntxUnpackedToInt8Tensor(target_dtype=torch.int4, block_size=(1, 32), shape=torch.Size([2048, 7680]), dtype=torch.float32, device=cpu, activation_quantization=int8_asym_per_token))
+        (w3): Linear(in_features=2048, out_features=7680, bias=False, weight=IntxUnpackedToInt8Tensor(target_dtype=torch.int4, block_size=(1, 32), shape=torch.Size([7680, 2048]), dtype=torch.float32, device=cpu, activation_quantization=int8_asym_per_token))
+      )
+      (attention_norm): RMSNorm()
+      (ffn_norm): RMSNorm()
+      (post_attention_norm): RMSNorm()
+      (post_ffn_norm): RMSNorm()
+    )
+    (13): Block(
+      (conv): ShortConv(
+        (B_proj): Linear(in_features=2048, out_features=2048, bias=False, weight=IntxUnpackedToInt8Tensor(target_dtype=torch.int4, block_size=(1, 32), shape=torch.Size([2048, 2048]), dtype=torch.float32, device=cpu, activation_quantization=int8_asym_per_token))
+        (C_proj): Linear(in_features=2048, out_features=2048, bias=False, weight=IntxUnpackedToInt8Tensor(target_dtype=torch.int4, block_size=(1, 32), shape=torch.Size([2048, 2048]), dtype=torch.float32, device=cpu, activation_quantization=int8_asym_per_token))
+        (x_proj): Linear(in_features=2048, out_features=2048, bias=False, weight=IntxUnpackedToInt8Tensor(target_dtype=torch.int4, block_size=(1, 32), shape=torch.Size([2048, 2048]), dtype=torch.float32, device=cpu, activation_quantization=int8_asym_per_token))
+        (out_proj): Linear(in_features=2048, out_features=2048, bias=False, weight=IntxUnpackedToInt8Tensor(target_dtype=torch.int4, block_size=(1, 32), shape=torch.Size([2048, 2048]), dtype=torch.float32, device=cpu, activation_quantization=int8_asym_per_token))
+        (conv): Conv1d(2048, 2048, kernel_size=(7,), stride=(1,), groups=2048, bias=False)
+      )
+      (feed_forward): FeedForward(
+        (w1): Linear(in_features=2048, out_features=7680, bias=False, weight=IntxUnpackedToInt8Tensor(target_dtype=torch.int4, block_size=(1, 32), shape=torch.Size([7680, 2048]), dtype=torch.float32, device=cpu, activation_quantization=int8_asym_per_token))
+        (w2): Linear(in_features=7680, out_features=2048, bias=False, weight=IntxUnpackedToInt8Tensor(target_dtype=torch.int4, block_size=(1, 32), shape=torch.Size([2048, 7680]), dtype=torch.float32, device=cpu, activation_quantization=int8_asym_per_token))
+        (w3): Linear(in_features=2048, out_features=7680, bias=False, weight=IntxUnpackedToInt8Tensor(target_dtype=torch.int4, block_size=(1, 32), shape=torch.Size([7680, 2048]), dtype=torch.float32, device=cpu, activation_quantization=int8_asym_per_token))
+      )
+      (attention_norm): RMSNorm()
+      (ffn_norm): RMSNorm()
+      (post_attention_norm): RMSNorm()
+      (post_ffn_norm): RMSNorm()
+    )
+    (14): Block(
+      (attention): Lfm3Attention(
+        (wq): Linear(in_features=2048, out_features=2048, bias=False, weight=IntxUnpackedToInt8Tensor(target_dtype=torch.int4, block_size=(1, 32), shape=torch.Size([2048, 2048]), dtype=torch.float32, device=cpu, activation_quantization=int8_asym_per_token))
+        (wk): Linear(in_features=2048, out_features=512, bias=False, weight=IntxUnpackedToInt8Tensor(target_dtype=torch.int4, block_size=(1, 32), shape=torch.Size([512, 2048]), dtype=torch.float32, device=cpu, activation_quantization=int8_asym_per_token))
+        (wv): Linear(in_features=2048, out_features=512, bias=False, weight=IntxUnpackedToInt8Tensor(target_dtype=torch.int4, block_size=(1, 32), shape=torch.Size([512, 2048]), dtype=torch.float32, device=cpu, activation_quantization=int8_asym_per_token))
+        (wo): Linear(in_features=2048, out_features=2048, bias=False, weight=IntxUnpackedToInt8Tensor(target_dtype=torch.int4, block_size=(1, 32), shape=torch.Size([2048, 2048]), dtype=torch.float32, device=cpu, activation_quantization=int8_asym_per_token))
+        (gate_proj): Linear(in_features=2048, out_features=16, bias=False, weight=IntxUnpackedToInt8Tensor(target_dtype=torch.int4, block_size=(1, 32), shape=torch.Size([16, 2048]), dtype=torch.float32, device=cpu, activation_quantization=int8_asym_per_token))
+        (q_norm_fn): RMSNorm()
+        (k_norm_fn): RMSNorm()
+        (kv_cache): CustomKVCache()
+        (SDPA): SDPACustom()
+      )
+      (feed_forward): FeedForward(
+        (w1): Linear(in_features=2048, out_features=7680, bias=False, weight=IntxUnpackedToInt8Tensor(target_dtype=torch.int4, block_size=(1, 32), shape=torch.Size([7680, 2048]), dtype=torch.float32, device=cpu, activation_quantization=int8_asym_per_token))
+        (w2): Linear(in_features=7680, out_features=2048, bias=False, weight=IntxUnpackedToInt8Tensor(target_dtype=torch.int4, block_size=(1, 32), shape=torch.Size([2048, 7680]), dtype=torch.float32, device=cpu, activation_quantization=int8_asym_per_token))
+        (w3): Linear(in_features=2048, out_features=7680, bias=False, weight=IntxUnpackedToInt8Tensor(target_dtype=torch.int4, block_size=(1, 32), shape=torch.Size([7680, 2048]), dtype=torch.float32, device=cpu, activation_quantization=int8_asym_per_token))
+      )
+      (attention_norm): RMSNorm()
+      (ffn_norm): RMSNorm()
+      (post_attention_norm): RMSNorm()
+      (post_ffn_norm): RMSNorm()
+    )
+    (15): Block(
+      (conv): ShortConv(
+        (B_proj): Linear(in_features=2048, out_features=2048, bias=False, weight=IntxUnpackedToInt8Tensor(target_dtype=torch.int4, block_size=(1, 32), shape=torch.Size([2048, 2048]), dtype=torch.float32, device=cpu, activation_quantization=int8_asym_per_token))
+        (C_proj): Linear(in_features=2048, out_features=2048, bias=False, weight=IntxUnpackedToInt8Tensor(target_dtype=torch.int4, block_size=(1, 32), shape=torch.Size([2048, 2048]), dtype=torch.float32, device=cpu, activation_quantization=int8_asym_per_token))
+        (x_proj): Linear(in_features=2048, out_features=2048, bias=False, weight=IntxUnpackedToInt8Tensor(target_dtype=torch.int4, block_size=(1, 32), shape=torch.Size([2048, 2048]), dtype=torch.float32, device=cpu, activation_quantization=int8_asym_per_token))
+        (out_proj): Linear(in_features=2048, out_features=2048, bias=False, weight=IntxUnpackedToInt8Tensor(target_dtype=torch.int4, block_size=(1, 32), shape=torch.Size([2048, 2048]), dtype=torch.float32, device=cpu, activation_quantization=int8_asym_per_token))
+        (conv): Conv1d(2048, 2048, kernel_size=(7,), stride=(1,), groups=2048, bias=False)
+      )
+      (feed_forward): FeedForward(
+        (w1): Linear(in_features=2048, out_features=7680, bias=False, weight=IntxUnpackedToInt8Tensor(target_dtype=torch.int4, block_size=(1, 32), shape=torch.Size([7680, 2048]), dtype=torch.float32, device=cpu, activation_quantization=int8_asym_per_token))
+        (w2): Linear(in_features=7680, out_features=2048, bias=False, weight=IntxUnpackedToInt8Tensor(target_dtype=torch.int4, block_size=(1, 32), shape=torch.Size([2048, 7680]), dtype=torch.float32, device=cpu, activation_quantization=int8_asym_per_token))
+        (w3): Linear(in_features=2048, out_features=7680, bias=False, weight=IntxUnpackedToInt8Tensor(target_dtype=torch.int4, block_size=(1, 32), shape=torch.Size([7680, 2048]), dtype=torch.float32, device=cpu, activation_quantization=int8_asym_per_token))
+      )
+      (attention_norm): RMSNorm()
+      (ffn_norm): RMSNorm()
+      (post_attention_norm): RMSNorm()
+      (post_ffn_norm): RMSNorm()
+    )
+    (16): Block(
+      (attention): Lfm3Attention(
+        (wq): Linear(in_features=2048, out_features=2048, bias=False, weight=IntxUnpackedToInt8Tensor(target_dtype=torch.int4, block_size=(1, 32), shape=torch.Size([2048, 2048]), dtype=torch.float32, device=cpu, activation_quantization=int8_asym_per_token))
+        (wk): Linear(in_features=2048, out_features=512, bias=False, weight=IntxUnpackedToInt8Tensor(target_dtype=torch.int4, block_size=(1, 32), shape=torch.Size([512, 2048]), dtype=torch.float32, device=cpu, activation_quantization=int8_asym_per_token))
+        (wv): Linear(in_features=2048, out_features=512, bias=False, weight=IntxUnpackedToInt8Tensor(target_dtype=torch.int4, block_size=(1, 32), shape=torch.Size([512, 2048]), dtype=torch.float32, device=cpu, activation_quantization=int8_asym_per_token))
+        (wo): Linear(in_features=2048, out_features=2048, bias=False, weight=IntxUnpackedToInt8Tensor(target_dtype=torch.int4, block_size=(1, 32), shape=torch.Size([2048, 2048]), dtype=torch.float32, device=cpu, activation_quantization=int8_asym_per_token))
+        (gate_proj): Linear(in_features=2048, out_features=16, bias=False, weight=IntxUnpackedToInt8Tensor(target_dtype=torch.int4, block_size=(1, 32), shape=torch.Size([16, 2048]), dtype=torch.float32, device=cpu, activation_quantization=int8_asym_per_token))
+        (q_norm_fn): RMSNorm()
+        (k_norm_fn): RMSNorm()
+        (ring): RingCache(
+          (positions): CachePositionsManager()
+        )
+      )
+      (feed_forward): FeedForward(
+        (w1): Linear(in_features=2048, out_features=7680, bias=False, weight=IntxUnpackedToInt8Tensor(target_dtype=torch.int4, block_size=(1, 32), shape=torch.Size([7680, 2048]), dtype=torch.float32, device=cpu, activation_quantization=int8_asym_per_token))
+        (w2): Linear(in_features=7680, out_features=2048, bias=False, weight=IntxUnpackedToInt8Tensor(target_dtype=torch.int4, block_size=(1, 32), shape=torch.Size([2048, 7680]), dtype=torch.float32, device=cpu, activation_quantization=int8_asym_per_token))
+        (w3): Linear(in_features=2048, out_features=7680, bias=False, weight=IntxUnpackedToInt8Tensor(target_dtype=torch.int4, block_size=(1, 32), shape=torch.Size([7680, 2048]), dtype=torch.float32, device=cpu, activation_quantization=int8_asym_per_token))
+      )
+      (attention_norm): RMSNorm()
+      (ffn_norm): RMSNorm()
+      (post_attention_norm): RMSNorm()
+      (post_ffn_norm): RMSNorm()
+    )
+    (17): Block(
+      (conv): ShortConv(
+        (B_proj): Linear(in_features=2048, out_features=2048, bias=False, weight=IntxUnpackedToInt8Tensor(target_dtype=torch.int4, block_size=(1, 32), shape=torch.Size([2048, 2048]), dtype=torch.float32, device=cpu, activation_quantization=int8_asym_per_token))
+        (C_proj): Linear(in_features=2048, out_features=2048, bias=False, weight=IntxUnpackedToInt8Tensor(target_dtype=torch.int4, block_size=(1, 32), shape=torch.Size([2048, 2048]), dtype=torch.float32, device=cpu, activation_quantization=int8_asym_per_token))
+        (x_proj): Linear(in_features=2048, out_features=2048, bias=False, weight=IntxUnpackedToInt8Tensor(target_dtype=torch.int4, block_size=(1, 32), shape=torch.Size([2048, 2048]), dtype=torch.float32, device=cpu, activation_quantization=int8_asym_per_token))
+        (out_proj): Linear(in_features=2048, out_features=2048, bias=False, weight=IntxUnpackedToInt8Tensor(target_dtype=torch.int4, block_size=(1, 32), shape=torch.Size([2048, 2048]), dtype=torch.float32, device=cpu, activation_quantization=int8_asym_per_token))
+        (conv): Conv1d(2048, 2048, kernel_size=(7,), stride=(1,), groups=2048, bias=False)
+      )
+      (feed_forward): FeedForward(
+        (w1): Linear(in_features=2048, out_features=7680, bias=False, weight=IntxUnpackedToInt8Tensor(target_dtype=torch.int4, block_size=(1, 32), shape=torch.Size([7680, 2048]), dtype=torch.float32, device=cpu, activation_quantization=int8_asym_per_token))
+        (w2): Linear(in_features=7680, out_features=2048, bias=False, weight=IntxUnpackedToInt8Tensor(target_dtype=torch.int4, block_size=(1, 32), shape=torch.Size([2048, 7680]), dtype=torch.float32, device=cpu, activation_quantization=int8_asym_per_token))
+        (w3): Linear(in_features=2048, out_features=7680, bias=False, weight=IntxUnpackedToInt8Tensor(target_dtype=torch.int4, block_size=(1, 32), shape=torch.Size([7680, 2048]), dtype=torch.float32, device=cpu, activation_quantization=int8_asym_per_token))
+      )
+      (attention_norm): RMSNorm()
+      (ffn_norm): RMSNorm()
+      (post_attention_norm): RMSNorm()
+      (post_ffn_norm): RMSNorm()
+    )
+    (18): Block(
+      (attention): Lfm3Attention(
+        (wq): Linear(in_features=2048, out_features=2048, bias=False, weight=IntxUnpackedToInt8Tensor(target_dtype=torch.int4, block_size=(1, 32), shape=torch.Size([2048, 2048]), dtype=torch.float32, device=cpu, activation_quantization=int8_asym_per_token))
+        (wk): Linear(in_features=2048, out_features=512, bias=False, weight=IntxUnpackedToInt8Tensor(target_dtype=torch.int4, block_size=(1, 32), shape=torch.Size([512, 2048]), dtype=torch.float32, device=cpu, activation_quantization=int8_asym_per_token))
+        (wv): Linear(in_features=2048, out_features=512, bias=False, weight=IntxUnpackedToInt8Tensor(target_dtype=torch.int4, block_size=(1, 32), shape=torch.Size([512, 2048]), dtype=torch.float32, device=cpu, activation_quantization=int8_asym_per_token))
+        (wo): Linear(in_features=2048, out_features=2048, bias=False, weight=IntxUnpackedToInt8Tensor(target_dtype=torch.int4, block_size=(1, 32), shape=torch.Size([2048, 2048]), dtype=torch.float32, device=cpu, activation_quantization=int8_asym_per_token))
+        (gate_proj): Linear(in_features=2048, out_features=16, bias=False, weight=IntxUnpackedToInt8Tensor(target_dtype=torch.int4, block_size=(1, 32), shape=torch.Size([16, 2048]), dtype=torch.float32, device=cpu, activation_quantization=int8_asym_per_token))
+        (q_norm_fn): RMSNorm()
+        (k_norm_fn): RMSNorm()
+        (kv_cache): CustomKVCache()
+        (SDPA): SDPACustom()
+      )
+      (feed_forward): FeedForward(
+        (w1): Linear(in_features=2048, out_features=7680, bias=False, weight=IntxUnpackedToInt8Tensor(target_dtype=torch.int4, block_size=(1, 32), shape=torch.Size([7680, 2048]), dtype=torch.float32, device=cpu, activation_quantization=int8_asym_per_token))
+        (w2): Linear(in_features=7680, out_features=2048, bias=False, weight=IntxUnpackedToInt8Tensor(target_dtype=torch.int4, block_size=(1, 32), shape=torch.Size([2048, 7680]), dtype=torch.float32, device=cpu, activation_quantization=int8_asym_per_token))
+        (w3): Linear(in_features=2048, out_features=7680, bias=False, weight=IntxUnpackedToInt8Tensor(target_dtype=torch.int4, block_size=(1, 32), shape=torch.Size([7680, 2048]), dtype=torch.float32, device=cpu, activation_quantization=int8_asym_per_token))
+      )
+      (attention_norm): RMSNorm()
+      (ffn_norm): RMSNorm()
+      (post_attention_norm): RMSNorm()
+      (post_ffn_norm): RMSNorm()
+    )
+    (19): Block(
+      (conv): ShortConv(
+        (B_proj): Linear(in_features=2048, out_features=2048, bias=False, weight=IntxUnpackedToInt8Tensor(target_dtype=torch.int4, block_size=(1, 32), shape=torch.Size([2048, 2048]), dtype=torch.float32, device=cpu, activation_quantization=int8_asym_per_token))
+        (C_proj): Linear(in_features=2048, out_features=2048, bias=False, weight=IntxUnpackedToInt8Tensor(target_dtype=torch.int4, block_size=(1, 32), shape=torch.Size([2048, 2048]), dtype=torch.float32, device=cpu, activation_quantization=int8_asym_per_token))
+        (x_proj): Linear(in_features=2048, out_features=2048, bias=False, weight=IntxUnpackedToInt8Tensor(target_dtype=torch.int4, block_size=(1, 32), shape=torch.Size([2048, 2048]), dtype=torch.float32, device=cpu, activation_quantization=int8_asym_per_token))
+        (out_proj): Linear(in_features=2048, out_features=2048, bias=False, weight=IntxUnpackedToInt8Tensor(target_dtype=torch.int4, block_size=(1, 32), shape=torch.Size([2048, 2048]), dtype=torch.float32, device=cpu, activation_quantization=int8_asym_per_token))
+        (conv): Conv1d(2048, 2048, kernel_size=(7,), stride=(1,), groups=2048, bias=False)
+      )
+      (feed_forward): FeedForward(
+        (w1): Linear(in_features=2048, out_features=7680, bias=False, weight=IntxUnpackedToInt8Tensor(target_dtype=torch.int4, block_size=(1, 32), shape=torch.Size([7680, 2048]), dtype=torch.float32, device=cpu, activation_quantization=int8_asym_per_token))
+        (w2): Linear(in_features=7680, out_features=2048, bias=False, weight=IntxUnpackedToInt8Tensor(target_dtype=torch.int4, block_size=(1, 32), shape=torch.Size([2048, 7680]), dtype=torch.float32, device=cpu, activation_quantization=int8_asym_per_token))
+        (w3): Linear(in_features=2048, out_features=7680, bias=False, weight=IntxUnpackedToInt8Tensor(target_dtype=torch.int4, block_size=(1, 32), shape=torch.Size([7680, 2048]), dtype=torch.float32, device=cpu, activation_quantization=int8_asym_per_token))
+      )
+      (attention_norm): RMSNorm()
+      (ffn_norm): RMSNorm()
+      (post_attention_norm): RMSNorm()
+      (post_ffn_norm): RMSNorm()
+    )
+    (20): Block(
+      (attention): Lfm3Attention(
+        (wq): Linear(in_features=2048, out_features=2048, bias=False, weight=IntxUnpackedToInt8Tensor(target_dtype=torch.int4, block_size=(1, 32), shape=torch.Size([2048, 2048]), dtype=torch.float32, device=cpu, activation_quantization=int8_asym_per_token))
+        (wk): Linear(in_features=2048, out_features=512, bias=False, weight=IntxUnpackedToInt8Tensor(target_dtype=torch.int4, block_size=(1, 32), shape=torch.Size([512, 2048]), dtype=torch.float32, device=cpu, activation_quantization=int8_asym_per_token))
+        (wv): Linear(in_features=2048, out_features=512, bias=False, weight=IntxUnpackedToInt8Tensor(target_dtype=torch.int4, block_size=(1, 32), shape=torch.Size([512, 2048]), dtype=torch.float32, device=cpu, activation_quantization=int8_asym_per_token))
+        (wo): Linear(in_features=2048, out_features=2048, bias=False, weight=IntxUnpackedToInt8Tensor(target_dtype=torch.int4, block_size=(1, 32), shape=torch.Size([2048, 2048]), dtype=torch.float32, device=cpu, activation_quantization=int8_asym_per_token))
+        (gate_proj): Linear(in_features=2048, out_features=16, bias=False, weight=IntxUnpackedToInt8Tensor(target_dtype=torch.int4, block_size=(1, 32), shape=torch.Size([16, 2048]), dtype=torch.float32, device=cpu, activation_quantization=int8_asym_per_token))
+        (q_norm_fn): RMSNorm()
+        (k_norm_fn): RMSNorm()
+        (ring): RingCache(
+          (positions): CachePositionsManager()
+        )
+      )
+      (feed_forward): FeedForward(
+        (w1): Linear(in_features=2048, out_features=7680, bias=False, weight=IntxUnpackedToInt8Tensor(target_dtype=torch.int4, block_size=(1, 32), shape=torch.Size([7680, 2048]), dtype=torch.float32, device=cpu, activation_quantization=int8_asym_per_token))
+        (w2): Linear(in_features=7680, out_features=2048, bias=False, weight=IntxUnpackedToInt8Tensor(target_dtype=torch.int4, block_size=(1, 32), shape=torch.Size([2048, 7680]), dtype=torch.float32, device=cpu, activation_quantization=int8_asym_per_token))
+        (w3): Linear(in_features=2048, out_features=7680, bias=False, weight=IntxUnpackedToInt8Tensor(target_dtype=torch.int4, block_size=(1, 32), shape=torch.Size([7680, 2048]), dtype=torch.float32, device=cpu, activation_quantization=int8_asym_per_token))
+      )
+      (attention_norm): RMSNorm()
+      (ffn_norm): RMSNorm()
+      (post_attention_norm): RMSNorm()
+      (post_ffn_norm): RMSNorm()
+    )
+    (21): Block(
+      (conv): ShortConv(
+        (B_proj): Linear(in_features=2048, out_features=2048, bias=False, weight=IntxUnpackedToInt8Tensor(target_dtype=torch.int4, block_size=(1, 32), shape=torch.Size([2048, 2048]), dtype=torch.float32, device=cpu, activation_quantization=int8_asym_per_token))
+        (C_proj): Linear(in_features=2048, out_features=2048, bias=False, weight=IntxUnpackedToInt8Tensor(target_dtype=torch.int4, block_size=(1, 32), shape=torch.Size([2048, 2048]), dtype=torch.float32, device=cpu, activation_quantization=int8_asym_per_token))
+        (x_proj): Linear(in_features=2048, out_features=2048, bias=False, weight=IntxUnpackedToInt8Tensor(target_dtype=torch.int4, block_size=(1, 32), shape=torch.Size([2048, 2048]), dtype=torch.float32, device=cpu, activation_quantization=int8_asym_per_token))
+        (out_proj): Linear(in_features=2048, out_features=2048, bias=False, weight=IntxUnpackedToInt8Tensor(target_dtype=torch.int4, block_size=(1, 32), shape=torch.Size([2048, 2048]), dtype=torch.float32, device=cpu, activation_quantization=int8_asym_per_token))
+        (conv): Conv1d(2048, 2048, kernel_size=(7,), stride=(1,), groups=2048, bias=False)
+      )
+      (feed_forward): FeedForward(
+        (w1): Linear(in_features=2048, out_features=7680, bias=False, weight=IntxUnpackedToInt8Tensor(target_dtype=torch.int4, block_size=(1, 32), shape=torch.Size([7680, 2048]), dtype=torch.float32, device=cpu, activation_quantization=int8_asym_per_token))
+        (w2): Linear(in_features=7680, out_features=2048, bias=False, weight=IntxUnpackedToInt8Tensor(target_dtype=torch.int4, block_size=(1, 32), shape=torch.Size([2048, 7680]), dtype=torch.float32, device=cpu, activation_quantization=int8_asym_per_token))
+        (w3): Linear(in_features=2048, out_features=7680, bias=False, weight=IntxUnpackedToInt8Tensor(target_dtype=torch.int4, block_size=(1, 32), shape=torch.Size([7680, 2048]), dtype=torch.float32, device=cpu, activation_quantization=int8_asym_per_token))
+      )
+      (attention_norm): RMSNorm()
+      (ffn_norm): RMSNorm()
+      (post_attention_norm): RMSNorm()
+      (post_ffn_norm): RMSNorm()
+    )
+    (22): Block(
+      (attention): Lfm3Attention(
+        (wq): Linear(in_features=2048, out_features=2048, bias=False, weight=IntxUnpackedToInt8Tensor(target_dtype=torch.int4, block_size=(1, 32), shape=torch.Size([2048, 2048]), dtype=torch.float32, device=cpu, activation_quantization=int8_asym_per_token))
+        (wk): Linear(in_features=2048, out_features=512, bias=False, weight=IntxUnpackedToInt8Tensor(target_dtype=torch.int4, block_size=(1, 32), shape=torch.Size([512, 2048]), dtype=torch.float32, device=cpu, activation_quantization=int8_asym_per_token))
+        (wv): Linear(in_features=2048, out_features=512, bias=False, weight=IntxUnpackedToInt8Tensor(target_dtype=torch.int4, block_size=(1, 32), shape=torch.Size([512, 2048]), dtype=torch.float32, device=cpu, activation_quantization=int8_asym_per_token))
+        (wo): Linear(in_features=2048, out_features=2048, bias=False, weight=IntxUnpackedToInt8Tensor(target_dtype=torch.int4, block_size=(1, 32), shape=torch.Size([2048, 2048]), dtype=torch.float32, device=cpu, activation_quantization=int8_asym_per_token))
+        (gate_proj): Linear(in_features=2048, out_features=16, bias=False, weight=IntxUnpackedToInt8Tensor(target_dtype=torch.int4, block_size=(1, 32), shape=torch.Size([16, 2048]), dtype=torch.float32, device=cpu, activation_quantization=int8_asym_per_token))
+        (q_norm_fn): RMSNorm()
+        (k_norm_fn): RMSNorm()
+        (kv_cache): CustomKVCache()
+        (SDPA): SDPACustom()
+      )
+      (feed_forward): FeedForward(
+        (w1): Linear(in_features=2048, out_features=7680, bias=False, weight=IntxUnpackedToInt8Tensor(target_dtype=torch.int4, block_size=(1, 32), shape=torch.Size([7680, 2048]), dtype=torch.float32, device=cpu, activation_quantization=int8_asym_per_token))
+        (w2): Linear(in_features=7680, out_features=2048, bias=False, weight=IntxUnpackedToInt8Tensor(target_dtype=torch.int4, block_size=(1, 32), shape=torch.Size([2048, 7680]), dtype=torch.float32, device=cpu, activation_quantization=int8_asym_per_token))
+        (w3): Linear(in_features=2048, out_features=7680, bias=False, weight=IntxUnpackedToInt8Tensor(target_dtype=torch.int4, block_size=(1, 32), shape=torch.Size([7680, 2048]), dtype=torch.float32, device=cpu, activation_quantization=int8_asym_per_token))
+      )
+      (attention_norm): RMSNorm()
+      (ffn_norm): RMSNorm()
+      (post_attention_norm): RMSNorm()
+      (post_ffn_norm): RMSNorm()
+    )
+    (23): Block(
+      (conv): ShortConv(
+        (B_proj): Linear(in_features=2048, out_features=2048, bias=False, weight=IntxUnpackedToInt8Tensor(target_dtype=torch.int4, block_size=(1, 32), shape=torch.Size([2048, 2048]), dtype=torch.float32, device=cpu, activation_quantization=int8_asym_per_token))
+        (C_proj): Linear(in_features=2048, out_features=2048, bias=False, weight=IntxUnpackedToInt8Tensor(target_dtype=torch.int4, block_size=(1, 32), shape=torch.Size([2048, 2048]), dtype=torch.float32, device=cpu, activation_quantization=int8_asym_per_token))
+        (x_proj): Linear(in_features=2048, out_features=2048, bias=False, weight=IntxUnpackedToInt8Tensor(target_dtype=torch.int4, block_size=(1, 32), shape=torch.Size([2048, 2048]), dtype=torch.float32, device=cpu, activation_quantization=int8_asym_per_token))
+        (out_proj): Linear(in_features=2048, out_features=2048, bias=False, weight=IntxUnpackedToInt8Tensor(target_dtype=torch.int4, block_size=(1, 32), shape=torch.Size([2048, 2048]), dtype=torch.float32, device=cpu, activation_quantization=int8_asym_per_token))
+        (conv): Conv1d(2048, 2048, kernel_size=(7,), stride=(1,), groups=2048, bias=False)
+      )
+      (feed_forward): FeedForward(
+        (w1): Linear(in_features=2048, out_features=7680, bias=False, weight=IntxUnpackedToInt8Tensor(target_dtype=torch.int4, block_size=(1, 32), shape=torch.Size([7680, 2048]), dtype=torch.float32, device=cpu, activation_quantization=int8_asym_per_token))
+        (w2): Linear(in_features=7680, out_features=2048, bias=False, weight=IntxUnpackedToInt8Tensor(target_dtype=torch.int4, block_size=(1, 32), shape=torch.Size([2048, 7680]), dtype=torch.float32, device=cpu, activation_quantization=int8_asym_per_token))
+        (w3): Linear(in_features=2048, out_features=7680, bias=False, weight=IntxUnpackedToInt8Tensor(target_dtype=torch.int4, block_size=(1, 32), shape=torch.Size([7680, 2048]), dtype=torch.float32, device=cpu, activation_quantization=int8_asym_per_token))
+      )
+      (attention_norm): RMSNorm()
+      (ffn_norm): RMSNorm()
+      (post_attention_norm): RMSNorm()
+      (post_ffn_norm): RMSNorm()
+    )
+  )
+  (rope): Rope()
+  (norm): RMSNorm()
+  (output): Linear(in_features=2048, out_features=128000, bias=False, weight=IntxUnpackedToInt8Tensor(target_dtype=torch.int4, block_size=(1, 32), shape=torch.Size([128000, 2048]), dtype=torch.float32, device=cpu, activation_quantization=int8_asym_per_token))
+)
+[2026-10-31 21:25:56,284][root][INFO] - Exporting with:
+[2026-10-31 21:25:56,285][root][INFO] - inputs: (tensor([[2, 3, 4]]), {'input_pos': tensor([0])})
+[2026-10-31 21:25:56,285][root][INFO] - kwargs: None
+[2026-10-31 21:25:56,285][root][INFO] - dynamic shapes: ({1: Dim('token_dim', min=0, max=2047)}, {'input_pos': {0: 1}})
+/home/ubuntu/execupack/.venv/lib/python3.11/site-packages/torch/_dynamo/utils.py:4415: FutureWarning: _check_is_size will be removed in a future PyTorch release along with guard_size_oblivious.     Use _check(i >= 0) instead.
+  return node.target(*args, **kwargs)  # type: ignore[operator]
+/home/ubuntu/execupack/.venv/lib/python3.11/site-packages/executorch/extension/llm/custom_ops/custom_ops.py:317: FutureWarning: _check_is_size will be removed in a future PyTorch release along with guard_size_oblivious.     Use _check(i >= 0) instead.
+  torch._check_is_size(start_pos)
+/home/ubuntu/execupack/.venv/lib/python3.11/site-packages/torch/fx/interpreter.py:377: FutureWarning: _check_is_size will be removed in a future PyTorch release along with guard_size_oblivious.     Use _check(i >= 0) instead.
+  return target(*args, **kwargs)
+/home/ubuntu/execupack/.venv/lib/python3.11/site-packages/executorch/extension/llm/custom_ops/custom_ops.py:317: FutureWarning: _check_is_size will be removed in a future PyTorch release along with guard_size_oblivious.     Use _check(i >= 0) instead.
+  torch._check_is_size(start_pos)
+/home/ubuntu/execupack/.venv/lib/python3.11/site-packages/executorch/extension/llm/custom_ops/custom_ops.py:317: FutureWarning: _check_is_size will be removed in a future PyTorch release along with guard_size_oblivious.     Use _check(i >= 0) instead.
+  torch._check_is_size(start_pos)
+/home/ubuntu/execupack/.venv/lib/python3.11/site-packages/executorch/extension/llm/custom_ops/custom_ops.py:317: FutureWarning: _check_is_size will be removed in a future PyTorch release along with guard_size_oblivious.     Use _check(i >= 0) instead.
+  torch._check_is_size(start_pos)
+[2026-10-31 21:26:36,350][root][INFO] - Running canonical pass: RemoveRedundantTransposes
+[2026-10-31 21:26:36,492][root][INFO] - Lowering model using following partitioner(s): 
+[2026-10-31 21:26:36,492][root][INFO] - --> XnnpackDynamicallyQuantizedPartitioner
+[2026-10-31 21:26:36,492][root][INFO] - --> XnnpackPartitioner
+[2026-10-31 21:26:36,492][root][INFO] - Using pt2e [] to quantizing the model...
+[2026-10-31 21:26:36,492][root][INFO] - No quantizer provided, passing...
+[2026-10-31 21:26:36,492][root][INFO] - Re-exporting with:
+[2026-10-31 21:26:36,492][root][INFO] - inputs: (tensor([[2, 3, 4]]), {'input_pos': tensor([0])})
+[2026-10-31 21:26:36,492][root][INFO] - kwargs: None
+[2026-10-31 21:26:36,492][root][INFO] - dynamic shapes: ({1: Dim('token_dim', min=0, max=2047)}, {'input_pos': {0: 1}})
+/home/ubuntu/execupack/.venv/lib/python3.11/site-packages/executorch/extension/llm/custom_ops/custom_ops.py:317: FutureWarning: _check_is_size will be removed in a future PyTorch release along with guard_size_oblivious.     Use _check(i >= 0) instead.
+  torch._check_is_size(start_pos)
+/home/ubuntu/execupack/.venv/lib/python3.11/site-packages/executorch/extension/llm/custom_ops/custom_ops.py:317: FutureWarning: _check_is_size will be removed in a future PyTorch release along with guard_size_oblivious.     Use _check(i >= 0) instead.
+  torch._check_is_size(start_pos)
+/home/ubuntu/execupack/.venv/lib/python3.11/site-packages/executorch/extension/llm/custom_ops/custom_ops.py:317: FutureWarning: _check_is_size will be removed in a future PyTorch release along with guard_size_oblivious.     Use _check(i >= 0) instead.
+  torch._check_is_size(start_pos)
+/home/ubuntu/execupack/.venv/lib/python3.11/site-packages/executorch/extension/llm/custom_ops/custom_ops.py:317: FutureWarning: _check_is_size will be removed in a future PyTorch release along with guard_size_oblivious.     Use _check(i >= 0) instead.
+  torch._check_is_size(start_pos)
+/home/ubuntu/execupack/.venv/lib/python3.11/site-packages/executorch/extension/llm/custom_ops/custom_ops.py:317: FutureWarning: _check_is_size will be removed in a future PyTorch release along with guard_size_oblivious.     Use _check(i >= 0) instead.
+  torch._check_is_size(start_pos)
+/home/ubuntu/execupack/.venv/lib/python3.11/site-packages/executorch/extension/llm/custom_ops/custom_ops.py:317: FutureWarning: _check_is_size will be removed in a future PyTorch release along with guard_size_oblivious.     Use _check(i >= 0) instead.
+  torch._check_is_size(start_pos)
+/home/ubuntu/execupack/.venv/lib/python3.11/site-packages/executorch/extension/llm/custom_ops/custom_ops.py:317: FutureWarning: _check_is_size will be removed in a future PyTorch release along with guard_size_oblivious.     Use _check(i >= 0) instead.
+  torch._check_is_size(start_pos)
+/home/ubuntu/execupack/.venv/lib/python3.11/site-packages/executorch/extension/llm/custom_ops/custom_ops.py:317: FutureWarning: _check_is_size will be removed in a future PyTorch release along with guard_size_oblivious.     Use _check(i >= 0) instead.
+  torch._check_is_size(start_pos)
+/home/ubuntu/execupack/.venv/lib/python3.11/site-packages/executorch/extension/llm/custom_ops/custom_ops.py:317: FutureWarning: _check_is_size will be removed in a future PyTorch release along with guard_size_oblivious.     Use _check(i >= 0) instead.
+  torch._check_is_size(start_pos)
+/home/ubuntu/execupack/.venv/lib/python3.11/site-packages/executorch/extension/llm/custom_ops/custom_ops.py:317: FutureWarning: _check_is_size will be removed in a future PyTorch release along with guard_size_oblivious.     Use _check(i >= 0) instead.
+  torch._check_is_size(start_pos)
+/home/ubuntu/execupack/.venv/lib/python3.11/site-packages/executorch/extension/llm/custom_ops/custom_ops.py:317: FutureWarning: _check_is_size will be removed in a future PyTorch release along with guard_size_oblivious.     Use _check(i >= 0) instead.
+  torch._check_is_size(start_pos)
+/home/ubuntu/execupack/.venv/lib/python3.11/site-packages/executorch/extension/llm/custom_ops/custom_ops.py:317: FutureWarning: _check_is_size will be removed in a future PyTorch release along with guard_size_oblivious.     Use _check(i >= 0) instead.
+  torch._check_is_size(start_pos)
+/home/ubuntu/execupack/.venv/lib/python3.11/site-packages/executorch/extension/llm/custom_ops/custom_ops.py:317: FutureWarning: _check_is_size will be removed in a future PyTorch release along with guard_size_oblivious.     Use _check(i >= 0) instead.
+  torch._check_is_size(start_pos)
+/home/ubuntu/execupack/.venv/lib/python3.11/site-packages/executorch/extension/llm/custom_ops/custom_ops.py:317: FutureWarning: _check_is_size will be removed in a future PyTorch release along with guard_size_oblivious.     Use _check(i >= 0) instead.
+  torch._check_is_size(start_pos)
+/home/ubuntu/execupack/.venv/lib/python3.11/site-packages/executorch/extension/llm/custom_ops/custom_ops.py:317: FutureWarning: _check_is_size will be removed in a future PyTorch release along with guard_size_oblivious.     Use _check(i >= 0) instead.
+  torch._check_is_size(start_pos)
+/home/ubuntu/execupack/.venv/lib/python3.11/site-packages/executorch/extension/llm/custom_ops/custom_ops.py:317: FutureWarning: _check_is_size will be removed in a future PyTorch release along with guard_size_oblivious.     Use _check(i >= 0) instead.
+  torch._check_is_size(start_pos)
+/home/ubuntu/execupack/.venv/lib/python3.11/site-packages/executorch/extension/llm/custom_ops/custom_ops.py:317: FutureWarning: _check_is_size will be removed in a future PyTorch release along with guard_size_oblivious.     Use _check(i >= 0) instead.
+  torch._check_is_size(start_pos)
+/home/ubuntu/execupack/.venv/lib/python3.11/site-packages/executorch/extension/llm/custom_ops/custom_ops.py:317: FutureWarning: _check_is_size will be removed in a future PyTorch release along with guard_size_oblivious.     Use _check(i >= 0) instead.
+  torch._check_is_size(start_pos)
+/home/ubuntu/execupack/.venv/lib/python3.11/site-packages/executorch/extension/llm/custom_ops/custom_ops.py:317: FutureWarning: _check_is_size will be removed in a future PyTorch release along with guard_size_oblivious.     Use _check(i >= 0) instead.
+  torch._check_is_size(start_pos)
+/home/ubuntu/execupack/.venv/lib/python3.11/site-packages/executorch/extension/llm/custom_ops/custom_ops.py:317: FutureWarning: _check_is_size will be removed in a future PyTorch release along with guard_size_oblivious.     Use _check(i >= 0) instead.
+  torch._check_is_size(start_pos)
+/home/ubuntu/execupack/.venv/lib/python3.11/site-packages/executorch/extension/llm/custom_ops/custom_ops.py:317: FutureWarning: _check_is_size will be removed in a future PyTorch release along with guard_size_oblivious.     Use _check(i >= 0) instead.
+  torch._check_is_size(start_pos)
+/home/ubuntu/execupack/.venv/lib/python3.11/site-packages/executorch/extension/llm/custom_ops/custom_ops.py:317: FutureWarning: _check_is_size will be removed in a future PyTorch release along with guard_size_oblivious.     Use _check(i >= 0) instead.
+  torch._check_is_size(start_pos)
+/home/ubuntu/execupack/.venv/lib/python3.11/site-packages/executorch/extension/llm/custom_ops/custom_ops.py:317: FutureWarning: _check_is_size will be removed in a future PyTorch release along with guard_size_oblivious.     Use _check(i >= 0) instead.
+  torch._check_is_size(start_pos)
+/home/ubuntu/execupack/.venv/lib/python3.11/site-packages/executorch/extension/llm/custom_ops/custom_ops.py:317: FutureWarning: _check_is_size will be removed in a future PyTorch release along with guard_size_oblivious.     Use _check(i >= 0) instead.
+  torch._check_is_size(start_pos)
+/home/ubuntu/execupack/.venv/lib/python3.11/site-packages/executorch/extension/llm/custom_ops/custom_ops.py:317: FutureWarning: _check_is_size will be removed in a future PyTorch release along with guard_size_oblivious.     Use _check(i >= 0) instead.
+  torch._check_is_size(start_pos)
+/home/ubuntu/execupack/.venv/lib/python3.11/site-packages/executorch/extension/llm/custom_ops/custom_ops.py:317: FutureWarning: _check_is_size will be removed in a future PyTorch release along with guard_size_oblivious.     Use _check(i >= 0) instead.
+  torch._check_is_size(start_pos)
+/home/ubuntu/execupack/.venv/lib/python3.11/site-packages/executorch/extension/llm/custom_ops/custom_ops.py:317: FutureWarning: _check_is_size will be removed in a future PyTorch release along with guard_size_oblivious.     Use _check(i >= 0) instead.
+  torch._check_is_size(start_pos)
+/home/ubuntu/execupack/.venv/lib/python3.11/site-packages/executorch/extension/llm/custom_ops/custom_ops.py:317: FutureWarning: _check_is_size will be removed in a future PyTorch release along with guard_size_oblivious.     Use _check(i >= 0) instead.
+  torch._check_is_size(start_pos)
+/home/ubuntu/execupack/.venv/lib/python3.11/site-packages/executorch/extension/llm/custom_ops/custom_ops.py:317: FutureWarning: _check_is_size will be removed in a future PyTorch release along with guard_size_oblivious.     Use _check(i >= 0) instead.
+  torch._check_is_size(start_pos)
+/home/ubuntu/execupack/.venv/lib/python3.11/site-packages/executorch/extension/llm/custom_ops/custom_ops.py:317: FutureWarning: _check_is_size will be removed in a future PyTorch release along with guard_size_oblivious.     Use _check(i >= 0) instead.
+  torch._check_is_size(start_pos)
+/home/ubuntu/execupack/.venv/lib/python3.11/site-packages/executorch/extension/llm/custom_ops/custom_ops.py:317: FutureWarning: _check_is_size will be removed in a future PyTorch release along with guard_size_oblivious.     Use _check(i >= 0) instead.
+  torch._check_is_size(start_pos)
+/home/ubuntu/execupack/.venv/lib/python3.11/site-packages/executorch/extension/llm/custom_ops/custom_ops.py:317: FutureWarning: _check_is_size will be removed in a future PyTorch release along with guard_size_oblivious.     Use _check(i >= 0) instead.
+  torch._check_is_size(start_pos)
+/home/ubuntu/execupack/.venv/lib/python3.11/site-packages/executorch/extension/llm/custom_ops/custom_ops.py:317: FutureWarning: _check_is_size will be removed in a future PyTorch release along with guard_size_oblivious.     Use _check(i >= 0) instead.
+  torch._check_is_size(start_pos)
+/home/ubuntu/execupack/.venv/lib/python3.11/site-packages/executorch/extension/llm/custom_ops/custom_ops.py:317: FutureWarning: _check_is_size will be removed in a future PyTorch release along with guard_size_oblivious.     Use _check(i >= 0) instead.
+  torch._check_is_size(start_pos)
+/home/ubuntu/execupack/.venv/lib/python3.11/site-packages/executorch/extension/llm/custom_ops/custom_ops.py:317: FutureWarning: _check_is_size will be removed in a future PyTorch release along with guard_size_oblivious.     Use _check(i >= 0) instead.
+  torch._check_is_size(start_pos)
+/home/ubuntu/execupack/.venv/lib/python3.11/site-packages/executorch/extension/llm/custom_ops/custom_ops.py:317: FutureWarning: _check_is_size will be removed in a future PyTorch release along with guard_size_oblivious.     Use _check(i >= 0) instead.
+  torch._check_is_size(start_pos)
+/home/ubuntu/execupack/.venv/lib/python3.11/site-packages/executorch/extension/llm/custom_ops/custom_ops.py:317: FutureWarning: _check_is_size will be removed in a future PyTorch release along with guard_size_oblivious.     Use _check(i >= 0) instead.
+  torch._check_is_size(start_pos)
+/home/ubuntu/execupack/.venv/lib/python3.11/site-packages/executorch/extension/llm/custom_ops/custom_ops.py:317: FutureWarning: _check_is_size will be removed in a future PyTorch release along with guard_size_oblivious.     Use _check(i >= 0) instead.
+  torch._check_is_size(start_pos)
+/home/ubuntu/execupack/.venv/lib/python3.11/site-packages/executorch/extension/llm/custom_ops/custom_ops.py:317: FutureWarning: _check_is_size will be removed in a future PyTorch release along with guard_size_oblivious.     Use _check(i >= 0) instead.
+  torch._check_is_size(start_pos)
+/home/ubuntu/execupack/.venv/lib/python3.11/site-packages/executorch/extension/llm/custom_ops/custom_ops.py:317: FutureWarning: _check_is_size will be removed in a future PyTorch release along with guard_size_oblivious.     Use _check(i >= 0) instead.
+  torch._check_is_size(start_pos)
+/home/ubuntu/execupack/.venv/lib/python3.11/site-packages/executorch/extension/llm/custom_ops/custom_ops.py:317: FutureWarning: _check_is_size will be removed in a future PyTorch release along with guard_size_oblivious.     Use _check(i >= 0) instead.
+  torch._check_is_size(start_pos)
+/home/ubuntu/execupack/.venv/lib/python3.11/site-packages/executorch/extension/llm/custom_ops/custom_ops.py:317: FutureWarning: _check_is_size will be removed in a future PyTorch release along with guard_size_oblivious.     Use _check(i >= 0) instead.
+  torch._check_is_size(start_pos)
+/home/ubuntu/execupack/.venv/lib/python3.11/site-packages/executorch/extension/llm/custom_ops/custom_ops.py:317: FutureWarning: _check_is_size will be removed in a future PyTorch release along with guard_size_oblivious.     Use _check(i >= 0) instead.
+  torch._check_is_size(start_pos)
+/home/ubuntu/execupack/.venv/lib/python3.11/site-packages/executorch/extension/llm/custom_ops/custom_ops.py:317: FutureWarning: _check_is_size will be removed in a future PyTorch release along with guard_size_oblivious.     Use _check(i >= 0) instead.
+  torch._check_is_size(start_pos)
+/home/ubuntu/execupack/.venv/lib/python3.11/site-packages/executorch/extension/llm/custom_ops/custom_ops.py:317: FutureWarning: _check_is_size will be removed in a future PyTorch release along with guard_size_oblivious.     Use _check(i >= 0) instead.
+  torch._check_is_size(start_pos)
+/home/ubuntu/execupack/.venv/lib/python3.11/site-packages/executorch/extension/llm/custom_ops/custom_ops.py:317: FutureWarning: _check_is_size will be removed in a future PyTorch release along with guard_size_oblivious.     Use _check(i >= 0) instead.
+  torch._check_is_size(start_pos)
+/home/ubuntu/execupack/.venv/lib/python3.11/site-packages/executorch/extension/llm/custom_ops/custom_ops.py:317: FutureWarning: _check_is_size will be removed in a future PyTorch release along with guard_size_oblivious.     Use _check(i >= 0) instead.
+  torch._check_is_size(start_pos)
+/home/ubuntu/execupack/.venv/lib/python3.11/site-packages/executorch/extension/llm/custom_ops/custom_ops.py:317: FutureWarning: _check_is_size will be removed in a future PyTorch release along with guard_size_oblivious.     Use _check(i >= 0) instead.
+  torch._check_is_size(start_pos)
+/home/ubuntu/execupack/.venv/lib/python3.11/site-packages/executorch/extension/llm/custom_ops/custom_ops.py:317: FutureWarning: _check_is_size will be removed in a future PyTorch release along with guard_size_oblivious.     Use _check(i >= 0) instead.
+  torch._check_is_size(start_pos)
+/home/ubuntu/execupack/.venv/lib/python3.11/site-packages/executorch/exir/emit/_emitter.py:1906: UserWarning: Mutation on a buffer in the model is detected. ExecuTorch assumes buffers that are mutated in the graph have a meaningless initial state, only the shape and dtype will be serialized, unless a pass which sets meta["et_init_buffer"] to True such as InitializedMutableBufferPass is run.
+  warnings.warn(
+[2026-10-31 21:33:53,263][root][INFO] - Required memory for activation in bytes: [0, 796703984]
+[2026-10-31 21:33:53,663][root][INFO] - Saved exported program to /home/ubuntu/runs/lfm3/out-16384/xnnpack/LFM3-1.7B-8da4w-gptq-16k.pte
+==> reading metadata
+Failed to load /home/ubuntu/execupack/.venv/lib/python3.11/site-packages/torchao/_C_cutlass_90a.abi3.so: Could not load this library: /home/ubuntu/execupack/.venv/lib/python3.11/site-packages/torchao/_C_cutlass_90a.abi3.so
+Failed to load /home/ubuntu/execupack/.venv/lib/python3.11/site-packages/torchao/_C_mxfp8.cpython-310-x86_64-linux-gnu.so: Could not load this library: /home/ubuntu/execupack/.venv/lib/python3.11/site-packages/torchao/_C_mxfp8.cpython-310-x86_64-linux-gnu.so
+W1031 21:34:01.850000 5945 .venv/lib/python3.11/site-packages/torch/utils/_pytree.py:630] <enum 'KernelPreference'> is an Enum subclass and is now natively supported by torch.compile as an opaque value type. Calling register_constant() on Enum subclasses is deprecated and will be an error in a future release.
+{
+  "file": [
+    {
+      "path": "xnnpack/LFM3-1.7B-8da4w-gptq-16k.pte",
+      "bytes": 1253890304,
+      "sha256": "ffcbc2db9781bf56505d671b1eb57967558a2e6ed755e78b0951d6723d2eb27e"
+    }
+  ],
+  "window": 16384
+}

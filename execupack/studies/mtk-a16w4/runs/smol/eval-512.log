@@ -1,0 +1,64 @@
+Failed to load /opt/mtk-venv/lib/python3.10/site-packages/torchao/_C_cutlass_90a.abi3.so: Could not load this library: /opt/mtk-venv/lib/python3.10/site-packages/torchao/_C_cutlass_90a.abi3.so
+Failed to load /opt/mtk-venv/lib/python3.10/site-packages/torchao/_C_mxfp8.cpython-310-x86_64-linux-gnu.so: Could not load this library: /opt/mtk-venv/lib/python3.10/site-packages/torchao/_C_mxfp8.cpython-310-x86_64-linux-gnu.so
+W1119 04:40:14.905000 1945 torch/utils/_pytree.py:630] <enum 'KernelPreference'> is an Enum subclass and is now natively supported by torch.compile as an opaque value type. Calling register_constant() on Enum subclasses is deprecated and will be an error in a future release.
+llama config:
+Hidden size:          576
+Intermediate size:    1536
+Num layers:           30
+Num attention heads:  9
+Num KV heads:         3
+Head Dim:             64
+Positional embedding: rope
+Max pos emb:          8192
+Norm type:            RMSNorm
+Norm epsilon:         1e-05
+BOS token id:         1
+EOS token id:         2
+PAD token id:         2
+UNK token id:         0
+Vocab size:           49152
+Use stable embedding: False
+Tie word embeddings:  True
+Combine QKV:          False
+Tokenizer:            pretrained_fast
+
+Loading weights from disk
+Loading weights for chunk 0
+Loading weights for chunk 1
+Loading weights for chunk 2
+The tokenizer class you load from this checkpoint is not the same type as the class this function is called from. It may result in unexpected tokenization. 
+The tokenizer class you load from this checkpoint is 'GPT2Tokenizer'. 
+The class this function is called from is 'PreTrainedTokenizerFast'.
+Generating train split: 0 examples [00:00, ? examples/s]Generating train split: 9 examples [00:00, 5077.17 examples/s]
+a16w8: A16W8 calibrated on 9 samples in 23 s
+a16w4: A16W4 calibrated on 9 samples in 24 s
+llama config:
+Hidden size:          576
+Intermediate size:    1536
+Num layers:           30
+Num attention heads:  9
+Num KV heads:         3
+Head Dim:             64
+Positional embedding: rope
+Max pos emb:          8192
+Norm type:            RMSNorm
+Norm epsilon:         1e-05
+BOS token id:         1
+EOS token id:         2
+PAD token id:         2
+UNK token id:         0
+Vocab size:           49152
+Use stable embedding: False
+Tie word embeddings:  False
+Combine QKV:          False
+Tokenizer:            pretrained_fast
+
+Loading weights from disk
+Loading weights for chunk 0
+Loading weights for chunk 1
+Loading weights for chunk 2
+a16w4-gptq: A16W4 calibrated on 9 samples in 24 s
+Token indices sequence length is longer than the specified maximum sequence length for this model (85175 > 8192). Running this sequence through the model will result in indexing errors
+         a16w8  KL 0.0457  ppl 39.33 (fp32 37.51)  top1 0.882  gate PASS 4/4 mean 0.4602 (fp32 0.5834) first-token KL 0.05985
+         a16w4  KL 1.2216  ppl 109.79 (fp32 37.51)  top1 0.406  gate FAIL 1/4 mean 0.1479 (fp32 0.5834) first-token KL 1.06648
+    a16w4-gptq  KL 0.8138  ppl 85.90 (fp32 37.51)  top1 0.494  gate PASS 4/4 mean 0.3447 (fp32 0.5834) first-token KL 0.3222

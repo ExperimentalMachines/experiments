@@ -1,0 +1,13 @@
+{
+ "file": "SmolLM2-135M-Instruct-8da4w-gptq-32k.pte",
+ "sha256": "4d136d4092232ff11890f0587330c56094f2278151bb30048815febe7e49b96d",
+ "backend": "xnnpack",
+ "int4_linears": 211,
+ "matched_exactly": 211,
+ "codes_entries": 211,
+ "unused_allowed": [],
+ "low_nibble_first": true,
+ "order_checked": true,
+ "ok": true,
+ "problems": []
+}

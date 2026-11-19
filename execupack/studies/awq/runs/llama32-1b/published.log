@@ -1,0 +1,130 @@
+uploaded 1 input(s) to execupack-runs:/local-1-5a145f49/in
+Modal Sandbox: 40960 MiB, 8 cores, timeout 330 min
+Failed to load /usr/local/lib/python3.11/site-packages/torchao/_C_cutlass_90a.abi3.so: Could not load this library: /usr/local/lib/python3.11/site-packages/torchao/_C_cutlass_90a.abi3.so
+Failed to load /usr/local/lib/python3.11/site-packages/torchao/_C_mxfp8.cpython-310-x86_64-linux-gnu.so: Could not load this library: /usr/local/lib/python3.11/site-packages/torchao/_C_mxfp8.cpython-310-x86_64-linux-gnu.so
+W1119 03:41:22.001000 5 site-packages/torch/utils/_pytree.py:646] <enum 'KernelPreference'> is an Enum subclass and is now natively supported by torch.compile as an opaque value type. Calling register_constant() on Enum subclasses is deprecated and will be an error in a future release.
+W1119 03:41:23.156000 5 site-packages/torch/utils/_pytree.py:646] <enum 'ScaleCalculationMode'> is an Enum subclass and is now natively supported by torch.compile as an opaque value type. Calling register_constant() on Enum subclasses is deprecated and will be an error in a future release.
+I tokenizers:regex.cpp:40] Registering override fallback regex
+{
+  "model_id": "meta-llama/Llama-3.2-1B-Instruct",
+  "method": "published",
+  "revision": "9213176726f574b556790deb65791e0c5aa438b6",
+  "published": "experimentalmachines/Llama-3.2-1B-Instruct-ExecuTorch/xnnpack/Llama-3.2-1B-Instruct-8da4w-gptq-2k.pte",
+  "bytes": 959972864,
+  "gate": {
+    "passed": true,
+    "problems": [],
+    "graded": 12,
+    "fp32_mean": 0.8843,
+    "export_mean": 0.7835,
+    "agreed": 12,
+    "shortfall": 0.1008,
+    "quiet_rows_answered_like_fp32": 4,
+    "measures_tool_calling": false,
+    "quiet_rows": 4,
+    "fp32_undecided_quiet_rows": [],
+    "fp32_undecided_rows": [],
+    "rows": {
+      "What is Concord the capital of?": {
+        "fp32": 0.9592,
+        "export": 0.9388,
+        "kind": "search"
+      },
+      "What is Providence the capital of?": {
+        "fp32": 0.9672,
+        "export": 0.9473,
+        "kind": "search"
+      },
+      "What is Augusta the capital of?": {
+        "fp32": 0.9712,
+        "export": 0.9137,
+        "kind": "search"
+      },
+      "What is Nassau the capital of?": {
+        "fp32": 0.962,
+        "export": 0.9264,
+        "kind": "search"
+      },
+      "Who is the author of Mercy?": {
+        "fp32": 0.8487,
+        "export": 0.759,
+        "kind": "search"
+      },
+      "Who is the author of Landfall?": {
+        "fp32": 0.8513,
+        "export": 0.7266,
+        "kind": "search"
+      },
+      "Who is the author of Quicksand?": {
+        "fp32": 0.8394,
+        "export": 0.5464,
+        "kind": "search"
+      },
+      "Who is the author of Nightfall?": {
+        "fp32": 0.8818,
+        "export": 0.7111,
+        "kind": "search"
+      },
+      "In what country is Ostrava?": {
+        "fp32": 0.8406,
+        "export": 0.7135,
+        "kind": "search"
+      },
+      "In what country is Gdynia?": {
+        "fp32": 0.8147,
+        "export": 0.6714,
+        "kind": "search"
+      },
+      "In what country is Rijeka?": {
+        "fp32": 0.851,
+        "export": 0.7055,
+        "kind": "search"
+      },
+      "In what country is Linkoping?": {
+        "fp32": 0.8246,
+        "export": 0.8421,
+        "kind": "search"
+      },
+      "What is the capital of Norway?": {
+        "fp32": 0.984,
+        "export": 0.9743,
+        "kind": "quiet"
+      },
+      "What is 8 times 7?": {
+        "fp32": 0.9828,
+        "export": 0.9296,
+        "kind": "quiet"
+      },
+      "Who wrote Pride and Prejudice?": {
+        "fp32": 0.859,
+        "export": 0.8475,
+        "kind": "quiet"
+      },
+      "What is the chemical symbol for iron?": {
+        "fp32": 0.9858,
+        "export": 0.9594,
+        "kind": "quiet"
+      }
+    }
+  },
+  "heldout": {
+    "rows": 141,
+    "top1_agree": 0.9361702127659575,
+    "mean_kl": 0.14809094347002297,
+    "mean_p_fp32_top": 0.7997916136861692
+  },
+  "replies": {
+    "rows": 47,
+    "positions": 1143,
+    "top1_agree": 0.9291338582677166,
+    "mean_kl": 0.10993329808006375
+  },
+  "timings_s": {
+    "download_convert": 8.7,
+    "download_published": 3.6,
+    "gate": 28.4,
+    "eval": 308.5
+  }
+}
+Modal Sandbox exited 0 after 6.0 min
+downloaded 2 file(s) to work/awq/llama32-1b/published

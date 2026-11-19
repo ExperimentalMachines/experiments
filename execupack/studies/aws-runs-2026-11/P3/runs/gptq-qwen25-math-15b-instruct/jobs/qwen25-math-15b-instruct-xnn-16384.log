@@ -1,0 +1,8 @@
+2026-11-09T06:58:35Z START xnn Qwen/Qwen2.5-Math-1.5B-Instruct 16384
+2026-11-09T07:06:57Z export attempt 1 exited 0
+2026-11-09T07:06:57Z exported 1136974080 /home/ubuntu/runs/gptq-qwen25-math-15b-instruct/out-xnnpack-16384/xnnpack/Qwen2.5-Math-1.5B-Instruct-8da4w-gptq-16k.pte
+2026-11-09T07:08:06Z verify attempt 1 exited 0
+2026-11-09T07:08:21Z codesmatch ok: 197 of 197 int4 linears exact
+2026-11-09T07:08:21Z REPORT {"file": "xnnpack/Qwen2.5-Math-1.5B-Instruct-8da4w-gptq-16k.pte", "bytes": 1136974080, "recipe": "8da4w-gptq-g32, int8 embeddings, int4 codes solved with GPTQ", "smoke": true, "reply": "The capital of France is \"paris\".<|im_end|>", "gate": true, "agreed": 3, "graded": 3, "quiet": 0, "fp32_mean": 0.7674, "export_mean": 0.7408, "tool_calling": true, "override": null, "proxy": null, "fits_phone": null}
+2026-11-09T07:08:29Z published
+2026-11-09T07:08:29Z END rc=0

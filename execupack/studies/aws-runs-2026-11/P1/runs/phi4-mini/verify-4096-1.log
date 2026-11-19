@@ -1,0 +1,53 @@
+==> smoke test, window 4096
+[transformers] This model config has set a `rope_parameters['original_max_position_embeddings']` field, to be used together with `max_position_embeddings` to determine a scaling factor. Please set the `factor` field of `rope_parameters`with this ratio instead -- we recommend the use of this field over `original_max_position_embeddings`, as it is compatible with most model architectures.
+Failed to load /home/ubuntu/execupack/.venv/lib/python3.11/site-packages/torchao/_C_cutlass_90a.abi3.so: Could not load this library: /home/ubuntu/execupack/.venv/lib/python3.11/site-packages/torchao/_C_cutlass_90a.abi3.so
+Failed to load /home/ubuntu/execupack/.venv/lib/python3.11/site-packages/torchao/_C_mxfp8.cpython-310-x86_64-linux-gnu.so: Could not load this library: /home/ubuntu/execupack/.venv/lib/python3.11/site-packages/torchao/_C_mxfp8.cpython-310-x86_64-linux-gnu.so
+W1109 03:17:04.038000 5000 torch/utils/_pytree.py:630] <enum 'KernelPreference'> is an Enum subclass and is now natively supported by torch.compile as an opaque value type. Calling register_constant() on Enum subclasses is deprecated and will be an error in a future release.
+I tokenizers:regex.cpp:40] Registering override fallback regex
+WARNING: All log messages before absl::InitializeLog() is called are written to STDERR
+E0000 00:00:1794194225.082402    5000 re2.cc:237] Error parsing '([^\r\n\p{L}\p{N}]?[\p{Lu}\p{Lt}\p{Lm}\p{Lo}\p{M}]*[\p{Ll}\p{Lm}\p{Lo}\p{M}]+(?i:'s|'t|'re|'ve|'m|'l...': invalid perl operator: (?!
+I tokenizers:re2_regex.cpp:23] Re2 failed to compile regex: ([^\r\n\p{L}\p{N}]?[\p{Lu}\p{Lt}\p{Lm}\p{Lo}\p{M}]*[\p{Ll}\p{Lm}\p{Lo}\p{M}]+(?i:'s|'t|'re|'ve|'m|'ll|'d)?|[^\r\n\p{L}\p{N}]?[\p{Lu}\p{Lt}\p{Lm}\p{Lo}\p{M}]+[\p{Ll}\p{Lm}\p{Lo}\p{M}]*(?i:'s|'t|'re|'ve|'m|'ll|'d)?|\p{N}{1,3}| $
+I tokenizers:regex_lookahead.cpp:26] Creating PCRE2 regex
+[llm_runner_helper.cpp:55] Loaded json tokenizer
+[llm_runner_helper.cpp:258] Reading metadata from model
+[llm_runner_helper.cpp:137] Metadata: use_kv_cache = 1
+[llm_runner_helper.cpp:137] Metadata: get_max_context_len = 4096
+[llm_runner_helper.cpp:137] Metadata: get_max_seq_len = 2048
+[llm_runner_helper.cpp:137] Metadata: use_sdpa_with_kv_cache = 1
+[llm_runner_helper.cpp:137] Metadata: enable_dynamic_shape = 1
+[llm_runner_helper.cpp:179] eos_id = 200020
+[llm_runner_helper.cpp:179] eos_id = 199999
+[llm_runner_helper.cpp:294] Using method: forward
+[cpuinfo_utils.cpp:71] Reading file /sys/devices/soc0/image_version
+[cpuinfo_utils.cpp:87] Failed to open midr file /sys/devices/soc0/image_version
+[cpuinfo_utils.cpp:100] Reading file /sys/devices/system/cpu/cpu0/regs/identification/midr_el1
+[cpuinfo_utils.cpp:109] Failed to open midr file /sys/devices/system/cpu/cpu0/regs/identification/midr_el1
+[cpuinfo_utils.cpp:125] CPU info and manual query on # of cpus dont match.
+[text_llm_runner.cpp:89] RSS after loading model: 5213.457031 MiB (0 if unsupported)
+[text_prefiller.cpp:121] Prefill token result numel(): 200064
+[text_llm_runner.cpp:201] Max new tokens resolved: 128, given pos_ 16, num_prompt_tokens 16, max_context_len 4096
+Paris[text_llm_runner.cpp:228] RSS after prompt prefill: 5213.457031 MiB (0 if unsupported)
+<|end|>
+[text_token_generator.h:181] 
+Reached to the end of generation
+
+[text_llm_runner.cpp:258] RSS after finishing text generation: 5213.457031 MiB (0 if unsupported)
+PyTorchObserver {"prefill_token_per_sec":114.286,"decode_token_per_sec":26.3158,"prompt_tokens":16,"generated_tokens":1,"model_load_start_ms":1794194225297,"model_load_end_ms":1794194232329,"inference_start_ms":1794194232329,"inference_end_ms":1794194232507,"model_execution_start_ms":1794194232469,"model_execution_end_ms":1794194232506,"prompt_eval_end_ms":1794194232469,"first_token_ms":1794194232469,"aggregate_sampling_time_ms":1,"aggregate_model_execution_time_ms":177,"SCALING_FACTOR_UNITS_PER_SECOND":1000}
+[stats.h:175] 	Prompt Tokens: 16    Generated Tokens: 1
+[stats.h:181] 	Model Load Time:		7.032000 (seconds)
+[stats.h:188] 	Total inference time:		0.178000 (seconds)		 Rate: 	5.617978 (tokens/second)
+[stats.h:197] 		Prompt evaluation:	0.140000 (seconds)		 Rate: 	114.285714 (tokens/second)
+[stats.h:207] 		Generated 1 tokens:	0.038000 (seconds)		 Rate: 	26.315789 (tokens/second)
+[stats.h:219] 	Time to first generated token:	0.140000 (seconds)
+[stats.h:225] 	Sampling time over 17 tokens:	0.001000 (seconds)
+    measuring gate: prefill 114.29 tok/s, decode 26.32 tok/s
+==> decision gate
+W1109 03:17:13.372000 5000 torch/utils/_pytree.py:630] <enum 'ScaleCalculationMode'> is an Enum subclass and is now natively supported by torch.compile as an opaque value type. Calling register_constant() on Enum subclasses is deprecated and will be an error in a future release.
+I tokenizers:regex.cpp:40] Registering override fallback regex
+    fp32 0.6629 against the export's 0.5066 on 8 rows, same choice on 7
+    gate failed and accepted by the operator: the unquantised model is itself near a tie on several tool-call rows (fp32 0.40 to 0.78), the 4-bit recipes measured keep 7 of 8, and the operator chose this file over an all-int8 one 1.4 times its size (2026-11-09).
+{
+  "windows": 1,
+  "passed": true,
+  "gated": 1
+}

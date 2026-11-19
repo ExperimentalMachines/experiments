@@ -1,0 +1,72 @@
+{
+  "runtime": "executorch",
+  "runtime_version": "1.5.1",
+  "backend": "mtk",
+  "target": "mt6991",
+  "tokenizer": "tokenizer.json",
+  "source_model": "meta-llama/Llama-3.2-1B-Instruct",
+  "source_revision": "9213176726f574b556790deb65791e0c5aa438b6",
+  "variants": [
+    {
+      "files": [
+        "Llama-3.2-1B-Instruct-neuropilot-a16w4-2k-chunk1of4.pte",
+        "Llama-3.2-1B-Instruct-neuropilot-a16w4-2k-chunk2of4.pte",
+        "Llama-3.2-1B-Instruct-neuropilot-a16w4-2k-chunk3of4.pte",
+        "Llama-3.2-1B-Instruct-neuropilot-a16w4-2k-chunk4of4.pte"
+      ],
+      "embedding": "Llama-3.2-1B-Instruct-neuropilot-embedding-fp32.bin",
+      "size_bytes": 1808679936,
+      "sha256": {
+        "Llama-3.2-1B-Instruct-neuropilot-a16w4-2k-chunk1of4.pte": "333b897ebcbdc7d742f13d922737e0fe514dcb13a37a893d1333f7e303ff6a0b",
+        "Llama-3.2-1B-Instruct-neuropilot-a16w4-2k-chunk2of4.pte": "eaceafdc9caa582efc9a66fe3052f2136fab70211b1388f2f1db2b47baada900",
+        "Llama-3.2-1B-Instruct-neuropilot-a16w4-2k-chunk3of4.pte": "843f85b19855ab8a6d6ca4d3d919bd719903378cf8563ecabd1bec6368d18aef",
+        "Llama-3.2-1B-Instruct-neuropilot-a16w4-2k-chunk4of4.pte": "4aa060f90aa5b5e70feb05e479b191f6aedf5e0a2d095b5a4d3673cae506f188",
+        "Llama-3.2-1B-Instruct-neuropilot-embedding-fp32.bin": "d1602ecf8f4e69be360b87191d1a4f6aa4b3fa26002ebf0ea058208613737400"
+      },
+      "context": 2048,
+      "source_revision": "9213176726f574b556790deb65791e0c5aa438b6",
+      "quantization": "NeuroPilot A16W4, 4 chunks",
+      "fits_phone_budget": null,
+      "methods": {},
+      "runner": {
+        "prompt_token_batch_size": 128,
+        "cache_size": 2048,
+        "hidden_size": 2048,
+        "num_head": 32,
+        "num_layer": 16,
+        "head_dim": 64,
+        "max_token_length": 131072,
+        "rot_emb_base": 500000.0,
+        "input_type": "fp32",
+        "output_type": "fp32",
+        "cache_type": "fp32",
+        "mask_type": "fp32",
+        "rot_emb_type": "fp32",
+        "vocab_size": 128256,
+        "bos_token": 128000,
+        "eos_token": 128001,
+        "eos_tokens": [
+          128001,
+          128008,
+          128009
+        ],
+        "tokenizer_type": "hf",
+        "state_layout": "uniform",
+        "tokenizer_path": "tokenizer.json",
+        "token_embedding_path": "Llama-3.2-1B-Instruct-neuropilot-embedding-fp32.bin",
+        "model_package_paths": [
+          "Llama-3.2-1B-Instruct-neuropilot-a16w4-2k-chunk1of4.pte",
+          "Llama-3.2-1B-Instruct-neuropilot-a16w4-2k-chunk2of4.pte",
+          "Llama-3.2-1B-Instruct-neuropilot-a16w4-2k-chunk3of4.pte",
+          "Llama-3.2-1B-Instruct-neuropilot-a16w4-2k-chunk4of4.pte"
+        ]
+      }
+    }
+  ],
+  "neuropilot_sdk": {
+    "name": "NeuroPilot Express SDK",
+    "build": "8.0.8-build20250925",
+    "mtk_converter": "8.13.0+public",
+    "mtk_neuron": "8.2.23"
+  }
+}

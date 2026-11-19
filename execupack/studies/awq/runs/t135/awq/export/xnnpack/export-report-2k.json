@@ -1,0 +1,188 @@
+{
+  "backend": "xnnpack",
+  "target": null,
+  "tokenizer": "tokenizer.json",
+  "output_repo": "experimentalmachines/SmolLM2-135M-Instruct-ExecuTorch",
+  "source": {
+    "id": "HuggingFaceTB/SmolLM2-135M-Instruct",
+    "sha": "12fd25f77366fa6b3b4b768ec3050bf629380bac",
+    "created_at": "2024-10-31T13:41:10+00:00",
+    "total_params": 134515008,
+    "family": "llama",
+    "variant": "instruct",
+    "license": {
+      "license": "apache-2.0"
+    },
+    "license_files": []
+  },
+  "toolchain": {
+    "executorch": "1.6.0",
+    "torch": "2.15.0",
+    "torchao": "0.18.0"
+  },
+  "recipe": {
+    "model_class": "smollm2",
+    "converter": "llama",
+    "params": {
+      "dim": 576,
+      "ffn_dim_multiplier": 1,
+      "hidden_dim": 1536,
+      "n_heads": 9,
+      "head_dim": 64,
+      "n_kv_heads": 3,
+      "n_layers": 30,
+      "norm_eps": 1e-05,
+      "rope_theta": 100000.0,
+      "vocab_size": 49152,
+      "use_scaled_rope": false,
+      "use_hf_rope": false,
+      "attention_qkv_bias": false
+    },
+    "export_llm_qmode": "8da4w",
+    "embedding_hqq": false,
+    "qmode": "8da4w-gptq",
+    "embedding_quantize": "8,0",
+    "prefill_chunk": 2048,
+    "kv_cache_dtype": "fp32",
+    "group_size": 32,
+    "int4_codes": "gptq",
+    "label": "8da4w-gptq-g32, int8 embeddings, int4 codes solved with GPTQ",
+    "description": "ExecuTorch 1.6.0 `export_llm`: 8-bit dynamic activations and 4-bit weights in groups of 32, int8 per-channel embeddings, XNNPACK with extended ops, prefill chunk 2048, fp32 KV cache.",
+    "codes_sha256": "36f48fd6f291bdad0f4a1d07758f7f0a4109cc587677e59c1ee10405575644b0"
+  },
+  "window": {
+    "context": 2048,
+    "reason": "requested window 2048",
+    "kv_cache_bytes_per_token": 46080,
+    "kv_cache_ring_bytes": 0,
+    "device_resident_bytes": 701486008,
+    "phone_budget_bytes": 5000000000,
+    "fits_phone_budget": true,
+    "table": [
+      {
+        "context": 32768,
+        "kv_cache_bytes": 1509949440,
+        "device_resident_bytes": 2148835461,
+        "export_peak_bytes": 36873369856,
+        "fits_device": true,
+        "fits_host": true
+      },
+      {
+        "context": 16384,
+        "kv_cache_bytes": 754974720,
+        "device_resident_bytes": 1376915752,
+        "export_peak_bytes": 11959204096,
+        "fits_device": true,
+        "fits_host": true
+      },
+      {
+        "context": 8192,
+        "kv_cache_bytes": 377487360,
+        "device_resident_bytes": 990955898,
+        "export_peak_bytes": 5541918976,
+        "fits_device": true,
+        "fits_host": true
+      },
+      {
+        "context": 4096,
+        "kv_cache_bytes": 188743680,
+        "device_resident_bytes": 797975971,
+        "export_peak_bytes": 3843225856,
+        "fits_device": true,
+        "fits_host": true
+      },
+      {
+        "context": 2048,
+        "kv_cache_bytes": 94371840,
+        "device_resident_bytes": 701486008,
+        "export_peak_bytes": 3371366656,
+        "fits_device": true,
+        "fits_host": true
+      }
+    ]
+  },
+  "files": [
+    {
+      "path": "xnnpack/SmolLM2-135M-Instruct-8da4w-gptq-2k.pte",
+      "bytes": 105990784,
+      "sha256": "fb764c783b341372d7330f31aa783545908da138e5459b5cdde45d464671479f"
+    }
+  ],
+  "estimates": {
+    "pte_bytes_estimate": 107114168,
+    "pte_bytes_actual": 105990784,
+    "export_peak_bytes_estimate": 3371366656
+  },
+  "host": {
+    "nproc": 10,
+    "peak_rss_convert_bytes": 566583361536,
+    "peak_rss_export_bytes": 1580111757312,
+    "peak_swap_used_bytes": null,
+    "min_mem_available_bytes": null,
+    "peak_in_use_bytes": null,
+    "peak_in_use_at": null,
+    "peak_cgroup_bytes": null,
+    "export_seconds": 291.6,
+    "total_seconds": 294.8
+  },
+  "conversion": {
+    "tensors": 273,
+    "tied_embeddings": true,
+    "dtypes": [
+      "torch.bfloat16"
+    ]
+  },
+  "metadata": {
+    "enable_dynamic_shape": true,
+    "get_bos_id": 1,
+    "get_eos_ids": [
+      2
+    ],
+    "get_max_context_len": 2048,
+    "get_max_seq_len": 2048,
+    "get_n_layers": 30,
+    "get_vocab_size": 49152,
+    "use_kv_cache": true,
+    "use_sdpa_with_kv_cache": true,
+    "methods": [
+      "enable_dynamic_shape",
+      "forward",
+      "get_bos_id",
+      "get_eos_ids",
+      "get_max_context_len",
+      "get_max_seq_len",
+      "get_n_layers",
+      "get_vocab_size",
+      "use_kv_cache",
+      "use_sdpa_with_kv_cache"
+    ]
+  },
+  "smoke": {
+    "prompt": "<|im_start|>system\nYou are a helpful AI assistant named SmolLM, trained by Hugging Face<|im_end|>\n<|im_start|>user\nWhat is the capital of France? Answer with one word.<|im_end|>\n<|im_start|>assistant\n",
+    "template_error": null,
+    "reply": "The capital of France is Paris<|im_end|>",
+    "tokens": 7,
+    "answered": true,
+    "answer_required": false,
+    "passed": true,
+    "problems": [],
+    "stats": {
+      "prefill_token_per_sec": 1354.84,
+      "decode_token_per_sec": 181.818,
+      "prompt_tokens": 42,
+      "generated_tokens": 6,
+      "model_load_start_ms": 1795057866024,
+      "model_load_end_ms": 1795057866100,
+      "inference_start_ms": 1795057866100,
+      "inference_end_ms": 1795057866164,
+      "model_execution_start_ms": 1795057866159,
+      "model_execution_end_ms": 1795057866164,
+      "prompt_eval_end_ms": 1795057866131,
+      "first_token_ms": 1795057866131,
+      "aggregate_sampling_time_ms": 0,
+      "aggregate_model_execution_time_ms": 64,
+      "SCALING_FACTOR_UNITS_PER_SECOND": 1000
+    }
+  },
+  "run": {}
+}

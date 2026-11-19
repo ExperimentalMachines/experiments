@@ -1,0 +1,196 @@
+{
+  "backend": "xnnpack",
+  "target": null,
+  "tokenizer": "tokenizer.json",
+  "output_repo": "experimentalmachines/Llama-3.2-1B-Instruct-ExecuTorch",
+  "source": {
+    "id": "meta-llama/Llama-3.2-1B-Instruct",
+    "sha": "9213176726f574b556790deb65791e0c5aa438b6",
+    "created_at": "2024-09-18T15:12:47+00:00",
+    "total_params": 1235814400,
+    "family": "llama",
+    "variant": "instruct",
+    "license": {
+      "license": "llama3.2"
+    },
+    "license_files": [
+      "LICENSE.txt",
+      "USE_POLICY.md"
+    ]
+  },
+  "toolchain": {
+    "executorch": "1.6.0",
+    "torch": "2.15.0+cpu",
+    "torchao": "0.18.0"
+  },
+  "recipe": {
+    "model_class": "llama3_2",
+    "converter": "llama",
+    "params": {
+      "dim": 2048,
+      "ffn_dim_multiplier": 1,
+      "hidden_dim": 8192,
+      "n_heads": 32,
+      "head_dim": 64,
+      "n_kv_heads": 8,
+      "n_layers": 16,
+      "norm_eps": 1e-05,
+      "rope_theta": 500000.0,
+      "vocab_size": 128256,
+      "use_scaled_rope": true,
+      "use_hf_rope": false,
+      "attention_qkv_bias": false
+    },
+    "export_llm_qmode": "8da4w",
+    "embedding_hqq": false,
+    "qmode": "8da4w-gptq",
+    "embedding_quantize": "8,0",
+    "prefill_chunk": 2048,
+    "kv_cache_dtype": "fp32",
+    "group_size": 32,
+    "int4_codes": "gptq",
+    "label": "8da4w-gptq-g32, int8 embeddings, int4 codes solved with GPTQ",
+    "description": "ExecuTorch 1.6.0 `export_llm`: 8-bit dynamic activations and 4-bit weights in groups of 32, int8 per-channel embeddings, XNNPACK with extended ops, prefill chunk 2048, fp32 KV cache.",
+    "codes_sha256": "80e01008a7c895124e7fe8bb2e8896155a8045c3d8c1623fca94c3a96dc52a8b"
+  },
+  "window": {
+    "context": 2048,
+    "reason": "requested window 2048",
+    "kv_cache_bytes_per_token": 65536,
+    "kv_cache_ring_bytes": 0,
+    "device_resident_bytes": 1603689482,
+    "phone_budget_bytes": 5000000000,
+    "fits_phone_budget": true,
+    "table": [
+      {
+        "context": 32768,
+        "kv_cache_bytes": 2147483648,
+        "device_resident_bytes": 3648727255,
+        "export_peak_bytes": 27821013248,
+        "fits_device": true,
+        "fits_host": true
+      },
+      {
+        "context": 16384,
+        "kv_cache_bytes": 1073741824,
+        "device_resident_bytes": 2558040442,
+        "export_peak_bytes": 13862369536,
+        "fits_device": true,
+        "fits_host": true
+      },
+      {
+        "context": 8192,
+        "kv_cache_bytes": 536870912,
+        "device_resident_bytes": 2012697036,
+        "export_peak_bytes": 10104273152,
+        "fits_device": true,
+        "fits_host": true
+      },
+      {
+        "context": 4096,
+        "kv_cache_bytes": 268435456,
+        "device_resident_bytes": 1740025333,
+        "export_peak_bytes": 9030531328,
+        "fits_device": true,
+        "fits_host": true
+      },
+      {
+        "context": 2048,
+        "kv_cache_bytes": 134217728,
+        "device_resident_bytes": 1603689482,
+        "export_peak_bytes": 8694987008,
+        "fits_device": true,
+        "fits_host": true
+      }
+    ]
+  },
+  "files": [
+    {
+      "path": "xnnpack/Llama-3.2-1B-Instruct-8da4w-gptq-2k.pte",
+      "bytes": 959958272,
+      "sha256": "b32ab7d29dc5de70cf6088f292ced1693aa38176339a283d4c478b7712a3b383"
+    }
+  ],
+  "estimates": {
+    "pte_bytes_estimate": 969471754,
+    "pte_bytes_actual": 959958272,
+    "export_peak_bytes_estimate": 8694987008
+  },
+  "host": {
+    "nproc": 24,
+    "mem_total_bytes": 352928886784,
+    "swap_total_bytes": 0,
+    "cpu_model": "unknown",
+    "peak_rss_convert_bytes": 12813299712,
+    "peak_rss_export_bytes": 12813299712,
+    "peak_swap_used_bytes": 0,
+    "min_mem_available_bytes": 341597704192,
+    "peak_in_use_bytes": 11331182592,
+    "peak_in_use_at": "2026-11-19T05:11:34Z",
+    "peak_cgroup_bytes": 11331051520,
+    "export_seconds": 242.8,
+    "total_seconds": 254.3
+  },
+  "conversion": {
+    "tensors": 147,
+    "tied_embeddings": true,
+    "dtypes": [
+      "torch.bfloat16"
+    ]
+  },
+  "metadata": {
+    "enable_dynamic_shape": true,
+    "get_bos_id": 128000,
+    "get_eos_ids": [
+      128001,
+      128008,
+      128009
+    ],
+    "get_max_context_len": 2048,
+    "get_max_seq_len": 2048,
+    "get_n_layers": 16,
+    "get_vocab_size": 128256,
+    "use_kv_cache": true,
+    "use_sdpa_with_kv_cache": true,
+    "methods": [
+      "enable_dynamic_shape",
+      "forward",
+      "get_bos_id",
+      "get_eos_ids",
+      "get_max_context_len",
+      "get_max_seq_len",
+      "get_n_layers",
+      "get_vocab_size",
+      "use_kv_cache",
+      "use_sdpa_with_kv_cache"
+    ]
+  },
+  "smoke": {
+    "prompt": "<|begin_of_text|><|start_header_id|>system<|end_header_id|>\n\nCutting Knowledge Date: December 2023\nToday Date: 19 Nov 2026\n\n<|eot_id|><|start_header_id|>user<|end_header_id|>\n\nWhat is the capital of France? Answer with one word.<|eot_id|><|start_header_id|>assistant<|end_header_id|>\n\n",
+    "template_error": null,
+    "reply": "Paris.<|eot_id|>",
+    "tokens": 3,
+    "answered": true,
+    "answer_required": true,
+    "passed": true,
+    "problems": [],
+    "stats": {
+      "prefill_token_per_sec": 1068.18,
+      "decode_token_per_sec": 133.333,
+      "prompt_tokens": 47,
+      "generated_tokens": 2,
+      "model_load_start_ms": 1795065128053,
+      "model_load_end_ms": 1795065129445,
+      "inference_start_ms": 1795065129446,
+      "inference_end_ms": 1795065129505,
+      "model_execution_start_ms": 1795065129498,
+      "model_execution_end_ms": 1795065129505,
+      "prompt_eval_end_ms": 1795065129490,
+      "first_token_ms": 1795065129490,
+      "aggregate_sampling_time_ms": 0,
+      "aggregate_model_execution_time_ms": 59,
+      "SCALING_FACTOR_UNITS_PER_SECOND": 1000
+    }
+  },
+  "run": {}
+}

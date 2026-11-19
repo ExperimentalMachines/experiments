@@ -1,0 +1,35 @@
+{
+  "runtime": "executorch",
+  "runtime_version": "1.5.1",
+  "backend": "xnnpack",
+  "target": null,
+  "tokenizer": "tokenizer.json",
+  "source_model": "meta-llama/Llama-3.2-3B-Instruct",
+  "source_revision": "0cb88a4f764b7a12671c53f0838cd831a0843b95",
+  "variants": [
+    {
+      "file": "Llama-3.2-3B-Instruct-8da4w-gptq-16k.pte",
+      "size_bytes": 2219699072,
+      "sha256": "9c11c3c97e04bb5d465956d735b4bc6a9203b0c912697f74570c50347ed7edfe",
+      "context": 16384,
+      "source_revision": "0cb88a4f764b7a12671c53f0838cd831a0843b95",
+      "quantization": "8da4w-gptq-g32, int8 embeddings, int4 codes solved with GPTQ",
+      "fits_phone_budget": false,
+      "methods": {
+        "get_max_context_len": 16384,
+        "get_max_seq_len": 2048,
+        "get_bos_id": 128000,
+        "get_eos_ids": [
+          128001,
+          128008,
+          128009
+        ],
+        "get_vocab_size": 128256,
+        "get_n_layers": 28,
+        "use_kv_cache": true,
+        "use_sdpa_with_kv_cache": true,
+        "enable_dynamic_shape": true
+      }
+    }
+  ]
+}

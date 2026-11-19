@@ -1,0 +1,85 @@
+{
+  "rows": {
+    "What is Concord the capital of?": {
+      "token": 32313,
+      "p": 0.9767839908599854,
+      "text": "Okay"
+    },
+    "What is Providence the capital of?": {
+      "token": 32313,
+      "p": 0.9796594381332397,
+      "text": "Okay"
+    },
+    "What is Augusta the capital of?": {
+      "token": 32313,
+      "p": 0.9833440184593201,
+      "text": "Okay"
+    },
+    "What is Nassau the capital of?": {
+      "token": 32313,
+      "p": 0.9646924734115601,
+      "text": "Okay"
+    },
+    "Who is the author of Mercy?": {
+      "token": 32313,
+      "p": 0.9794796109199524,
+      "text": "Okay"
+    },
+    "Who is the author of Landfall?": {
+      "token": 32313,
+      "p": 0.97050541639328,
+      "text": "Okay"
+    },
+    "Who is the author of Quicksand?": {
+      "token": 32313,
+      "p": 0.9860077500343323,
+      "text": "Okay"
+    },
+    "Who is the author of Nightfall?": {
+      "token": 32313,
+      "p": 0.9666064381599426,
+      "text": "Okay"
+    },
+    "In what country is Ostrava?": {
+      "token": 32313,
+      "p": 0.9704405069351196,
+      "text": "Okay"
+    },
+    "In what country is Gdynia?": {
+      "token": 32313,
+      "p": 0.9619847536087036,
+      "text": "Okay"
+    },
+    "In what country is Rijeka?": {
+      "token": 32313,
+      "p": 0.9652541875839233,
+      "text": "Okay"
+    },
+    "In what country is Linkoping?": {
+      "token": 32313,
+      "p": 0.9756942987442017,
+      "text": "Okay"
+    },
+    "What is the capital of Norway?": {
+      "token": 32313,
+      "p": 0.7028934955596924,
+      "text": "Okay"
+    },
+    "What is 8 times 7?": {
+      "token": 32313,
+      "p": 0.8227297067642212,
+      "text": "Okay"
+    },
+    "Who wrote Pride and Prejudice?": {
+      "token": 32313,
+      "p": 0.7519084811210632,
+      "text": "Okay"
+    },
+    "What is the chemical symbol for iron?": {
+      "token": 80022,
+      "p": 0.4224833548069,
+      "text": "Hmm"
+    }
+  },
+  "confident": 15
+}

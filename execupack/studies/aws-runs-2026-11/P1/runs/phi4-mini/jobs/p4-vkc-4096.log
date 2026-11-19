@@ -1,0 +1,6 @@
+2026-11-09T03:21:13Z START vkc microsoft/Phi-4-mini-instruct 4096
+2026-11-09T03:30:56Z export attempt 1 exited 0
+2026-11-09T03:30:56Z exported 3668043008 /home/ubuntu/runs/phi4-mini/out-vulkan-4096/vulkan/Phi-4-mini-instruct-3.8B-vulkan-8da4w-gptq-4k.pte
+2026-11-09T03:30:56Z REPORT {"file": "vulkan/Phi-4-mini-instruct-3.8B-vulkan-8da4w-gptq-4k.pte", "bytes": 3668043008, "recipe": "8da4w-gptq-g32, int8 embeddings, int4 codes solved with GPTQ, int8 output head", "smoke": true, "reply": "", "gate": null, "agreed": null, "graded": null, "quiet": null, "fp32_mean": null, "export_mean": null, "tool_calling": null, "override": null, "proxy": {"passed": false, "graded": 8, "agreed": 7, "fp32_mean": 0.6629, "export_mean": 0.5066, "override": {"reason": "the unquantised model is itself near a tie on several tool-call rows (fp32 0.40 to 0.78), the 4-bit recipes measured keep 7 of 8, and the operator chose this file over an all-int8 one 1.4 times its size (2026-11-09)."}}, "fits_phone": null}
+2026-11-09T03:31:06Z published
+2026-11-09T03:31:06Z END rc=0

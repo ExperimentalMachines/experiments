@@ -1,0 +1,338 @@
+{
+  "backend": "xnnpack",
+  "target": null,
+  "tokenizer": "tokenizer.json",
+  "output_repo": "experimentalmachines/LFM3-1.7B-Base-ExecuTorch",
+  "source": {
+    "id": "LiquidAI/LFM3-1.7B-Base",
+    "sha": "545fc8f4c7b5fa9f405105274cd29c4f8f44b526",
+    "created_at": "2026-10-26T16:28:49+00:00",
+    "total_params": 1728801536,
+    "family": "lfm3",
+    "variant": "base",
+    "license": {
+      "license": "other",
+      "license_name": "lfm1.0",
+      "license_link": "LICENSE"
+    },
+    "license_files": [
+      "LICENSE"
+    ]
+  },
+  "toolchain": {
+    "executorch": "1.5.1",
+    "torch": "2.14.0+cpu",
+    "torchao": "0.18.0"
+  },
+  "recipe": {
+    "model_class": "lfm2_5_1_2b",
+    "converter": "lfm3",
+    "params": {
+      "dim": 2048,
+      "ffn_dim_multiplier": 1,
+      "hidden_dim": 7680,
+      "n_heads": 16,
+      "head_dim": 128,
+      "n_kv_heads": 4,
+      "n_layers": 24,
+      "norm_eps": 1e-05,
+      "rope_theta": 1000000.0,
+      "local_rope_theta": 10000.0,
+      "partial_rotary_factor": 0.5,
+      "vocab_size": 128000,
+      "use_hf_rope": true,
+      "use_qk_norm": true,
+      "qk_norm_before_rope": true,
+      "layer_types": [
+        "conv",
+        "conv",
+        "full_attention",
+        "conv",
+        "sliding_attention",
+        "conv",
+        "full_attention",
+        "conv",
+        "sliding_attention",
+        "conv",
+        "full_attention",
+        "conv",
+        "sliding_attention",
+        "conv",
+        "full_attention",
+        "conv",
+        "sliding_attention",
+        "conv",
+        "full_attention",
+        "conv",
+        "sliding_attention",
+        "conv",
+        "full_attention",
+        "conv"
+      ],
+      "sliding_window": 256,
+      "post_attention_norm": true,
+      "post_ffn_norm": true,
+      "attention_kwargs": {
+        "conv_L_cache": 7
+      }
+    },
+    "export_llm_qmode": "8da4w",
+    "embedding_hqq": false,
+    "qmode": "8da4w-gptq",
+    "embedding_quantize": "8,0",
+    "prefill_chunk": 2048,
+    "kv_cache_dtype": "fp32",
+    "group_size": 32,
+    "int4_codes": "gptq",
+    "label": "8da4w-gptq-g32, int8 embeddings, int4 codes solved with GPTQ",
+    "description": "ExecuTorch 1.5.1 `export_llm`: 8-bit dynamic activations and 4-bit weights in groups of 32, int8 per-channel embeddings, XNNPACK with extended ops, prefill chunk 2048, fp32 KV cache."
+  },
+  "window": {
+    "context": 4096,
+    "reason": "requested window 4096",
+    "kv_cache_bytes_per_token": 24576,
+    "kv_cache_ring_bytes": 47185920,
+    "device_resident_bytes": 1856371066,
+    "phone_budget_bytes": 5000000000,
+    "fits_phone_budget": true,
+    "table": [
+      {
+        "context": 32768,
+        "kv_cache_bytes": 852492288,
+        "device_resident_bytes": 2620321597,
+        "export_peak_bytes": 22797285632,
+        "fits_device": true,
+        "fits_host": true
+      },
+      {
+        "context": 16384,
+        "kv_cache_bytes": 449839104,
+        "device_resident_bytes": 2183778437,
+        "export_peak_bytes": 13536262400,
+        "fits_device": true,
+        "fits_host": true
+      },
+      {
+        "context": 8192,
+        "kv_cache_bytes": 248512512,
+        "device_resident_bytes": 1965506856,
+        "export_peak_bytes": 11120343296,
+        "fits_device": true,
+        "fits_host": true
+      },
+      {
+        "context": 4096,
+        "kv_cache_bytes": 147849216,
+        "device_resident_bytes": 1856371066,
+        "export_peak_bytes": 10466031872,
+        "fits_device": true,
+        "fits_host": true
+      },
+      {
+        "context": 2048,
+        "kv_cache_bytes": 97517568,
+        "device_resident_bytes": 1801803171,
+        "export_peak_bytes": 10277288192,
+        "fits_device": true,
+        "fits_host": true
+      }
+    ]
+  },
+  "files": [
+    {
+      "path": "xnnpack/LFM3-1.7B-Base-8da4w-gptq-4k.pte",
+      "bytes": 1241307392,
+      "sha256": "50741f8b36b3ecfecbf5c13982ef66cce9f428d779ab303ca0b12c3c7b4fc2fa"
+    }
+  ],
+  "estimates": {
+    "pte_bytes_estimate": 1208521850,
+    "pte_bytes_actual": 1241307392,
+    "export_peak_bytes_estimate": 10466031872
+  },
+  "host": {
+    "nproc": 16,
+    "mem_total_bytes": 132914737152,
+    "swap_total_bytes": 0,
+    "cpu_model": "Intel(R) Xeon(R) Platinum 8488C",
+    "peak_rss_convert_bytes": 3754987520,
+    "peak_rss_export_bytes": 9625907200,
+    "peak_swap_used_bytes": 0,
+    "min_mem_available_bytes": 112470089728,
+    "peak_in_use_bytes": 20444647424,
+    "peak_in_use_at": "2026-10-31T22:44:46Z",
+    "peak_cgroup_bytes": null,
+    "export_seconds": 456.7,
+    "total_seconds": 501.4
+  },
+  "conversion": {
+    "tensors": 313,
+    "tied_embeddings": true,
+    "dtypes": [
+      "torch.bfloat16"
+    ]
+  },
+  "metadata": {
+    "enable_dynamic_shape": true,
+    "get_bos_id": 124894,
+    "get_eos_ids": [
+      124900
+    ],
+    "get_max_context_len": 4096,
+    "get_max_seq_len": 2048,
+    "get_n_layers": 24,
+    "get_state_reset_at_zero": 1,
+    "get_vocab_size": 128000,
+    "use_kv_cache": true,
+    "use_sdpa_with_kv_cache": true,
+    "methods": [
+      "enable_dynamic_shape",
+      "forward",
+      "get_bos_id",
+      "get_eos_ids",
+      "get_max_context_len",
+      "get_max_seq_len",
+      "get_n_layers",
+      "get_state_reset_at_zero",
+      "get_vocab_size",
+      "use_kv_cache",
+      "use_sdpa_with_kv_cache"
+    ]
+  },
+  "smoke": {
+    "prompt": "<|startoftext|>The capital of France is",
+    "template_error": null,
+    "reply": " Paris. It is the largest city in France and one of the most famous cities in the world. Paris is located on the Seine River and is known for its rich history, art, and culture. The city is home to many famous landmarks, such as the Eiffel Tower, the Louvre Museum, and Notre-Dame Cathedral. Paris is also known for its fashion, cuisine, and romantic atmosphere. The city has a population of over 2 million people in the city proper and more than 10 million in the surrounding area. The climate in Paris is generally mild, with warm summers and cool winters. The city is also known for",
+    "tokens": 128,
+    "answered": true,
+    "answer_required": true,
+    "passed": true,
+    "problems": [],
+    "stats": {
+      "prefill_token_per_sec": 18.018,
+      "decode_token_per_sec": 38.755,
+      "prompt_tokens": 6,
+      "generated_tokens": 127,
+      "model_load_start_ms": 1793486806767,
+      "model_load_end_ms": 1793486809118,
+      "inference_start_ms": 1793486809119,
+      "inference_end_ms": 1793486812729,
+      "model_execution_start_ms": 1793486812702,
+      "model_execution_end_ms": 1793486812729,
+      "prompt_eval_end_ms": 1793486809452,
+      "first_token_ms": 1793486809452,
+      "aggregate_sampling_time_ms": 19,
+      "aggregate_model_execution_time_ms": 3584,
+      "SCALING_FACTOR_UNITS_PER_SECOND": 1000
+    }
+  },
+  "run": {},
+  "measuring_gate": {
+    "kind": "measuring_gate",
+    "passed": true,
+    "prefill_tok_per_sec": 18.02,
+    "decode_tok_per_sec": 38.76,
+    "prompt_tokens": 6,
+    "generated_tokens": 127
+  },
+  "gate": {
+    "passed": true,
+    "problems": [],
+    "graded": 12,
+    "fp32_mean": 0.76,
+    "export_mean": 0.9786,
+    "agreed": 12,
+    "shortfall": -0.2186,
+    "quiet_rows_answered_like_fp32": 1,
+    "measures_tool_calling": false,
+    "quiet_rows": 1,
+    "fp32_undecided_quiet_rows": [
+      "What is the capital of Norway?",
+      "Who wrote Pride and Prejudice?",
+      "What is the chemical symbol for iron?"
+    ],
+    "fp32_undecided_rows": [],
+    "rows": {
+      "What is Concord the capital of?": {
+        "fp32": 0.7569,
+        "export": 0.9965,
+        "kind": "search"
+      },
+      "What is Providence the capital of?": {
+        "fp32": 0.8627,
+        "export": 0.99,
+        "kind": "search"
+      },
+      "What is Augusta the capital of?": {
+        "fp32": 0.785,
+        "export": 0.9966,
+        "kind": "search"
+      },
+      "What is Nassau the capital of?": {
+        "fp32": 0.709,
+        "export": 0.9946,
+        "kind": "search"
+      },
+      "Who is the author of Mercy?": {
+        "fp32": 0.7704,
+        "export": 0.9379,
+        "kind": "search"
+      },
+      "Who is the author of Landfall?": {
+        "fp32": 0.7346,
+        "export": 0.9414,
+        "kind": "search"
+      },
+      "Who is the author of Quicksand?": {
+        "fp32": 0.7474,
+        "export": 0.9923,
+        "kind": "search"
+      },
+      "Who is the author of Nightfall?": {
+        "fp32": 0.7312,
+        "export": 0.9913,
+        "kind": "search"
+      },
+      "In what country is Ostrava?": {
+        "fp32": 0.8132,
+        "export": 0.9922,
+        "kind": "search"
+      },
+      "In what country is Gdynia?": {
+        "fp32": 0.7361,
+        "export": 0.954,
+        "kind": "search"
+      },
+      "In what country is Rijeka?": {
+        "fp32": 0.7611,
+        "export": 0.9646,
+        "kind": "search"
+      },
+      "In what country is Linkoping?": {
+        "fp32": 0.7126,
+        "export": 0.992,
+        "kind": "search"
+      },
+      "What is the capital of Norway?": {
+        "fp32": 0.385,
+        "export": 0.3682,
+        "kind": "quiet"
+      },
+      "What is 8 times 7?": {
+        "fp32": 0.6493,
+        "export": 0.4269,
+        "kind": "quiet"
+      },
+      "Who wrote Pride and Prejudice?": {
+        "fp32": 0.0914,
+        "export": 0.0947,
+        "kind": "quiet"
+      },
+      "What is the chemical symbol for iron?": {
+        "fp32": 0.2682,
+        "export": 0.2456,
+        "kind": "quiet"
+      }
+    }
+  }
+}

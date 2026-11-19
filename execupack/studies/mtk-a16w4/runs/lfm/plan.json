@@ -1,0 +1,1 @@
+{"model": "LiquidAI/LFM2.5-1.2B-Instruct", "sha": "b9d816ab510f9a28dca37cb182e9da8b0226e13c", "script": "lfm2.py", "preformatter": "qwen3.json", "chunks": 4, "params": 1170340608}

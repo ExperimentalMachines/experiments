@@ -1,0 +1,90 @@
+From bad27bf9c1844803cf7ea3f236943b0ea0673440 Mon Sep 17 00:00:00 2001
+From: Alpha Romer Coma <108984668+alpharomercoma@users.noreply.github.com>
+Date: Mon, 21 Sep 2026 23:14:11 +0800
+Subject: [PATCH 1/3] publish: isolate LFM 1.2B GPTQ-257 exports
+
+---
+ config/pipeline.yaml | 5 ++++-
+ 1 file changed, 4 insertions(+), 1 deletion(-)
+
+diff --git a/config/pipeline.yaml b/config/pipeline.yaml
+index fba4b39..ddce5eb 100644
+--- a/config/pipeline.yaml
++++ b/config/pipeline.yaml
+@@ -4,7 +4,10 @@
+ hub:
+   # Where exports are published. One repo per source model: <org>/<source name><suffix>.
+   org: experimentalmachines
+-  repo_suffix: -ExecuTorch
++  # The app-shaped 257-row GPTQ calibration is a separately benchmarked recipe.
++  # Keep its artifacts and provenance in their own repository; never replace the
++  # generic 104-row exports.
++  repo_suffix: -GPTQ-257-ExecuTorch
+   # Tags on every published repo. The app's Discover screen searches filter=executorch.
+   tags: [executorch, android, on-device, openweights]
+ 
+-- 
+2.54.0 (Apple Git-157)
+
+
+From 76915f56c12cbd191134e7a69d1fcd3e432fb29f Mon Sep 17 00:00:00 2001
+From: Alpha Romer Coma <108984668+alpharomercoma@users.noreply.github.com>
+Date: Fri, 2 Oct 2026 19:59:12 +0800
+Subject: [PATCH 2/3] docs: point references at the renamed execuport repo
+
+Co-Authored-By: Claude Sonnet 5.5 <noreply@anthropic.com>
+---
+ docs/research/export-bottlenecks.md | 6 +++---
+ 1 file changed, 3 insertions(+), 3 deletions(-)
+
+diff --git a/docs/research/export-bottlenecks.md b/docs/research/export-bottlenecks.md
+index 05483da..30cff48 100644
+--- a/docs/research/export-bottlenecks.md
++++ b/docs/research/export-bottlenecks.md
+@@ -22,9 +22,9 @@ Host: GitHub `ubuntu-latest`, 4 vCPU, 16,766,414,848 B RAM, 25,769,799,680 B swa
+ 
+ | Run | Chip | Window | Calibration loop | Other quantize | HTP compile | Rest | Export |
+ |---|---|---|---|---|---|---|---|
+-| [34706269492](https://github.com/ExperimentalMachines/executorch-model-exporter/actions/runs/34706269492) | SM8650 | 2,048 | 1,761 s (48.4%) | 280 s (7.7%) | 1,538 s (42.3%) | 56 s (1.6%) | 3,637 s |
+-| [34706269492](https://github.com/ExperimentalMachines/executorch-model-exporter/actions/runs/34706269492) | SM8750 | 2,048 | 936 s (38.5%) | 257 s (10.5%) | 1,172 s (48.2%) | 69 s (2.8%) | 2,434 s |
+-| [34741690464](https://github.com/ExperimentalMachines/executorch-model-exporter/actions/runs/34741690464) | SM8750 | 4,096 | 3,674 s (61.4%) | 328 s (5.5%) | 1,905 s (31.8%) | 80 s (1.3%) | 5,987 s |
++| [34706269492](https://github.com/ExperimentalMachines/execuport/actions/runs/34706269492) | SM8650 | 2,048 | 1,761 s (48.4%) | 280 s (7.7%) | 1,538 s (42.3%) | 56 s (1.6%) | 3,637 s |
++| [34706269492](https://github.com/ExperimentalMachines/execuport/actions/runs/34706269492) | SM8750 | 2,048 | 936 s (38.5%) | 257 s (10.5%) | 1,172 s (48.2%) | 69 s (2.8%) | 2,434 s |
++| [34741690464](https://github.com/ExperimentalMachines/execuport/actions/runs/34741690464) | SM8750 | 4,096 | 3,674 s (61.4%) | 328 s (5.5%) | 1,905 s (31.8%) | 80 s (1.3%) | 5,987 s |
+ 
+ Evidence: [`qnn-run6-2k-sm8650-timings.log`](evidence/qnn-run6-2k-sm8650-timings.log),
+ [`qnn-run6-2k-sm8750-timings.log`](evidence/qnn-run6-2k-sm8750-timings.log),
+-- 
+2.54.0 (Apple Git-157)
+
+
+From a463a66055ea504b45391d7a0ac3e3e582319f4b Mon Sep 17 00:00:00 2001
+From: Alpha Romer Coma <108984668+alpharomercoma@users.noreply.github.com>
+Date: Fri, 2 Oct 2026 20:29:06 +0800
+Subject: [PATCH 3/3] docs: point references at the renamed execupack repo
+
+Co-Authored-By: Claude Sonnet 5.5 <noreply@anthropic.com>
+---
+ docs/research/export-bottlenecks.md | 6 +++---
+ 1 file changed, 3 insertions(+), 3 deletions(-)
+
+diff --git a/docs/research/export-bottlenecks.md b/docs/research/export-bottlenecks.md
+index 30cff48..2ce53d6 100644
+--- a/docs/research/export-bottlenecks.md
++++ b/docs/research/export-bottlenecks.md
+@@ -22,9 +22,9 @@ Host: GitHub `ubuntu-latest`, 4 vCPU, 16,766,414,848 B RAM, 25,769,799,680 B swa
+ 
+ | Run | Chip | Window | Calibration loop | Other quantize | HTP compile | Rest | Export |
+ |---|---|---|---|---|---|---|---|
+-| [34706269492](https://github.com/ExperimentalMachines/execuport/actions/runs/34706269492) | SM8650 | 2,048 | 1,761 s (48.4%) | 280 s (7.7%) | 1,538 s (42.3%) | 56 s (1.6%) | 3,637 s |
+-| [34706269492](https://github.com/ExperimentalMachines/execuport/actions/runs/34706269492) | SM8750 | 2,048 | 936 s (38.5%) | 257 s (10.5%) | 1,172 s (48.2%) | 69 s (2.8%) | 2,434 s |
+-| [34741690464](https://github.com/ExperimentalMachines/execuport/actions/runs/34741690464) | SM8750 | 4,096 | 3,674 s (61.4%) | 328 s (5.5%) | 1,905 s (31.8%) | 80 s (1.3%) | 5,987 s |
++| [34706269492](https://github.com/ExperimentalMachines/execupack/actions/runs/34706269492) | SM8650 | 2,048 | 1,761 s (48.4%) | 280 s (7.7%) | 1,538 s (42.3%) | 56 s (1.6%) | 3,637 s |
++| [34706269492](https://github.com/ExperimentalMachines/execupack/actions/runs/34706269492) | SM8750 | 2,048 | 936 s (38.5%) | 257 s (10.5%) | 1,172 s (48.2%) | 69 s (2.8%) | 2,434 s |
++| [34741690464](https://github.com/ExperimentalMachines/execupack/actions/runs/34741690464) | SM8750 | 4,096 | 3,674 s (61.4%) | 328 s (5.5%) | 1,905 s (31.8%) | 80 s (1.3%) | 5,987 s |
+ 
+ Evidence: [`qnn-run6-2k-sm8650-timings.log`](evidence/qnn-run6-2k-sm8650-timings.log),
+ [`qnn-run6-2k-sm8750-timings.log`](evidence/qnn-run6-2k-sm8750-timings.log),
+-- 
+2.54.0 (Apple Git-157)
+

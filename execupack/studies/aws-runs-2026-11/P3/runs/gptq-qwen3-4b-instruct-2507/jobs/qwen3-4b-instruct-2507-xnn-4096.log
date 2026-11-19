@@ -1,0 +1,8 @@
+2026-11-09T05:42:31Z START xnn Qwen/Qwen3-4B-Instruct-2507 4096
+2026-11-09T05:56:03Z export attempt 1 exited 0
+2026-11-09T05:56:03Z exported 2662139264 /home/ubuntu/runs/gptq-qwen3-4b-instruct-2507/out-xnnpack-4096/xnnpack/Qwen3-4B-Instruct-2507-8da4w-gptq-4k.pte
+2026-11-09T05:58:46Z verify attempt 1 exited 0
+2026-11-09T05:59:22Z codesmatch ok: 253 of 253 int4 linears exact
+2026-11-09T05:59:22Z REPORT {"file": "xnnpack/Qwen3-4B-Instruct-2507-8da4w-gptq-4k.pte", "bytes": 2662139264, "recipe": "8da4w-gptq-g32, int8 embeddings, int4 codes solved with GPTQ", "smoke": true, "reply": "Paris<|im_end|>", "gate": true, "agreed": 12, "graded": 12, "quiet": 3, "fp32_mean": 0.9974, "export_mean": 0.9954, "tool_calling": true, "override": null, "proxy": null, "fits_phone": null}
+2026-11-09T05:59:31Z published
+2026-11-09T05:59:31Z END rc=0

@@ -1,0 +1,7 @@
+2026-11-09T03:01:47Z START xnn microsoft/Phi-4-mini-instruct 16384
+2026-11-09T03:16:01Z export attempt 1 exited 0
+2026-11-09T03:16:01Z exported 3056806400 /home/ubuntu/runs/phi4-mini/out-xnnpack-16384/xnnpack/Phi-4-mini-instruct-3.8B-8da4w-gptq-16k.pte
+2026-11-09T03:19:49Z verify attempt 1 exited 0
+2026-11-09T03:19:49Z REPORT {"file": "xnnpack/Phi-4-mini-instruct-3.8B-8da4w-gptq-16k.pte", "bytes": 3056806400, "recipe": "8da4w-gptq-g32, int8 embeddings, int4 codes solved with GPTQ, int8 output head", "smoke": true, "reply": "Paris<|end|>", "gate": false, "agreed": 7, "graded": 8, "quiet": 2, "fp32_mean": 0.6629, "export_mean": 0.6956, "tool_calling": true, "override": "the unquantised model is itself near a tie on several tool-call rows (fp32 0.40 to 0.78), the 4-bit recipes measured keep 7 of 8, and the operator chose this file over an all-int8 one 1.4 times its size (2026-11-09).", "proxy": null, "fits_phone": null}
+2026-11-09T03:20:11Z published
+2026-11-09T03:20:11Z END rc=0

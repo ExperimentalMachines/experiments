@@ -1,0 +1,58 @@
+uploaded 1 input(s) to execupack-runs:/local-1-36eb42bf/in
+Modal Sandbox: 40960 MiB, 8 cores, timeout 330 min
+Failed to load /usr/local/lib/python3.11/site-packages/torchao/_C_cutlass_90a.abi3.so: Could not load this library: /usr/local/lib/python3.11/site-packages/torchao/_C_cutlass_90a.abi3.so
+Failed to load /usr/local/lib/python3.11/site-packages/torchao/_C_mxfp8.cpython-310-x86_64-linux-gnu.so: Could not load this library: /usr/local/lib/python3.11/site-packages/torchao/_C_mxfp8.cpython-310-x86_64-linux-gnu.so
+W1119 03:41:26.856000 5 site-packages/torch/utils/_pytree.py:646] <enum 'KernelPreference'> is an Enum subclass and is now natively supported by torch.compile as an opaque value type. Calling register_constant() on Enum subclasses is deprecated and will be an error in a future release.
+W1119 03:41:26.902000 5 site-packages/torch/utils/_pytree.py:646] <enum 'ScaleCalculationMode'> is an Enum subclass and is now natively supported by torch.compile as an opaque value type. Calling register_constant() on Enum subclasses is deprecated and will be an error in a future release.
+layer 0 scaled, 102s
+layer 1 scaled, 200s
+layer 2 scaled, 295s
+layer 3 scaled, 387s
+layer 4 scaled, 478s
+layer 5 scaled, 570s
+layer 6 scaled, 662s
+layer 7 scaled, 753s
+layer 8 scaled, 849s
+layer 9 scaled, 942s
+layer 10 scaled, 1033s
+layer 11 scaled, 1124s
+layer 12 scaled, 1218s
+layer 13 scaled, 1309s
+layer 14 scaled, 1401s
+layer 15 scaled, 1496s
+layer 0 solved, 43s
+layer 1 solved, 83s
+layer 2 solved, 124s
+layer 3 solved, 165s
+layer 4 solved, 207s
+layer 5 solved, 248s
+layer 6 solved, 289s
+layer 7 solved, 330s
+layer 8 solved, 371s
+layer 9 solved, 412s
+layer 10 solved, 453s
+Traceback (most recent call last):
+  File "/root/execupack/scripts/awq_compare.py", line 358, in <module>
+    raise SystemExit(main())
+                     ^^^^^^
+  File "/root/execupack/scripts/awq_compare.py", line 354, in main
+    return args.func(args)
+           ^^^^^^^^^^^^^^^
+  File "/root/execupack/scripts/awq_compare.py", line 271, in arm
+    codes = solve.solve_model(model, rows)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/execupack/pipeline/solve.py", line 307, in solve_model
+    q, s = solve_weight(module.weight.data, hess[name] / max(counts[name], 1), damp=damp)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/execupack/pipeline/solve.py", line 120, in solve_weight
+    scales[:, col // group] = group_scale(wg)[:, 0]
+                              ^^^^^^^^^^^^^^^
+  File "/root/execupack/pipeline/solve.py", line 75, in group_scale
+    err = ((torch.clamp(torch.round(w / scale), -8, 7) * scale - w) ** 2).sum(1, keepdim=True)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^~~
+  File "/usr/local/lib/python3.11/site-packages/torch/_tensor.py", line 32, in wrapped
+    @functools.wraps(f)
+
+KeyboardInterrupt
+Modal Sandbox exited 137 after 33.5 min
+downloaded 0 file(s) to work/awq/llama32-1b/awq_gptq

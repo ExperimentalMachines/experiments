@@ -1,0 +1,7 @@
+2026-11-09T06:27:19Z START vkc Qwen/Qwen2.5-1.5B-Instruct 16384
+2026-11-09T06:31:30Z export attempt 1 exited 0
+2026-11-09T06:31:30Z exported 1442948096 /home/ubuntu/runs/gptq-qwen25-15b-instruct/out-vulkan-16384/vulkan/Qwen2.5-1.5B-Instruct-vulkan-8da4w-gptq-16k.pte
+2026-11-09T06:31:47Z codesmatch ok: 197 of 197 int4 linears exact
+2026-11-09T06:31:47Z REPORT {"file": "vulkan/Qwen2.5-1.5B-Instruct-vulkan-8da4w-gptq-16k.pte", "bytes": 1442948096, "recipe": "8da4w-gptq-g32, int8 embeddings, int4 codes solved with GPTQ", "smoke": true, "reply": "", "gate": null, "agreed": null, "graded": null, "quiet": null, "fp32_mean": null, "export_mean": null, "tool_calling": null, "override": null, "proxy": {"passed": true, "graded": 12, "agreed": 12, "fp32_mean": 0.934, "export_mean": 0.7435, "override": null}, "fits_phone": null}
+2026-11-09T06:31:51Z published
+2026-11-09T06:31:51Z END rc=0

@@ -1,0 +1,35 @@
+{
+  "runtime": "executorch",
+  "runtime_version": "1.6.0",
+  "backend": "xnnpack",
+  "target": null,
+  "tokenizer": "tokenizer.json",
+  "source_model": "Qwen/Qwen3-1.7B",
+  "source_revision": "70d244cc86ccca08cf5af4e1e306ecf908b1ad5e",
+  "variants": [
+    {
+      "file": "Qwen3-1.7B-8da4w-2k.pte",
+      "size_bytes": 1284873600,
+      "sha256": "d2a52daa19bf84a3bece83b96f77e8d6e779700cf9d06f59104bcebdd7ea4934",
+      "context": 2048,
+      "source_revision": "70d244cc86ccca08cf5af4e1e306ecf908b1ad5e",
+      "quantization": "8da4w-g32, int8 embeddings, int4 codes rounded to nearest",
+      "fits_phone_budget": true,
+      "methods": {
+        "get_max_context_len": 2048,
+        "get_max_seq_len": 2048,
+        "get_bos_id": 151643,
+        "get_eos_ids": [
+          151645,
+          151643
+        ],
+        "get_vocab_size": 151936,
+        "get_n_layers": 28,
+        "use_kv_cache": true,
+        "use_sdpa_with_kv_cache": true,
+        "enable_dynamic_shape": true
+      },
+      "runtime_version": "1.6.0"
+    }
+  ]
+}

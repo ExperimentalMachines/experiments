@@ -1,0 +1,21 @@
+Failed to load /home/ubuntu/execupack/.venv/lib/python3.11/site-packages/torchao/_C_cutlass_90a.abi3.so: Could not load this library: /home/ubuntu/execupack/.venv/lib/python3.11/site-packages/torchao/_C_cutlass_90a.abi3.so
+Failed to load /home/ubuntu/execupack/.venv/lib/python3.11/site-packages/torchao/_C_mxfp8.cpython-310-x86_64-linux-gnu.so: Could not load this library: /home/ubuntu/execupack/.venv/lib/python3.11/site-packages/torchao/_C_mxfp8.cpython-310-x86_64-linux-gnu.so
+W1109 02:21:54.229000 2069 execupack/.venv/lib/python3.11/site-packages/torch/utils/_pytree.py:630] <enum 'KernelPreference'> is an Enum subclass and is now natively supported by torch.compile as an opaque value type. Calling register_constant() on Enum subclasses is deprecated and will be an error in a future release.
+W1109 02:21:55.006000 2069 execupack/.venv/lib/python3.11/site-packages/torch/utils/_pytree.py:630] <enum 'ScaleCalculationMode'> is an Enum subclass and is now natively supported by torch.compile as an opaque value type. Calling register_constant() on Enum subclasses is deprecated and will be an error in a future release.
+I tokenizers:regex.cpp:40] Registering override fallback regex
+Fetching 21 files:   0%|          | 0/21 [00:00<?, ?it/s]Fetching 21 files:  14%|█▍        | 3/21 [00:00<00:00, 20.31it/s]Fetching 21 files:  71%|███████▏  | 15/21 [00:00<00:00, 58.76it/s]Fetching 21 files:  90%|█████████ | 19/21 [00:20<00:00, 58.76it/s]Fetching 21 files:  95%|█████████▌| 20/21 [00:40<00:02,  2.70s/it]Fetching 21 files: 100%|██████████| 21/21 [01:00<00:00,  4.25s/it]Fetching 21 files: 100%|██████████| 21/21 [01:00<00:00,  2.89s/it]
+[transformers] This model config has set a `rope_parameters['original_max_position_embeddings']` field, to be used together with `max_position_embeddings` to determine a scaling factor. Please set the `factor` field of `rope_parameters`with this ratio instead -- we recommend the use of this field over `original_max_position_embeddings`, as it is compatible with most model architectures.
+codes for 225 linears; output in codes: True
+quantize ('tok_embeddings', Embedding(200064, 3072)) with group_size None, bitwidth 8
+V0 int4 everywhere {'passed': False, 'agreed': 7, 'graded': 8, 'fp32_mean': 0.6629, 'export_mean': 0.4567, 'quiet_rows_answered_like_fp32': 3, 'quiet_rows': 3} ["kept fp32's choice on 7 of 8 calling rows, under 90%"]
+quantize ('tok_embeddings', Embedding(200064, 3072)) with group_size None, bitwidth 8
+V1 output fp32 {'passed': True, 'agreed': 8, 'graded': 8, 'fp32_mean': 0.6629, 'export_mean': 0.5212, 'quiet_rows_answered_like_fp32': 3, 'quiet_rows': 3} []
+quantize ('tok_embeddings', Embedding(200064, 3072)) with group_size None, bitwidth 8
+Traceback (most recent call last):
+  File "/home/ubuntu/expt.py", line 92, in <module>
+    model = build(mode)
+            ^^^^^^^^^^^
+  File "/home/ubuntu/expt.py", line 85, in build
+    assert injected == len(use) and not left, (injected, len(use), left)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: (224, 224, ['output'])

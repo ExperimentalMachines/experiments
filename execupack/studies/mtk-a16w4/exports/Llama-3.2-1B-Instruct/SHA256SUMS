@@ -1,0 +1,11 @@
+0b4284c1f87029e67654c7953afa16279961632cf73dcfe33374c4c2f298fa35  ./LICENSE.txt
+3bc2d1a6b360a03d172058198631b931c9aadf01650892fb0d25b93c6b8f0025  ./NOTICE
+40e2777d7faa6beaf98400654170f414d8ab29b921b5163ad4ea0a1d39894201  ./USE_POLICY.md
+333b897ebcbdc7d742f13d922737e0fe514dcb13a37a893d1333f7e303ff6a0b  ./mtk/mt6991/Llama-3.2-1B-Instruct-neuropilot-a16w4-2k-chunk1of4.pte
+eaceafdc9caa582efc9a66fe3052f2136fab70211b1388f2f1db2b47baada900  ./mtk/mt6991/Llama-3.2-1B-Instruct-neuropilot-a16w4-2k-chunk2of4.pte
+843f85b19855ab8a6d6ca4d3d919bd719903378cf8563ecabd1bec6368d18aef  ./mtk/mt6991/Llama-3.2-1B-Instruct-neuropilot-a16w4-2k-chunk3of4.pte
+4aa060f90aa5b5e70feb05e479b191f6aedf5e0a2d095b5a4d3673cae506f188  ./mtk/mt6991/Llama-3.2-1B-Instruct-neuropilot-a16w4-2k-chunk4of4.pte
+d1602ecf8f4e69be360b87191d1a4f6aa4b3fa26002ebf0ea058208613737400  ./mtk/mt6991/Llama-3.2-1B-Instruct-neuropilot-embedding-fp32.bin
+9bae7814a492b68c83a7dc77e2d37460af97f8c0c528818cf2faeb04c22e7d8a  ./mtk/mt6991/config.json
+1792049692532f68b57858d92630b73faf0ddb4330b4e0e6761aef26cd23a67f  ./mtk/mt6991/export-report-2k.json
+79e3e522635f3171300913bb421464a87de6222182a0570b9b2ccba2a964b2b4  ./tokenizer.json

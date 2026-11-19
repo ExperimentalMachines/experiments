@@ -1,0 +1,121 @@
+Modal Sandbox: 40960 MiB, 8 cores, timeout 330 min
+Failed to load /usr/local/lib/python3.11/site-packages/torchao/_C_cutlass_90a.abi3.so: Could not load this library: /usr/local/lib/python3.11/site-packages/torchao/_C_cutlass_90a.abi3.so
+Failed to load /usr/local/lib/python3.11/site-packages/torchao/_C_mxfp8.cpython-310-x86_64-linux-gnu.so: Could not load this library: /usr/local/lib/python3.11/site-packages/torchao/_C_mxfp8.cpython-310-x86_64-linux-gnu.so
+W1119 06:11:56.385000 5 site-packages/torch/utils/_pytree.py:646] <enum 'KernelPreference'> is an Enum subclass and is now natively supported by torch.compile as an opaque value type. Calling register_constant() on Enum subclasses is deprecated and will be an error in a future release.
+W1119 06:11:56.417000 5 site-packages/torch/utils/_pytree.py:646] <enum 'ScaleCalculationMode'> is an Enum subclass and is now natively supported by torch.compile as an opaque value type. Calling register_constant() on Enum subclasses is deprecated and will be an error in a future release.
+calibration row 1/104: 636 prompt + 26 reply tokens, counting from 0
+calibration row 2/104: 636 prompt + 26 reply tokens, counting from 594
+calibration row 3/104: 636 prompt + 23 reply tokens, counting from 594
+calibration row 4/104: 636 prompt + 26 reply tokens, counting from 594
+calibration row 5/104: 636 prompt + 26 reply tokens, counting from 594
+calibration row 6/104: 636 prompt + 26 reply tokens, counting from 594
+calibration row 7/104: 636 prompt + 25 reply tokens, counting from 594
+calibration row 8/104: 636 prompt + 24 reply tokens, counting from 594
+calibration row 9/104: 636 prompt + 26 reply tokens, counting from 594
+calibration row 10/104: 640 prompt + 26 reply tokens, counting from 594
+calibration row 11/104: 638 prompt + 22 reply tokens, counting from 594
+calibration row 12/104: 638 prompt + 22 reply tokens, counting from 594
+calibration row 13/104: 638 prompt + 22 reply tokens, counting from 594
+calibration row 14/104: 638 prompt + 22 reply tokens, counting from 594
+calibration row 15/104: 640 prompt + 23 reply tokens, counting from 594
+calibration row 16/104: 640 prompt + 23 reply tokens, counting from 594
+calibration row 17/104: 638 prompt + 22 reply tokens, counting from 594
+calibration row 18/104: 638 prompt + 22 reply tokens, counting from 594
+calibration row 19/104: 640 prompt + 23 reply tokens, counting from 594
+calibration row 20/104: 638 prompt + 22 reply tokens, counting from 594
+calibration row 21/104: 645 prompt + 26 reply tokens, counting from 594
+calibration row 22/104: 639 prompt + 23 reply tokens, counting from 594
+calibration row 23/104: 645 prompt + 26 reply tokens, counting from 594
+calibration row 24/104: 639 prompt + 23 reply tokens, counting from 594
+calibration row 25/104: 639 prompt + 23 reply tokens, counting from 594
+calibration row 26/104: 639 prompt + 24 reply tokens, counting from 594
+calibration row 27/104: 639 prompt + 27 reply tokens, counting from 594
+calibration row 28/104: 637 prompt + 22 reply tokens, counting from 594
+calibration row 29/104: 643 prompt + 29 reply tokens, counting from 594
+calibration row 30/104: 637 prompt + 26 reply tokens, counting from 594
+calibration row 31/104: 640 prompt + 24 reply tokens, counting from 594
+calibration row 32/104: 651 prompt + 28 reply tokens, counting from 594
+calibration row 33/104: 640 prompt + 24 reply tokens, counting from 594
+calibration row 34/104: 642 prompt + 25 reply tokens, counting from 594
+calibration row 35/104: 640 prompt + 25 reply tokens, counting from 594
+calibration row 36/104: 638 prompt + 24 reply tokens, counting from 594
+calibration row 37/104: 642 prompt + 24 reply tokens, counting from 594
+calibration row 38/104: 640 prompt + 23 reply tokens, counting from 594
+calibration row 39/104: 644 prompt + 25 reply tokens, counting from 594
+calibration row 40/104: 646 prompt + 26 reply tokens, counting from 594
+calibration row 41/104: 651 prompt + 30 reply tokens, counting from 594
+calibration row 42/104: 643 prompt + 24 reply tokens, counting from 594
+calibration row 43/104: 650 prompt + 28 reply tokens, counting from 594
+calibration row 44/104: 650 prompt + 28 reply tokens, counting from 594
+calibration row 45/104: 645 prompt + 27 reply tokens, counting from 594
+calibration row 46/104: 647 prompt + 28 reply tokens, counting from 594
+calibration row 47/104: 641 prompt + 24 reply tokens, counting from 594
+calibration row 48/104: 647 prompt + 28 reply tokens, counting from 594
+calibration row 49/104: 610 prompt + 8 reply tokens, counting from 594
+calibration row 50/104: 611 prompt + 17 reply tokens, counting from 594
+calibration row 51/104: 611 prompt + 11 reply tokens, counting from 594
+calibration row 52/104: 611 prompt + 48 reply tokens, counting from 594
+calibration row 53/104: 614 prompt + 14 reply tokens, counting from 594
+calibration row 54/104: 609 prompt + 48 reply tokens, counting from 594
+calibration row 55/104: 609 prompt + 26 reply tokens, counting from 594
+calibration row 56/104: 612 prompt + 13 reply tokens, counting from 594
+calibration row 57/104: 615 prompt + 14 reply tokens, counting from 594
+calibration row 58/104: 609 prompt + 15 reply tokens, counting from 594
+calibration row 59/104: 612 prompt + 45 reply tokens, counting from 594
+calibration row 60/104: 612 prompt + 9 reply tokens, counting from 594
+calibration row 61/104: 613 prompt + 11 reply tokens, counting from 594
+calibration row 62/104: 612 prompt + 48 reply tokens, counting from 594
+calibration row 63/104: 613 prompt + 48 reply tokens, counting from 594
+calibration row 64/104: 611 prompt + 16 reply tokens, counting from 594
+calibration row 65/104: 612 prompt + 13 reply tokens, counting from 594
+calibration row 66/104: 614 prompt + 42 reply tokens, counting from 594
+calibration row 67/104: 613 prompt + 14 reply tokens, counting from 594
+calibration row 68/104: 610 prompt + 13 reply tokens, counting from 594
+calibration row 69/104: 612 prompt + 12 reply tokens, counting from 594
+calibration row 70/104: 610 prompt + 48 reply tokens, counting from 594
+calibration row 71/104: 612 prompt + 10 reply tokens, counting from 594
+calibration row 72/104: 610 prompt + 13 reply tokens, counting from 594
+calibration row 73/104: 19 prompt + 8 reply tokens, counting from 0
+calibration row 74/104: 19 prompt + 87 reply tokens, counting from 0
+calibration row 75/104: 26 prompt + 59 reply tokens, counting from 0
+calibration row 76/104: 19 prompt + 53 reply tokens, counting from 0
+calibration row 77/104: 22 prompt + 39 reply tokens, counting from 0
+calibration row 78/104: 19 prompt + 128 reply tokens, counting from 0
+calibration row 79/104: 26 prompt + 80 reply tokens, counting from 0
+calibration row 80/104: 20 prompt + 67 reply tokens, counting from 0
+calibration row 81/104: 18 prompt + 120 reply tokens, counting from 0
+calibration row 82/104: 26 prompt + 6 reply tokens, counting from 0
+calibration row 83/104: 27 prompt + 9 reply tokens, counting from 0
+calibration row 84/104: 27 prompt + 8 reply tokens, counting from 0
+calibration row 85/104: 19 prompt + 2 reply tokens, counting from 0
+calibration row 86/104: 32 prompt + 128 reply tokens, counting from 0
+calibration row 87/104: 27 prompt + 103 reply tokens, counting from 0
+calibration row 88/104: 33 prompt + 126 reply tokens, counting from 0
+calibration row 89/104: 38 prompt + 128 reply tokens, counting from 0
+calibration row 90/104: 26 prompt + 128 reply tokens, counting from 0
+calibration row 91/104: 31 prompt + 128 reply tokens, counting from 0
+calibration row 92/104: 31 prompt + 128 reply tokens, counting from 0
+calibration row 93/104: 25 prompt + 128 reply tokens, counting from 0
+calibration row 94/104: 20 prompt + 26 reply tokens, counting from 0
+calibration row 95/104: 83 prompt + 118 reply tokens, counting from 0
+calibration row 96/104: 44 prompt + 98 reply tokens, counting from 0
+calibration row 97/104: 21 prompt + 106 reply tokens, counting from 0
+calibration row 98/104: 31 prompt + 127 reply tokens, counting from 0
+calibration row 99/104: 24 prompt + 128 reply tokens, counting from 0
+calibration row 100/104: 19 prompt + 110 reply tokens, counting from 0
+calibration row 101/104: 23 prompt + 128 reply tokens, counting from 0
+calibration row 102/104: 22 prompt + 128 reply tokens, counting from 0
+calibration row 103/104: 21 prompt + 50 reply tokens, counting from 0
+calibration row 104/104: 20 prompt + 6 reply tokens, counting from 0
+==> 104 calibration rows, 8545 counted positions
+{
+  "model_id": "Qwen/Qwen3-1.7B",
+  "revision": "70d244cc86ccca08cf5af4e1e306ecf908b1ad5e",
+  "thinking": "off",
+  "calibration_rows": 104,
+  "calibration_positions": 8545,
+  "seconds": 1220.1,
+  "first_app_row_tail": " question names Springfield. Look it up with web_search before answering rather than recalling it, and answer from what the search returns.)<|im_end|>\n<|im_start|>assistant\n<think>\n\n</think>\n\n<tool_call>\n{\"name\": \"web_search\", \"arguments\": {\"query\": \"What is Springfield the capital of?\"}}\n</tool_call><|im_end|>"
+}
+Modal Sandbox exited 0 after 20.8 min
+downloaded 2 file(s) to work/awq/qwen3-1.7b/calib-nothink

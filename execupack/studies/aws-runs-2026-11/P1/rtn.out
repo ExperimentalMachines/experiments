@@ -1,0 +1,28 @@
+[transformers] This model config has set a `rope_parameters['original_max_position_embeddings']` field, to be used together with `max_position_embeddings` to determine a scaling factor. Please set the `factor` field of `rope_parameters`with this ratio instead -- we recommend the use of this field over `original_max_position_embeddings`, as it is compatible with most model architectures.
+Failed to load /home/ubuntu/execupack/.venv/lib/python3.11/site-packages/torchao/_C_cutlass_90a.abi3.so: Could not load this library: /home/ubuntu/execupack/.venv/lib/python3.11/site-packages/torchao/_C_cutlass_90a.abi3.so
+Failed to load /home/ubuntu/execupack/.venv/lib/python3.11/site-packages/torchao/_C_mxfp8.cpython-310-x86_64-linux-gnu.so: Could not load this library: /home/ubuntu/execupack/.venv/lib/python3.11/site-packages/torchao/_C_mxfp8.cpython-310-x86_64-linux-gnu.so
+W1109 02:16:23.607000 1889 torch/utils/_pytree.py:630] <enum 'KernelPreference'> is an Enum subclass and is now natively supported by torch.compile as an opaque value type. Calling register_constant() on Enum subclasses is deprecated and will be an error in a future release.
+W1109 02:16:24.549000 1889 torch/utils/_pytree.py:630] <enum 'ScaleCalculationMode'> is an Enum subclass and is now natively supported by torch.compile as an opaque value type. Calling register_constant() on Enum subclasses is deprecated and will be an error in a future release.
+I tokenizers:regex.cpp:40] Registering override fallback regex
+[cpuinfo_utils.cpp:71] Reading file /sys/devices/soc0/image_version
+[cpuinfo_utils.cpp:87] Failed to open midr file /sys/devices/soc0/image_version
+[cpuinfo_utils.cpp:100] Reading file /sys/devices/system/cpu/cpu0/regs/identification/midr_el1
+[cpuinfo_utils.cpp:109] Failed to open midr file /sys/devices/system/cpu/cpu0/regs/identification/midr_el1
+[cpuinfo_utils.cpp:125] CPU info and manual query on # of cpus dont match.
+RTN Phi-4-mini-instruct-3.8B-8da4w-2k.pte {'passed': False, 'agreed': 0, 'graded': 8, 'fp32_mean': 0.6629, 'export_mean': 0.0492, 'quiet_rows_answered_like_fp32': 1} ["mean probability on fp32's token over 8 calling rows is 0.049 against fp32's 0.663, 0.614 under and the gate is 0.25", "kept fp32's choice on 0 of 8 calling rows, under 90%", 'answered like fp32 on only 1 of 3 quiet rows: it is reaching for a tool on questions the unquantised model answers itself']
+   0.783 -> 0.013 top 'Con' What is Concord the capital of?
+   0.455 -> 0.0 top 'Provid' What is Providence the capital of?
+   0.591 -> 0.045 top 'Aug' What is Augusta the capital of?
+   0.526 -> 0.001 top 'N' What is Nassau the capital of?
+   0.73 -> 0.15 top 'The' Who is the author of Mercy?
+   0.741 -> 0.047 top 'The' Who is the author of Landfall?
+   0.67 -> 0.067 top 'A' Who is the author of Quicksand?
+   0.731 -> 0.072 top 'The' Who is the author of Nightfall?
+   0.412 -> 0.0 top 'O' In what country is Ostrava?
+   0.531 -> 0.0 top 'G' In what country is Gdynia?
+   0.473 -> 0.007 top 'The' In what country is Rijeka?
+   0.401 -> 0.001 top 'Link' In what country is Linkoping?
+   0.814 -> 0.472 top 'The' What is the capital of Norway?
+   0.355 -> 0.329 top '8' What is 8 times 7?
+   0.693 -> 0.005 top 'P' Who wrote Pride and Prejudice?
+   0.772 -> 0.951 top 'The' What is the chemical symbol for iron?

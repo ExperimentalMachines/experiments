@@ -1,0 +1,27 @@
+         2,685  .gitattributes
+        11,343  LICENSE
+         5,606  README.md
+     7,031,645  tokenizer.json
+ 1,442,948,096  vulkan/Qwen2.5-1.5B-Instruct-vulkan-8da4w-16k.pte
+ 1,398,908,672  vulkan/Qwen2.5-1.5B-Instruct-vulkan-8da4w-2k.pte
+ 1,493,279,744  vulkan/Qwen2.5-1.5B-Instruct-vulkan-8da4w-32k.pte
+ 1,405,199,360  vulkan/Qwen2.5-1.5B-Instruct-vulkan-8da4w-4k.pte
+ 1,417,782,272  vulkan/Qwen2.5-1.5B-Instruct-vulkan-8da4w-8k.pte
+         4,088  vulkan/config.json
+         5,740  vulkan/export-report-16k.json
+         5,732  vulkan/export-report-2k.json
+         5,724  vulkan/export-report-32k.json
+         5,715  vulkan/export-report-4k.json
+         5,717  vulkan/export-report-8k.json
+ 1,136,974,080  xnnpack/Qwen2.5-1.5B-Instruct-8da4w-gptq-16k.pte
+ 1,107,613,952  xnnpack/Qwen2.5-1.5B-Instruct-8da4w-gptq-2k.pte
+ 1,170,528,512  xnnpack/Qwen2.5-1.5B-Instruct-8da4w-gptq-32k.pte
+ 1,111,808,256  xnnpack/Qwen2.5-1.5B-Instruct-8da4w-gptq-4k.pte
+ 1,120,196,864  xnnpack/Qwen2.5-1.5B-Instruct-8da4w-gptq-8k.pte
+         4,094  xnnpack/config.json
+         8,154  xnnpack/export-report-16k.json
+         8,149  xnnpack/export-report-2k.json
+         8,150  xnnpack/export-report-32k.json
+         8,146  xnnpack/export-report-4k.json
+         8,150  xnnpack/export-report-8k.json
+repo experimentalmachines/Qwen2.5-1.5B-Instruct-ExecuTorch sha da3df2185906187e1a7f4448e7df3d41b0cfda31

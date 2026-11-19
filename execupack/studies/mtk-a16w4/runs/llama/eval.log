@@ -1,0 +1,59 @@
+W1119 05:09:10.436000 4970 torch/utils/_pytree.py:630] <enum 'KernelPreference'> is an Enum subclass and is now natively supported by torch.compile as an opaque value type. Calling register_constant() on Enum subclasses is deprecated and will be an error in a future release.
+llama config:
+Hidden size:          2048
+Intermediate size:    8192
+Num layers:           16
+Num attention heads:  32
+Num KV heads:         8
+Head Dim:             64
+Positional embedding: rope
+Max pos emb:          131072
+Norm type:            RMSNorm
+Norm epsilon:         1e-05
+BOS token id:         128000
+EOS token id:         [128001, 128008, 128009]
+PAD token id:         0
+UNK token id:         0
+Vocab size:           128256
+Use stable embedding: False
+Tie word embeddings:  True
+Combine QKV:          False
+Tokenizer:            pretrained_fast
+
+Loading weights from disk
+Loading weights for chunk 0
+Loading weights for chunk 1
+Loading weights for chunk 2
+Loading weights for chunk 3
+llama config:
+Hidden size:          2048
+Intermediate size:    8192
+Num layers:           16
+Num attention heads:  32
+Num KV heads:         8
+Head Dim:             64
+Positional embedding: rope
+Max pos emb:          131072
+Norm type:            RMSNorm
+Norm epsilon:         1e-05
+BOS token id:         128000
+EOS token id:         [128001, 128008, 128009]
+PAD token id:         0
+UNK token id:         0
+Vocab size:           128256
+Use stable embedding: False
+Tie word embeddings:  False
+Combine QKV:          False
+Tokenizer:            pretrained_fast
+
+Loading weights from disk
+Loading weights for chunk 0
+Loading weights for chunk 1
+Loading weights for chunk 2
+Loading weights for chunk 3
+a16w8: A16W8 calibrated on 9 samples in 9 s
+a16w4: A16W4 calibrated on 9 samples in 9 s
+a16w4-gptq: A16W4 calibrated on 9 samples in 9 s
+         a16w8  KL 0.0462  ppl 29.36 (fp32 29.14)  top1 0.889  gate FAIL 7/12 mean 0.4812 (fp32 0.8843) first-token KL 0.40039
+         a16w4  KL 0.9367  ppl 65.83 (fp32 29.14)  top1 0.511  gate FAIL 0/12 mean 0.0005 (fp32 0.8843) first-token KL 6.5949
+    a16w4-gptq  KL 0.6745  ppl 53.73 (fp32 29.14)  top1 0.572  gate PASS 12/12 mean 0.9026 (fp32 0.8843) first-token KL 0.16526

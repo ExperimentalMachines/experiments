@@ -1,0 +1,132 @@
+uploaded 1 input(s) to execupack-runs:/local-1-012f49f7/in
+Modal Sandbox: 40960 MiB, 8 cores, timeout 330 min
+Failed to load /usr/local/lib/python3.11/site-packages/torchao/_C_cutlass_90a.abi3.so: Could not load this library: /usr/local/lib/python3.11/site-packages/torchao/_C_cutlass_90a.abi3.so
+Failed to load /usr/local/lib/python3.11/site-packages/torchao/_C_mxfp8.cpython-310-x86_64-linux-gnu.so: Could not load this library: /usr/local/lib/python3.11/site-packages/torchao/_C_mxfp8.cpython-310-x86_64-linux-gnu.so
+W1119 04:47:56.652000 5 site-packages/torch/utils/_pytree.py:646] <enum 'KernelPreference'> is an Enum subclass and is now natively supported by torch.compile as an opaque value type. Calling register_constant() on Enum subclasses is deprecated and will be an error in a future release.
+W1119 04:47:58.155000 5 site-packages/torch/utils/_pytree.py:646] <enum 'ScaleCalculationMode'> is an Enum subclass and is now natively supported by torch.compile as an opaque value type. Calling register_constant() on Enum subclasses is deprecated and will be an error in a future release.
+I tokenizers:regex.cpp:40] Registering override fallback regex
+{
+  "model_id": "Qwen/Qwen3-1.7B",
+  "method": "published",
+  "revision": "70d244cc86ccca08cf5af4e1e306ecf908b1ad5e",
+  "published": "experimentalmachines/Qwen3-1.7B-ExecuTorch/xnnpack/Qwen3-1.7B-8da4w-gptq-2k.pte",
+  "bytes": 1284898560,
+  "gate": {
+    "passed": true,
+    "problems": [],
+    "graded": 12,
+    "fp32_mean": 0.9988,
+    "export_mean": 0.9784,
+    "agreed": 12,
+    "shortfall": 0.0205,
+    "quiet_rows_answered_like_fp32": 3,
+    "measures_tool_calling": true,
+    "quiet_rows": 3,
+    "fp32_undecided_quiet_rows": [
+      "Who wrote Pride and Prejudice?"
+    ],
+    "fp32_undecided_rows": [],
+    "rows": {
+      "What is Concord the capital of?": {
+        "fp32": 0.998,
+        "export": 0.9158,
+        "kind": "search"
+      },
+      "What is Providence the capital of?": {
+        "fp32": 0.9982,
+        "export": 0.9569,
+        "kind": "search"
+      },
+      "What is Augusta the capital of?": {
+        "fp32": 0.9983,
+        "export": 0.9727,
+        "kind": "search"
+      },
+      "What is Nassau the capital of?": {
+        "fp32": 0.9988,
+        "export": 0.9812,
+        "kind": "search"
+      },
+      "Who is the author of Mercy?": {
+        "fp32": 0.9993,
+        "export": 0.9769,
+        "kind": "search"
+      },
+      "Who is the author of Landfall?": {
+        "fp32": 0.9994,
+        "export": 0.9928,
+        "kind": "search"
+      },
+      "Who is the author of Quicksand?": {
+        "fp32": 0.9992,
+        "export": 0.9916,
+        "kind": "search"
+      },
+      "Who is the author of Nightfall?": {
+        "fp32": 0.9992,
+        "export": 0.9945,
+        "kind": "search"
+      },
+      "In what country is Ostrava?": {
+        "fp32": 0.999,
+        "export": 0.9931,
+        "kind": "search"
+      },
+      "In what country is Gdynia?": {
+        "fp32": 0.9986,
+        "export": 0.9881,
+        "kind": "search"
+      },
+      "In what country is Rijeka?": {
+        "fp32": 0.9991,
+        "export": 0.9896,
+        "kind": "search"
+      },
+      "In what country is Linkoping?": {
+        "fp32": 0.9986,
+        "export": 0.9871,
+        "kind": "search"
+      },
+      "What is the capital of Norway?": {
+        "fp32": 1.0,
+        "export": 1.0,
+        "kind": "quiet"
+      },
+      "What is 8 times 7?": {
+        "fp32": 1.0,
+        "export": 1.0,
+        "kind": "quiet"
+      },
+      "Who wrote Pride and Prejudice?": {
+        "fp32": 0.4317,
+        "export": 0.0,
+        "kind": "quiet"
+      },
+      "What is the chemical symbol for iron?": {
+        "fp32": 1.0,
+        "export": 1.0,
+        "kind": "quiet"
+      }
+    }
+  },
+  "heldout": {
+    "rows": 141,
+    "top1_agree": 0.8439716312056738,
+    "mean_kl": 2.1931307143016356,
+    "mean_p_fp32_top": 0.8417258224232939
+  },
+  "replies": {
+    "rows": 47,
+    "positions": 1416,
+    "top1_agree": 0.8919491525423728,
+    "mean_kl": 0.3588416420240894
+  },
+  "timings_s": {
+    "download_convert": 8.0,
+    "download_published": 2.7,
+    "gate": 59.9,
+    "eval": 715.8
+  }
+}
+Modal Sandbox exited 0 after 13.3 min
+downloaded 2 file(s) to work/awq/qwen3-1.7b/published

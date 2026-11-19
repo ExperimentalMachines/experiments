@@ -1,0 +1,335 @@
+==> Qwen/Qwen3-4B@1cfa9a720891: family qwen3, class qwen3_1_7b, window 2048
+==> converting checkpoint
+==> export_llm (codes: gptq, state fix: False, lfm3: False)
+Failed to load /home/ubuntu/execupack/.venv/lib/python3.11/site-packages/torchao/_C_cutlass_90a.abi3.so: Could not load this library: /home/ubuntu/execupack/.venv/lib/python3.11/site-packages/torchao/_C_cutlass_90a.abi3.so
+Failed to load /home/ubuntu/execupack/.venv/lib/python3.11/site-packages/torchao/_C_mxfp8.cpython-310-x86_64-linux-gnu.so: Could not load this library: /home/ubuntu/execupack/.venv/lib/python3.11/site-packages/torchao/_C_mxfp8.cpython-310-x86_64-linux-gnu.so
+W1109 07:18:44.823000 12947 torch/utils/_pytree.py:630] <enum 'KernelPreference'> is an Enum subclass and is now natively supported by torch.compile as an opaque value type. Calling register_constant() on Enum subclasses is deprecated and will be an error in a future release.
+W1109 07:18:44.853000 12947 torch/utils/_pytree.py:630] <enum 'ScaleCalculationMode'> is an Enum subclass and is now natively supported by torch.compile as an opaque value type. Calling register_constant() on Enum subclasses is deprecated and will be an error in a future release.
+I tokenizers:regex.cpp:40] Registering override fallback regex
+[2026-11-09 07:18:49,321][root][INFO] - Applying quantizers: []
+[2026-11-09 07:18:49,437][root][INFO] - Checkpoint dtype: torch.bfloat16
+quantize ('tok_embeddings', Embedding(151936, 2560)) with group_size None, bitwidth 8
+injected calibrated codes into 253 linears
+[2026-11-09 07:18:58,666][root][INFO] - Looking for libcustom_ops_aot_lib.so in /home/ubuntu/execupack/.venv/lib/python3.11/site-packages/executorch/extension/llm/custom_ops
+[2026-11-09 07:18:58,667][root][INFO] - Loading custom ops library: /home/ubuntu/execupack/.venv/lib/python3.11/site-packages/executorch/extension/llm/custom_ops/libcustom_ops_aot_lib.so
+[2026-11-09 07:18:58,677][root][INFO] - Replacing KVCache with CustomKVCache. This modifies the model in place.
+[2026-11-09 07:18:59,811][root][INFO] - Model after source transforms: Transformer(
+  (tok_embeddings): QuantizedGroupEmbedding()
+  (layers): ModuleList(
+    (0-35): 36 x TransformerBlock(
+      (attention): AttentionMHA(
+        (q_norm_fn): RMSNorm()
+        (k_norm_fn): RMSNorm()
+        (wq): Linear(in_features=2560, out_features=4096, bias=False, weight=IntxUnpackedToInt8Tensor(target_dtype=torch.int4, block_size=(1, 32), shape=torch.Size([4096, 2560]), dtype=torch.float32, device=cpu, activation_quantization=int8_asym_per_token))
+        (wk): Linear(in_features=2560, out_features=1024, bias=False, weight=IntxUnpackedToInt8Tensor(target_dtype=torch.int4, block_size=(1, 32), shape=torch.Size([1024, 2560]), dtype=torch.float32, device=cpu, activation_quantization=int8_asym_per_token))
+        (wv): Linear(in_features=2560, out_features=1024, bias=False, weight=IntxUnpackedToInt8Tensor(target_dtype=torch.int4, block_size=(1, 32), shape=torch.Size([1024, 2560]), dtype=torch.float32, device=cpu, activation_quantization=int8_asym_per_token))
+        (wo): Linear(in_features=4096, out_features=2560, bias=False, weight=IntxUnpackedToInt8Tensor(target_dtype=torch.int4, block_size=(1, 32), shape=torch.Size([2560, 4096]), dtype=torch.float32, device=cpu, activation_quantization=int8_asym_per_token))
+        (rope): Rope()
+        (kv_cache): CustomKVCache()
+        (SDPA): SDPACustom()
+      )
+      (feed_forward): FeedForward(
+        (w1): Linear(in_features=2560, out_features=9728, bias=False, weight=IntxUnpackedToInt8Tensor(target_dtype=torch.int4, block_size=(1, 32), shape=torch.Size([9728, 2560]), dtype=torch.float32, device=cpu, activation_quantization=int8_asym_per_token))
+        (w2): Linear(in_features=9728, out_features=2560, bias=False, weight=IntxUnpackedToInt8Tensor(target_dtype=torch.int4, block_size=(1, 32), shape=torch.Size([2560, 9728]), dtype=torch.float32, device=cpu, activation_quantization=int8_asym_per_token))
+        (w3): Linear(in_features=2560, out_features=9728, bias=False, weight=IntxUnpackedToInt8Tensor(target_dtype=torch.int4, block_size=(1, 32), shape=torch.Size([9728, 2560]), dtype=torch.float32, device=cpu, activation_quantization=int8_asym_per_token))
+      )
+      (attention_norm): RMSNorm()
+      (ffn_norm): RMSNorm()
+    )
+  )
+  (rope): Rope()
+  (norm): RMSNorm()
+  (output): Linear(in_features=2560, out_features=151936, bias=False, weight=IntxUnpackedToInt8Tensor(target_dtype=torch.int4, block_size=(1, 32), shape=torch.Size([151936, 2560]), dtype=torch.float32, device=cpu, activation_quantization=int8_asym_per_token))
+)
+[2026-11-09 07:18:59,811][root][INFO] - Exporting with:
+[2026-11-09 07:18:59,812][root][INFO] - inputs: (tensor([[2, 3, 4]]), {'input_pos': tensor([0])})
+[2026-11-09 07:18:59,812][root][INFO] - kwargs: None
+[2026-11-09 07:18:59,812][root][INFO] - dynamic shapes: ({1: Dim('token_dim', min=0, max=2047)}, {'input_pos': {0: 1}})
+/home/ubuntu/execupack/.venv/lib/python3.11/site-packages/torch/_dynamo/utils.py:4415: FutureWarning: _check_is_size will be removed in a future PyTorch release along with guard_size_oblivious.     Use _check(i >= 0) instead.
+  return node.target(*args, **kwargs)  # type: ignore[operator]
+/home/ubuntu/execupack/.venv/lib/python3.11/site-packages/executorch/extension/llm/custom_ops/custom_ops.py:317: FutureWarning: _check_is_size will be removed in a future PyTorch release along with guard_size_oblivious.     Use _check(i >= 0) instead.
+  torch._check_is_size(start_pos)
+/home/ubuntu/execupack/.venv/lib/python3.11/site-packages/torch/fx/interpreter.py:377: FutureWarning: _check_is_size will be removed in a future PyTorch release along with guard_size_oblivious.     Use _check(i >= 0) instead.
+  return target(*args, **kwargs)
+/home/ubuntu/execupack/.venv/lib/python3.11/site-packages/executorch/extension/llm/custom_ops/custom_ops.py:317: FutureWarning: _check_is_size will be removed in a future PyTorch release along with guard_size_oblivious.     Use _check(i >= 0) instead.
+  torch._check_is_size(start_pos)
+/home/ubuntu/execupack/.venv/lib/python3.11/site-packages/executorch/extension/llm/custom_ops/custom_ops.py:317: FutureWarning: _check_is_size will be removed in a future PyTorch release along with guard_size_oblivious.     Use _check(i >= 0) instead.
+  torch._check_is_size(start_pos)
+/home/ubuntu/execupack/.venv/lib/python3.11/site-packages/executorch/extension/llm/custom_ops/custom_ops.py:317: FutureWarning: _check_is_size will be removed in a future PyTorch release along with guard_size_oblivious.     Use _check(i >= 0) instead.
+  torch._check_is_size(start_pos)
+[2026-11-09 07:20:00,552][root][INFO] - Running canonical pass: RemoveRedundantTransposes
+[2026-11-09 07:20:00,734][root][INFO] - Lowering model using following partitioner(s): 
+[2026-11-09 07:20:00,734][root][INFO] - --> XnnpackDynamicallyQuantizedPartitioner
+[2026-11-09 07:20:00,734][root][INFO] - --> XnnpackPartitioner
+[2026-11-09 07:20:00,735][root][INFO] - Using pt2e [] to quantizing the model...
+[2026-11-09 07:20:00,735][root][INFO] - No quantizer provided, passing...
+[2026-11-09 07:20:00,735][root][INFO] - Re-exporting with:
+[2026-11-09 07:20:00,735][root][INFO] - inputs: (tensor([[2, 3, 4]]), {'input_pos': tensor([0])})
+[2026-11-09 07:20:00,735][root][INFO] - kwargs: None
+[2026-11-09 07:20:00,735][root][INFO] - dynamic shapes: ({1: Dim('token_dim', min=0, max=2047)}, {'input_pos': {0: 1}})
+/home/ubuntu/execupack/.venv/lib/python3.11/site-packages/executorch/extension/llm/custom_ops/custom_ops.py:317: FutureWarning: _check_is_size will be removed in a future PyTorch release along with guard_size_oblivious.     Use _check(i >= 0) instead.
+  torch._check_is_size(start_pos)
+/home/ubuntu/execupack/.venv/lib/python3.11/site-packages/executorch/extension/llm/custom_ops/custom_ops.py:317: FutureWarning: _check_is_size will be removed in a future PyTorch release along with guard_size_oblivious.     Use _check(i >= 0) instead.
+  torch._check_is_size(start_pos)
+/home/ubuntu/execupack/.venv/lib/python3.11/site-packages/executorch/extension/llm/custom_ops/custom_ops.py:317: FutureWarning: _check_is_size will be removed in a future PyTorch release along with guard_size_oblivious.     Use _check(i >= 0) instead.
+  torch._check_is_size(start_pos)
+/home/ubuntu/execupack/.venv/lib/python3.11/site-packages/executorch/extension/llm/custom_ops/custom_ops.py:317: FutureWarning: _check_is_size will be removed in a future PyTorch release along with guard_size_oblivious.     Use _check(i >= 0) instead.
+  torch._check_is_size(start_pos)
+/home/ubuntu/execupack/.venv/lib/python3.11/site-packages/executorch/extension/llm/custom_ops/custom_ops.py:317: FutureWarning: _check_is_size will be removed in a future PyTorch release along with guard_size_oblivious.     Use _check(i >= 0) instead.
+  torch._check_is_size(start_pos)
+/home/ubuntu/execupack/.venv/lib/python3.11/site-packages/executorch/extension/llm/custom_ops/custom_ops.py:317: FutureWarning: _check_is_size will be removed in a future PyTorch release along with guard_size_oblivious.     Use _check(i >= 0) instead.
+  torch._check_is_size(start_pos)
+/home/ubuntu/execupack/.venv/lib/python3.11/site-packages/executorch/extension/llm/custom_ops/custom_ops.py:317: FutureWarning: _check_is_size will be removed in a future PyTorch release along with guard_size_oblivious.     Use _check(i >= 0) instead.
+  torch._check_is_size(start_pos)
+/home/ubuntu/execupack/.venv/lib/python3.11/site-packages/executorch/extension/llm/custom_ops/custom_ops.py:317: FutureWarning: _check_is_size will be removed in a future PyTorch release along with guard_size_oblivious.     Use _check(i >= 0) instead.
+  torch._check_is_size(start_pos)
+/home/ubuntu/execupack/.venv/lib/python3.11/site-packages/executorch/extension/llm/custom_ops/custom_ops.py:317: FutureWarning: _check_is_size will be removed in a future PyTorch release along with guard_size_oblivious.     Use _check(i >= 0) instead.
+  torch._check_is_size(start_pos)
+/home/ubuntu/execupack/.venv/lib/python3.11/site-packages/executorch/extension/llm/custom_ops/custom_ops.py:317: FutureWarning: _check_is_size will be removed in a future PyTorch release along with guard_size_oblivious.     Use _check(i >= 0) instead.
+  torch._check_is_size(start_pos)
+/home/ubuntu/execupack/.venv/lib/python3.11/site-packages/executorch/extension/llm/custom_ops/custom_ops.py:317: FutureWarning: _check_is_size will be removed in a future PyTorch release along with guard_size_oblivious.     Use _check(i >= 0) instead.
+  torch._check_is_size(start_pos)
+/home/ubuntu/execupack/.venv/lib/python3.11/site-packages/executorch/extension/llm/custom_ops/custom_ops.py:317: FutureWarning: _check_is_size will be removed in a future PyTorch release along with guard_size_oblivious.     Use _check(i >= 0) instead.
+  torch._check_is_size(start_pos)
+/home/ubuntu/execupack/.venv/lib/python3.11/site-packages/executorch/extension/llm/custom_ops/custom_ops.py:317: FutureWarning: _check_is_size will be removed in a future PyTorch release along with guard_size_oblivious.     Use _check(i >= 0) instead.
+  torch._check_is_size(start_pos)
+/home/ubuntu/execupack/.venv/lib/python3.11/site-packages/executorch/extension/llm/custom_ops/custom_ops.py:317: FutureWarning: _check_is_size will be removed in a future PyTorch release along with guard_size_oblivious.     Use _check(i >= 0) instead.
+  torch._check_is_size(start_pos)
+/home/ubuntu/execupack/.venv/lib/python3.11/site-packages/executorch/extension/llm/custom_ops/custom_ops.py:317: FutureWarning: _check_is_size will be removed in a future PyTorch release along with guard_size_oblivious.     Use _check(i >= 0) instead.
+  torch._check_is_size(start_pos)
+/home/ubuntu/execupack/.venv/lib/python3.11/site-packages/executorch/extension/llm/custom_ops/custom_ops.py:317: FutureWarning: _check_is_size will be removed in a future PyTorch release along with guard_size_oblivious.     Use _check(i >= 0) instead.
+  torch._check_is_size(start_pos)
+/home/ubuntu/execupack/.venv/lib/python3.11/site-packages/executorch/extension/llm/custom_ops/custom_ops.py:317: FutureWarning: _check_is_size will be removed in a future PyTorch release along with guard_size_oblivious.     Use _check(i >= 0) instead.
+  torch._check_is_size(start_pos)
+/home/ubuntu/execupack/.venv/lib/python3.11/site-packages/executorch/extension/llm/custom_ops/custom_ops.py:317: FutureWarning: _check_is_size will be removed in a future PyTorch release along with guard_size_oblivious.     Use _check(i >= 0) instead.
+  torch._check_is_size(start_pos)
+/home/ubuntu/execupack/.venv/lib/python3.11/site-packages/executorch/extension/llm/custom_ops/custom_ops.py:317: FutureWarning: _check_is_size will be removed in a future PyTorch release along with guard_size_oblivious.     Use _check(i >= 0) instead.
+  torch._check_is_size(start_pos)
+/home/ubuntu/execupack/.venv/lib/python3.11/site-packages/executorch/extension/llm/custom_ops/custom_ops.py:317: FutureWarning: _check_is_size will be removed in a future PyTorch release along with guard_size_oblivious.     Use _check(i >= 0) instead.
+  torch._check_is_size(start_pos)
+/home/ubuntu/execupack/.venv/lib/python3.11/site-packages/executorch/extension/llm/custom_ops/custom_ops.py:317: FutureWarning: _check_is_size will be removed in a future PyTorch release along with guard_size_oblivious.     Use _check(i >= 0) instead.
+  torch._check_is_size(start_pos)
+/home/ubuntu/execupack/.venv/lib/python3.11/site-packages/executorch/extension/llm/custom_ops/custom_ops.py:317: FutureWarning: _check_is_size will be removed in a future PyTorch release along with guard_size_oblivious.     Use _check(i >= 0) instead.
+  torch._check_is_size(start_pos)
+/home/ubuntu/execupack/.venv/lib/python3.11/site-packages/executorch/extension/llm/custom_ops/custom_ops.py:317: FutureWarning: _check_is_size will be removed in a future PyTorch release along with guard_size_oblivious.     Use _check(i >= 0) instead.
+  torch._check_is_size(start_pos)
+/home/ubuntu/execupack/.venv/lib/python3.11/site-packages/executorch/extension/llm/custom_ops/custom_ops.py:317: FutureWarning: _check_is_size will be removed in a future PyTorch release along with guard_size_oblivious.     Use _check(i >= 0) instead.
+  torch._check_is_size(start_pos)
+/home/ubuntu/execupack/.venv/lib/python3.11/site-packages/executorch/extension/llm/custom_ops/custom_ops.py:317: FutureWarning: _check_is_size will be removed in a future PyTorch release along with guard_size_oblivious.     Use _check(i >= 0) instead.
+  torch._check_is_size(start_pos)
+/home/ubuntu/execupack/.venv/lib/python3.11/site-packages/executorch/extension/llm/custom_ops/custom_ops.py:317: FutureWarning: _check_is_size will be removed in a future PyTorch release along with guard_size_oblivious.     Use _check(i >= 0) instead.
+  torch._check_is_size(start_pos)
+/home/ubuntu/execupack/.venv/lib/python3.11/site-packages/executorch/extension/llm/custom_ops/custom_ops.py:317: FutureWarning: _check_is_size will be removed in a future PyTorch release along with guard_size_oblivious.     Use _check(i >= 0) instead.
+  torch._check_is_size(start_pos)
+/home/ubuntu/execupack/.venv/lib/python3.11/site-packages/executorch/extension/llm/custom_ops/custom_ops.py:317: FutureWarning: _check_is_size will be removed in a future PyTorch release along with guard_size_oblivious.     Use _check(i >= 0) instead.
+  torch._check_is_size(start_pos)
+/home/ubuntu/execupack/.venv/lib/python3.11/site-packages/executorch/extension/llm/custom_ops/custom_ops.py:317: FutureWarning: _check_is_size will be removed in a future PyTorch release along with guard_size_oblivious.     Use _check(i >= 0) instead.
+  torch._check_is_size(start_pos)
+/home/ubuntu/execupack/.venv/lib/python3.11/site-packages/executorch/extension/llm/custom_ops/custom_ops.py:317: FutureWarning: _check_is_size will be removed in a future PyTorch release along with guard_size_oblivious.     Use _check(i >= 0) instead.
+  torch._check_is_size(start_pos)
+/home/ubuntu/execupack/.venv/lib/python3.11/site-packages/executorch/extension/llm/custom_ops/custom_ops.py:317: FutureWarning: _check_is_size will be removed in a future PyTorch release along with guard_size_oblivious.     Use _check(i >= 0) instead.
+  torch._check_is_size(start_pos)
+/home/ubuntu/execupack/.venv/lib/python3.11/site-packages/executorch/extension/llm/custom_ops/custom_ops.py:317: FutureWarning: _check_is_size will be removed in a future PyTorch release along with guard_size_oblivious.     Use _check(i >= 0) instead.
+  torch._check_is_size(start_pos)
+/home/ubuntu/execupack/.venv/lib/python3.11/site-packages/executorch/extension/llm/custom_ops/custom_ops.py:317: FutureWarning: _check_is_size will be removed in a future PyTorch release along with guard_size_oblivious.     Use _check(i >= 0) instead.
+  torch._check_is_size(start_pos)
+/home/ubuntu/execupack/.venv/lib/python3.11/site-packages/executorch/extension/llm/custom_ops/custom_ops.py:317: FutureWarning: _check_is_size will be removed in a future PyTorch release along with guard_size_oblivious.     Use _check(i >= 0) instead.
+  torch._check_is_size(start_pos)
+/home/ubuntu/execupack/.venv/lib/python3.11/site-packages/executorch/extension/llm/custom_ops/custom_ops.py:317: FutureWarning: _check_is_size will be removed in a future PyTorch release along with guard_size_oblivious.     Use _check(i >= 0) instead.
+  torch._check_is_size(start_pos)
+/home/ubuntu/execupack/.venv/lib/python3.11/site-packages/executorch/extension/llm/custom_ops/custom_ops.py:317: FutureWarning: _check_is_size will be removed in a future PyTorch release along with guard_size_oblivious.     Use _check(i >= 0) instead.
+  torch._check_is_size(start_pos)
+/home/ubuntu/execupack/.venv/lib/python3.11/site-packages/executorch/extension/llm/custom_ops/custom_ops.py:317: FutureWarning: _check_is_size will be removed in a future PyTorch release along with guard_size_oblivious.     Use _check(i >= 0) instead.
+  torch._check_is_size(start_pos)
+/home/ubuntu/execupack/.venv/lib/python3.11/site-packages/executorch/extension/llm/custom_ops/custom_ops.py:317: FutureWarning: _check_is_size will be removed in a future PyTorch release along with guard_size_oblivious.     Use _check(i >= 0) instead.
+  torch._check_is_size(start_pos)
+/home/ubuntu/execupack/.venv/lib/python3.11/site-packages/executorch/extension/llm/custom_ops/custom_ops.py:317: FutureWarning: _check_is_size will be removed in a future PyTorch release along with guard_size_oblivious.     Use _check(i >= 0) instead.
+  torch._check_is_size(start_pos)
+/home/ubuntu/execupack/.venv/lib/python3.11/site-packages/executorch/extension/llm/custom_ops/custom_ops.py:317: FutureWarning: _check_is_size will be removed in a future PyTorch release along with guard_size_oblivious.     Use _check(i >= 0) instead.
+  torch._check_is_size(start_pos)
+/home/ubuntu/execupack/.venv/lib/python3.11/site-packages/executorch/extension/llm/custom_ops/custom_ops.py:317: FutureWarning: _check_is_size will be removed in a future PyTorch release along with guard_size_oblivious.     Use _check(i >= 0) instead.
+  torch._check_is_size(start_pos)
+/home/ubuntu/execupack/.venv/lib/python3.11/site-packages/executorch/extension/llm/custom_ops/custom_ops.py:317: FutureWarning: _check_is_size will be removed in a future PyTorch release along with guard_size_oblivious.     Use _check(i >= 0) instead.
+  torch._check_is_size(start_pos)
+/home/ubuntu/execupack/.venv/lib/python3.11/site-packages/executorch/extension/llm/custom_ops/custom_ops.py:317: FutureWarning: _check_is_size will be removed in a future PyTorch release along with guard_size_oblivious.     Use _check(i >= 0) instead.
+  torch._check_is_size(start_pos)
+/home/ubuntu/execupack/.venv/lib/python3.11/site-packages/executorch/extension/llm/custom_ops/custom_ops.py:317: FutureWarning: _check_is_size will be removed in a future PyTorch release along with guard_size_oblivious.     Use _check(i >= 0) instead.
+  torch._check_is_size(start_pos)
+/home/ubuntu/execupack/.venv/lib/python3.11/site-packages/executorch/extension/llm/custom_ops/custom_ops.py:317: FutureWarning: _check_is_size will be removed in a future PyTorch release along with guard_size_oblivious.     Use _check(i >= 0) instead.
+  torch._check_is_size(start_pos)
+/home/ubuntu/execupack/.venv/lib/python3.11/site-packages/executorch/extension/llm/custom_ops/custom_ops.py:317: FutureWarning: _check_is_size will be removed in a future PyTorch release along with guard_size_oblivious.     Use _check(i >= 0) instead.
+  torch._check_is_size(start_pos)
+/home/ubuntu/execupack/.venv/lib/python3.11/site-packages/executorch/extension/llm/custom_ops/custom_ops.py:317: FutureWarning: _check_is_size will be removed in a future PyTorch release along with guard_size_oblivious.     Use _check(i >= 0) instead.
+  torch._check_is_size(start_pos)
+/home/ubuntu/execupack/.venv/lib/python3.11/site-packages/executorch/extension/llm/custom_ops/custom_ops.py:317: FutureWarning: _check_is_size will be removed in a future PyTorch release along with guard_size_oblivious.     Use _check(i >= 0) instead.
+  torch._check_is_size(start_pos)
+/home/ubuntu/execupack/.venv/lib/python3.11/site-packages/executorch/extension/llm/custom_ops/custom_ops.py:317: FutureWarning: _check_is_size will be removed in a future PyTorch release along with guard_size_oblivious.     Use _check(i >= 0) instead.
+  torch._check_is_size(start_pos)
+/home/ubuntu/execupack/.venv/lib/python3.11/site-packages/executorch/extension/llm/custom_ops/custom_ops.py:317: FutureWarning: _check_is_size will be removed in a future PyTorch release along with guard_size_oblivious.     Use _check(i >= 0) instead.
+  torch._check_is_size(start_pos)
+/home/ubuntu/execupack/.venv/lib/python3.11/site-packages/executorch/extension/llm/custom_ops/custom_ops.py:317: FutureWarning: _check_is_size will be removed in a future PyTorch release along with guard_size_oblivious.     Use _check(i >= 0) instead.
+  torch._check_is_size(start_pos)
+/home/ubuntu/execupack/.venv/lib/python3.11/site-packages/executorch/extension/llm/custom_ops/custom_ops.py:317: FutureWarning: _check_is_size will be removed in a future PyTorch release along with guard_size_oblivious.     Use _check(i >= 0) instead.
+  torch._check_is_size(start_pos)
+/home/ubuntu/execupack/.venv/lib/python3.11/site-packages/executorch/extension/llm/custom_ops/custom_ops.py:317: FutureWarning: _check_is_size will be removed in a future PyTorch release along with guard_size_oblivious.     Use _check(i >= 0) instead.
+  torch._check_is_size(start_pos)
+/home/ubuntu/execupack/.venv/lib/python3.11/site-packages/executorch/extension/llm/custom_ops/custom_ops.py:317: FutureWarning: _check_is_size will be removed in a future PyTorch release along with guard_size_oblivious.     Use _check(i >= 0) instead.
+  torch._check_is_size(start_pos)
+/home/ubuntu/execupack/.venv/lib/python3.11/site-packages/executorch/extension/llm/custom_ops/custom_ops.py:317: FutureWarning: _check_is_size will be removed in a future PyTorch release along with guard_size_oblivious.     Use _check(i >= 0) instead.
+  torch._check_is_size(start_pos)
+/home/ubuntu/execupack/.venv/lib/python3.11/site-packages/executorch/extension/llm/custom_ops/custom_ops.py:317: FutureWarning: _check_is_size will be removed in a future PyTorch release along with guard_size_oblivious.     Use _check(i >= 0) instead.
+  torch._check_is_size(start_pos)
+/home/ubuntu/execupack/.venv/lib/python3.11/site-packages/executorch/extension/llm/custom_ops/custom_ops.py:317: FutureWarning: _check_is_size will be removed in a future PyTorch release along with guard_size_oblivious.     Use _check(i >= 0) instead.
+  torch._check_is_size(start_pos)
+/home/ubuntu/execupack/.venv/lib/python3.11/site-packages/executorch/extension/llm/custom_ops/custom_ops.py:317: FutureWarning: _check_is_size will be removed in a future PyTorch release along with guard_size_oblivious.     Use _check(i >= 0) instead.
+  torch._check_is_size(start_pos)
+/home/ubuntu/execupack/.venv/lib/python3.11/site-packages/executorch/extension/llm/custom_ops/custom_ops.py:317: FutureWarning: _check_is_size will be removed in a future PyTorch release along with guard_size_oblivious.     Use _check(i >= 0) instead.
+  torch._check_is_size(start_pos)
+/home/ubuntu/execupack/.venv/lib/python3.11/site-packages/executorch/extension/llm/custom_ops/custom_ops.py:317: FutureWarning: _check_is_size will be removed in a future PyTorch release along with guard_size_oblivious.     Use _check(i >= 0) instead.
+  torch._check_is_size(start_pos)
+/home/ubuntu/execupack/.venv/lib/python3.11/site-packages/executorch/extension/llm/custom_ops/custom_ops.py:317: FutureWarning: _check_is_size will be removed in a future PyTorch release along with guard_size_oblivious.     Use _check(i >= 0) instead.
+  torch._check_is_size(start_pos)
+/home/ubuntu/execupack/.venv/lib/python3.11/site-packages/executorch/extension/llm/custom_ops/custom_ops.py:317: FutureWarning: _check_is_size will be removed in a future PyTorch release along with guard_size_oblivious.     Use _check(i >= 0) instead.
+  torch._check_is_size(start_pos)
+/home/ubuntu/execupack/.venv/lib/python3.11/site-packages/executorch/extension/llm/custom_ops/custom_ops.py:317: FutureWarning: _check_is_size will be removed in a future PyTorch release along with guard_size_oblivious.     Use _check(i >= 0) instead.
+  torch._check_is_size(start_pos)
+/home/ubuntu/execupack/.venv/lib/python3.11/site-packages/executorch/extension/llm/custom_ops/custom_ops.py:317: FutureWarning: _check_is_size will be removed in a future PyTorch release along with guard_size_oblivious.     Use _check(i >= 0) instead.
+  torch._check_is_size(start_pos)
+/home/ubuntu/execupack/.venv/lib/python3.11/site-packages/executorch/extension/llm/custom_ops/custom_ops.py:317: FutureWarning: _check_is_size will be removed in a future PyTorch release along with guard_size_oblivious.     Use _check(i >= 0) instead.
+  torch._check_is_size(start_pos)
+/home/ubuntu/execupack/.venv/lib/python3.11/site-packages/executorch/extension/llm/custom_ops/custom_ops.py:317: FutureWarning: _check_is_size will be removed in a future PyTorch release along with guard_size_oblivious.     Use _check(i >= 0) instead.
+  torch._check_is_size(start_pos)
+/home/ubuntu/execupack/.venv/lib/python3.11/site-packages/executorch/extension/llm/custom_ops/custom_ops.py:317: FutureWarning: _check_is_size will be removed in a future PyTorch release along with guard_size_oblivious.     Use _check(i >= 0) instead.
+  torch._check_is_size(start_pos)
+/home/ubuntu/execupack/.venv/lib/python3.11/site-packages/executorch/extension/llm/custom_ops/custom_ops.py:317: FutureWarning: _check_is_size will be removed in a future PyTorch release along with guard_size_oblivious.     Use _check(i >= 0) instead.
+  torch._check_is_size(start_pos)
+/home/ubuntu/execupack/.venv/lib/python3.11/site-packages/executorch/extension/llm/custom_ops/custom_ops.py:317: FutureWarning: _check_is_size will be removed in a future PyTorch release along with guard_size_oblivious.     Use _check(i >= 0) instead.
+  torch._check_is_size(start_pos)
+/home/ubuntu/execupack/.venv/lib/python3.11/site-packages/executorch/extension/llm/custom_ops/custom_ops.py:317: FutureWarning: _check_is_size will be removed in a future PyTorch release along with guard_size_oblivious.     Use _check(i >= 0) instead.
+  torch._check_is_size(start_pos)
+/home/ubuntu/execupack/.venv/lib/python3.11/site-packages/executorch/extension/llm/custom_ops/custom_ops.py:317: FutureWarning: _check_is_size will be removed in a future PyTorch release along with guard_size_oblivious.     Use _check(i >= 0) instead.
+  torch._check_is_size(start_pos)
+/home/ubuntu/execupack/.venv/lib/python3.11/site-packages/executorch/extension/llm/custom_ops/custom_ops.py:317: FutureWarning: _check_is_size will be removed in a future PyTorch release along with guard_size_oblivious.     Use _check(i >= 0) instead.
+  torch._check_is_size(start_pos)
+/home/ubuntu/execupack/.venv/lib/python3.11/site-packages/executorch/extension/llm/custom_ops/custom_ops.py:317: FutureWarning: _check_is_size will be removed in a future PyTorch release along with guard_size_oblivious.     Use _check(i >= 0) instead.
+  torch._check_is_size(start_pos)
+/home/ubuntu/execupack/.venv/lib/python3.11/site-packages/executorch/extension/llm/custom_ops/custom_ops.py:317: FutureWarning: _check_is_size will be removed in a future PyTorch release along with guard_size_oblivious.     Use _check(i >= 0) instead.
+  torch._check_is_size(start_pos)
+/home/ubuntu/execupack/.venv/lib/python3.11/site-packages/executorch/extension/llm/custom_ops/custom_ops.py:317: FutureWarning: _check_is_size will be removed in a future PyTorch release along with guard_size_oblivious.     Use _check(i >= 0) instead.
+  torch._check_is_size(start_pos)
+/home/ubuntu/execupack/.venv/lib/python3.11/site-packages/executorch/extension/llm/custom_ops/custom_ops.py:317: FutureWarning: _check_is_size will be removed in a future PyTorch release along with guard_size_oblivious.     Use _check(i >= 0) instead.
+  torch._check_is_size(start_pos)
+/home/ubuntu/execupack/.venv/lib/python3.11/site-packages/executorch/extension/llm/custom_ops/custom_ops.py:317: FutureWarning: _check_is_size will be removed in a future PyTorch release along with guard_size_oblivious.     Use _check(i >= 0) instead.
+  torch._check_is_size(start_pos)
+/home/ubuntu/execupack/.venv/lib/python3.11/site-packages/executorch/extension/llm/custom_ops/custom_ops.py:317: FutureWarning: _check_is_size will be removed in a future PyTorch release along with guard_size_oblivious.     Use _check(i >= 0) instead.
+  torch._check_is_size(start_pos)
+/home/ubuntu/execupack/.venv/lib/python3.11/site-packages/executorch/extension/llm/custom_ops/custom_ops.py:317: FutureWarning: _check_is_size will be removed in a future PyTorch release along with guard_size_oblivious.     Use _check(i >= 0) instead.
+  torch._check_is_size(start_pos)
+/home/ubuntu/execupack/.venv/lib/python3.11/site-packages/executorch/extension/llm/custom_ops/custom_ops.py:317: FutureWarning: _check_is_size will be removed in a future PyTorch release along with guard_size_oblivious.     Use _check(i >= 0) instead.
+  torch._check_is_size(start_pos)
+/home/ubuntu/execupack/.venv/lib/python3.11/site-packages/executorch/extension/llm/custom_ops/custom_ops.py:317: FutureWarning: _check_is_size will be removed in a future PyTorch release along with guard_size_oblivious.     Use _check(i >= 0) instead.
+  torch._check_is_size(start_pos)
+/home/ubuntu/execupack/.venv/lib/python3.11/site-packages/executorch/extension/llm/custom_ops/custom_ops.py:317: FutureWarning: _check_is_size will be removed in a future PyTorch release along with guard_size_oblivious.     Use _check(i >= 0) instead.
+  torch._check_is_size(start_pos)
+/home/ubuntu/execupack/.venv/lib/python3.11/site-packages/executorch/extension/llm/custom_ops/custom_ops.py:317: FutureWarning: _check_is_size will be removed in a future PyTorch release along with guard_size_oblivious.     Use _check(i >= 0) instead.
+  torch._check_is_size(start_pos)
+/home/ubuntu/execupack/.venv/lib/python3.11/site-packages/executorch/extension/llm/custom_ops/custom_ops.py:317: FutureWarning: _check_is_size will be removed in a future PyTorch release along with guard_size_oblivious.     Use _check(i >= 0) instead.
+  torch._check_is_size(start_pos)
+/home/ubuntu/execupack/.venv/lib/python3.11/site-packages/executorch/extension/llm/custom_ops/custom_ops.py:317: FutureWarning: _check_is_size will be removed in a future PyTorch release along with guard_size_oblivious.     Use _check(i >= 0) instead.
+  torch._check_is_size(start_pos)
+/home/ubuntu/execupack/.venv/lib/python3.11/site-packages/executorch/extension/llm/custom_ops/custom_ops.py:317: FutureWarning: _check_is_size will be removed in a future PyTorch release along with guard_size_oblivious.     Use _check(i >= 0) instead.
+  torch._check_is_size(start_pos)
+/home/ubuntu/execupack/.venv/lib/python3.11/site-packages/executorch/extension/llm/custom_ops/custom_ops.py:317: FutureWarning: _check_is_size will be removed in a future PyTorch release along with guard_size_oblivious.     Use _check(i >= 0) instead.
+  torch._check_is_size(start_pos)
+/home/ubuntu/execupack/.venv/lib/python3.11/site-packages/executorch/extension/llm/custom_ops/custom_ops.py:317: FutureWarning: _check_is_size will be removed in a future PyTorch release along with guard_size_oblivious.     Use _check(i >= 0) instead.
+  torch._check_is_size(start_pos)
+/home/ubuntu/execupack/.venv/lib/python3.11/site-packages/executorch/extension/llm/custom_ops/custom_ops.py:317: FutureWarning: _check_is_size will be removed in a future PyTorch release along with guard_size_oblivious.     Use _check(i >= 0) instead.
+  torch._check_is_size(start_pos)
+/home/ubuntu/execupack/.venv/lib/python3.11/site-packages/executorch/extension/llm/custom_ops/custom_ops.py:317: FutureWarning: _check_is_size will be removed in a future PyTorch release along with guard_size_oblivious.     Use _check(i >= 0) instead.
+  torch._check_is_size(start_pos)
+/home/ubuntu/execupack/.venv/lib/python3.11/site-packages/executorch/extension/llm/custom_ops/custom_ops.py:317: FutureWarning: _check_is_size will be removed in a future PyTorch release along with guard_size_oblivious.     Use _check(i >= 0) instead.
+  torch._check_is_size(start_pos)
+/home/ubuntu/execupack/.venv/lib/python3.11/site-packages/executorch/extension/llm/custom_ops/custom_ops.py:317: FutureWarning: _check_is_size will be removed in a future PyTorch release along with guard_size_oblivious.     Use _check(i >= 0) instead.
+  torch._check_is_size(start_pos)
+/home/ubuntu/execupack/.venv/lib/python3.11/site-packages/executorch/extension/llm/custom_ops/custom_ops.py:317: FutureWarning: _check_is_size will be removed in a future PyTorch release along with guard_size_oblivious.     Use _check(i >= 0) instead.
+  torch._check_is_size(start_pos)
+/home/ubuntu/execupack/.venv/lib/python3.11/site-packages/executorch/extension/llm/custom_ops/custom_ops.py:317: FutureWarning: _check_is_size will be removed in a future PyTorch release along with guard_size_oblivious.     Use _check(i >= 0) instead.
+  torch._check_is_size(start_pos)
+/home/ubuntu/execupack/.venv/lib/python3.11/site-packages/executorch/extension/llm/custom_ops/custom_ops.py:317: FutureWarning: _check_is_size will be removed in a future PyTorch release along with guard_size_oblivious.     Use _check(i >= 0) instead.
+  torch._check_is_size(start_pos)
+/home/ubuntu/execupack/.venv/lib/python3.11/site-packages/executorch/extension/llm/custom_ops/custom_ops.py:317: FutureWarning: _check_is_size will be removed in a future PyTorch release along with guard_size_oblivious.     Use _check(i >= 0) instead.
+  torch._check_is_size(start_pos)
+/home/ubuntu/execupack/.venv/lib/python3.11/site-packages/executorch/extension/llm/custom_ops/custom_ops.py:317: FutureWarning: _check_is_size will be removed in a future PyTorch release along with guard_size_oblivious.     Use _check(i >= 0) instead.
+  torch._check_is_size(start_pos)
+/home/ubuntu/execupack/.venv/lib/python3.11/site-packages/executorch/extension/llm/custom_ops/custom_ops.py:317: FutureWarning: _check_is_size will be removed in a future PyTorch release along with guard_size_oblivious.     Use _check(i >= 0) instead.
+  torch._check_is_size(start_pos)
+/home/ubuntu/execupack/.venv/lib/python3.11/site-packages/executorch/extension/llm/custom_ops/custom_ops.py:317: FutureWarning: _check_is_size will be removed in a future PyTorch release along with guard_size_oblivious.     Use _check(i >= 0) instead.
+  torch._check_is_size(start_pos)
+/home/ubuntu/execupack/.venv/lib/python3.11/site-packages/executorch/extension/llm/custom_ops/custom_ops.py:317: FutureWarning: _check_is_size will be removed in a future PyTorch release along with guard_size_oblivious.     Use _check(i >= 0) instead.
+  torch._check_is_size(start_pos)
+/home/ubuntu/execupack/.venv/lib/python3.11/site-packages/executorch/extension/llm/custom_ops/custom_ops.py:317: FutureWarning: _check_is_size will be removed in a future PyTorch release along with guard_size_oblivious.     Use _check(i >= 0) instead.
+  torch._check_is_size(start_pos)
+/home/ubuntu/execupack/.venv/lib/python3.11/site-packages/executorch/extension/llm/custom_ops/custom_ops.py:317: FutureWarning: _check_is_size will be removed in a future PyTorch release along with guard_size_oblivious.     Use _check(i >= 0) instead.
+  torch._check_is_size(start_pos)
+/home/ubuntu/execupack/.venv/lib/python3.11/site-packages/executorch/extension/llm/custom_ops/custom_ops.py:317: FutureWarning: _check_is_size will be removed in a future PyTorch release along with guard_size_oblivious.     Use _check(i >= 0) instead.
+  torch._check_is_size(start_pos)
+/home/ubuntu/execupack/.venv/lib/python3.11/site-packages/executorch/extension/llm/custom_ops/custom_ops.py:317: FutureWarning: _check_is_size will be removed in a future PyTorch release along with guard_size_oblivious.     Use _check(i >= 0) instead.
+  torch._check_is_size(start_pos)
+/home/ubuntu/execupack/.venv/lib/python3.11/site-packages/executorch/extension/llm/custom_ops/custom_ops.py:317: FutureWarning: _check_is_size will be removed in a future PyTorch release along with guard_size_oblivious.     Use _check(i >= 0) instead.
+  torch._check_is_size(start_pos)
+/home/ubuntu/execupack/.venv/lib/python3.11/site-packages/executorch/extension/llm/custom_ops/custom_ops.py:317: FutureWarning: _check_is_size will be removed in a future PyTorch release along with guard_size_oblivious.     Use _check(i >= 0) instead.
+  torch._check_is_size(start_pos)
+/home/ubuntu/execupack/.venv/lib/python3.11/site-packages/executorch/extension/llm/custom_ops/custom_ops.py:317: FutureWarning: _check_is_size will be removed in a future PyTorch release along with guard_size_oblivious.     Use _check(i >= 0) instead.
+  torch._check_is_size(start_pos)
+/home/ubuntu/execupack/.venv/lib/python3.11/site-packages/executorch/extension/llm/custom_ops/custom_ops.py:317: FutureWarning: _check_is_size will be removed in a future PyTorch release along with guard_size_oblivious.     Use _check(i >= 0) instead.
+  torch._check_is_size(start_pos)
+/home/ubuntu/execupack/.venv/lib/python3.11/site-packages/executorch/extension/llm/custom_ops/custom_ops.py:317: FutureWarning: _check_is_size will be removed in a future PyTorch release along with guard_size_oblivious.     Use _check(i >= 0) instead.
+  torch._check_is_size(start_pos)
+/home/ubuntu/execupack/.venv/lib/python3.11/site-packages/executorch/extension/llm/custom_ops/custom_ops.py:317: FutureWarning: _check_is_size will be removed in a future PyTorch release along with guard_size_oblivious.     Use _check(i >= 0) instead.
+  torch._check_is_size(start_pos)
+/home/ubuntu/execupack/.venv/lib/python3.11/site-packages/executorch/extension/llm/custom_ops/custom_ops.py:317: FutureWarning: _check_is_size will be removed in a future PyTorch release along with guard_size_oblivious.     Use _check(i >= 0) instead.
+  torch._check_is_size(start_pos)
+/home/ubuntu/execupack/.venv/lib/python3.11/site-packages/executorch/extension/llm/custom_ops/custom_ops.py:317: FutureWarning: _check_is_size will be removed in a future PyTorch release along with guard_size_oblivious.     Use _check(i >= 0) instead.
+  torch._check_is_size(start_pos)
+/home/ubuntu/execupack/.venv/lib/python3.11/site-packages/executorch/extension/llm/custom_ops/custom_ops.py:317: FutureWarning: _check_is_size will be removed in a future PyTorch release along with guard_size_oblivious.     Use _check(i >= 0) instead.
+  torch._check_is_size(start_pos)
+/home/ubuntu/execupack/.venv/lib/python3.11/site-packages/executorch/extension/llm/custom_ops/custom_ops.py:317: FutureWarning: _check_is_size will be removed in a future PyTorch release along with guard_size_oblivious.     Use _check(i >= 0) instead.
+  torch._check_is_size(start_pos)
+/home/ubuntu/execupack/.venv/lib/python3.11/site-packages/executorch/extension/llm/custom_ops/custom_ops.py:317: FutureWarning: _check_is_size will be removed in a future PyTorch release along with guard_size_oblivious.     Use _check(i >= 0) instead.
+  torch._check_is_size(start_pos)
+/home/ubuntu/execupack/.venv/lib/python3.11/site-packages/executorch/extension/llm/custom_ops/custom_ops.py:317: FutureWarning: _check_is_size will be removed in a future PyTorch release along with guard_size_oblivious.     Use _check(i >= 0) instead.
+  torch._check_is_size(start_pos)
+/home/ubuntu/execupack/.venv/lib/python3.11/site-packages/executorch/extension/llm/custom_ops/custom_ops.py:317: FutureWarning: _check_is_size will be removed in a future PyTorch release along with guard_size_oblivious.     Use _check(i >= 0) instead.
+  torch._check_is_size(start_pos)
+/home/ubuntu/execupack/.venv/lib/python3.11/site-packages/executorch/extension/llm/custom_ops/custom_ops.py:317: FutureWarning: _check_is_size will be removed in a future PyTorch release along with guard_size_oblivious.     Use _check(i >= 0) instead.
+  torch._check_is_size(start_pos)
+/home/ubuntu/execupack/.venv/lib/python3.11/site-packages/executorch/extension/llm/custom_ops/custom_ops.py:317: FutureWarning: _check_is_size will be removed in a future PyTorch release along with guard_size_oblivious.     Use _check(i >= 0) instead.
+  torch._check_is_size(start_pos)
+/home/ubuntu/execupack/.venv/lib/python3.11/site-packages/executorch/extension/llm/custom_ops/custom_ops.py:317: FutureWarning: _check_is_size will be removed in a future PyTorch release along with guard_size_oblivious.     Use _check(i >= 0) instead.
+  torch._check_is_size(start_pos)
+/home/ubuntu/execupack/.venv/lib/python3.11/site-packages/executorch/extension/llm/custom_ops/custom_ops.py:317: FutureWarning: _check_is_size will be removed in a future PyTorch release along with guard_size_oblivious.     Use _check(i >= 0) instead.
+  torch._check_is_size(start_pos)
+/home/ubuntu/execupack/.venv/lib/python3.11/site-packages/executorch/extension/llm/custom_ops/custom_ops.py:317: FutureWarning: _check_is_size will be removed in a future PyTorch release along with guard_size_oblivious.     Use _check(i >= 0) instead.
+  torch._check_is_size(start_pos)
+/home/ubuntu/execupack/.venv/lib/python3.11/site-packages/executorch/extension/llm/custom_ops/custom_ops.py:317: FutureWarning: _check_is_size will be removed in a future PyTorch release along with guard_size_oblivious.     Use _check(i >= 0) instead.
+  torch._check_is_size(start_pos)
+/home/ubuntu/execupack/.venv/lib/python3.11/site-packages/executorch/extension/llm/custom_ops/custom_ops.py:317: FutureWarning: _check_is_size will be removed in a future PyTorch release along with guard_size_oblivious.     Use _check(i >= 0) instead.
+  torch._check_is_size(start_pos)
+/home/ubuntu/execupack/.venv/lib/python3.11/site-packages/executorch/exir/emit/_emitter.py:1906: UserWarning: Mutation on a buffer in the model is detected. ExecuTorch assumes buffers that are mutated in the graph have a meaningless initial state, only the shape and dtype will be serialized, unless a pass which sets meta["et_init_buffer"] to True such as InitializedMutableBufferPass is run.
+  warnings.warn(
+[2026-11-09 07:30:57,473][root][INFO] - Required memory for activation in bytes: [0, 937264192]
+[2026-11-09 07:30:58,173][root][INFO] - Saved exported program to /home/ubuntu/runs/gptq-qwen3-4b/out-xnnpack-2048/xnnpack/Qwen3-4B-8da4w-gptq-2k.pte
+==> reading metadata
+Failed to load /home/ubuntu/execupack/.venv/lib/python3.11/site-packages/torchao/_C_cutlass_90a.abi3.so: Could not load this library: /home/ubuntu/execupack/.venv/lib/python3.11/site-packages/torchao/_C_cutlass_90a.abi3.so
+Failed to load /home/ubuntu/execupack/.venv/lib/python3.11/site-packages/torchao/_C_mxfp8.cpython-310-x86_64-linux-gnu.so: Could not load this library: /home/ubuntu/execupack/.venv/lib/python3.11/site-packages/torchao/_C_mxfp8.cpython-310-x86_64-linux-gnu.so
+W1109 07:31:09.663000 12680 torch/utils/_pytree.py:630] <enum 'KernelPreference'> is an Enum subclass and is now natively supported by torch.compile as an opaque value type. Calling register_constant() on Enum subclasses is deprecated and will be an error in a future release.
+{
+  "file": [
+    {
+      "path": "xnnpack/Qwen3-4B-8da4w-gptq-2k.pte",
+      "bytes": 2657944960,
+      "sha256": "cd6d8d2f75b454bbe9e914a101b83737df06522624bb3751cfa4c7b661a2752d"
+    }
+  ],
+  "window": 2048
+}

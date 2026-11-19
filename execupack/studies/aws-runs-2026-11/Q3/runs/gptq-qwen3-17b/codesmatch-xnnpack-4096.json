@@ -1,0 +1,13 @@
+{
+ "file": "Qwen3-1.7B-8da4w-gptq-4k.pte",
+ "sha256": "bed3ca330556b569aa4657f0a21cbb3d71f46c8297ba05486282ed8b2c19e8d2",
+ "backend": "xnnpack",
+ "int4_linears": 197,
+ "matched_exactly": 197,
+ "codes_entries": 197,
+ "unused_allowed": [],
+ "low_nibble_first": true,
+ "order_checked": true,
+ "ok": true,
+ "problems": []
+}

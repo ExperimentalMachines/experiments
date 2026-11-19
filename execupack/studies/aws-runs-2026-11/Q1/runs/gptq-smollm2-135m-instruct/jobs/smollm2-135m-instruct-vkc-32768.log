@@ -1,0 +1,7 @@
+2026-11-09T06:19:03Z START vkc HuggingFaceTB/SmolLM2-135M-Instruct 32768
+2026-11-09T06:23:10Z export attempt 1 exited 0
+2026-11-09T06:23:10Z exported 171836032 /home/ubuntu/runs/gptq-smollm2-135m-instruct/out-vulkan-32768/vulkan/SmolLM2-135M-Instruct-vulkan-8da4w-gptq-32k.pte
+2026-11-09T06:23:15Z codesmatch ok: 211 of 211 int4 linears exact
+2026-11-09T06:23:15Z REPORT {"file": "vulkan/SmolLM2-135M-Instruct-vulkan-8da4w-gptq-32k.pte", "bytes": 171836032, "recipe": "8da4w-gptq-g32, int8 embeddings, int4 codes solved with GPTQ", "smoke": true, "reply": "", "gate": null, "agreed": null, "graded": null, "quiet": null, "fp32_mean": null, "export_mean": null, "tool_calling": null, "override": null, "proxy": {"passed": true, "graded": 4, "agreed": 4, "fp32_mean": 0.5834, "export_mean": 0.5078, "override": null}, "fits_phone": null}
+2026-11-09T06:23:18Z published
+2026-11-09T06:23:18Z END rc=0

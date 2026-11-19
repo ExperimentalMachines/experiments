@@ -1,0 +1,13 @@
+{
+ "file": "SmolLM2-360M-Instruct-vulkan-8da4w-gptq-16k.pte",
+ "sha256": "4dff9e57965b5803209eb279961c288df3a7c0197d96b2ccaaa63125a42b887e",
+ "backend": "vulkan",
+ "int4_linears": 225,
+ "matched_exactly": 225,
+ "codes_entries": 225,
+ "unused_allowed": [],
+ "low_nibble_first": true,
+ "order_checked": true,
+ "ok": true,
+ "problems": []
+}

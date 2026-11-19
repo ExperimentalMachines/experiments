@@ -1,0 +1,163 @@
+==> solve microsoft/Phi-4-mini-instruct@cfbefacb9925: family phi4_mini, class phi_4_mini
+==> converting checkpoint
+==> calibration
+[transformers] This model config has set a `rope_parameters['original_max_position_embeddings']` field, to be used together with `max_position_embeddings` to determine a scaling factor. Please set the `factor` field of `rope_parameters`with this ratio instead -- we recommend the use of this field over `original_max_position_embeddings`, as it is compatible with most model architectures.
+Failed to load /home/ubuntu/execupack/.venv/lib/python3.11/site-packages/torchao/_C_cutlass_90a.abi3.so: Could not load this library: /home/ubuntu/execupack/.venv/lib/python3.11/site-packages/torchao/_C_cutlass_90a.abi3.so
+Failed to load /home/ubuntu/execupack/.venv/lib/python3.11/site-packages/torchao/_C_mxfp8.cpython-310-x86_64-linux-gnu.so: Could not load this library: /home/ubuntu/execupack/.venv/lib/python3.11/site-packages/torchao/_C_mxfp8.cpython-310-x86_64-linux-gnu.so
+W1109 00:53:56.996000 1748 torch/utils/_pytree.py:630] <enum 'KernelPreference'> is an Enum subclass and is now natively supported by torch.compile as an opaque value type. Calling register_constant() on Enum subclasses is deprecated and will be an error in a future release.
+W1109 00:53:57.020000 1748 torch/utils/_pytree.py:630] <enum 'ScaleCalculationMode'> is an Enum subclass and is now natively supported by torch.compile as an opaque value type. Calling register_constant() on Enum subclasses is deprecated and will be an error in a future release.
+calibration row 1/104: 533 prompt + 48 reply tokens, counting from 0
+calibration row 2/104: 533 prompt + 48 reply tokens, counting from 498
+calibration row 3/104: 533 prompt + 10 reply tokens, counting from 498
+calibration row 4/104: 533 prompt + 48 reply tokens, counting from 498
+calibration row 5/104: 533 prompt + 48 reply tokens, counting from 498
+calibration row 6/104: 533 prompt + 48 reply tokens, counting from 498
+calibration row 7/104: 533 prompt + 48 reply tokens, counting from 498
+calibration row 8/104: 533 prompt + 48 reply tokens, counting from 498
+calibration row 9/104: 533 prompt + 48 reply tokens, counting from 498
+calibration row 10/104: 535 prompt + 48 reply tokens, counting from 498
+calibration row 11/104: 535 prompt + 13 reply tokens, counting from 498
+calibration row 12/104: 535 prompt + 48 reply tokens, counting from 498
+calibration row 13/104: 535 prompt + 48 reply tokens, counting from 498
+calibration row 14/104: 535 prompt + 48 reply tokens, counting from 498
+calibration row 15/104: 535 prompt + 48 reply tokens, counting from 498
+calibration row 16/104: 537 prompt + 48 reply tokens, counting from 498
+calibration row 17/104: 535 prompt + 48 reply tokens, counting from 498
+calibration row 18/104: 535 prompt + 48 reply tokens, counting from 498
+calibration row 19/104: 539 prompt + 48 reply tokens, counting from 498
+calibration row 20/104: 535 prompt + 48 reply tokens, counting from 498
+calibration row 21/104: 540 prompt + 48 reply tokens, counting from 498
+calibration row 22/104: 536 prompt + 48 reply tokens, counting from 498
+calibration row 23/104: 540 prompt + 48 reply tokens, counting from 498
+calibration row 24/104: 536 prompt + 48 reply tokens, counting from 498
+calibration row 25/104: 536 prompt + 48 reply tokens, counting from 498
+calibration row 26/104: 534 prompt + 48 reply tokens, counting from 498
+calibration row 27/104: 534 prompt + 48 reply tokens, counting from 498
+calibration row 28/104: 534 prompt + 48 reply tokens, counting from 498
+calibration row 29/104: 538 prompt + 48 reply tokens, counting from 498
+calibration row 30/104: 534 prompt + 48 reply tokens, counting from 498
+calibration row 31/104: 535 prompt + 48 reply tokens, counting from 498
+calibration row 32/104: 546 prompt + 48 reply tokens, counting from 498
+calibration row 33/104: 537 prompt + 47 reply tokens, counting from 498
+calibration row 34/104: 537 prompt + 48 reply tokens, counting from 498
+calibration row 35/104: 537 prompt + 48 reply tokens, counting from 498
+calibration row 36/104: 535 prompt + 48 reply tokens, counting from 498
+calibration row 37/104: 537 prompt + 48 reply tokens, counting from 498
+calibration row 38/104: 537 prompt + 48 reply tokens, counting from 498
+calibration row 39/104: 541 prompt + 48 reply tokens, counting from 498
+calibration row 40/104: 541 prompt + 48 reply tokens, counting from 498
+calibration row 41/104: 548 prompt + 48 reply tokens, counting from 498
+calibration row 42/104: 540 prompt + 47 reply tokens, counting from 498
+calibration row 43/104: 547 prompt + 48 reply tokens, counting from 498
+calibration row 44/104: 547 prompt + 48 reply tokens, counting from 498
+calibration row 45/104: 542 prompt + 48 reply tokens, counting from 498
+calibration row 46/104: 544 prompt + 48 reply tokens, counting from 498
+calibration row 47/104: 538 prompt + 48 reply tokens, counting from 498
+calibration row 48/104: 544 prompt + 48 reply tokens, counting from 498
+calibration row 49/104: 507 prompt + 9 reply tokens, counting from 498
+calibration row 50/104: 508 prompt + 10 reply tokens, counting from 498
+calibration row 51/104: 508 prompt + 9 reply tokens, counting from 498
+calibration row 52/104: 508 prompt + 4 reply tokens, counting from 498
+calibration row 53/104: 509 prompt + 11 reply tokens, counting from 498
+calibration row 54/104: 506 prompt + 10 reply tokens, counting from 498
+calibration row 55/104: 506 prompt + 27 reply tokens, counting from 498
+calibration row 56/104: 509 prompt + 13 reply tokens, counting from 498
+calibration row 57/104: 509 prompt + 10 reply tokens, counting from 498
+calibration row 58/104: 506 prompt + 15 reply tokens, counting from 498
+calibration row 59/104: 509 prompt + 13 reply tokens, counting from 498
+calibration row 60/104: 509 prompt + 8 reply tokens, counting from 498
+calibration row 61/104: 510 prompt + 12 reply tokens, counting from 498
+calibration row 62/104: 508 prompt + 48 reply tokens, counting from 498
+calibration row 63/104: 510 prompt + 48 reply tokens, counting from 498
+calibration row 64/104: 508 prompt + 10 reply tokens, counting from 498
+calibration row 65/104: 509 prompt + 13 reply tokens, counting from 498
+calibration row 66/104: 511 prompt + 11 reply tokens, counting from 498
+calibration row 67/104: 510 prompt + 13 reply tokens, counting from 498
+calibration row 68/104: 506 prompt + 8 reply tokens, counting from 498
+calibration row 69/104: 508 prompt + 9 reply tokens, counting from 498
+calibration row 70/104: 507 prompt + 10 reply tokens, counting from 498
+calibration row 71/104: 509 prompt + 9 reply tokens, counting from 498
+calibration row 72/104: 507 prompt + 12 reply tokens, counting from 498
+calibration row 73/104: 10 prompt + 68 reply tokens, counting from 0
+calibration row 74/104: 9 prompt + 128 reply tokens, counting from 0
+calibration row 75/104: 17 prompt + 36 reply tokens, counting from 0
+calibration row 76/104: 10 prompt + 128 reply tokens, counting from 0
+calibration row 77/104: 13 prompt + 53 reply tokens, counting from 0
+calibration row 78/104: 10 prompt + 64 reply tokens, counting from 0
+calibration row 79/104: 17 prompt + 62 reply tokens, counting from 0
+calibration row 80/104: 11 prompt + 51 reply tokens, counting from 0
+calibration row 81/104: 9 prompt + 30 reply tokens, counting from 0
+calibration row 82/104: 17 prompt + 6 reply tokens, counting from 0
+calibration row 83/104: 17 prompt + 9 reply tokens, counting from 0
+calibration row 84/104: 18 prompt + 10 reply tokens, counting from 0
+calibration row 85/104: 10 prompt + 2 reply tokens, counting from 0
+calibration row 86/104: 22 prompt + 53 reply tokens, counting from 0
+calibration row 87/104: 17 prompt + 68 reply tokens, counting from 0
+calibration row 88/104: 22 prompt + 20 reply tokens, counting from 0
+calibration row 89/104: 25 prompt + 83 reply tokens, counting from 0
+calibration row 90/104: 17 prompt + 128 reply tokens, counting from 0
+calibration row 91/104: 22 prompt + 128 reply tokens, counting from 0
+calibration row 92/104: 22 prompt + 14 reply tokens, counting from 0
+calibration row 93/104: 16 prompt + 72 reply tokens, counting from 0
+calibration row 94/104: 11 prompt + 20 reply tokens, counting from 0
+calibration row 95/104: 73 prompt + 86 reply tokens, counting from 0
+calibration row 96/104: 32 prompt + 128 reply tokens, counting from 0
+calibration row 97/104: 12 prompt + 71 reply tokens, counting from 0
+calibration row 98/104: 19 prompt + 73 reply tokens, counting from 0
+calibration row 99/104: 15 prompt + 67 reply tokens, counting from 0
+calibration row 100/104: 10 prompt + 28 reply tokens, counting from 0
+calibration row 101/104: 14 prompt + 100 reply tokens, counting from 0
+calibration row 102/104: 11 prompt + 9 reply tokens, counting from 0
+calibration row 103/104: 12 prompt + 45 reply tokens, counting from 0
+calibration row 104/104: 11 prompt + 17 reply tokens, counting from 0
+==> 104 calibration rows, 7601 counted positions
+==> gate reference
+    fp32 is confident on 11 of 16 gate rows
+==> building the eager model
+==> solving 225 linears
+layer 0 solved, 34s
+layer 1 solved, 70s
+layer 2 solved, 105s
+layer 3 solved, 139s
+layer 4 solved, 173s
+layer 5 solved, 208s
+layer 6 solved, 241s
+layer 7 solved, 274s
+layer 8 solved, 309s
+layer 9 solved, 343s
+layer 10 solved, 376s
+layer 11 solved, 411s
+layer 12 solved, 445s
+layer 13 solved, 479s
+layer 14 solved, 513s
+layer 15 solved, 547s
+layer 16 solved, 583s
+layer 17 solved, 616s
+layer 18 solved, 650s
+layer 19 solved, 683s
+layer 20 solved, 718s
+layer 21 solved, 751s
+layer 22 solved, 785s
+layer 23 solved, 819s
+layer 24 solved, 854s
+layer 25 solved, 888s
+layer 26 solved, 924s
+layer 27 solved, 960s
+layer 28 solved, 995s
+layer 29 solved, 1031s
+layer 30 solved, 1064s
+layer 31 solved, 1098s
+output head solved, 1131s
+==> wrote /home/ubuntu/runs/phi4-mini/codes.pt (225 linears) in 1133s
+{
+  "model_id": "microsoft/Phi-4-mini-instruct",
+  "revision": "cfbefacb99257ffa30c83adab238a50856ac3083",
+  "linears": 225,
+  "calibration_rows": 104,
+  "calibration_positions": 7601,
+  "calibration_app_rows": 72,
+  "seconds": 1133.3,
+  "damp": 0.01,
+  "gate_rows": 16,
+  "gate_confident_rows": 11
+}

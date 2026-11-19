@@ -1,0 +1,8 @@
+2026-11-09T07:41:01Z START xnn Qwen/Qwen3-4B 32768
+2026-11-09T07:55:09Z export attempt 1 exited 0
+2026-11-09T07:55:09Z exported 2720868608 /home/ubuntu/runs/gptq-qwen3-4b/out-xnnpack-32768/xnnpack/Qwen3-4B-8da4w-gptq-32k.pte
+2026-11-09T07:58:57Z verify attempt 1 exited 0
+2026-11-09T07:59:35Z codesmatch ok: 253 of 253 int4 linears exact
+2026-11-09T07:59:35Z REPORT {"file": "xnnpack/Qwen3-4B-8da4w-gptq-32k.pte", "bytes": 2720868608, "recipe": "8da4w-gptq-g32, int8 embeddings, int4 codes solved with GPTQ", "smoke": true, "reply": "<think>\nOkay, the user is asking for the capital of France, and they want the an", "gate": true, "agreed": 12, "graded": 12, "quiet": 4, "fp32_mean": 0.9999, "export_mean": 0.9999, "tool_calling": true, "override": null, "proxy": null, "fits_phone": null}
+2026-11-09T07:59:46Z published
+2026-11-09T07:59:46Z END rc=0

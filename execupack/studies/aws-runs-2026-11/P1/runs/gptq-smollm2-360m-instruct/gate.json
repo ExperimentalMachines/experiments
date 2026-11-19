@@ -1,0 +1,85 @@
+{
+  "rows": {
+    "What is Concord the capital of?": {
+      "token": 33630,
+      "p": 0.25623536109924316,
+      "text": "Conc"
+    },
+    "What is Providence the capital of?": {
+      "token": 15855,
+      "p": 0.6217465996742249,
+      "text": "Prov"
+    },
+    "What is Augusta the capital of?": {
+      "token": 10539,
+      "p": 0.09924083948135376,
+      "text": "Yes"
+    },
+    "What is Nassau the capital of?": {
+      "token": 62,
+      "p": 0.5178993344306946,
+      "text": "N"
+    },
+    "Who is the author of Mercy?": {
+      "token": 504,
+      "p": 0.13395212590694427,
+      "text": "The"
+    },
+    "Who is the author of Landfall?": {
+      "token": 504,
+      "p": 0.14963538944721222,
+      "text": "The"
+    },
+    "Who is the author of Quicksand?": {
+      "token": 504,
+      "p": 0.17655505239963531,
+      "text": "The"
+    },
+    "Who is the author of Nightfall?": {
+      "token": 504,
+      "p": 0.15968666970729828,
+      "text": "The"
+    },
+    "In what country is Ostrava?": {
+      "token": 63,
+      "p": 0.3497263193130493,
+      "text": "O"
+    },
+    "In what country is Gdynia?": {
+      "token": 55,
+      "p": 0.36516815423965454,
+      "text": "G"
+    },
+    "In what country is Rijeka?": {
+      "token": 66,
+      "p": 0.4028105139732361,
+      "text": "R"
+    },
+    "In what country is Linkoping?": {
+      "token": 18481,
+      "p": 0.26237019896507263,
+      "text": "Link"
+    },
+    "What is the capital of Norway?": {
+      "token": 504,
+      "p": 0.4101088345050812,
+      "text": "The"
+    },
+    "What is 8 times 7?": {
+      "token": 40,
+      "p": 0.4963088929653168,
+      "text": "8"
+    },
+    "Who wrote Pride and Prejudice?": {
+      "token": 44611,
+      "p": 0.1943773627281189,
+      "text": "Jane"
+    },
+    "What is the chemical symbol for iron?": {
+      "token": 29631,
+      "p": 0.36959776282310486,
+      "text": "Iron"
+    }
+  },
+  "confident": 2
+}

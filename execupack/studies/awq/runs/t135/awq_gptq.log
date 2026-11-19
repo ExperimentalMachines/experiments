@@ -1,0 +1,54 @@
+W1119 11:20:18.370000 18078 .venv/lib/python3.11/site-packages/torch/distributed/elastic/multiprocessing/redirects.py:35] NOTE: Redirects are currently not supported in MacOs.
+W1119 11:20:18.403000 18078 .venv/lib/python3.11/site-packages/torch/utils/_pytree.py:646] <enum 'KernelPreference'> is an Enum subclass and is now natively supported by torch.compile as an opaque value type. Calling register_constant() on Enum subclasses is deprecated and will be an error in a future release.
+W1119 11:20:18.441000 18078 .venv/lib/python3.11/site-packages/torch/utils/_pytree.py:646] <enum 'ScaleCalculationMode'> is an Enum subclass and is now natively supported by torch.compile as an opaque value type. Calling register_constant() on Enum subclasses is deprecated and will be an error in a future release.
+layer 0 scaled, 8s
+layer 1 scaled, 13s
+layer 2 scaled, 22s
+layer 3 scaled, 35s
+layer 4 scaled, 42s
+layer 5 scaled, 48s
+layer 6 scaled, 56s
+layer 7 scaled, 68s
+layer 8 scaled, 79s
+layer 9 scaled, 87s
+layer 10 scaled, 92s
+layer 11 scaled, 100s
+layer 12 scaled, 113s
+layer 13 scaled, 129s
+layer 14 scaled, 141s
+layer 15 scaled, 152s
+layer 16 scaled, 160s
+layer 17 scaled, 167s
+layer 18 scaled, 174s
+layer 19 scaled, 188s
+layer 20 scaled, 203s
+layer 21 scaled, 217s
+layer 22 scaled, 228s
+layer 23 scaled, 239s
+layer 24 scaled, 247s
+layer 25 scaled, 263s
+layer 26 scaled, 278s
+layer 27 scaled, 292s
+layer 28 scaled, 301s
+layer 29 scaled, 311s
+layer 0 solved, 8s
+layer 1 solved, 18s
+layer 2 solved, 26s
+layer 3 solved, 30s
+Traceback (most recent call last):
+  File "/Users/alpha/execupack-awq/scripts/awq_compare.py", line 358, in <module>
+    raise SystemExit(main())
+                     ^^^^^^
+  File "/Users/alpha/execupack-awq/scripts/awq_compare.py", line 354, in main
+    return args.func(args)
+           ^^^^^^^^^^^^^^^
+  File "/Users/alpha/execupack-awq/scripts/awq_compare.py", line 271, in arm
+    codes = solve.solve_model(model, rows)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/alpha/execupack-awq/pipeline/solve.py", line 307, in solve_model
+    q, s = solve_weight(module.weight.data, hess[name] / max(counts[name], 1), damp=damp)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/alpha/execupack-awq/pipeline/solve.py", line 102, in solve_weight
+    chol = torch.linalg.cholesky(h)
+           ^^^^^^^^^^^^^^^^^^^^^^^^
+torch._C._LinAlgError: linalg.cholesky: The factorization could not be completed because the input is not positive-definite (the leading minor of order 1 is not positive-definite).

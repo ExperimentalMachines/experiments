@@ -1,0 +1,338 @@
+{
+  "backend": "vulkan",
+  "target": null,
+  "tokenizer": "tokenizer.json",
+  "output_repo": "experimentalmachines/Phi-4-mini-instruct-3.8B-ExecuTorch",
+  "source": {
+    "id": "microsoft/Phi-4-mini-instruct",
+    "sha": "cfbefacb99257ffa30c83adab238a50856ac3083",
+    "created_at": "2025-02-19T01:00:58+00:00",
+    "total_params": 3836021760,
+    "family": "phi4_mini",
+    "variant": "instruct",
+    "license": {
+      "license": "mit",
+      "license_link": "https://huggingface.co/microsoft/Phi-4-mini-instruct/resolve/main/LICENSE"
+    },
+    "license_files": [
+      "LICENSE",
+      "NOTICE.md"
+    ]
+  },
+  "toolchain": {
+    "executorch": "1.5.1",
+    "torch": "2.14.0+cpu",
+    "torchao": "0.18.0"
+  },
+  "recipe": {
+    "model_class": "phi_4_mini",
+    "converter": "phi4",
+    "params": {
+      "dim": 3072,
+      "hidden_dim": 8192,
+      "n_heads": 24,
+      "head_dim": 128,
+      "n_kv_heads": 8,
+      "n_layers": 32,
+      "norm_eps": 1e-05,
+      "rope_theta": 10000.0,
+      "vocab_size": 200064,
+      "use_scaled_rope": false,
+      "use_hf_rope": true,
+      "attention_qkv_bias": false,
+      "partial_rotary_factor": 0.75,
+      "original_max_position_embeddings": 4096,
+      "max_position_embeddings": 131072,
+      "rope_scaling_short_factor": [
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        1.0
+      ],
+      "rope_scaling_long_factor": [
+        1.0,
+        1.118320672,
+        1.250641126,
+        1.398617824,
+        1.564103225,
+        1.74916897,
+        1.956131817,
+        2.187582649,
+        2.446418898,
+        2.735880826,
+        3.059592084,
+        3.421605075,
+        3.826451687,
+        4.279200023,
+        4.785517845,
+        5.351743533,
+        5.984965424,
+        6.693110555,
+        7.485043894,
+        8.370679318,
+        9.36110372,
+        10.4687158,
+        11.70738129,
+        13.09260651,
+        14.64173252,
+        16.37415215,
+        18.31155283,
+        20.47818807,
+        22.90118105,
+        25.61086418,
+        28.64115884,
+        32.03,
+        32.1,
+        32.13,
+        32.23,
+        32.6,
+        32.61,
+        32.64,
+        32.66,
+        32.7,
+        32.71,
+        32.93,
+        32.97,
+        33.28,
+        33.49,
+        33.5,
+        44.16,
+        47.77
+      ]
+    },
+    "export_llm_qmode": "8da4w",
+    "embedding_hqq": false,
+    "qmode": "8da4w-gptq",
+    "embedding_quantize": "8,0",
+    "prefill_chunk": 2048,
+    "kv_cache_dtype": "fp32",
+    "group_size": 32,
+    "int4_codes": "gptq",
+    "output_head": "int8 per channel",
+    "label": "8da4w-gptq-g32, int8 embeddings, int4 codes solved with GPTQ, int8 output head",
+    "description": "ExecuTorch 1.5.1 `export_llm`: 8-bit dynamic activations and 4-bit weights in groups of 32 (the output head 8-bit per channel), int8 per-channel embeddings, the Vulkan delegate, prefill chunk 2048, fp32 KV cache.",
+    "codes_sha256": "9d7f81310c9dcd1f43ea2b1ce1e8b30b26c9af9d63606577927a077ad0d39701"
+  },
+  "window": {
+    "context": 8192,
+    "reason": "requested window 8192",
+    "kv_cache_bytes_per_token": 262144,
+    "kv_cache_ring_bytes": 0,
+    "device_resident_bytes": 5735972505,
+    "phone_budget_bytes": 5000000000,
+    "fits_phone_budget": false,
+    "table": [
+      {
+        "context": 32768,
+        "kv_cache_bytes": 8589934592,
+        "device_resident_bytes": 12229258414,
+        "export_peak_bytes": 63251347712,
+        "fits_device": false,
+        "fits_host": true
+      },
+      {
+        "context": 16384,
+        "kv_cache_bytes": 4294967296,
+        "device_resident_bytes": 7900401141,
+        "export_peak_bytes": 33186576640,
+        "fits_device": false,
+        "fits_host": true
+      },
+      {
+        "context": 8192,
+        "kv_cache_bytes": 2147483648,
+        "device_resident_bytes": 5735972505,
+        "export_peak_bytes": 24596642048,
+        "fits_device": false,
+        "fits_host": true
+      },
+      {
+        "context": 4096,
+        "kv_cache_bytes": 1073741824,
+        "device_resident_bytes": 4653758187,
+        "export_peak_bytes": 21912287488,
+        "fits_device": true,
+        "fits_host": true
+      },
+      {
+        "context": 2048,
+        "kv_cache_bytes": 536870912,
+        "device_resident_bytes": 4112651028,
+        "export_peak_bytes": 20972763392,
+        "fits_device": true,
+        "fits_host": true
+      }
+    ]
+  },
+  "files": [
+    {
+      "path": "vulkan/Phi-4-mini-instruct-3.8B-vulkan-8da4w-gptq-8k.pte",
+      "bytes": 3687965952,
+      "sha256": "1ef9e09fda61ed53940de3dc5b5cab52496a2baff310c783436b70a925ea6bc0"
+    }
+  ],
+  "estimates": {
+    "pte_bytes_estimate": 3088488857,
+    "pte_bytes_actual": 3687965952,
+    "export_peak_bytes_estimate": 24596642048
+  },
+  "host": {
+    "nproc": 16,
+    "mem_total_bytes": 132914737152,
+    "swap_total_bytes": 0,
+    "cpu_model": "Intel(R) Xeon(R) Platinum 8488C",
+    "peak_rss_convert_bytes": 7924367360,
+    "peak_rss_export_bytes": 25243271168,
+    "peak_swap_used_bytes": 0,
+    "min_mem_available_bytes": 52197404672,
+    "peak_in_use_bytes": 80717332480,
+    "peak_in_use_at": "2026-11-09T03:29:35Z",
+    "peak_cgroup_bytes": null,
+    "export_seconds": 275.4,
+    "total_seconds": 580.9
+  },
+  "conversion": {
+    "tensors": 291,
+    "tied_embeddings": true,
+    "dtypes": [
+      "torch.bfloat16"
+    ]
+  },
+  "metadata": {
+    "enable_dynamic_shape": true,
+    "get_bos_id": 199999,
+    "get_eos_ids": [
+      200020,
+      199999
+    ],
+    "get_max_context_len": 8192,
+    "get_max_seq_len": 2048,
+    "get_n_layers": 32,
+    "get_vocab_size": 200064,
+    "use_kv_cache": true,
+    "use_sdpa_with_kv_cache": true,
+    "methods": [
+      "enable_dynamic_shape",
+      "forward",
+      "get_bos_id",
+      "get_eos_ids",
+      "get_max_context_len",
+      "get_max_seq_len",
+      "get_n_layers",
+      "get_vocab_size",
+      "use_kv_cache",
+      "use_sdpa_with_kv_cache"
+    ]
+  },
+  "smoke": {
+    "kind": "structural",
+    "passed": true,
+    "problems": [],
+    "methods": [
+      "enable_dynamic_shape",
+      "forward",
+      "get_bos_id",
+      "get_eos_ids",
+      "get_max_context_len",
+      "get_max_seq_len",
+      "get_n_layers",
+      "get_vocab_size",
+      "use_kv_cache",
+      "use_sdpa_with_kv_cache"
+    ],
+    "delegates": {
+      "forward": {
+        "backends": [
+          "VulkanBackend"
+        ],
+        "delegate_calls": 1
+      }
+    },
+    "metadata": {
+      "enable_dynamic_shape": true,
+      "get_bos_id": 199999,
+      "get_eos_ids": [
+        200020,
+        199999
+      ],
+      "get_max_context_len": 8192,
+      "get_max_seq_len": 2048,
+      "get_n_layers": 32,
+      "get_vocab_size": 200064,
+      "use_kv_cache": true,
+      "use_sdpa_with_kv_cache": true,
+      "methods": [
+        "enable_dynamic_shape",
+        "forward",
+        "get_bos_id",
+        "get_eos_ids",
+        "get_max_context_len",
+        "get_max_seq_len",
+        "get_n_layers",
+        "get_vocab_size",
+        "use_kv_cache",
+        "use_sdpa_with_kv_cache"
+      ]
+    }
+  },
+  "gate_proxy": {
+    "report": "export-report-8k.json",
+    "file": "xnnpack/Phi-4-mini-instruct-3.8B-8da4w-gptq-8k.pte",
+    "sha256": "a341eb691e233da4ba7d1f728a305cf8704756e13ac4fd76e07c39418c5429d0",
+    "gate": {
+      "passed": false,
+      "graded": 8,
+      "agreed": 7,
+      "fp32_mean": 0.6629,
+      "export_mean": 0.6956,
+      "override": {
+        "reason": "the unquantised model is itself near a tie on several tool-call rows (fp32 0.40 to 0.78), the 4-bit recipes measured keep 7 of 8, and the operator chose this file over an all-int8 one 1.4 times its size (2026-11-09)."
+      }
+    }
+  },
+  "run": {}
+}

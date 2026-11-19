@@ -1,0 +1,9 @@
+{
+  "model_id": "Qwen/Qwen3-1.7B",
+  "revision": "70d244cc86ccca08cf5af4e1e306ecf908b1ad5e",
+  "thinking": "off",
+  "calibration_rows": 104,
+  "calibration_positions": 8545,
+  "seconds": 1220.1,
+  "first_app_row_tail": " question names Springfield. Look it up with web_search before answering rather than recalling it, and answer from what the search returns.)<|im_end|>\n<|im_start|>assistant\n<think>\n\n</think>\n\n<tool_call>\n{\"name\": \"web_search\", \"arguments\": {\"query\": \"What is Springfield the capital of?\"}}\n</tool_call><|im_end|>"
+}

@@ -1,0 +1,33 @@
+{
+  "runtime": "executorch",
+  "runtime_version": "1.5.1",
+  "backend": "xnnpack",
+  "target": null,
+  "tokenizer": "tokenizer.json",
+  "source_model": "HuggingFaceTB/SmolLM2-360M-Instruct",
+  "source_revision": "a10cc1512eabd3dde888204e902eca88bddb4951",
+  "variants": [
+    {
+      "file": "SmolLM2-360M-Instruct-8da4w-gptq-4k.pte",
+      "size_bytes": 253938816,
+      "sha256": "7151f6c9ad4fd377a70d7bee5223edf2df63d71316c9a4795014c58a1efa5108",
+      "context": 4096,
+      "source_revision": "a10cc1512eabd3dde888204e902eca88bddb4951",
+      "quantization": "8da4w-gptq-g32, int8 embeddings, int4 codes solved with GPTQ",
+      "fits_phone_budget": true,
+      "methods": {
+        "get_max_context_len": 4096,
+        "get_max_seq_len": 2048,
+        "get_bos_id": 1,
+        "get_eos_ids": [
+          2
+        ],
+        "get_vocab_size": 49152,
+        "get_n_layers": 32,
+        "use_kv_cache": true,
+        "use_sdpa_with_kv_cache": true,
+        "enable_dynamic_shape": true
+      }
+    }
+  ]
+}

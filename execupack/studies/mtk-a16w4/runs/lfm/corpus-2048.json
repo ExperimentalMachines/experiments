@@ -1,0 +1,88 @@
+{
+  "corpus": "long-context-v1",
+  "window": 2048,
+  "samples": 23,
+  "kinds": {
+    "short": 9,
+    "chat": 7,
+    "document": 7
+  },
+  "tokens_total": 17365,
+  "fill_min": 15,
+  "fill_max": 2038,
+  "lengths": [
+    15,
+    21,
+    21,
+    18,
+    24,
+    65,
+    21,
+    26,
+    18,
+    383,
+    507,
+    638,
+    765,
+    892,
+    1016,
+    1147,
+    1270,
+    1402,
+    1525,
+    1656,
+    1779,
+    1911,
+    2038
+  ],
+  "app_prefix_tokens": 533,
+  "sources": {
+    "ultrachat": {
+      "repo_id": "HuggingFaceH4/ultrachat_200k",
+      "revision": "8049631c405ae6576f93f445c6b8166f76f5505a",
+      "filename": "data/test_sft-00000-of-00001-f7dfac4afe5b93f4.parquet",
+      "sha256": "c18fd6e77395577652bdefbc5a87044ea799e989451ecfca5c6cf977ae5c6f70",
+      "license": "MIT"
+    },
+    "pg19": {
+      "books": [
+        {
+          "id": "10146",
+          "title": "Reminiscences of Pioneer Days in St. Paul, Frank Moore (1908)",
+          "sha256": "f8dd4334fd8d422cd2f9153ffbff9b097611569592d7ca09fc6fe7881336d331"
+        },
+        {
+          "id": "10321",
+          "title": "Dragon's Blood, Henry Milner Rideout (1909)",
+          "sha256": "fedcb2723c2ad091f76d45eb98efd810977e7b906f6fd8cbd815734d1e90c456"
+        },
+        {
+          "id": "10356",
+          "title": "Travels in Morocco, Volume 2, James Richardson (1860)",
+          "sha256": "af4b57d358448588adbc6da962cad655bf586ae746dba21f62e956d36d97c88e"
+        },
+        {
+          "id": "10762",
+          "title": "Impressions of Theophrastus Such, George Eliot (1879)",
+          "sha256": "fcc71b161311d4854a078f8cdda6e4381542536167145f6dfdda84bcad256d5f"
+        },
+        {
+          "id": "15562",
+          "title": "The S. W. F. Club, Caroline E. Jacobs (1912)",
+          "sha256": "90eae481a404688312d407918b07e649643ce6c934a16ad31040614221673ca1"
+        },
+        {
+          "id": "2544",
+          "title": "From Sand Hill to Pine, Bret Harte (1900)",
+          "sha256": "0c79ceaf5bcc208b8c924037613c2c7fb1606de21ec8d99d5c446a516c4af787"
+        },
+        {
+          "id": "22424",
+          "title": "Frank Merriwell Down South, Burt L. Standish (1903)",
+          "sha256": "a3475140ed4763614c11c4f2e486e468ae5620bf539877bf769e16710d808a0d"
+        }
+      ],
+      "license": "Apache-2.0 (PG19); the books are public domain"
+    }
+  }
+}

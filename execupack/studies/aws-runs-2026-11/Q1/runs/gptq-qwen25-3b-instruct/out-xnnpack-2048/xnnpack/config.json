@@ -1,0 +1,34 @@
+{
+  "runtime": "executorch",
+  "runtime_version": "1.5.1",
+  "backend": "xnnpack",
+  "target": null,
+  "tokenizer": "tokenizer.json",
+  "source_model": "Qwen/Qwen2.5-3B-Instruct",
+  "source_revision": "aa8e72537993ba99e69dfaafa59ed015b17504d1",
+  "variants": [
+    {
+      "file": "Qwen2.5-3B-Instruct-8da4w-gptq-2k.pte",
+      "size_bytes": 2053407872,
+      "sha256": "a511f5929b14df01f6df9fc5ef9c40d681a0cb410b6a2d7ac726b8282c2a745a",
+      "context": 2048,
+      "source_revision": "aa8e72537993ba99e69dfaafa59ed015b17504d1",
+      "quantization": "8da4w-gptq-g32, int8 embeddings, int4 codes solved with GPTQ",
+      "fits_phone_budget": true,
+      "methods": {
+        "get_max_context_len": 2048,
+        "get_max_seq_len": 2048,
+        "get_bos_id": 151643,
+        "get_eos_ids": [
+          151645,
+          151643
+        ],
+        "get_vocab_size": 151936,
+        "get_n_layers": 36,
+        "use_kv_cache": true,
+        "use_sdpa_with_kv_cache": true,
+        "enable_dynamic_shape": true
+      }
+    }
+  ]
+}

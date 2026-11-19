@@ -1,0 +1,85 @@
+{
+  "rows": {
+    "What is Concord the capital of?": {
+      "token": 151657,
+      "p": 0.9961750507354736,
+      "text": "<tool_call>"
+    },
+    "What is Providence the capital of?": {
+      "token": 151657,
+      "p": 0.9957475066184998,
+      "text": "<tool_call>"
+    },
+    "What is Augusta the capital of?": {
+      "token": 151657,
+      "p": 0.9960489869117737,
+      "text": "<tool_call>"
+    },
+    "What is Nassau the capital of?": {
+      "token": 151657,
+      "p": 0.99652099609375,
+      "text": "<tool_call>"
+    },
+    "Who is the author of Mercy?": {
+      "token": 151657,
+      "p": 0.9964333772659302,
+      "text": "<tool_call>"
+    },
+    "Who is the author of Landfall?": {
+      "token": 151657,
+      "p": 0.9965446591377258,
+      "text": "<tool_call>"
+    },
+    "Who is the author of Quicksand?": {
+      "token": 151657,
+      "p": 0.9967663288116455,
+      "text": "<tool_call>"
+    },
+    "Who is the author of Nightfall?": {
+      "token": 151657,
+      "p": 0.9964711666107178,
+      "text": "<tool_call>"
+    },
+    "In what country is Ostrava?": {
+      "token": 151657,
+      "p": 0.9953199028968811,
+      "text": "<tool_call>"
+    },
+    "In what country is Gdynia?": {
+      "token": 151657,
+      "p": 0.9953568577766418,
+      "text": "<tool_call>"
+    },
+    "In what country is Rijeka?": {
+      "token": 151657,
+      "p": 0.9953317046165466,
+      "text": "<tool_call>"
+    },
+    "In what country is Linkoping?": {
+      "token": 151657,
+      "p": 0.9955576062202454,
+      "text": "<tool_call>"
+    },
+    "What is the capital of Norway?": {
+      "token": 785,
+      "p": 0.8852653503417969,
+      "text": "The"
+    },
+    "What is 8 times 7?": {
+      "token": 23,
+      "p": 0.9665111303329468,
+      "text": "8"
+    },
+    "Who wrote Pride and Prejudice?": {
+      "token": 62502,
+      "p": 0.9853840470314026,
+      "text": "Jane"
+    },
+    "What is the chemical symbol for iron?": {
+      "token": 46393,
+      "p": 0.664009153842926,
+      "text": "Iron"
+    }
+  },
+  "confident": 16
+}

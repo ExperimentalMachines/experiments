@@ -1,0 +1,16 @@
+         1,957  .gitattributes
+        10,574  LICENSE
+         4,251  README.md
+    17,908,635  tokenizer.json
+ 1,253,890,304  xnnpack/LFM3-1.7B-Base-8da4w-gptq-16k.pte
+ 1,239,210,240  xnnpack/LFM3-1.7B-Base-8da4w-gptq-2k.pte
+ 1,270,668,160  xnnpack/LFM3-1.7B-Base-8da4w-gptq-32k.pte
+ 1,241,307,392  xnnpack/LFM3-1.7B-Base-8da4w-gptq-4k.pte
+ 1,245,501,696  xnnpack/LFM3-1.7B-Base-8da4w-gptq-8k.pte
+         4,156  xnnpack/config.json
+         9,455  xnnpack/export-report-16k.json
+         9,451  xnnpack/export-report-2k.json
+         9,454  xnnpack/export-report-32k.json
+         9,449  xnnpack/export-report-4k.json
+         9,450  xnnpack/export-report-8k.json
+repo experimentalmachines/LFM3-1.7B-Base-ExecuTorch sha e2c7b71881cd2bd320d6a39e25f159cef147328b

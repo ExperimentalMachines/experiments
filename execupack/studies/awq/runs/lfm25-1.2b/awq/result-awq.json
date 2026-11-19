@@ -1,0 +1,135 @@
+{
+  "model_id": "LiquidAI/LFM2.5-1.2B-Instruct",
+  "method": "awq",
+  "revision": "0f604ada3f766f9f257460c4c9f0b5d6f69d431b",
+  "awq": {
+    "mean_error_vs_plain": 0.8793455814893627
+  },
+  "smoke": {
+    "passed": true,
+    "reply": "Paris<|im_end|>",
+    "problems": []
+  },
+  "bytes": 795678720,
+  "gate": {
+    "passed": false,
+    "problems": [
+      "mean probability on fp32's token over 12 calling rows is 0.064 against fp32's 0.821, 0.758 under and the gate is 0.25",
+      "kept fp32's choice on 0 of 12 calling rows, under 90%"
+    ],
+    "graded": 12,
+    "fp32_mean": 0.8212,
+    "export_mean": 0.0636,
+    "agreed": 0,
+    "shortfall": 0.7576,
+    "quiet_rows_answered_like_fp32": 3,
+    "measures_tool_calling": true,
+    "quiet_rows": 3,
+    "fp32_undecided_quiet_rows": [
+      "Who wrote Pride and Prejudice?"
+    ],
+    "fp32_undecided_rows": [],
+    "rows": {
+      "What is Concord the capital of?": {
+        "fp32": 0.9234,
+        "export": 0.1242,
+        "kind": "search"
+      },
+      "What is Providence the capital of?": {
+        "fp32": 0.8623,
+        "export": 0.0515,
+        "kind": "search"
+      },
+      "What is Augusta the capital of?": {
+        "fp32": 0.8268,
+        "export": 0.0407,
+        "kind": "search"
+      },
+      "What is Nassau the capital of?": {
+        "fp32": 0.8587,
+        "export": 0.1064,
+        "kind": "search"
+      },
+      "Who is the author of Mercy?": {
+        "fp32": 0.7808,
+        "export": 0.0675,
+        "kind": "search"
+      },
+      "Who is the author of Landfall?": {
+        "fp32": 0.7737,
+        "export": 0.0679,
+        "kind": "search"
+      },
+      "Who is the author of Quicksand?": {
+        "fp32": 0.799,
+        "export": 0.0655,
+        "kind": "search"
+      },
+      "Who is the author of Nightfall?": {
+        "fp32": 0.7959,
+        "export": 0.068,
+        "kind": "search"
+      },
+      "In what country is Ostrava?": {
+        "fp32": 0.7353,
+        "export": 0.0142,
+        "kind": "search"
+      },
+      "In what country is Gdynia?": {
+        "fp32": 0.8381,
+        "export": 0.0393,
+        "kind": "search"
+      },
+      "In what country is Rijeka?": {
+        "fp32": 0.8415,
+        "export": 0.0267,
+        "kind": "search"
+      },
+      "In what country is Linkoping?": {
+        "fp32": 0.8187,
+        "export": 0.0909,
+        "kind": "search"
+      },
+      "What is the capital of Norway?": {
+        "fp32": 0.9999,
+        "export": 0.9999,
+        "kind": "quiet"
+      },
+      "What is 8 times 7?": {
+        "fp32": 0.96,
+        "export": 0.7276,
+        "kind": "quiet"
+      },
+      "Who wrote Pride and Prejudice?": {
+        "fp32": 0.4507,
+        "export": 0.3926,
+        "kind": "quiet"
+      },
+      "What is the chemical symbol for iron?": {
+        "fp32": 0.999,
+        "export": 1.0,
+        "kind": "quiet"
+      }
+    }
+  },
+  "heldout": {
+    "rows": 141,
+    "top1_agree": 0.8439716312056738,
+    "mean_kl": 0.285071809956623,
+    "mean_p_fp32_top": 0.7749528951599454
+  },
+  "replies": {
+    "rows": 47,
+    "positions": 1639,
+    "top1_agree": 0.8785845027455765,
+    "mean_kl": 0.11863998885221053
+  },
+  "timings_s": {
+    "download_convert": 11.7,
+    "eager_model": 2.3,
+    "solve": 1096.5,
+    "export_and_smoke": 208.4,
+    "gate": 36.6,
+    "eval": 430.8
+  }
+}

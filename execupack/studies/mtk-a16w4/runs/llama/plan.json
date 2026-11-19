@@ -1,0 +1,1 @@
+{"model": "meta-llama/Llama-3.2-1B-Instruct", "sha": "9213176726f574b556790deb65791e0c5aa438b6", "script": "llama.py", "preformatter": "llama3.json", "chunks": 4, "params": 1235814400}

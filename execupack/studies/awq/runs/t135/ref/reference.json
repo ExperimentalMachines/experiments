@@ -1,0 +1,16 @@
+{
+  "model_id": "HuggingFaceTB/SmolLM2-135M-Instruct",
+  "revision": "12fd25f77366fa6b3b4b768ec3050bf629380bac",
+  "calibration_rows": 104,
+  "calibration_positions": 8188,
+  "gate_confident_rows": 6,
+  "heldout_rows": 6,
+  "reply_rows": 2,
+  "reply_positions": 32,
+  "timings_s": {
+    "download_convert": 1.6,
+    "calibration": 166.1,
+    "gate_reference": 6.3,
+    "eval_reference": 5.4
+  }
+}

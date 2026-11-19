@@ -1,0 +1,119 @@
+==> HuggingFaceTB/SmolLM2-360M-Instruct@a10cc1512eab: family llama, class smollm2, window 8192
+==> converting checkpoint
+==> export_llm (codes: gptq, state fix: False, lfm3: False)
+Failed to load /home/ubuntu/execupack/.venv/lib/python3.11/site-packages/torchao/_C_cutlass_90a.abi3.so: Could not load this library: /home/ubuntu/execupack/.venv/lib/python3.11/site-packages/torchao/_C_cutlass_90a.abi3.so
+Failed to load /home/ubuntu/execupack/.venv/lib/python3.11/site-packages/torchao/_C_mxfp8.cpython-310-x86_64-linux-gnu.so: Could not load this library: /home/ubuntu/execupack/.venv/lib/python3.11/site-packages/torchao/_C_mxfp8.cpython-310-x86_64-linux-gnu.so
+W1109 06:01:01.958000 7747 torch/utils/_pytree.py:630] <enum 'KernelPreference'> is an Enum subclass and is now natively supported by torch.compile as an opaque value type. Calling register_constant() on Enum subclasses is deprecated and will be an error in a future release.
+W1109 06:01:01.989000 7747 torch/utils/_pytree.py:630] <enum 'ScaleCalculationMode'> is an Enum subclass and is now natively supported by torch.compile as an opaque value type. Calling register_constant() on Enum subclasses is deprecated and will be an error in a future release.
+I tokenizers:regex.cpp:40] Registering override fallback regex
+[2026-11-09 06:01:04,766][root][INFO] - Applying quantizers: []
+[2026-11-09 06:01:05,963][root][INFO] - Checkpoint dtype: torch.bfloat16
+quantize ('tok_embeddings', Embedding(49152, 960)) with group_size None, bitwidth 8
+injected calibrated codes into 225 linears
+[2026-11-09 06:01:07,833][root][INFO] - Looking for libcustom_ops_aot_lib.so in /home/ubuntu/execupack/.venv/lib/python3.11/site-packages/executorch/extension/llm/custom_ops
+[2026-11-09 06:01:07,834][root][INFO] - Loading custom ops library: /home/ubuntu/execupack/.venv/lib/python3.11/site-packages/executorch/extension/llm/custom_ops/libcustom_ops_aot_lib.so
+[2026-11-09 06:01:07,849][root][INFO] - Replacing KVCache with CustomKVCache. This modifies the model in place.
+[2026-11-09 06:01:08,021][root][INFO] - Model after source transforms: Transformer(
+  (tok_embeddings): QuantizedGroupEmbedding()
+  (layers): ModuleList(
+    (0-31): 32 x TransformerBlock(
+      (attention): AttentionMHA(
+        (wq): Linear(in_features=960, out_features=960, bias=False, weight=IntxUnpackedToInt8Tensor(target_dtype=torch.int4, block_size=(1, 32), shape=torch.Size([960, 960]), dtype=torch.float32, device=cpu, activation_quantization=int8_asym_per_token))
+        (wk): Linear(in_features=960, out_features=320, bias=False, weight=IntxUnpackedToInt8Tensor(target_dtype=torch.int4, block_size=(1, 32), shape=torch.Size([320, 960]), dtype=torch.float32, device=cpu, activation_quantization=int8_asym_per_token))
+        (wv): Linear(in_features=960, out_features=320, bias=False, weight=IntxUnpackedToInt8Tensor(target_dtype=torch.int4, block_size=(1, 32), shape=torch.Size([320, 960]), dtype=torch.float32, device=cpu, activation_quantization=int8_asym_per_token))
+        (wo): Linear(in_features=960, out_features=960, bias=False, weight=IntxUnpackedToInt8Tensor(target_dtype=torch.int4, block_size=(1, 32), shape=torch.Size([960, 960]), dtype=torch.float32, device=cpu, activation_quantization=int8_asym_per_token))
+        (rope): Rope(
+          (apply_rotary_emb): RotaryEmbedding()
+        )
+        (kv_cache): CustomKVCache()
+        (SDPA): SDPACustom()
+      )
+      (feed_forward): FeedForward(
+        (w1): Linear(in_features=960, out_features=2560, bias=False, weight=IntxUnpackedToInt8Tensor(target_dtype=torch.int4, block_size=(1, 32), shape=torch.Size([2560, 960]), dtype=torch.float32, device=cpu, activation_quantization=int8_asym_per_token))
+        (w2): Linear(in_features=2560, out_features=960, bias=False, weight=IntxUnpackedToInt8Tensor(target_dtype=torch.int4, block_size=(1, 32), shape=torch.Size([960, 2560]), dtype=torch.float32, device=cpu, activation_quantization=int8_asym_per_token))
+        (w3): Linear(in_features=960, out_features=2560, bias=False, weight=IntxUnpackedToInt8Tensor(target_dtype=torch.int4, block_size=(1, 32), shape=torch.Size([2560, 960]), dtype=torch.float32, device=cpu, activation_quantization=int8_asym_per_token))
+      )
+      (attention_norm): RMSNorm()
+      (ffn_norm): RMSNorm()
+    )
+  )
+  (rope): Rope(
+    (apply_rotary_emb): RotaryEmbedding()
+  )
+  (norm): RMSNorm()
+  (output): Linear(in_features=960, out_features=49152, bias=False, weight=IntxUnpackedToInt8Tensor(target_dtype=torch.int4, block_size=(1, 32), shape=torch.Size([49152, 960]), dtype=torch.float32, device=cpu, activation_quantization=int8_asym_per_token))
+)
+[2026-11-09 06:01:08,022][root][INFO] - Exporting with:
+[2026-11-09 06:01:08,023][root][INFO] - inputs: (tensor([[2, 3, 4]]), {'input_pos': tensor([0])})
+[2026-11-09 06:01:08,023][root][INFO] - kwargs: None
+[2026-11-09 06:01:08,023][root][INFO] - dynamic shapes: ({1: Dim('token_dim', min=0, max=2047)}, {'input_pos': {0: 1}})
+/home/ubuntu/execupack/.venv/lib/python3.11/site-packages/torch/_dynamo/utils.py:4415: FutureWarning: _check_is_size will be removed in a future PyTorch release along with guard_size_oblivious.     Use _check(i >= 0) instead.
+  return node.target(*args, **kwargs)  # type: ignore[operator]
+/home/ubuntu/execupack/.venv/lib/python3.11/site-packages/executorch/extension/llm/custom_ops/custom_ops.py:317: FutureWarning: _check_is_size will be removed in a future PyTorch release along with guard_size_oblivious.     Use _check(i >= 0) instead.
+  torch._check_is_size(start_pos)
+/home/ubuntu/execupack/.venv/lib/python3.11/site-packages/torch/fx/interpreter.py:377: FutureWarning: _check_is_size will be removed in a future PyTorch release along with guard_size_oblivious.     Use _check(i >= 0) instead.
+  return target(*args, **kwargs)
+/home/ubuntu/execupack/.venv/lib/python3.11/site-packages/executorch/extension/llm/custom_ops/custom_ops.py:317: FutureWarning: _check_is_size will be removed in a future PyTorch release along with guard_size_oblivious.     Use _check(i >= 0) instead.
+  torch._check_is_size(start_pos)
+/home/ubuntu/execupack/.venv/lib/python3.11/site-packages/executorch/extension/llm/custom_ops/custom_ops.py:317: FutureWarning: _check_is_size will be removed in a future PyTorch release along with guard_size_oblivious.     Use _check(i >= 0) instead.
+  torch._check_is_size(start_pos)
+/home/ubuntu/execupack/.venv/lib/python3.11/site-packages/executorch/extension/llm/custom_ops/custom_ops.py:317: FutureWarning: _check_is_size will be removed in a future PyTorch release along with guard_size_oblivious.     Use _check(i >= 0) instead.
+  torch._check_is_size(start_pos)
+[2026-11-09 06:02:16,434][root][INFO] - Running canonical pass: RemoveRedundantTransposes
+[2026-11-09 06:02:16,584][root][INFO] - Using pt2e [] to quantizing the model...
+[2026-11-09 06:02:16,584][root][INFO] - No quantizer provided, passing...
+/home/ubuntu/execupack/.venv/lib/python3.11/site-packages/executorch/extension/llm/custom_ops/custom_ops.py:317: FutureWarning: _check_is_size will be removed in a future PyTorch release along with guard_size_oblivious.     Use _check(i >= 0) instead.
+  torch._check_is_size(start_pos)
+/home/ubuntu/execupack/.venv/lib/python3.11/site-packages/executorch/extension/llm/custom_ops/custom_ops.py:317: FutureWarning: _check_is_size will be removed in a future PyTorch release along with guard_size_oblivious.     Use _check(i >= 0) instead.
+  torch._check_is_size(start_pos)
+/home/ubuntu/execupack/.venv/lib/python3.11/site-packages/executorch/extension/llm/custom_ops/custom_ops.py:317: FutureWarning: _check_is_size will be removed in a future PyTorch release along with guard_size_oblivious.     Use _check(i >= 0) instead.
+  torch._check_is_size(start_pos)
+/home/ubuntu/execupack/.venv/lib/python3.11/site-packages/executorch/extension/llm/custom_ops/custom_ops.py:317: FutureWarning: _check_is_size will be removed in a future PyTorch release along with guard_size_oblivious.     Use _check(i >= 0) instead.
+  torch._check_is_size(start_pos)
+/home/ubuntu/execupack/.venv/lib/python3.11/site-packages/executorch/extension/llm/custom_ops/custom_ops.py:317: FutureWarning: _check_is_size will be removed in a future PyTorch release along with guard_size_oblivious.     Use _check(i >= 0) instead.
+  torch._check_is_size(start_pos)
+[2026-11-09 06:04:01,390][root][INFO] - Lowering model using following partitioner(s): 
+[2026-11-09 06:04:01,390][root][INFO] - --> VulkanPartitioner
+[2026-11-09 06:04:06,005][root][INFO] - [Vulkan Partitioner] Due to [no operator implementation], skipping torch.float32: torch.Size([1, s11, 960]) = quantized_decomposed.embedding_byte.dtype(torch.int8: torch.Size([49152, 960]), torch.float32: torch.Size([49152]), None, -128, 127, torch.int64: torch.Size([1, s11]),  ...)
+[2026-11-09 06:04:06,159][root][INFO] - Found 1 Vulkan subgraphs to be partitioned.
+/home/ubuntu/execupack/.venv/lib/python3.11/site-packages/executorch/extension/llm/custom_ops/custom_ops.py:317: FutureWarning: _check_is_size will be removed in a future PyTorch release along with guard_size_oblivious.     Use _check(i >= 0) instead.
+  torch._check_is_size(start_pos)
+[2026-11-09 06:04:59,455][root][INFO] - Operators included in this Vulkan partition: 
+[2026-11-09 06:04:59,455][root][INFO] -     aten.slice_copy.Tensor
+[2026-11-09 06:04:59,455][root][INFO] -     sym_size.int
+[2026-11-09 06:04:59,455][root][INFO] -     et_vk.prepack.default
+[2026-11-09 06:04:59,455][root][INFO] -     et_vk.linear_dq8ca_q4gsw.default
+[2026-11-09 06:04:59,455][root][INFO] -     aten.view_copy.default
+[2026-11-09 06:04:59,455][root][INFO] -     sdpa_with_kv_cache.default
+[2026-11-09 06:04:59,455][root][INFO] -     et_vk.rms_norm.default
+[2026-11-09 06:04:59,455][root][INFO] -     et_vk.select_as_symint.default
+[2026-11-09 06:04:59,455][root][INFO] -     torchao.choose_qparams_affine.default
+[2026-11-09 06:04:59,455][root][INFO] -     aten.add.Tensor
+[2026-11-09 06:04:59,455][root][INFO] -     aten.sigmoid.default
+[2026-11-09 06:04:59,455][root][INFO] -     aten.select_copy.int
+[2026-11-09 06:04:59,455][root][INFO] -     add
+[2026-11-09 06:04:59,455][root][INFO] -     aten.mul.Tensor
+[2026-11-09 06:04:59,455][root][INFO] -     et_vk.apply_rotary_emb.default
+/home/ubuntu/execupack/.venv/lib/python3.11/site-packages/executorch/extension/llm/custom_ops/custom_ops.py:317: FutureWarning: _check_is_size will be removed in a future PyTorch release along with guard_size_oblivious.     Use _check(i >= 0) instead.
+  torch._check_is_size(start_pos)
+/home/ubuntu/execupack/.venv/lib/python3.11/site-packages/executorch/extension/llm/custom_ops/custom_ops.py:317: FutureWarning: _check_is_size will be removed in a future PyTorch release along with guard_size_oblivious.     Use _check(i >= 0) instead.
+  torch._check_is_size(start_pos)
+/home/ubuntu/execupack/.venv/lib/python3.11/site-packages/executorch/extension/llm/custom_ops/custom_ops.py:317: FutureWarning: _check_is_size will be removed in a future PyTorch release along with guard_size_oblivious.     Use _check(i >= 0) instead.
+  torch._check_is_size(start_pos)
+[2026-11-09 06:05:22,182][root][INFO] - Required memory for activation in bytes: [0, 8057088]
+[2026-11-09 06:05:22,269][root][INFO] - Saved exported program to /home/ubuntu/runs/gptq-smollm2-360m-instruct/out-vulkan-8192/vulkan/SmolLM2-360M-Instruct-vulkan-8da4w-gptq-8k.pte
+==> reading metadata
+Failed to load /home/ubuntu/execupack/.venv/lib/python3.11/site-packages/torchao/_C_cutlass_90a.abi3.so: Could not load this library: /home/ubuntu/execupack/.venv/lib/python3.11/site-packages/torchao/_C_cutlass_90a.abi3.so
+Failed to load /home/ubuntu/execupack/.venv/lib/python3.11/site-packages/torchao/_C_mxfp8.cpython-310-x86_64-linux-gnu.so: Could not load this library: /home/ubuntu/execupack/.venv/lib/python3.11/site-packages/torchao/_C_mxfp8.cpython-310-x86_64-linux-gnu.so
+W1109 06:05:27.855000 7686 torch/utils/_pytree.py:630] <enum 'KernelPreference'> is an Enum subclass and is now natively supported by torch.compile as an opaque value type. Calling register_constant() on Enum subclasses is deprecated and will be an error in a future release.
+==> structural check
+{
+  "file": [
+    {
+      "path": "vulkan/SmolLM2-360M-Instruct-vulkan-8da4w-gptq-8k.pte",
+      "bytes": 334039424,
+      "sha256": "118a58c193054dd50643a24fc00f036327b2c235614302903f269c98565ca7bd"
+    }
+  ],
+  "window": 8192
+}

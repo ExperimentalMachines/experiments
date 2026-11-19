@@ -1,0 +1,9 @@
+61d7e939a05911c765b7e98ffaa1ab5ca6c0174a65350766c25cb10197d19fc8  ./LICENSE
+28ec04c8f12ad9742f9d0e458f0d4e131334697a6d34b66b36f029a1ea314524  ./mtk/mt6991/LFM2.5-1.2B-Instruct-neuropilot-a16w4-2k-chunk1of4.pte
+8a8cca041ec2c838b0fdf8908b9a2272a6b17861199b52fc9293d9658e987eb5  ./mtk/mt6991/LFM2.5-1.2B-Instruct-neuropilot-a16w4-2k-chunk2of4.pte
+19f2d40aedc15166d646cfa68a08096159dbef65937e657f9a3d01d00a05bc94  ./mtk/mt6991/LFM2.5-1.2B-Instruct-neuropilot-a16w4-2k-chunk3of4.pte
+2933a865f3f0515f3f781bd4b07a0528c1794ab167644d80adfcdadc10a5218d  ./mtk/mt6991/LFM2.5-1.2B-Instruct-neuropilot-a16w4-2k-chunk4of4.pte
+ece8b635baf1918674073ee0900e782e6210f1d5b93173089ad0b6e07c6df139  ./mtk/mt6991/LFM2.5-1.2B-Instruct-neuropilot-embedding-fp32.bin
+5f906bd38a96d8bd7a386d604ad8de3347767a37e2465ec6fbbfb19557e7f292  ./mtk/mt6991/config.json
+c649c0328f297a4489d57f3d805f178f2c416a43df806fb16ffbcfbb8bec3103  ./mtk/mt6991/export-report-2k.json
+df1d8d5ec5d091b460562ffd545e4a5e91d17d4a0db7ebe733be34ed374377bd  ./tokenizer.json

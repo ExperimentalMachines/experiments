@@ -1,0 +1,197 @@
+{
+  "backend": "xnnpack",
+  "target": null,
+  "tokenizer": "tokenizer.json",
+  "output_repo": "experimentalmachines/Qwen3-1.7B-ExecuTorch",
+  "source": {
+    "id": "Qwen/Qwen3-1.7B",
+    "sha": "70d244cc86ccca08cf5af4e1e306ecf908b1ad5e",
+    "created_at": "2025-04-27T03:41:05+00:00",
+    "total_params": 2031739904,
+    "family": "qwen3",
+    "variant": "instruct",
+    "license": {
+      "license": "apache-2.0",
+      "license_link": "https://huggingface.co/Qwen/Qwen3-1.7B/blob/main/LICENSE"
+    },
+    "license_files": [
+      "LICENSE"
+    ]
+  },
+  "toolchain": {
+    "executorch": "1.6.0",
+    "torch": "2.15.0+cpu",
+    "torchao": "0.18.0"
+  },
+  "recipe": {
+    "model_class": "qwen3_1_7b",
+    "converter": "qwen3",
+    "params": {
+      "dim": 2048,
+      "ffn_dim_multiplier": 1,
+      "hidden_dim": 6144,
+      "n_heads": 16,
+      "head_dim": 128,
+      "n_kv_heads": 8,
+      "n_layers": 28,
+      "norm_eps": 1e-06,
+      "rope_theta": 1000000.0,
+      "vocab_size": 151936,
+      "use_scaled_rope": false,
+      "use_hf_rope": true,
+      "attention_qkv_bias": false,
+      "use_qk_norm": true,
+      "qk_norm_before_rope": true
+    },
+    "export_llm_qmode": "8da4w",
+    "embedding_hqq": false,
+    "qmode": "8da4w-gptq",
+    "embedding_quantize": "8,0",
+    "prefill_chunk": 2048,
+    "kv_cache_dtype": "fp32",
+    "group_size": 32,
+    "int4_codes": "gptq",
+    "label": "8da4w-gptq-g32, int8 embeddings, int4 codes solved with GPTQ",
+    "description": "ExecuTorch 1.6.0 `export_llm`: 8-bit dynamic activations and 4-bit weights in groups of 32, int8 per-channel embeddings, XNNPACK with extended ops, prefill chunk 2048, fp32 KV cache.",
+    "codes_sha256": "70c69ced9031bd0d35c4177aee14cafebe2a2507dbe0a3e73399e6328cac44a1"
+  },
+  "window": {
+    "context": 2048,
+    "reason": "requested window 2048",
+    "kv_cache_bytes_per_token": 229376,
+    "kv_cache_ring_bytes": 0,
+    "device_resident_bytes": 2265706137,
+    "phone_budget_bytes": 5000000000,
+    "fits_phone_budget": true,
+    "table": [
+      {
+        "context": 32768,
+        "kv_cache_bytes": 7516192768,
+        "device_resident_bytes": 9375680563,
+        "export_peak_bytes": 48207427840,
+        "fits_device": false,
+        "fits_host": true
+      },
+      {
+        "context": 16384,
+        "kv_cache_bytes": 3758096384,
+        "device_resident_bytes": 5583694202,
+        "export_peak_bytes": 21900753152,
+        "fits_device": false,
+        "fits_host": true
+      },
+      {
+        "context": 8192,
+        "kv_cache_bytes": 1879048192,
+        "device_resident_bytes": 3687701022,
+        "export_peak_bytes": 14384560384,
+        "fits_device": true,
+        "fits_host": true
+      },
+      {
+        "context": 4096,
+        "kv_cache_bytes": 939524096,
+        "device_resident_bytes": 2739704432,
+        "export_peak_bytes": 12035750144,
+        "fits_device": true,
+        "fits_host": true
+      },
+      {
+        "context": 2048,
+        "kv_cache_bytes": 469762048,
+        "device_resident_bytes": 2265706137,
+        "export_peak_bytes": 11213666560,
+        "fits_device": true,
+        "fits_host": true
+      }
+    ]
+  },
+  "files": [
+    {
+      "path": "xnnpack/Qwen3-1.7B-8da4w-gptq-2k.pte",
+      "bytes": 1284873600,
+      "sha256": "1bcc237b265aec03ff34613a8fc7f48f860b50ee713c1d480c247c779ce9e6c0"
+    }
+  ],
+  "estimates": {
+    "pte_bytes_estimate": 1295944089,
+    "pte_bytes_actual": 1284873600,
+    "export_peak_bytes_estimate": 11213666560
+  },
+  "host": {
+    "nproc": 24,
+    "mem_total_bytes": 726299615232,
+    "swap_total_bytes": 0,
+    "cpu_model": "unknown",
+    "peak_rss_convert_bytes": 16053972992,
+    "peak_rss_export_bytes": 16053972992,
+    "peak_swap_used_bytes": 0,
+    "min_mem_available_bytes": 710430220288,
+    "peak_in_use_bytes": 15869394944,
+    "peak_in_use_at": "2026-11-19T05:11:23Z",
+    "peak_cgroup_bytes": 15869251584,
+    "export_seconds": 467.8,
+    "total_seconds": 481.8
+  },
+  "conversion": {
+    "tensors": 311,
+    "tied_embeddings": false,
+    "dtypes": [
+      "torch.bfloat16"
+    ]
+  },
+  "metadata": {
+    "enable_dynamic_shape": true,
+    "get_bos_id": 151643,
+    "get_eos_ids": [
+      151645,
+      151643
+    ],
+    "get_max_context_len": 2048,
+    "get_max_seq_len": 2048,
+    "get_n_layers": 28,
+    "get_vocab_size": 151936,
+    "use_kv_cache": true,
+    "use_sdpa_with_kv_cache": true,
+    "methods": [
+      "enable_dynamic_shape",
+      "forward",
+      "get_bos_id",
+      "get_eos_ids",
+      "get_max_context_len",
+      "get_max_seq_len",
+      "get_n_layers",
+      "get_vocab_size",
+      "use_kv_cache",
+      "use_sdpa_with_kv_cache"
+    ]
+  },
+  "smoke": {
+    "prompt": "<|im_start|>user\nWhat is the capital of France? Answer with one word.<|im_end|>\n<|im_start|>assistant\n",
+    "template_error": null,
+    "reply": "<think>\nOkay, the user is asking for the capital of France and wants the answer in one word. Let me think. I know that France's capital is Paris. But I need to make sure there's no confusion with other capitals. Let me recall: Paris is the largest city in France and has been the capital for over a thousand years. Other countries have different capitals, like Tokyo for Japan, but France's is definitely Paris. The user specified one word, so I should just say \"Paris\" without any extra words. I don't think there's any other possible answer here. Yeah, that's it.\n</think>\n\nParis",
+    "tokens": 128,
+    "answered": true,
+    "answer_required": true,
+    "passed": true,
+    "problems": [],
+    "stats": {
+      "prefill_token_per_sec": 303.03,
+      "decode_token_per_sec": 60.7075,
+      "prompt_tokens": 20,
+      "generated_tokens": 127,
+      "model_load_start_ms": 1795065167385,
+      "model_load_end_ms": 1795065169567,
+      "inference_start_ms": 1795065169567,
+      "inference_end_ms": 1795065171725,
+      "model_execution_start_ms": 1795065171709,
+      "model_execution_end_ms": 1795065171725,
+      "prompt_eval_end_ms": 1795065169633,
+      "first_token_ms": 1795065169633,
+      "aggregate_sampling_time_ms": 19,
+      "aggregate_model_execution_time_ms": 2128,
+      "SCALING_FACTOR_UNITS_PER_SECOND": 1000
+    }
+  },
+  "run": {}
+}

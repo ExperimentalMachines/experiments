@@ -1,0 +1,13 @@
+{
+ "file": "Qwen3-4B-Instruct-2507-8da4w-gptq-4k.pte",
+ "sha256": "29bb9fa71c846cbb47451099f0c1f849f5f24bb6a3f4efabc4e74426eb07651f",
+ "backend": "xnnpack",
+ "int4_linears": 253,
+ "matched_exactly": 253,
+ "codes_entries": 253,
+ "unused_allowed": [],
+ "low_nibble_first": true,
+ "order_checked": true,
+ "ok": true,
+ "problems": []
+}

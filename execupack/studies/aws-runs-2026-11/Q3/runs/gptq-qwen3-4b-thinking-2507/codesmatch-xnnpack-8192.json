@@ -1,0 +1,13 @@
+{
+ "file": "Qwen3-4B-Thinking-2507-8da4w-gptq-8k.pte",
+ "sha256": "cede14e2da45fa620fdcefcc7734ebdcc309b13f03cea6c91c33b5ac7c259027",
+ "backend": "xnnpack",
+ "int4_linears": 253,
+ "matched_exactly": 253,
+ "codes_entries": 253,
+ "unused_allowed": [],
+ "low_nibble_first": true,
+ "order_checked": true,
+ "ok": true,
+ "problems": []
+}

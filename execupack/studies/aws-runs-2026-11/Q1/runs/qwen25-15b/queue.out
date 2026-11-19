@@ -1,0 +1,28 @@
+2026-11-08T23:27:05Z QUEUE START Qwen/Qwen2.5-1.5B-Instruct@989aa7980e4cf806f80c7fef2b1adb7bc71aa306 windows 32768 16384 8192 4096 2048 code 55400142834d5276bbf4c999131e09f605d7733e
+2026-11-08T23:27:05Z SOLVE attempt 1
+2026-11-08T23:43:51Z SOLVE attempt 1 exited 0
+2026-11-08T23:43:51Z SOLVED codes.pt 1736605515 B, gate.json present
+2026-11-08T23:43:51Z EXPORT 32768 attempt 1
+2026-11-08T23:44:11Z EXPORT 16384 attempt 1
+2026-11-08T23:44:31Z EXPORT 8192 attempt 1
+2026-11-08T23:52:28Z EXPORTED 32768 1170528512 /home/ubuntu/runs/qwen25-15b/out-32768/xnnpack/Qwen2.5-1.5B-Instruct-8da4w-gptq-32k.pte
+2026-11-08T23:52:48Z EXPORTED 16384 1136974080 /home/ubuntu/runs/qwen25-15b/out-16384/xnnpack/Qwen2.5-1.5B-Instruct-8da4w-gptq-16k.pte
+2026-11-08T23:53:04Z EXPORTED 8192 1120196864 /home/ubuntu/runs/qwen25-15b/out-8192/xnnpack/Qwen2.5-1.5B-Instruct-8da4w-gptq-8k.pte
+2026-11-08T23:54:06Z VERIFIED 32768 smoke=True reply='Paris<|im_end|>' gate=True agreed=12/12 quiet=4/4 fp32=0.934 export=0.7435
+2026-11-08T23:54:13Z PUBLISHED 32768
+2026-11-08T23:54:21Z EXPORT 4096 attempt 1
+2026-11-08T23:54:28Z VERIFIED 16384 smoke=True reply='Paris<|im_end|>' gate=True agreed=12/12 quiet=4/4 fp32=0.934 export=0.7435
+2026-11-08T23:54:31Z PUBLISHED 16384
+2026-11-08T23:54:38Z VERIFIED 8192 smoke=True reply='Paris<|im_end|>' gate=True agreed=12/12 quiet=4/4 fp32=0.934 export=0.7435
+2026-11-08T23:54:41Z PUBLISHED 8192
+2026-11-08T23:54:42Z EXPORT 2048 attempt 1
+2026-11-09T00:02:22Z EXPORTED 4096 1111808256 /home/ubuntu/runs/qwen25-15b/out-4096/xnnpack/Qwen2.5-1.5B-Instruct-8da4w-gptq-4k.pte
+2026-11-09T00:02:50Z EXPORTED 2048 1107613952 /home/ubuntu/runs/qwen25-15b/out-2048/xnnpack/Qwen2.5-1.5B-Instruct-8da4w-gptq-2k.pte
+2026-11-09T00:03:36Z VERIFIED 4096 smoke=True reply='Paris<|im_end|>' gate=True agreed=12/12 quiet=4/4 fp32=0.934 export=0.7435
+2026-11-09T00:03:39Z PUBLISHED 4096
+2026-11-09T00:04:03Z VERIFIED 2048 smoke=True reply='Paris<|im_end|>' gate=True agreed=12/12 quiet=4/4 fp32=0.934 export=0.7435
+2026-11-09T00:04:06Z PUBLISHED 2048
+2026-11-09T00:04:06Z HUB 10 .pte files in the repo
+2026-11-09T00:04:06Z QUEUE DONE published: 5 of 5
+2026-11-09T00:04:06Z TOKEN shredded
+Shutdown scheduled for Mon 2026-11-09 00:07:06 UTC, use 'shutdown -c' to cancel.

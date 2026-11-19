@@ -1,0 +1,6 @@
+2026-11-09T00:49:35Z START vk Qwen/Qwen3-4B-Thinking-2507 8192
+2026-11-09T01:00:13Z export attempt 1 exited 0
+2026-11-09T01:00:13Z exported 3457870080 /home/ubuntu/runs/qwen3-4b-thinking/out-vulkan-8192/vulkan/Qwen3-4B-Thinking-2507-vulkan-8da4w-8k.pte
+2026-11-09T01:00:13Z REPORT {"file": "vulkan/Qwen3-4B-Thinking-2507-vulkan-8da4w-8k.pte", "bytes": 3457870080, "smoke": true, "reply": "", "gate": null, "agreed": null, "graded": null, "quiet": null, "fp32_mean": null, "export_mean": null, "tool_calling": null, "fits_phone": null}
+2026-11-09T01:00:19Z published
+2026-11-09T01:00:20Z END rc=0

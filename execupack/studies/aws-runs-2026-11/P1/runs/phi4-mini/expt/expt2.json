@@ -1,0 +1,212 @@
+{
+ "V2 output int8": {
+  "verdict": {
+   "passed": true,
+   "problems": [],
+   "graded": 8,
+   "fp32_mean": 0.6629,
+   "export_mean": 0.526,
+   "agreed": 8,
+   "shortfall": 0.1369,
+   "quiet_rows_answered_like_fp32": 3,
+   "measures_tool_calling": true,
+   "quiet_rows": 3,
+   "fp32_undecided_quiet_rows": [
+    "What is 8 times 7?"
+   ],
+   "fp32_undecided_rows": [
+    "What is Providence the capital of?",
+    "In what country is Ostrava?",
+    "In what country is Rijeka?",
+    "In what country is Linkoping?"
+   ]
+  },
+  "rows": {
+   "What is Concord the capital of?": [
+    0.783,
+    0.508,
+    "["
+   ],
+   "What is Providence the capital of?": [
+    0.455,
+    0.713,
+    "["
+   ],
+   "What is Augusta the capital of?": [
+    0.591,
+    0.284,
+    "["
+   ],
+   "What is Nassau the capital of?": [
+    0.526,
+    0.45,
+    "["
+   ],
+   "Who is the author of Mercy?": [
+    0.73,
+    0.755,
+    "["
+   ],
+   "Who is the author of Landfall?": [
+    0.741,
+    0.678,
+    "["
+   ],
+   "Who is the author of Quicksand?": [
+    0.67,
+    0.493,
+    "["
+   ],
+   "Who is the author of Nightfall?": [
+    0.731,
+    0.642,
+    "["
+   ],
+   "In what country is Ostrava?": [
+    0.412,
+    0.199,
+    "O"
+   ],
+   "In what country is Gdynia?": [
+    0.531,
+    0.399,
+    "["
+   ],
+   "In what country is Rijeka?": [
+    0.473,
+    0.175,
+    "R"
+   ],
+   "In what country is Linkoping?": [
+    0.401,
+    0.422,
+    "["
+   ],
+   "What is the capital of Norway?": [
+    0.814,
+    0.76,
+    "Os"
+   ],
+   "What is 8 times 7?": [
+    0.355,
+    0.493,
+    "8"
+   ],
+   "Who wrote Pride and Prejudice?": [
+    0.693,
+    0.876,
+    "Jane"
+   ],
+   "What is the chemical symbol for iron?": [
+    0.772,
+    0.836,
+    "The"
+   ]
+  }
+ },
+ "V3 all int8": {
+  "verdict": {
+   "passed": true,
+   "problems": [],
+   "graded": 8,
+   "fp32_mean": 0.6629,
+   "export_mean": 0.6282,
+   "agreed": 8,
+   "shortfall": 0.0347,
+   "quiet_rows_answered_like_fp32": 3,
+   "measures_tool_calling": true,
+   "quiet_rows": 3,
+   "fp32_undecided_quiet_rows": [
+    "What is 8 times 7?"
+   ],
+   "fp32_undecided_rows": [
+    "What is Providence the capital of?",
+    "In what country is Ostrava?",
+    "In what country is Rijeka?",
+    "In what country is Linkoping?"
+   ]
+  },
+  "rows": {
+   "What is Concord the capital of?": [
+    0.783,
+    0.64,
+    "["
+   ],
+   "What is Providence the capital of?": [
+    0.455,
+    0.511,
+    "["
+   ],
+   "What is Augusta the capital of?": [
+    0.591,
+    0.623,
+    "["
+   ],
+   "What is Nassau the capital of?": [
+    0.526,
+    0.707,
+    "["
+   ],
+   "Who is the author of Mercy?": [
+    0.73,
+    0.579,
+    "["
+   ],
+   "Who is the author of Landfall?": [
+    0.741,
+    0.705,
+    "["
+   ],
+   "Who is the author of Quicksand?": [
+    0.67,
+    0.539,
+    "["
+   ],
+   "Who is the author of Nightfall?": [
+    0.731,
+    0.691,
+    "["
+   ],
+   "In what country is Ostrava?": [
+    0.412,
+    0.578,
+    "["
+   ],
+   "In what country is Gdynia?": [
+    0.531,
+    0.541,
+    "["
+   ],
+   "In what country is Rijeka?": [
+    0.473,
+    0.605,
+    "["
+   ],
+   "In what country is Linkoping?": [
+    0.401,
+    0.345,
+    "["
+   ],
+   "What is the capital of Norway?": [
+    0.814,
+    0.797,
+    "Os"
+   ],
+   "What is 8 times 7?": [
+    0.355,
+    0.341,
+    "8"
+   ],
+   "Who wrote Pride and Prejudice?": [
+    0.693,
+    0.805,
+    "Jane"
+   ],
+   "What is the chemical symbol for iron?": [
+    0.772,
+    0.654,
+    "The"
+   ]
+  }
+ }
+}

@@ -1,0 +1,13 @@
+{
+ "file": "Llama-3.2-1B-Instruct-vulkan-8da4w-gptq-16k.pte",
+ "sha256": "6e982a131e3a1fd4c9828fcb32cce6fb06372dcb5063c1299edae42c7daaae6a",
+ "backend": "vulkan",
+ "int4_linears": 113,
+ "matched_exactly": 113,
+ "codes_entries": 113,
+ "unused_allowed": [],
+ "low_nibble_first": true,
+ "order_checked": true,
+ "ok": true,
+ "problems": []
+}

@@ -1,0 +1,132 @@
+uploaded 1 input(s) to execupack-runs:/local-1-b0c49e1f/in
+Modal Sandbox: 40960 MiB, 8 cores, timeout 330 min
+Failed to load /usr/local/lib/python3.11/site-packages/torchao/_C_cutlass_90a.abi3.so: Could not load this library: /usr/local/lib/python3.11/site-packages/torchao/_C_cutlass_90a.abi3.so
+Failed to load /usr/local/lib/python3.11/site-packages/torchao/_C_mxfp8.cpython-310-x86_64-linux-gnu.so: Could not load this library: /usr/local/lib/python3.11/site-packages/torchao/_C_mxfp8.cpython-310-x86_64-linux-gnu.so
+W1119 03:42:47.256000 5 site-packages/torch/utils/_pytree.py:646] <enum 'KernelPreference'> is an Enum subclass and is now natively supported by torch.compile as an opaque value type. Calling register_constant() on Enum subclasses is deprecated and will be an error in a future release.
+W1119 03:42:48.688000 5 site-packages/torch/utils/_pytree.py:646] <enum 'ScaleCalculationMode'> is an Enum subclass and is now natively supported by torch.compile as an opaque value type. Calling register_constant() on Enum subclasses is deprecated and will be an error in a future release.
+I tokenizers:regex.cpp:40] Registering override fallback regex
+{
+  "model_id": "LiquidAI/LFM2.5-1.2B-Instruct",
+  "method": "published",
+  "revision": "0f604ada3f766f9f257460c4c9f0b5d6f69d431b",
+  "published": "experimentalmachines/LFM2.5-1.2B-Instruct-ExecuTorch/xnnpack/LFM2.5-1.2B-Instruct-8da4w-gptq-2k.pte",
+  "bytes": 795686784,
+  "gate": {
+    "passed": true,
+    "problems": [],
+    "graded": 12,
+    "fp32_mean": 0.8212,
+    "export_mean": 0.8395,
+    "agreed": 12,
+    "shortfall": -0.0183,
+    "quiet_rows_answered_like_fp32": 3,
+    "measures_tool_calling": true,
+    "quiet_rows": 3,
+    "fp32_undecided_quiet_rows": [
+      "Who wrote Pride and Prejudice?"
+    ],
+    "fp32_undecided_rows": [],
+    "rows": {
+      "What is Concord the capital of?": {
+        "fp32": 0.9234,
+        "export": 0.9059,
+        "kind": "search"
+      },
+      "What is Providence the capital of?": {
+        "fp32": 0.8623,
+        "export": 0.9736,
+        "kind": "search"
+      },
+      "What is Augusta the capital of?": {
+        "fp32": 0.8268,
+        "export": 0.8806,
+        "kind": "search"
+      },
+      "What is Nassau the capital of?": {
+        "fp32": 0.8587,
+        "export": 0.5937,
+        "kind": "search"
+      },
+      "Who is the author of Mercy?": {
+        "fp32": 0.7808,
+        "export": 0.8312,
+        "kind": "search"
+      },
+      "Who is the author of Landfall?": {
+        "fp32": 0.7737,
+        "export": 0.8924,
+        "kind": "search"
+      },
+      "Who is the author of Quicksand?": {
+        "fp32": 0.799,
+        "export": 0.8758,
+        "kind": "search"
+      },
+      "Who is the author of Nightfall?": {
+        "fp32": 0.7959,
+        "export": 0.831,
+        "kind": "search"
+      },
+      "In what country is Ostrava?": {
+        "fp32": 0.7353,
+        "export": 0.7017,
+        "kind": "search"
+      },
+      "In what country is Gdynia?": {
+        "fp32": 0.8381,
+        "export": 0.7713,
+        "kind": "search"
+      },
+      "In what country is Rijeka?": {
+        "fp32": 0.8415,
+        "export": 0.8707,
+        "kind": "search"
+      },
+      "In what country is Linkoping?": {
+        "fp32": 0.8187,
+        "export": 0.9457,
+        "kind": "search"
+      },
+      "What is the capital of Norway?": {
+        "fp32": 0.9999,
+        "export": 0.9999,
+        "kind": "quiet"
+      },
+      "What is 8 times 7?": {
+        "fp32": 0.96,
+        "export": 0.8505,
+        "kind": "quiet"
+      },
+      "Who wrote Pride and Prejudice?": {
+        "fp32": 0.4507,
+        "export": 0.2164,
+        "kind": "quiet"
+      },
+      "What is the chemical symbol for iron?": {
+        "fp32": 0.999,
+        "export": 0.9996,
+        "kind": "quiet"
+      }
+    }
+  },
+  "heldout": {
+    "rows": 141,
+    "top1_agree": 0.8297872340425532,
+    "mean_kl": 0.13370559356269973,
+    "mean_p_fp32_top": 0.7585246090030839
+  },
+  "replies": {
+    "rows": 47,
+    "positions": 1639,
+    "top1_agree": 0.8810250152532032,
+    "mean_kl": 0.11746168749797384
+  },
+  "timings_s": {
+    "download_convert": 10.3,
+    "download_published": 5.0,
+    "gate": 44.9,
+    "eval": 476.4
+  }
+}
+Modal Sandbox exited 0 after 9.1 min
+downloaded 2 file(s) to work/awq/lfm25-1.2b/published

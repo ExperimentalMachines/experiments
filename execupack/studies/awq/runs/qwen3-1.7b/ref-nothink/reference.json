@@ -1,0 +1,15 @@
+{
+  "model_id": "Qwen/Qwen3-1.7B",
+  "revision": "70d244cc86ccca08cf5af4e1e306ecf908b1ad5e",
+  "calibration_rows": 104,
+  "calibration_positions": 11204,
+  "gate_confident_rows": 15,
+  "heldout_rows": 141,
+  "reply_rows": 47,
+  "reply_positions": 1416,
+  "timings_s": {
+    "download_convert": 16.2,
+    "resumed_calibration_and_gate": 0.0,
+    "eval_reference": 547.1
+  }
+}

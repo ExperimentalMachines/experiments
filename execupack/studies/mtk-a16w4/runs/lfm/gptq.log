@@ -1,0 +1,125 @@
+The attention mask is not set and cannot be inferred from input because pad token is same as eos token. As a consequence, you may observe unexpected behavior. Please pass your input's `attention_mask` to obtain reliable results.
+calibration row 1/104: 575 prompt + 48 reply tokens, counting from 0
+calibration row 2/104: 577 prompt + 42 reply tokens, counting from 533
+calibration row 3/104: 575 prompt + 43 reply tokens, counting from 533
+calibration row 4/104: 575 prompt + 39 reply tokens, counting from 533
+calibration row 5/104: 575 prompt + 48 reply tokens, counting from 533
+calibration row 6/104: 575 prompt + 48 reply tokens, counting from 533
+calibration row 7/104: 575 prompt + 48 reply tokens, counting from 533
+calibration row 8/104: 577 prompt + 48 reply tokens, counting from 533
+calibration row 9/104: 575 prompt + 47 reply tokens, counting from 533
+calibration row 10/104: 579 prompt + 48 reply tokens, counting from 533
+calibration row 11/104: 577 prompt + 38 reply tokens, counting from 533
+calibration row 12/104: 577 prompt + 44 reply tokens, counting from 533
+calibration row 13/104: 579 prompt + 45 reply tokens, counting from 533
+calibration row 14/104: 577 prompt + 44 reply tokens, counting from 533
+calibration row 15/104: 579 prompt + 44 reply tokens, counting from 533
+calibration row 16/104: 579 prompt + 45 reply tokens, counting from 533
+calibration row 17/104: 579 prompt + 40 reply tokens, counting from 533
+calibration row 18/104: 579 prompt + 45 reply tokens, counting from 533
+calibration row 19/104: 579 prompt + 45 reply tokens, counting from 533
+calibration row 20/104: 579 prompt + 45 reply tokens, counting from 533
+calibration row 21/104: 582 prompt + 48 reply tokens, counting from 533
+calibration row 22/104: 578 prompt + 47 reply tokens, counting from 533
+calibration row 23/104: 582 prompt + 48 reply tokens, counting from 533
+calibration row 24/104: 576 prompt + 48 reply tokens, counting from 533
+calibration row 25/104: 578 prompt + 44 reply tokens, counting from 533
+calibration row 26/104: 578 prompt + 48 reply tokens, counting from 533
+calibration row 27/104: 578 prompt + 47 reply tokens, counting from 533
+calibration row 28/104: 578 prompt + 48 reply tokens, counting from 533
+calibration row 29/104: 580 prompt + 48 reply tokens, counting from 533
+calibration row 30/104: 576 prompt + 46 reply tokens, counting from 533
+calibration row 31/104: 579 prompt + 47 reply tokens, counting from 533
+calibration row 32/104: 588 prompt + 48 reply tokens, counting from 533
+calibration row 33/104: 579 prompt + 48 reply tokens, counting from 533
+calibration row 34/104: 581 prompt + 48 reply tokens, counting from 533
+calibration row 35/104: 580 prompt + 48 reply tokens, counting from 533
+calibration row 36/104: 577 prompt + 41 reply tokens, counting from 533
+calibration row 37/104: 581 prompt + 48 reply tokens, counting from 533
+calibration row 38/104: 579 prompt + 48 reply tokens, counting from 533
+calibration row 39/104: 583 prompt + 48 reply tokens, counting from 533
+calibration row 40/104: 585 prompt + 48 reply tokens, counting from 533
+calibration row 41/104: 590 prompt + 48 reply tokens, counting from 533
+calibration row 42/104: 582 prompt + 48 reply tokens, counting from 533
+calibration row 43/104: 589 prompt + 48 reply tokens, counting from 533
+calibration row 44/104: 589 prompt + 48 reply tokens, counting from 533
+calibration row 45/104: 584 prompt + 48 reply tokens, counting from 533
+calibration row 46/104: 587 prompt + 48 reply tokens, counting from 533
+calibration row 47/104: 582 prompt + 48 reply tokens, counting from 533
+calibration row 48/104: 586 prompt + 48 reply tokens, counting from 533
+calibration row 49/104: 545 prompt + 9 reply tokens, counting from 533
+calibration row 50/104: 546 prompt + 10 reply tokens, counting from 533
+calibration row 51/104: 546 prompt + 9 reply tokens, counting from 533
+calibration row 52/104: 548 prompt + 17 reply tokens, counting from 533
+calibration row 53/104: 547 prompt + 11 reply tokens, counting from 533
+calibration row 54/104: 545 prompt + 12 reply tokens, counting from 533
+calibration row 55/104: 544 prompt + 39 reply tokens, counting from 533
+calibration row 56/104: 548 prompt + 15 reply tokens, counting from 533
+calibration row 57/104: 547 prompt + 36 reply tokens, counting from 533
+calibration row 58/104: 544 prompt + 15 reply tokens, counting from 533
+calibration row 59/104: 546 prompt + 46 reply tokens, counting from 533
+calibration row 60/104: 547 prompt + 10 reply tokens, counting from 533
+calibration row 61/104: 548 prompt + 28 reply tokens, counting from 533
+calibration row 62/104: 546 prompt + 48 reply tokens, counting from 533
+calibration row 63/104: 549 prompt + 47 reply tokens, counting from 533
+calibration row 64/104: 546 prompt + 14 reply tokens, counting from 533
+calibration row 65/104: 549 prompt + 14 reply tokens, counting from 533
+calibration row 66/104: 549 prompt + 18 reply tokens, counting from 533
+calibration row 67/104: 548 prompt + 12 reply tokens, counting from 533
+calibration row 68/104: 544 prompt + 14 reply tokens, counting from 533
+calibration row 69/104: 546 prompt + 14 reply tokens, counting from 533
+calibration row 70/104: 545 prompt + 31 reply tokens, counting from 533
+calibration row 71/104: 547 prompt + 11 reply tokens, counting from 533
+calibration row 72/104: 545 prompt + 14 reply tokens, counting from 533
+calibration row 73/104: 16 prompt + 10 reply tokens, counting from 0
+calibration row 74/104: 16 prompt + 54 reply tokens, counting from 0
+calibration row 75/104: 23 prompt + 16 reply tokens, counting from 0
+calibration row 76/104: 16 prompt + 9 reply tokens, counting from 0
+calibration row 77/104: 19 prompt + 45 reply tokens, counting from 0
+calibration row 78/104: 16 prompt + 58 reply tokens, counting from 0
+calibration row 79/104: 23 prompt + 128 reply tokens, counting from 0
+calibration row 80/104: 17 prompt + 65 reply tokens, counting from 0
+calibration row 81/104: 15 prompt + 70 reply tokens, counting from 0
+calibration row 82/104: 23 prompt + 6 reply tokens, counting from 0
+calibration row 83/104: 25 prompt + 9 reply tokens, counting from 0
+calibration row 84/104: 25 prompt + 10 reply tokens, counting from 0
+calibration row 85/104: 16 prompt + 2 reply tokens, counting from 0
+calibration row 86/104: 28 prompt + 128 reply tokens, counting from 0
+calibration row 87/104: 23 prompt + 128 reply tokens, counting from 0
+calibration row 88/104: 28 prompt + 20 reply tokens, counting from 0
+calibration row 89/104: 31 prompt + 128 reply tokens, counting from 0
+calibration row 90/104: 23 prompt + 128 reply tokens, counting from 0
+calibration row 91/104: 29 prompt + 128 reply tokens, counting from 0
+calibration row 92/104: 31 prompt + 128 reply tokens, counting from 0
+calibration row 93/104: 22 prompt + 128 reply tokens, counting from 0
+calibration row 94/104: 17 prompt + 72 reply tokens, counting from 0
+calibration row 95/104: 85 prompt + 107 reply tokens, counting from 0
+calibration row 96/104: 39 prompt + 107 reply tokens, counting from 0
+calibration row 97/104: 18 prompt + 84 reply tokens, counting from 0
+calibration row 98/104: 25 prompt + 98 reply tokens, counting from 0
+calibration row 99/104: 21 prompt + 128 reply tokens, counting from 0
+calibration row 100/104: 16 prompt + 81 reply tokens, counting from 0
+calibration row 101/104: 20 prompt + 50 reply tokens, counting from 0
+calibration row 102/104: 17 prompt + 75 reply tokens, counting from 0
+calibration row 103/104: 18 prompt + 10 reply tokens, counting from 0
+calibration row 104/104: 18 prompt + 90 reply tokens, counting from 0
+==> 104 calibration rows, 8876 counted positions
+104 calibration rows, 8876 counted positions (87 s)
+layer 0: GPTQ/RTN output error 0.08-0.24, re-quantization mismatches 0 (92 s)
+layer 1: GPTQ/RTN output error 0.10-0.31, re-quantization mismatches 0 (98 s)
+layer 2: GPTQ/RTN output error 0.13-0.29, re-quantization mismatches 0 (105 s)
+layer 3: GPTQ/RTN output error 0.14-0.37, re-quantization mismatches 0 (112 s)
+layer 4: GPTQ/RTN output error 0.16-0.38, re-quantization mismatches 0 (120 s)
+layer 5: GPTQ/RTN output error 0.10-0.27, re-quantization mismatches 0 (128 s)
+layer 6: GPTQ/RTN output error 0.14-0.48, re-quantization mismatches 0 (140 s)
+layer 7: GPTQ/RTN output error 0.04-0.35, re-quantization mismatches 0 (154 s)
+layer 8: GPTQ/RTN output error 0.09-0.27, re-quantization mismatches 0 (168 s)
+layer 9: GPTQ/RTN output error 0.14-0.37, re-quantization mismatches 0 (187 s)
+layer 10: GPTQ/RTN output error 0.09-0.26, re-quantization mismatches 0 (208 s)
+layer 11: GPTQ/RTN output error 0.17-0.35, re-quantization mismatches 0 (229 s)
+layer 12: GPTQ/RTN output error 0.15-0.30, re-quantization mismatches 0 (252 s)
+layer 13: GPTQ/RTN output error 0.13-0.37, re-quantization mismatches 0 (269 s)
+layer 14: GPTQ/RTN output error 0.12-0.31, re-quantization mismatches 0 (280 s)
+layer 15: GPTQ/RTN output error 0.04-0.30, re-quantization mismatches 0 (291 s)
+head: GPTQ/RTN output error 0.33, mismatches 0
+wrote /workspace/runs/lfm/gptq in 316 s

@@ -1,0 +1,7 @@
+2026-11-09T01:49:36Z START xnn Qwen/Qwen3-4B-Thinking-2507 16384
+2026-11-09T02:04:03Z export attempt 1 exited 0
+2026-11-09T02:04:03Z exported 2687307136 /home/ubuntu/runs/qwen3-4b-thinking/out-xnnpack-16384/xnnpack/Qwen3-4B-Thinking-2507-8da4w-gptq-16k.pte
+2026-11-09T02:08:03Z verify attempt 1 exited 0
+2026-11-09T02:08:03Z REPORT {"file": "xnnpack/Qwen3-4B-Thinking-2507-8da4w-gptq-16k.pte", "bytes": 2687307136, "smoke": true, "reply": "Hmm, the user is asking for the capital of France and wants a one-word answer. T", "gate": true, "agreed": 12, "graded": 12, "quiet": 3, "fp32_mean": 0.9734, "export_mean": 0.9838, "tool_calling": false, "fits_phone": null}
+2026-11-09T02:08:14Z published
+2026-11-09T02:08:14Z END rc=0

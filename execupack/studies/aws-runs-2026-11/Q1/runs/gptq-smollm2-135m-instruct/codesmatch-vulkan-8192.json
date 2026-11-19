@@ -1,0 +1,13 @@
+{
+ "file": "SmolLM2-135M-Instruct-vulkan-8da4w-gptq-8k.pte",
+ "sha256": "cdbe903c70956aa24ce54701fb628fba1b4f36448a932d40fd488b1b9223359b",
+ "backend": "vulkan",
+ "int4_linears": 211,
+ "matched_exactly": 211,
+ "codes_entries": 211,
+ "unused_allowed": [],
+ "low_nibble_first": true,
+ "order_checked": true,
+ "ok": true,
+ "problems": []
+}

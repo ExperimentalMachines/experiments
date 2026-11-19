@@ -1,0 +1,229 @@
+{
+  "backend": "xnnpack",
+  "target": null,
+  "tokenizer": "tokenizer.json",
+  "output_repo": "experimentalmachines/LFM3-1.7B-ExecuTorch",
+  "source": {
+    "id": "LiquidAI/LFM3-1.7B",
+    "sha": "ac2586a34f1a1c03329dbdcdefabd8b6478ddaa7",
+    "created_at": "2026-10-23T21:35:42+00:00",
+    "total_params": 1728801536,
+    "family": "lfm3",
+    "variant": "instruct",
+    "license": {
+      "license": "other",
+      "license_name": "lfm1.0",
+      "license_link": "LICENSE"
+    },
+    "license_files": [
+      "LICENSE"
+    ]
+  },
+  "toolchain": {
+    "executorch": "1.5.1",
+    "torch": "2.14.0+cpu",
+    "torchao": "0.18.0"
+  },
+  "recipe": {
+    "model_class": "lfm2_5_1_2b",
+    "converter": "lfm3",
+    "params": {
+      "dim": 2048,
+      "ffn_dim_multiplier": 1,
+      "hidden_dim": 7680,
+      "n_heads": 16,
+      "head_dim": 128,
+      "n_kv_heads": 4,
+      "n_layers": 24,
+      "norm_eps": 1e-05,
+      "rope_theta": 1000000.0,
+      "local_rope_theta": 10000.0,
+      "partial_rotary_factor": 0.5,
+      "vocab_size": 128000,
+      "use_hf_rope": true,
+      "use_qk_norm": true,
+      "qk_norm_before_rope": true,
+      "layer_types": [
+        "conv",
+        "conv",
+        "full_attention",
+        "conv",
+        "sliding_attention",
+        "conv",
+        "full_attention",
+        "conv",
+        "sliding_attention",
+        "conv",
+        "full_attention",
+        "conv",
+        "sliding_attention",
+        "conv",
+        "full_attention",
+        "conv",
+        "sliding_attention",
+        "conv",
+        "full_attention",
+        "conv",
+        "sliding_attention",
+        "conv",
+        "full_attention",
+        "conv"
+      ],
+      "sliding_window": 256,
+      "post_attention_norm": true,
+      "post_ffn_norm": true,
+      "attention_kwargs": {
+        "conv_L_cache": 7
+      }
+    },
+    "export_llm_qmode": null,
+    "embedding_hqq": false,
+    "qmode": "fp32",
+    "embedding_quantize": "8,0",
+    "prefill_chunk": 2048,
+    "kv_cache_dtype": "fp32",
+    "group_size": null,
+    "int4_codes": null,
+    "label": "fp32 linears, int8 embeddings",
+    "description": "ExecuTorch 1.5.1 `export_llm`: fp32 weights and activations in every linear (not quantized), int8 per-channel embeddings, XNNPACK with extended ops, prefill chunk 2048, fp32 KV cache."
+  },
+  "window": {
+    "context": 2048,
+    "reason": "requested window 2048",
+    "kv_cache_bytes_per_token": 45056,
+    "device_resident_bytes": 7512184227,
+    "phone_budget_bytes": 5000000000,
+    "fits_phone_budget": false,
+    "table": [
+      {
+        "context": 32768,
+        "kv_cache_bytes": 1476395008,
+        "device_resident_bytes": 8959848253,
+        "export_peak_bytes": 23421188352,
+        "fits_device": false,
+        "fits_host": true
+      },
+      {
+        "context": 16384,
+        "kv_cache_bytes": 738197504,
+        "device_resident_bytes": 8187760773,
+        "export_peak_bytes": 13824620800,
+        "fits_device": false,
+        "fits_host": true
+      },
+      {
+        "context": 8192,
+        "kv_cache_bytes": 369098752,
+        "device_resident_bytes": 7801717032,
+        "export_peak_bytes": 11240929536,
+        "fits_device": false,
+        "fits_host": true
+      },
+      {
+        "context": 4096,
+        "kv_cache_bytes": 184549376,
+        "device_resident_bytes": 7608695162,
+        "export_peak_bytes": 10502732032,
+        "fits_device": false,
+        "fits_host": true
+      },
+      {
+        "context": 2048,
+        "kv_cache_bytes": 92274688,
+        "device_resident_bytes": 7512184227,
+        "export_peak_bytes": 10272045312,
+        "fits_device": false,
+        "fits_host": true
+      }
+    ]
+  },
+  "files": [
+    {
+      "path": "xnnpack/LFM3-1.7B-fp32-2k.pte",
+      "bytes": 7180554368,
+      "sha256": "e1fe6e0b5138aaa569b52f6544d1ad4687df3d0e3b9cc1c5eb017fe99aac801e"
+    }
+  ],
+  "estimates": {
+    "pte_bytes_estimate": 6919909539,
+    "pte_bytes_actual": 7180554368,
+    "export_peak_bytes_estimate": 10272045312
+  },
+  "host": {
+    "nproc": 16,
+    "mem_total_bytes": 132914737152,
+    "swap_total_bytes": 0,
+    "cpu_model": "Intel(R) Xeon(R) Platinum 8488C",
+    "peak_rss_convert_bytes": 3830943744,
+    "peak_rss_export_bytes": 22271180800,
+    "peak_swap_used_bytes": 0,
+    "min_mem_available_bytes": 97399881728,
+    "peak_in_use_bytes": 35514855424,
+    "peak_in_use_at": "2026-10-31T20:59:56Z",
+    "peak_cgroup_bytes": null,
+    "export_seconds": 494.3,
+    "total_seconds": 585.4
+  },
+  "conversion": {
+    "tensors": 313,
+    "tied_embeddings": true,
+    "dtypes": [
+      "torch.bfloat16"
+    ]
+  },
+  "metadata": {
+    "enable_dynamic_shape": true,
+    "get_bos_id": 124894,
+    "get_eos_ids": [
+      124900
+    ],
+    "get_max_context_len": 2048,
+    "get_max_seq_len": 2048,
+    "get_n_layers": 24,
+    "get_state_reset_at_zero": 1,
+    "get_vocab_size": 128000,
+    "use_kv_cache": true,
+    "use_sdpa_with_kv_cache": true,
+    "methods": [
+      "enable_dynamic_shape",
+      "forward",
+      "get_bos_id",
+      "get_eos_ids",
+      "get_max_context_len",
+      "get_max_seq_len",
+      "get_n_layers",
+      "get_state_reset_at_zero",
+      "get_vocab_size",
+      "use_kv_cache",
+      "use_sdpa_with_kv_cache"
+    ]
+  },
+  "smoke": {
+    "prompt": "<|startoftext|><|im_start|>user\nWhat is the capital of France? Answer with one word.<|im_end|>\n<|im_start|>assistant\n<think>",
+    "template_error": null,
+    "reply": "The user asks: \"What is the capital of France? Answer with one word.\"\n\nWe need to respond with one word: \"Paris\". That's the capital of France. So answer: Paris.\n\nWe must follow the instruction: answer with one word. So just \"Paris\".</think>Paris<|im_end|>",
+    "tokens": 60,
+    "answered": true,
+    "answer_required": true,
+    "passed": true,
+    "problems": [],
+    "stats": {
+      "prefill_token_per_sec": 33.1825,
+      "decode_token_per_sec": 5.48429,
+      "prompt_tokens": 22,
+      "generated_tokens": 59,
+      "model_load_start_ms": 1793480726814,
+      "model_load_end_ms": 1793480730281,
+      "inference_start_ms": 1793480730282,
+      "inference_end_ms": 1793480741703,
+      "model_execution_start_ms": 1793480741541,
+      "model_execution_end_ms": 1793480741703,
+      "prompt_eval_end_ms": 1793480730945,
+      "first_token_ms": 1793480730945,
+      "aggregate_sampling_time_ms": 10,
+      "aggregate_model_execution_time_ms": 11406,
+      "SCALING_FACTOR_UNITS_PER_SECOND": 1000
+    }
+  },
+  "run": {}
+}

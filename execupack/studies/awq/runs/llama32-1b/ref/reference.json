@@ -1,0 +1,16 @@
+{
+  "model_id": "meta-llama/Llama-3.2-1B-Instruct",
+  "revision": "9213176726f574b556790deb65791e0c5aa438b6",
+  "calibration_rows": 104,
+  "calibration_positions": 8416,
+  "gate_confident_rows": 16,
+  "heldout_rows": 141,
+  "reply_rows": 47,
+  "reply_positions": 1143,
+  "timings_s": {
+    "download_convert": 8.3,
+    "calibration": 793.3,
+    "gate_reference": 35.3,
+    "eval_reference": 692.3
+  }
+}

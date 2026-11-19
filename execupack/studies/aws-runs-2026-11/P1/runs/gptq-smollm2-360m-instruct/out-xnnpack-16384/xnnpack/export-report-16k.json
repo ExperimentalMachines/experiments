@@ -1,0 +1,312 @@
+{
+  "backend": "xnnpack",
+  "target": null,
+  "tokenizer": "tokenizer.json",
+  "output_repo": "experimentalmachines/SmolLM2-360M-Instruct-ExecuTorch",
+  "source": {
+    "id": "HuggingFaceTB/SmolLM2-360M-Instruct",
+    "sha": "a10cc1512eabd3dde888204e902eca88bddb4951",
+    "created_at": "2024-10-31T13:41:35+00:00",
+    "total_params": 361821120,
+    "family": "llama",
+    "variant": "instruct",
+    "license": {
+      "license": "apache-2.0"
+    },
+    "license_files": []
+  },
+  "toolchain": {
+    "executorch": "1.5.1",
+    "torch": "2.14.0+cpu",
+    "torchao": "0.18.0"
+  },
+  "recipe": {
+    "model_class": "smollm2",
+    "converter": "llama",
+    "params": {
+      "dim": 960,
+      "ffn_dim_multiplier": 1,
+      "hidden_dim": 2560,
+      "n_heads": 15,
+      "head_dim": 64,
+      "n_kv_heads": 5,
+      "n_layers": 32,
+      "norm_eps": 1e-05,
+      "rope_theta": 100000.0,
+      "vocab_size": 49152,
+      "use_scaled_rope": false,
+      "use_hf_rope": false,
+      "attention_qkv_bias": false
+    },
+    "export_llm_qmode": "8da4w",
+    "embedding_hqq": false,
+    "qmode": "8da4w-gptq",
+    "embedding_quantize": "8,0",
+    "prefill_chunk": 2048,
+    "kv_cache_dtype": "fp32",
+    "group_size": 32,
+    "int4_codes": "gptq",
+    "label": "8da4w-gptq-g32, int8 embeddings, int4 codes solved with GPTQ",
+    "description": "ExecuTorch 1.5.1 `export_llm`: 8-bit dynamic activations and 4-bit weights in groups of 32, int8 per-channel embeddings, XNNPACK with extended ops, prefill chunk 2048, fp32 KV cache.",
+    "codes_sha256": "373001e60b317b8e801a156a07e2a762a20504679ea68eb2b55b8081826e6bd7"
+  },
+  "window": {
+    "context": 16384,
+    "reason": "requested window 16384",
+    "kv_cache_bytes_per_token": 81920,
+    "kv_cache_ring_bytes": 0,
+    "device_resident_bytes": 2112304220,
+    "phone_budget_bytes": 5000000000,
+    "fits_phone_budget": true,
+    "table": [
+      {
+        "context": 32768,
+        "kv_cache_bytes": 2684354560,
+        "device_resident_bytes": 3471426488,
+        "export_peak_bytes": 41179871488,
+        "fits_device": true,
+        "fits_host": true
+      },
+      {
+        "context": 16384,
+        "kv_cache_bytes": 1342177280,
+        "device_resident_bytes": 2112304220,
+        "export_peak_bytes": 14067890432,
+        "fits_device": true,
+        "fits_host": true
+      },
+      {
+        "context": 8192,
+        "kv_cache_bytes": 671088640,
+        "device_resident_bytes": 1432743086,
+        "export_peak_bytes": 6954350848,
+        "fits_device": true,
+        "fits_host": true
+      },
+      {
+        "context": 4096,
+        "kv_cache_bytes": 335544320,
+        "device_resident_bytes": 1092962519,
+        "export_peak_bytes": 5008193792,
+        "fits_device": true,
+        "fits_host": true
+      },
+      {
+        "context": 2048,
+        "kv_cache_bytes": 167772160,
+        "device_resident_bytes": 923072235,
+        "export_peak_bytes": 4437768448,
+        "fits_device": true,
+        "fits_host": true
+      }
+    ]
+  },
+  "files": [
+    {
+      "path": "xnnpack/SmolLM2-360M-Instruct-8da4w-gptq-16k.pte",
+      "bytes": 260231552,
+      "sha256": "889e02eb3f172386804e8eeaa4399ef235c92a105cf65835c3dc6a0fe2100e7c"
+    }
+  ],
+  "estimates": {
+    "pte_bytes_estimate": 270126940,
+    "pte_bytes_actual": 260231552,
+    "export_peak_bytes_estimate": 14067890432
+  },
+  "host": {
+    "nproc": 16,
+    "mem_total_bytes": 132914733056,
+    "swap_total_bytes": 0,
+    "cpu_model": "Intel(R) Xeon(R) Platinum 8488C",
+    "peak_rss_convert_bytes": 1082589184,
+    "peak_rss_export_bytes": 23123030016,
+    "peak_swap_used_bytes": 0,
+    "min_mem_available_bytes": 93182959616,
+    "peak_in_use_bytes": 39731773440,
+    "peak_in_use_at": "2026-11-09T05:42:01Z",
+    "peak_cgroup_bytes": null,
+    "export_seconds": 723.3,
+    "total_seconds": 734.3
+  },
+  "conversion": {
+    "tensors": 291,
+    "tied_embeddings": true,
+    "dtypes": [
+      "torch.bfloat16"
+    ]
+  },
+  "metadata": {
+    "enable_dynamic_shape": true,
+    "get_bos_id": 1,
+    "get_eos_ids": [
+      2
+    ],
+    "get_max_context_len": 16384,
+    "get_max_seq_len": 2048,
+    "get_n_layers": 32,
+    "get_vocab_size": 49152,
+    "use_kv_cache": true,
+    "use_sdpa_with_kv_cache": true,
+    "methods": [
+      "enable_dynamic_shape",
+      "forward",
+      "get_bos_id",
+      "get_eos_ids",
+      "get_max_context_len",
+      "get_max_seq_len",
+      "get_n_layers",
+      "get_vocab_size",
+      "use_kv_cache",
+      "use_sdpa_with_kv_cache"
+    ]
+  },
+  "smoke": {
+    "prompt": "<|im_start|>system\nYou are a helpful AI assistant named SmolLM, trained by Hugging Face<|im_end|>\n<|im_start|>user\nWhat is the capital of France? Answer with one word.<|im_end|>\n<|im_start|>assistant\n",
+    "template_error": null,
+    "reply": "F.<|im_end|>",
+    "tokens": 3,
+    "answered": false,
+    "answer_required": false,
+    "passed": true,
+    "problems": [],
+    "stats": {
+      "prefill_token_per_sec": 626.866,
+      "decode_token_per_sec": 153.846,
+      "prompt_tokens": 42,
+      "generated_tokens": 2,
+      "model_load_start_ms": 1794203626028,
+      "model_load_end_ms": 1794203627076,
+      "inference_start_ms": 1794203627076,
+      "inference_end_ms": 1794203627156,
+      "model_execution_start_ms": 1794203627150,
+      "model_execution_end_ms": 1794203627156,
+      "prompt_eval_end_ms": 1794203627143,
+      "first_token_ms": 1794203627143,
+      "aggregate_sampling_time_ms": 0,
+      "aggregate_model_execution_time_ms": 80,
+      "SCALING_FACTOR_UNITS_PER_SECOND": 1000
+    }
+  },
+  "run": {},
+  "measuring_gate": {
+    "kind": "measuring_gate",
+    "passed": true,
+    "prefill_tok_per_sec": 626.87,
+    "decode_tok_per_sec": 153.85,
+    "prompt_tokens": 42,
+    "generated_tokens": 2
+  },
+  "gate": {
+    "passed": true,
+    "problems": [],
+    "graded": 2,
+    "fp32_mean": 0.5698,
+    "export_mean": 0.5554,
+    "agreed": 2,
+    "shortfall": 0.0144,
+    "quiet_rows_answered_like_fp32": 0,
+    "measures_tool_calling": true,
+    "quiet_rows": 0,
+    "fp32_undecided_quiet_rows": [
+      "What is the capital of Norway?",
+      "What is 8 times 7?",
+      "Who wrote Pride and Prejudice?",
+      "What is the chemical symbol for iron?"
+    ],
+    "fp32_undecided_rows": [
+      "What is Concord the capital of?",
+      "What is Augusta the capital of?",
+      "Who is the author of Mercy?",
+      "Who is the author of Landfall?",
+      "Who is the author of Quicksand?",
+      "Who is the author of Nightfall?",
+      "In what country is Ostrava?",
+      "In what country is Gdynia?",
+      "In what country is Rijeka?",
+      "In what country is Linkoping?"
+    ],
+    "rows": {
+      "What is Concord the capital of?": {
+        "fp32": 0.2562,
+        "export": 0.2008,
+        "kind": "search"
+      },
+      "What is Providence the capital of?": {
+        "fp32": 0.6217,
+        "export": 0.5644,
+        "kind": "search"
+      },
+      "What is Augusta the capital of?": {
+        "fp32": 0.0992,
+        "export": 0.1013,
+        "kind": "search"
+      },
+      "What is Nassau the capital of?": {
+        "fp32": 0.5179,
+        "export": 0.5464,
+        "kind": "search"
+      },
+      "Who is the author of Mercy?": {
+        "fp32": 0.134,
+        "export": 0.1265,
+        "kind": "search"
+      },
+      "Who is the author of Landfall?": {
+        "fp32": 0.1496,
+        "export": 0.1817,
+        "kind": "search"
+      },
+      "Who is the author of Quicksand?": {
+        "fp32": 0.1766,
+        "export": 0.1985,
+        "kind": "search"
+      },
+      "Who is the author of Nightfall?": {
+        "fp32": 0.1597,
+        "export": 0.167,
+        "kind": "search"
+      },
+      "In what country is Ostrava?": {
+        "fp32": 0.3497,
+        "export": 0.3967,
+        "kind": "search"
+      },
+      "In what country is Gdynia?": {
+        "fp32": 0.3652,
+        "export": 0.2969,
+        "kind": "search"
+      },
+      "In what country is Rijeka?": {
+        "fp32": 0.4028,
+        "export": 0.4222,
+        "kind": "search"
+      },
+      "In what country is Linkoping?": {
+        "fp32": 0.2624,
+        "export": 0.242,
+        "kind": "search"
+      },
+      "What is the capital of Norway?": {
+        "fp32": 0.4101,
+        "export": 0.4585,
+        "kind": "quiet"
+      },
+      "What is 8 times 7?": {
+        "fp32": 0.4963,
+        "export": 0.4906,
+        "kind": "quiet"
+      },
+      "Who wrote Pride and Prejudice?": {
+        "fp32": 0.1944,
+        "export": 0.1292,
+        "kind": "quiet"
+      },
+      "What is the chemical symbol for iron?": {
+        "fp32": 0.3696,
+        "export": 0.2538,
+        "kind": "quiet"
+      }
+    },
+    "reference_sha256": "01c8281cfe14828225e92c98b7d2bb0302d517646d3d1f1e97ff5edc2171749a"
+  }
+}

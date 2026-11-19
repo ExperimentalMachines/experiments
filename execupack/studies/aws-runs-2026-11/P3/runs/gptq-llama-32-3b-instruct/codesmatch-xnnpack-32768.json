@@ -1,0 +1,13 @@
+{
+ "file": "Llama-3.2-3B-Instruct-8da4w-gptq-32k.pte",
+ "sha256": "78dd204b78e117f6bee1634ad984534d8e491614dcd761b1ab74fa15660a95f2",
+ "backend": "xnnpack",
+ "int4_linears": 197,
+ "matched_exactly": 197,
+ "codes_entries": 197,
+ "unused_allowed": [],
+ "low_nibble_first": true,
+ "order_checked": true,
+ "ok": true,
+ "problems": []
+}

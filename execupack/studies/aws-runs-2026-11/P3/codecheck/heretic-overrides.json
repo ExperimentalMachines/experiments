@@ -1,0 +1,10 @@
+{
+ "experimentalmachines/LFM2.5-1.2B-Instruct-heretic-ExecuTorch": [
+  "LiquidAI/LFM2.5-1.2B-Instruct",
+  "0f604ada3f766f9f257460c4c9f0b5d6f69d431b"
+ ],
+ "experimentalmachines/LFM2.5-2.6B-heretic-ExecuTorch": [
+  "LiquidAI/LFM2.5-2.6B",
+  "654f9463ce32b05d0429d76fe1f580b27d4c1ac0"
+ ]
+}

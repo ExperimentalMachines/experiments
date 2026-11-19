@@ -1,0 +1,7 @@
+2026-11-09T06:26:11Z START xnn HuggingFaceTB/SmolLM2-360M-Instruct 32768
+2026-11-09T06:36:19Z export attempt 1 exited 0
+2026-11-09T06:36:19Z exported 268620160 /home/ubuntu/runs/gptq-smollm2-360m-instruct/out-xnnpack-32768/xnnpack/SmolLM2-360M-Instruct-8da4w-gptq-32k.pte
+2026-11-09T06:37:28Z verify attempt 1 exited 0
+2026-11-09T06:37:36Z codesmatch ok: 225 of 225 int4 linears exact
+2026-11-09T06:37:36Z REPORT {"file": "xnnpack/SmolLM2-360M-Instruct-8da4w-gptq-32k.pte", "bytes": 268620160, "recipe": "8da4w-gptq-g32, int8 embeddings, int4 codes solved with GPTQ", "smoke": true, "reply": "F.<|im_end|>", "gate": true, "agreed": 2, "graded": 2, "quiet": 0, "fp32_mean": 0.5698, "export_mean": 0.5554, "tool_calling": true, "override": null, "proxy": null, "fits_phone": null}
+2026-11-09T06:37:36Z END rc=0

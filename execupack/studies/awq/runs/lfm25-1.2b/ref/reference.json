@@ -1,0 +1,16 @@
+{
+  "model_id": "LiquidAI/LFM2.5-1.2B-Instruct",
+  "revision": "0f604ada3f766f9f257460c4c9f0b5d6f69d431b",
+  "calibration_rows": 104,
+  "calibration_positions": 8876,
+  "gate_confident_rows": 15,
+  "heldout_rows": 141,
+  "reply_rows": 47,
+  "reply_positions": 1639,
+  "timings_s": {
+    "download_convert": 8.7,
+    "calibration": 926.6,
+    "gate_reference": 30.5,
+    "eval_reference": 654.1
+  }
+}

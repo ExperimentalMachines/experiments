@@ -1,0 +1,52 @@
+==> smoke test, window 8192
+Failed to load /home/ubuntu/execupack/.venv/lib/python3.11/site-packages/torchao/_C_cutlass_90a.abi3.so: Could not load this library: /home/ubuntu/execupack/.venv/lib/python3.11/site-packages/torchao/_C_cutlass_90a.abi3.so
+Failed to load /home/ubuntu/execupack/.venv/lib/python3.11/site-packages/torchao/_C_mxfp8.cpython-310-x86_64-linux-gnu.so: Could not load this library: /home/ubuntu/execupack/.venv/lib/python3.11/site-packages/torchao/_C_mxfp8.cpython-310-x86_64-linux-gnu.so
+W1109 06:53:35.917000 7463 torch/utils/_pytree.py:630] <enum 'KernelPreference'> is an Enum subclass and is now natively supported by torch.compile as an opaque value type. Calling register_constant() on Enum subclasses is deprecated and will be an error in a future release.
+I tokenizers:regex.cpp:40] Registering override fallback regex
+I tokenizers:normalizer.cpp:101] Using NFC normalizer. Please notice that our implementation may not handle all edge cases.
+WARNING: All log messages before absl::InitializeLog() is called are written to STDERR
+E0000 00:00:1794207216.888509    7463 re2.cc:237] Error parsing '((?i:'s|'t|'re|'ve|'m|'ll|'d)|[^\r\n\p{L}\p{N}]?\p{L}+|\p{N}| ?[^\s\p{L}\p{N}]+[\r\n]*|\s*[\r\n]+|\s...': invalid perl operator: (?!
+I tokenizers:re2_regex.cpp:23] Re2 failed to compile regex: ((?i:'s|'t|'re|'ve|'m|'ll|'d)|[^\r\n\p{L}\p{N}]?\p{L}+|\p{N}| ?[^\s\p{L}\p{N}]+[\r\n]*|\s*[\r\n]+|\s+(?!\S)|\s+), error: invalid perl operator: (?!
+This may be ok if a fallback regex is used.
+I tokenizers:regex_lookahead.cpp:26] Creating PCRE2 regex
+[llm_runner_helper.cpp:55] Loaded json tokenizer
+[llm_runner_helper.cpp:258] Reading metadata from model
+[llm_runner_helper.cpp:137] Metadata: use_kv_cache = 1
+[llm_runner_helper.cpp:137] Metadata: get_max_context_len = 8192
+[llm_runner_helper.cpp:137] Metadata: get_max_seq_len = 2048
+[llm_runner_helper.cpp:137] Metadata: use_sdpa_with_kv_cache = 1
+[llm_runner_helper.cpp:137] Metadata: enable_dynamic_shape = 1
+[llm_runner_helper.cpp:179] eos_id = 151645
+[llm_runner_helper.cpp:179] eos_id = 151643
+[llm_runner_helper.cpp:294] Using method: forward
+[cpuinfo_utils.cpp:71] Reading file /sys/devices/soc0/image_version
+[cpuinfo_utils.cpp:87] Failed to open midr file /sys/devices/soc0/image_version
+[cpuinfo_utils.cpp:100] Reading file /sys/devices/system/cpu/cpu0/regs/identification/midr_el1
+[cpuinfo_utils.cpp:109] Failed to open midr file /sys/devices/system/cpu/cpu0/regs/identification/midr_el1
+[cpuinfo_utils.cpp:125] CPU info and manual query on # of cpus dont match.
+[text_llm_runner.cpp:89] RSS after loading model: 3848.500000 MiB (0 if unsupported)
+[text_prefiller.cpp:121] Prefill token result numel(): 151936
+[text_llm_runner.cpp:201] Max new tokens resolved: 128, given pos_ 20, num_prompt_tokens 20, max_context_len 8192
+<think>[text_llm_runner.cpp:228] RSS after prompt prefill: 3848.500000 MiB (0 if unsupported)
+
+Okay, the user is asking for the capital of France and wants the answer in one word. Let me think. I know that France's capital is Paris. But wait, I should make sure I'm not mixing it up with another city. The user might be testing if I know the capital correctly. Paris is the capital of France, yes. I should confirm that there's no other city that's the capital. No, France's capital is definitely Paris. So the answer is Paris. But wait, the user wants it in one word. "Paris" is already one word. So that's straightforward. I don't
+[text_llm_runner.cpp:258] RSS after finishing text generation: 3848.500000 MiB (0 if unsupported)
+[text_llm_runner.cpp:264] Max new tokens 128 reached!
+PyTorchObserver {"prefill_token_per_sec":117.647,"decode_token_per_sec":36.2133,"prompt_tokens":20,"generated_tokens":127,"model_load_start_ms":1794207217039,"model_load_end_ms":1794207220680,"inference_start_ms":1794207220680,"inference_end_ms":1794207224357,"model_execution_start_ms":1794207224332,"model_execution_end_ms":1794207224357,"prompt_eval_end_ms":1794207220850,"first_token_ms":1794207220850,"aggregate_sampling_time_ms":28,"aggregate_model_execution_time_ms":3637,"SCALING_FACTOR_UNITS_PER_SECOND":1000}
+[stats.h:175] 	Prompt Tokens: 20    Generated Tokens: 127
+[stats.h:181] 	Model Load Time:		3.641000 (seconds)
+[stats.h:188] 	Total inference time:		3.677000 (seconds)		 Rate: 	34.539026 (tokens/second)
+[stats.h:197] 		Prompt evaluation:	0.170000 (seconds)		 Rate: 	117.647059 (tokens/second)
+[stats.h:207] 		Generated 127 tokens:	3.507000 (seconds)		 Rate: 	36.213288 (tokens/second)
+[stats.h:219] 	Time to first generated token:	0.170000 (seconds)
+[stats.h:225] 	Sampling time over 147 tokens:	0.028000 (seconds)
+    measuring gate: prefill 117.65 tok/s, decode 36.21 tok/s
+==> decision gate
+W1109 06:53:45.255000 7463 torch/utils/_pytree.py:630] <enum 'ScaleCalculationMode'> is an Enum subclass and is now natively supported by torch.compile as an opaque value type. Calling register_constant() on Enum subclasses is deprecated and will be an error in a future release.
+I tokenizers:regex.cpp:40] Registering override fallback regex
+    fp32 0.9988 against the export's 0.9946 on 12 rows, same choice on 12
+{
+  "windows": 1,
+  "passed": true,
+  "gated": 1
+}

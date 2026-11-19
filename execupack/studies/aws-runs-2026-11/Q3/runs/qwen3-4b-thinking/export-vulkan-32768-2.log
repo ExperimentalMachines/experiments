@@ -1,0 +1,14 @@
+Traceback (most recent call last):
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "/home/ubuntu/execupack-main2/pipeline/__main__.py", line 618, in <module>
+    sys.exit(main())
+             ^^^^^^
+  File "/home/ubuntu/execupack-main2/pipeline/__main__.py", line 614, in main
+    return args.func(args)
+           ^^^^^^^^^^^^^^^
+  File "/home/ubuntu/execupack-main2/pipeline/__main__.py", line 119, in _export_vulkan
+    from pipeline import export_xnnpack
+  File "/home/ubuntu/execupack-main2/pipeline/export_xnnpack.py", line 29, in <module>
+    import yaml
+ModuleNotFoundError: No module named 'yaml'

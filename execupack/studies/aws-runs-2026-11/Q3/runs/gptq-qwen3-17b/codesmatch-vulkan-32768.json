@@ -1,0 +1,13 @@
+{
+ "file": "Qwen3-1.7B-vulkan-8da4w-gptq-32k.pte",
+ "sha256": "6fe457e2a3ffbc252e93e1fe50c59301ca52996548008b39acfff969f94c606a",
+ "backend": "vulkan",
+ "int4_linears": 197,
+ "matched_exactly": 197,
+ "codes_entries": 197,
+ "unused_allowed": [],
+ "low_nibble_first": true,
+ "order_checked": true,
+ "ok": true,
+ "problems": []
+}

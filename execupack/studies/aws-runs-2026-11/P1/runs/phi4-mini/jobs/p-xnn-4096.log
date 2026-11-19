@@ -1,0 +1,5 @@
+2026-11-09T01:33:52Z START xnn microsoft/Phi-4-mini-instruct 4096
+2026-11-09T01:45:03Z export attempt 1 exited 0
+2026-11-09T01:45:03Z exported 2777677568 /home/ubuntu/runs/phi4-mini/out-xnnpack-4096/xnnpack/Phi-4-mini-instruct-3.8B-8da4w-gptq-4k.pte
+2026-11-09T01:47:46Z verify attempt 1 exited 2
+2026-11-09T01:47:46Z END rc=10

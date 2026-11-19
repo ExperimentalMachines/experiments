@@ -1,0 +1,7 @@
+2026-11-09T07:03:07Z START vkc Qwen/Qwen3-1.7B 4096
+2026-11-09T07:08:39Z export attempt 1 exited 0
+2026-11-09T07:08:39Z exported 1628151936 /home/ubuntu/runs/gptq-qwen3-17b/out-vulkan-4096/vulkan/Qwen3-1.7B-vulkan-8da4w-gptq-4k.pte
+2026-11-09T07:09:02Z codesmatch ok: 197 of 197 int4 linears exact
+2026-11-09T07:09:02Z REPORT {"file": "vulkan/Qwen3-1.7B-vulkan-8da4w-gptq-4k.pte", "bytes": 1628151936, "recipe": "8da4w-gptq-g32, int8 embeddings, int4 codes solved with GPTQ", "smoke": true, "reply": "", "gate": null, "agreed": null, "graded": null, "quiet": null, "fp32_mean": null, "export_mean": null, "tool_calling": null, "override": null, "proxy": {"passed": true, "graded": 12, "agreed": 12, "fp32_mean": 0.9988, "export_mean": 0.9946, "override": null}, "fits_phone": null}
+2026-11-09T07:09:08Z published
+2026-11-09T07:09:08Z END rc=0

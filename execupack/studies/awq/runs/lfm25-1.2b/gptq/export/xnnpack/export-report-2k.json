@@ -1,0 +1,215 @@
+{
+  "backend": "xnnpack",
+  "target": null,
+  "tokenizer": "tokenizer.json",
+  "output_repo": "experimentalmachines/LFM2.5-1.2B-Instruct-ExecuTorch",
+  "source": {
+    "id": "LiquidAI/LFM2.5-1.2B-Instruct",
+    "sha": "0f604ada3f766f9f257460c4c9f0b5d6f69d431b",
+    "created_at": "2026-01-06T00:28:46+00:00",
+    "total_params": 1170340608,
+    "family": "lfm2",
+    "variant": "instruct",
+    "license": {
+      "license": "other",
+      "license_name": "lfm1.0",
+      "license_link": "LICENSE"
+    },
+    "license_files": [
+      "LICENSE"
+    ]
+  },
+  "toolchain": {
+    "executorch": "1.6.0",
+    "torch": "2.15.0+cpu",
+    "torchao": "0.18.0"
+  },
+  "recipe": {
+    "model_class": "lfm2_5_1_2b",
+    "converter": "lfm2",
+    "params": {
+      "dim": 2048,
+      "ffn_dim_multiplier": 1,
+      "hidden_dim": 8192,
+      "n_heads": 32,
+      "n_kv_heads": 8,
+      "n_layers": 16,
+      "norm_eps": 1e-05,
+      "rope_theta": 1000000.0,
+      "vocab_size": 65536,
+      "use_scaled_rope": false,
+      "use_hf_rope": true,
+      "use_qk_norm": true,
+      "qk_norm_before_rope": true,
+      "layer_types": [
+        "conv",
+        "conv",
+        "full_attention",
+        "conv",
+        "conv",
+        "full_attention",
+        "conv",
+        "conv",
+        "full_attention",
+        "conv",
+        "full_attention",
+        "conv",
+        "full_attention",
+        "conv",
+        "full_attention",
+        "conv"
+      ]
+    },
+    "export_llm_qmode": "8da4w",
+    "embedding_hqq": false,
+    "qmode": "8da4w-gptq",
+    "embedding_quantize": "8,0",
+    "prefill_chunk": 2048,
+    "kv_cache_dtype": "fp32",
+    "group_size": 32,
+    "int4_codes": "gptq",
+    "label": "8da4w-gptq-g32, int8 embeddings, int4 codes solved with GPTQ",
+    "description": "ExecuTorch 1.6.0 `export_llm`: 8-bit dynamic activations and 4-bit weights in groups of 32, int8 per-channel embeddings, XNNPACK with extended ops, prefill chunk 2048, fp32 KV cache.",
+    "codes_sha256": "f4fab6ea1c8076fd8f0fe72664f8655963460630c8dbfeb295869d0efb8e37cb"
+  },
+  "window": {
+    "context": 2048,
+    "reason": "requested window 2048",
+    "kv_cache_bytes_per_token": 24576,
+    "kv_cache_ring_bytes": 0,
+    "device_resident_bytes": 1545849702,
+    "phone_budget_bytes": 5000000000,
+    "fits_phone_budget": true,
+    "table": [
+      {
+        "context": 32768,
+        "kv_cache_bytes": 805306368,
+        "device_resident_bytes": 2332596275,
+        "export_peak_bytes": 16324425984,
+        "fits_device": true,
+        "fits_host": true
+      },
+      {
+        "context": 16384,
+        "kv_cache_bytes": 402653184,
+        "device_resident_bytes": 1912998103,
+        "export_peak_bytes": 11089934592,
+        "fits_device": true,
+        "fits_host": true
+      },
+      {
+        "context": 8192,
+        "kv_cache_bytes": 201326592,
+        "device_resident_bytes": 1703199016,
+        "export_peak_bytes": 9680648448,
+        "fits_device": true,
+        "fits_host": true
+      },
+      {
+        "context": 4096,
+        "kv_cache_bytes": 100663296,
+        "device_resident_bytes": 1598299473,
+        "export_peak_bytes": 9277995264,
+        "fits_device": true,
+        "fits_host": true
+      },
+      {
+        "context": 2048,
+        "kv_cache_bytes": 50331648,
+        "device_resident_bytes": 1545849702,
+        "export_peak_bytes": 9152166144,
+        "fits_device": true,
+        "fits_host": true
+      }
+    ]
+  },
+  "files": [
+    {
+      "path": "xnnpack/LFM2.5-1.2B-Instruct-8da4w-gptq-2k.pte",
+      "bytes": 795678720,
+      "sha256": "d36cb0745d3f4b9cd4feb36392c56d648d158dbcc510908c39ca086b7e066cd9"
+    }
+  ],
+  "estimates": {
+    "pte_bytes_estimate": 995518054,
+    "pte_bytes_actual": 795678720,
+    "export_peak_bytes_estimate": 9152166144
+  },
+  "host": {
+    "nproc": 24,
+    "mem_total_bytes": 726299578368,
+    "swap_total_bytes": 0,
+    "cpu_model": "unknown",
+    "peak_rss_convert_bytes": 12141051904,
+    "peak_rss_export_bytes": 12141051904,
+    "peak_swap_used_bytes": 0,
+    "min_mem_available_bytes": 715996839936,
+    "peak_in_use_bytes": 10302738432,
+    "peak_in_use_at": "2026-11-19T04:00:51Z",
+    "peak_cgroup_bytes": 10302619648,
+    "export_seconds": 310.9,
+    "total_seconds": 321.3
+  },
+  "conversion": {
+    "tensors": 169,
+    "tied_embeddings": true,
+    "dtypes": [
+      "torch.bfloat16"
+    ]
+  },
+  "metadata": {
+    "enable_dynamic_shape": true,
+    "get_bos_id": 1,
+    "get_eos_ids": [
+      7
+    ],
+    "get_max_context_len": 2048,
+    "get_max_seq_len": 2048,
+    "get_n_layers": 16,
+    "get_state_reset_at_zero": 1,
+    "get_vocab_size": 65536,
+    "use_kv_cache": true,
+    "use_sdpa_with_kv_cache": true,
+    "methods": [
+      "enable_dynamic_shape",
+      "forward",
+      "get_bos_id",
+      "get_eos_ids",
+      "get_max_context_len",
+      "get_max_seq_len",
+      "get_n_layers",
+      "get_state_reset_at_zero",
+      "get_vocab_size",
+      "use_kv_cache",
+      "use_sdpa_with_kv_cache"
+    ]
+  },
+  "smoke": {
+    "prompt": "<|startoftext|><|im_start|>user\nWhat is the capital of France? Answer with one word.<|im_end|>\n<|im_start|>assistant\n",
+    "template_error": null,
+    "reply": "Paris<|im_end|>",
+    "tokens": 2,
+    "answered": true,
+    "answer_required": true,
+    "passed": true,
+    "problems": [],
+    "stats": {
+      "prefill_token_per_sec": 500,
+      "decode_token_per_sec": 111.111,
+      "prompt_tokens": 21,
+      "generated_tokens": 1,
+      "model_load_start_ms": 1795060907981,
+      "model_load_end_ms": 1795060909562,
+      "inference_start_ms": 1795060909562,
+      "inference_end_ms": 1795060909613,
+      "model_execution_start_ms": 1795060909604,
+      "model_execution_end_ms": 1795060909613,
+      "prompt_eval_end_ms": 1795060909604,
+      "first_token_ms": 1795060909604,
+      "aggregate_sampling_time_ms": 0,
+      "aggregate_model_execution_time_ms": 51,
+      "SCALING_FACTOR_UNITS_PER_SECOND": 1000
+    }
+  },
+  "run": {}
+}

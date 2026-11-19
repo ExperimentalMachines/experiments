@@ -1,0 +1,27 @@
+2026-10-31T22:03:56Z QUEUE START LiquidAI/LFM3-1.7B-Base@545fc8f4c7b5fa9f405105274cd29c4f8f44b526 windows 32768 16384 8192 4096 2048
+2026-10-31T22:03:56Z SOLVE attempt 1
+2026-10-31T22:27:19Z SOLVE attempt 1 exited 0
+2026-10-31T22:27:19Z SOLVED codes.pt 1944547603 B, gate.json present
+2026-10-31T22:27:19Z EXPORT 32768 attempt 1
+2026-10-31T22:27:39Z EXPORT 16384 attempt 1
+2026-10-31T22:27:59Z EXPORT 8192 attempt 1
+2026-10-31T22:36:00Z READY 32768 1270668160 /home/ubuntu/runs/lfm3-base/out-32768/xnnpack/LFM3-1.7B-Base-8da4w-gptq-32k.pte
+2026-10-31T22:36:43Z READY 16384 1253890304 /home/ubuntu/runs/lfm3-base/out-16384/xnnpack/LFM3-1.7B-Base-8da4w-gptq-16k.pte
+2026-10-31T22:37:12Z READY 8192 1245501696 /home/ubuntu/runs/lfm3-base/out-8192/xnnpack/LFM3-1.7B-Base-8da4w-gptq-8k.pte
+2026-10-31T22:37:46Z VERIFIED 32768 smoke=True reply=' Paris. It is the largest city in France and one of the most' gate=True agreed=12/12 fp32=0.76 export=0.9786
+2026-10-31T22:37:53Z PUBLISHED 32768
+2026-10-31T22:38:19Z EXPORT 4096 attempt 1
+2026-10-31T22:38:33Z VERIFIED 16384 smoke=True reply=' Paris. It is the largest city in France and one of the most' gate=True agreed=12/12 fp32=0.76 export=0.9786
+2026-10-31T22:38:35Z PUBLISHED 16384
+2026-10-31T22:38:39Z EXPORT 2048 attempt 1
+2026-10-31T22:38:56Z VERIFIED 8192 smoke=True reply=' Paris. It is the largest city in France and one of the most' gate=True agreed=12/12 fp32=0.76 export=0.9786
+2026-10-31T22:38:58Z PUBLISHED 8192
+2026-10-31T22:46:42Z READY 4096 1241307392 /home/ubuntu/runs/lfm3-base/out-4096/xnnpack/LFM3-1.7B-Base-8da4w-gptq-4k.pte
+2026-10-31T22:47:17Z READY 2048 1239210240 /home/ubuntu/runs/lfm3-base/out-2048/xnnpack/LFM3-1.7B-Base-8da4w-gptq-2k.pte
+2026-10-31T22:48:16Z VERIFIED 4096 smoke=True reply=' Paris. It is the largest city in France and one of the most' gate=True agreed=12/12 fp32=0.76 export=0.9786
+2026-10-31T22:48:19Z PUBLISHED 4096
+2026-10-31T22:48:50Z VERIFIED 2048 smoke=True reply=' Paris. It is the largest city in France and one of the most' gate=True agreed=12/12 fp32=0.76 export=0.9786
+2026-10-31T22:48:52Z PUBLISHED 2048
+2026-10-31T22:48:52Z HUB 5 .pte files in the repo
+2026-10-31T22:48:52Z QUEUE DONE published: 5 of 5
+/dev/root       145G   40G  105G  28% /

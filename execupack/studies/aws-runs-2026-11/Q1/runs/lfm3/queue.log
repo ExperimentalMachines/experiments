@@ -1,0 +1,42 @@
+2026-10-31T21:07:32Z QUEUE START LiquidAI/LFM3-1.7B@ac2586a34f1a1c03329dbdcdefabd8b6478ddaa7 windows 32768 16384 8192 4096 2048
+2026-10-31T21:24:32Z SOLVED codes.pt 1944547603 B, gate.json present
+2026-10-31T21:24:32Z EXPORT 32768 attempt 1
+2026-10-31T21:24:52Z EXPORT 16384 attempt 1
+2026-10-31T21:25:12Z EXPORT 8192 attempt 1
+2026-10-31T21:33:36Z EXPORTED 32768 1270668160 /home/ubuntu/runs/lfm3/out-32768/xnnpack/LFM3-1.7B-8da4w-gptq-32k.pte
+2026-10-31T21:34:05Z EXPORTED 16384 1253890304 /home/ubuntu/runs/lfm3/out-16384/xnnpack/LFM3-1.7B-8da4w-gptq-16k.pte
+2026-10-31T21:34:37Z EXPORTED 8192 1245501696 /home/ubuntu/runs/lfm3/out-8192/xnnpack/LFM3-1.7B-8da4w-gptq-8k.pte
+2026-10-31T21:35:33Z VERIFY-FAILED 32768 attempt 1 (exit 2)
+2026-10-31T21:35:33Z GIVE-UP 32768 at verify: verify failed: decision gate failed: answered like fp32 on only 2 of 4 quiet rows: it is reaching for a tool on questions the unquantised model answers itself
+2026-10-31T21:36:03Z EXPORT 4096 attempt 1
+2026-10-31T21:36:03Z VERIFY-FAILED 16384 attempt 1 (exit 2)
+2026-10-31T21:36:03Z GIVE-UP 16384 at verify: verify failed: decision gate failed: answered like fp32 on only 2 of 4 quiet rows: it is reaching for a tool on questions the unquantised model answers itself
+2026-10-31T21:36:23Z EXPORT 2048 attempt 1
+2026-10-31T21:36:28Z VERIFY-FAILED 8192 attempt 1 (exit 2)
+2026-10-31T21:36:28Z GIVE-UP 8192 at verify: verify failed: decision gate failed: answered like fp32 on only 2 of 4 quiet rows: it is reaching for a tool on questions the unquantised model answers itself
+2026-10-31T21:37:04Z QUEUE STOPPED by hand: the gate read the first reasoning token; re-verify with thinking off
+2026-10-31T21:38:47Z QUEUE START LiquidAI/LFM3-1.7B@ac2586a34f1a1c03329dbdcdefabd8b6478ddaa7 windows 32768 16384 8192 4096 2048
+2026-10-31T21:38:47Z SOLVED codes.pt 1944547603 B, gate.json present
+2026-10-31T21:38:47Z REUSE 32768 1270668160 /home/ubuntu/runs/lfm3/out-32768/xnnpack/LFM3-1.7B-8da4w-gptq-32k.pte
+2026-10-31T21:38:47Z READY 32768 1270668160 /home/ubuntu/runs/lfm3/out-32768/xnnpack/LFM3-1.7B-8da4w-gptq-32k.pte
+2026-10-31T21:39:07Z REUSE 16384 1253890304 /home/ubuntu/runs/lfm3/out-16384/xnnpack/LFM3-1.7B-8da4w-gptq-16k.pte
+2026-10-31T21:39:07Z READY 16384 1253890304 /home/ubuntu/runs/lfm3/out-16384/xnnpack/LFM3-1.7B-8da4w-gptq-16k.pte
+2026-10-31T21:39:27Z REUSE 8192 1245501696 /home/ubuntu/runs/lfm3/out-8192/xnnpack/LFM3-1.7B-8da4w-gptq-8k.pte
+2026-10-31T21:39:27Z READY 8192 1245501696 /home/ubuntu/runs/lfm3/out-8192/xnnpack/LFM3-1.7B-8da4w-gptq-8k.pte
+2026-10-31T21:40:43Z VERIFIED 32768 smoke=True reply='The user asks: "What is the capital of France? Answer with o' gate=True agreed=12/12 fp32=0.9998 export=0.9991
+2026-10-31T21:40:51Z PUBLISHED 32768
+2026-10-31T21:41:10Z VERIFIED 16384 smoke=True reply='The user asks: "What is the capital of France? Answer with o' gate=True agreed=12/12 fp32=0.9998 export=0.9991
+2026-10-31T21:41:13Z PUBLISHED 16384
+2026-10-31T21:41:17Z EXPORT 4096 attempt 1
+2026-10-31T21:41:24Z VERIFIED 8192 smoke=True reply='The user asks: "What is the capital of France? Answer with o' gate=True agreed=12/12 fp32=0.9998 export=0.9991
+2026-10-31T21:41:26Z PUBLISHED 8192
+2026-10-31T21:41:37Z EXPORT 2048 attempt 1
+2026-10-31T21:50:06Z READY 4096 1241307392 /home/ubuntu/runs/lfm3/out-4096/xnnpack/LFM3-1.7B-8da4w-gptq-4k.pte
+2026-10-31T21:50:34Z READY 2048 1239210240 /home/ubuntu/runs/lfm3/out-2048/xnnpack/LFM3-1.7B-8da4w-gptq-2k.pte
+2026-10-31T21:51:44Z VERIFIED 4096 smoke=True reply='The user asks: "What is the capital of France? Answer with o' gate=True agreed=12/12 fp32=0.9998 export=0.9991
+2026-10-31T21:51:47Z PUBLISHED 4096
+2026-10-31T21:52:12Z VERIFIED 2048 smoke=True reply='The user asks: "What is the capital of France? Answer with o' gate=True agreed=12/12 fp32=0.9998 export=0.9991
+2026-10-31T21:52:15Z PUBLISHED 2048
+2026-10-31T21:52:15Z HUB 5 .pte files in the repo
+2026-10-31T21:52:15Z QUEUE DONE published: 5 of 5
+/dev/root       145G   26G  119G  18% /

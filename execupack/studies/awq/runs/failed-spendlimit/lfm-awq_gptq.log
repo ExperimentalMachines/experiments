@@ -1,0 +1,77 @@
+uploaded 1 input(s) to execupack-runs:/local-1-2e65c209/in
+Modal Sandbox: 40960 MiB, 8 cores, timeout 330 min
+Failed to load /usr/local/lib/python3.11/site-packages/torchao/_C_cutlass_90a.abi3.so: Could not load this library: /usr/local/lib/python3.11/site-packages/torchao/_C_cutlass_90a.abi3.so
+Failed to load /usr/local/lib/python3.11/site-packages/torchao/_C_mxfp8.cpython-310-x86_64-linux-gnu.so: Could not load this library: /usr/local/lib/python3.11/site-packages/torchao/_C_mxfp8.cpython-310-x86_64-linux-gnu.so
+W1119 03:42:45.050000 5 site-packages/torch/utils/_pytree.py:646] <enum 'KernelPreference'> is an Enum subclass and is now natively supported by torch.compile as an opaque value type. Calling register_constant() on Enum subclasses is deprecated and will be an error in a future release.
+W1119 03:42:45.084000 5 site-packages/torch/utils/_pytree.py:646] <enum 'ScaleCalculationMode'> is an Enum subclass and is now natively supported by torch.compile as an opaque value type. Calling register_constant() on Enum subclasses is deprecated and will be an error in a future release.
+layer 0 scaled, 87s
+layer 1 scaled, 173s
+layer 2 scaled, 248s
+layer 3 scaled, 332s
+layer 4 scaled, 418s
+layer 5 scaled, 494s
+layer 6 scaled, 581s
+layer 7 scaled, 668s
+layer 8 scaled, 745s
+layer 9 scaled, 832s
+layer 10 scaled, 910s
+layer 11 scaled, 996s
+layer 12 scaled, 1073s
+layer 13 scaled, 1160s
+layer 14 scaled, 1236s
+layer 15 scaled, 1321s
+layer 0 solved, 38s
+layer 1 solved, 75s
+layer 2 solved, 112s
+layer 3 solved, 151s
+layer 4 solved, 185s
+layer 5 solved, 224s
+layer 6 solved, 262s
+layer 7 solved, 300s
+layer 8 solved, 337s
+layer 9 solved, 375s
+layer 10 solved, 412s
+layer 11 solved, 450s
+layer 12 solved, 488s
+layer 13 solved, 527s
+layer 14 solved, 564s
+Traceback (most recent call last):
+  File "/root/execupack/scripts/awq_compare.py", line 358, in <module>
+    raise SystemExit(main())
+                     ^^^^^^
+  File "/root/execupack/scripts/awq_compare.py", line 354, in main
+    return args.func(args)
+           ^^^^^^^^^^^^^^^
+  File "/root/execupack/scripts/awq_compare.py", line 271, in arm
+    codes = solve.solve_model(model, rows)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/execupack/pipeline/solve.py", line 302, in solve_model
+    layer(hidden[i], *args[1:], **kwargs)
+  File "/usr/local/lib/python3.11/site-packages/torch/nn/modules/module.py", line 1787, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/torch/nn/modules/module.py", line 1798, in _call_impl
+    return forward_call(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/execupack/pipeline/lfm2_state.py", line 59, in block_forward
+    out = h + self.feed_forward(self.ffn_norm(h))
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/torch/nn/modules/module.py", line 1787, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/torch/nn/modules/module.py", line 1798, in _call_impl
+    return forward_call(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/executorch/examples/models/llama/feed_forward.py", line 17, in forward
+    return self.w2(self.act_fn(self.w1(x)) * self.w3(x))
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/torch/nn/modules/module.py", line 1787, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/torch/nn/modules/module.py", line 1893, in _call_impl
+    return inner()
+           ^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/torch/nn/modules/module.py", line -1, in inner
+KeyboardInterrupt
+Modal Sandbox exited 137 after 32.0 min
+downloaded 0 file(s) to work/awq/lfm25-1.2b/awq_gptq

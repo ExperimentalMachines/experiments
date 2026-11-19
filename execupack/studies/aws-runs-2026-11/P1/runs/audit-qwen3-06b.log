@@ -1,0 +1,132 @@
+==> Qwen/Qwen3-0.6B -> experimentalmachines/Qwen3-0.6B-ExecuTorch/xnnpack/Qwen3-0.6B-8da4w-gptq-2k.pte
+Fetching 7 files:   0%|          | 0/7 [00:00<?, ?it/s]Fetching 7 files:  14%|█▍        | 1/7 [00:00<00:00,  7.70it/s]Fetching 7 files:  86%|████████▌ | 6/7 [00:00<00:00, 10.81it/s]Fetching 7 files: 100%|██████████| 7/7 [00:12<00:00,  2.39s/it]Fetching 7 files: 100%|██████████| 7/7 [00:12<00:00,  1.73s/it]
+Failed to load /home/ubuntu/execupack/.venv/lib/python3.11/site-packages/torchao/_C_cutlass_90a.abi3.so: Could not load this library: /home/ubuntu/execupack/.venv/lib/python3.11/site-packages/torchao/_C_cutlass_90a.abi3.so
+Failed to load /home/ubuntu/execupack/.venv/lib/python3.11/site-packages/torchao/_C_mxfp8.cpython-310-x86_64-linux-gnu.so: Could not load this library: /home/ubuntu/execupack/.venv/lib/python3.11/site-packages/torchao/_C_mxfp8.cpython-310-x86_64-linux-gnu.so
+W1109 06:15:03.932000 9367 torch/utils/_pytree.py:630] <enum 'KernelPreference'> is an Enum subclass and is now natively supported by torch.compile as an opaque value type. Calling register_constant() on Enum subclasses is deprecated and will be an error in a future release.
+W1109 06:15:03.954000 9367 torch/utils/_pytree.py:630] <enum 'ScaleCalculationMode'> is an Enum subclass and is now natively supported by torch.compile as an opaque value type. Calling register_constant() on Enum subclasses is deprecated and will be an error in a future release.
+Loading weights:   0%|          | 0/311 [00:00<?, ?it/s]Loading weights:  57%|█████▋    | 178/311 [00:00<00:00, 1777.78it/s]Loading weights: 100%|██████████| 311/311 [00:00<00:00, 2112.95it/s]
+I tokenizers:regex.cpp:40] Registering override fallback regex
+[cpuinfo_utils.cpp:71] Reading file /sys/devices/soc0/image_version
+[cpuinfo_utils.cpp:87] Failed to open midr file /sys/devices/soc0/image_version
+[cpuinfo_utils.cpp:100] Reading file /sys/devices/system/cpu/cpu0/regs/identification/midr_el1
+[cpuinfo_utils.cpp:109] Failed to open midr file /sys/devices/system/cpu/cpu0/regs/identification/midr_el1
+[cpuinfo_utils.cpp:125] CPU info and manual query on # of cpus dont match.
+==> what the unquantised model decides
+==> fetching the published file
+==> gate
+{
+  "model_id": "Qwen/Qwen3-0.6B",
+  "published_repo": "experimentalmachines/Qwen3-0.6B-ExecuTorch",
+  "file": "xnnpack/Qwen3-0.6B-8da4w-gptq-2k.pte",
+  "revision": "c1899de289a04d12100db370d81485cdf75e47ca",
+  "params": 751632384,
+  "gate": {
+    "passed": false,
+    "problems": [
+      "mean probability on fp32's token over 4 calling rows is 0.086 against fp32's 0.619, 0.533 under and the gate is 0.25",
+      "kept fp32's choice on 0 of 4 calling rows, under 90%",
+      "answered like fp32 on only 2 of 4 quiet rows: it is reaching for a tool on questions the unquantised model answers itself"
+    ],
+    "graded": 4,
+    "fp32_mean": 0.6189,
+    "export_mean": 0.0857,
+    "agreed": 0,
+    "shortfall": 0.5332,
+    "quiet_rows_answered_like_fp32": 2,
+    "measures_tool_calling": true,
+    "quiet_rows": 4,
+    "fp32_undecided_quiet_rows": [],
+    "fp32_undecided_rows": [
+      "What is Concord the capital of?",
+      "What is Providence the capital of?",
+      "What is Augusta the capital of?",
+      "What is Nassau the capital of?",
+      "Who is the author of Mercy?",
+      "Who is the author of Quicksand?",
+      "Who is the author of Nightfall?",
+      "In what country is Ostrava?"
+    ],
+    "rows": {
+      "What is Concord the capital of?": {
+        "fp32": 0.37,
+        "export": 0.0116,
+        "kind": "search"
+      },
+      "What is Providence the capital of?": {
+        "fp32": 0.2993,
+        "export": 0.0163,
+        "kind": "search"
+      },
+      "What is Augusta the capital of?": {
+        "fp32": 0.4786,
+        "export": 0.0163,
+        "kind": "search"
+      },
+      "What is Nassau the capital of?": {
+        "fp32": 0.2924,
+        "export": 0.0198,
+        "kind": "search"
+      },
+      "Who is the author of Mercy?": {
+        "fp32": 0.3416,
+        "export": 0.0,
+        "kind": "search"
+      },
+      "Who is the author of Landfall?": {
+        "fp32": 0.7203,
+        "export": 0.0015,
+        "kind": "search"
+      },
+      "Who is the author of Quicksand?": {
+        "fp32": 0.4674,
+        "export": 0.0001,
+        "kind": "search"
+      },
+      "Who is the author of Nightfall?": {
+        "fp32": 0.4371,
+        "export": 0.0,
+        "kind": "search"
+      },
+      "In what country is Ostrava?": {
+        "fp32": 0.3234,
+        "export": 0.0131,
+        "kind": "search"
+      },
+      "In what country is Gdynia?": {
+        "fp32": 0.5102,
+        "export": 0.0781,
+        "kind": "search"
+      },
+      "In what country is Rijeka?": {
+        "fp32": 0.5662,
+        "export": 0.0022,
+        "kind": "search"
+      },
+      "In what country is Linkoping?": {
+        "fp32": 0.6788,
+        "export": 0.2607,
+        "kind": "search"
+      },
+      "What is the capital of Norway?": {
+        "fp32": 0.9358,
+        "export": 0.9936,
+        "kind": "quiet"
+      },
+      "What is 8 times 7?": {
+        "fp32": 0.873,
+        "export": 0.0334,
+        "kind": "quiet"
+      },
+      "Who wrote Pride and Prejudice?": {
+        "fp32": 0.8566,
+        "export": 0.1184,
+        "kind": "quiet"
+      },
+      "What is the chemical symbol for iron?": {
+        "fp32": 0.8421,
+        "export": 0.9811,
+        "kind": "quiet"
+      }
+    }
+  }
+}

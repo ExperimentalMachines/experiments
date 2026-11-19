@@ -1,0 +1,13 @@
+{
+ "file": "Qwen3-4B-Thinking-2507-vulkan-8da4w-gptq-16k.pte",
+ "sha256": "14ec3dbea912651f7628598f2d906121848ed8366e7a367475c3b4506f3d61ca",
+ "backend": "vulkan",
+ "int4_linears": 253,
+ "matched_exactly": 253,
+ "codes_entries": 253,
+ "unused_allowed": [],
+ "low_nibble_first": true,
+ "order_checked": true,
+ "ok": true,
+ "problems": []
+}

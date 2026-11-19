@@ -1,0 +1,35 @@
+Processing Files (0 / 0)      : |          |  0.00B /  0.00B            
+New Data Upload               : |          |  0.00B /  0.00B            [A
+
+  ...nstruct-8da4w-gptq-8k.pte:  10%|▉         |  112MB / 1.12GB            [A[A
+
+  ...nstruct-8da4w-gptq-8k.pte:  10%|▉         |  112MB / 1.12GB            [A[AProcessing Files (0 / 1)      :  10%|▉         |  112MB / 1.12GB,   ???B/s  
+
+  ...nstruct-8da4w-gptq-8k.pte:  23%|██▎       |  253MB / 1.12GB            [A[AProcessing Files (0 / 1)      :  23%|██▎       |  253MB / 1.12GB,   ???B/s  
+
+  ...nstruct-8da4w-gptq-8k.pte:  35%|███▌      |  397MB / 1.12GB            [A[AProcessing Files (0 / 1)      :  35%|███▌      |  397MB / 1.12GB,   ???B/s  
+
+  ...nstruct-8da4w-gptq-8k.pte:  49%|████▉     |  549MB / 1.12GB            [A[AProcessing Files (0 / 1)      :  49%|████▉     |  549MB / 1.12GB, 53.9MB/s  
+
+  ...nstruct-8da4w-gptq-8k.pte:  63%|██████▎   |  701MB / 1.12GB            [A[AProcessing Files (0 / 1)      :  63%|██████▎   |  701MB / 1.12GB, 68.3MB/s  
+
+  ...nstruct-8da4w-gptq-8k.pte:  76%|███████▌  |  853MB / 1.12GB            [A[AProcessing Files (0 / 1)      :  76%|███████▌  |  853MB / 1.12GB, 82.6MB/s  
+
+  ...nstruct-8da4w-gptq-8k.pte:  90%|████████▉ | 1.00GB / 1.12GB            [A[AProcessing Files (0 / 1)      :  90%|████████▉ | 1.00GB / 1.12GB, 96.7MB/s  
+
+  ...nstruct-8da4w-gptq-8k.pte: 100%|█████████▉| 1.12GB / 1.12GB            [A[AProcessing Files (0 / 1)      : 100%|█████████▉| 1.12GB / 1.12GB,  107MB/s  
+
+  ...nstruct-8da4w-gptq-8k.pte: 100%|█████████▉| 1.12GB / 1.12GB            [A[AProcessing Files (0 / 1)      : 100%|█████████▉| 1.12GB / 1.12GB,  106MB/s  
+New Data Upload               : 100%|█████████▉| 3.15MB / 3.15MB,  308kB/s  [A
+
+  ...nstruct-8da4w-gptq-8k.pte: 100%|█████████▉| 1.12GB / 1.12GB            [A[A
+
+  ...nstruct-8da4w-gptq-8k.pte: 100%|██████████| 1.12GB / 1.12GB            [A[AProcessing Files (1 / 1)      : 100%|██████████| 1.12GB / 1.12GB,  104MB/s  
+New Data Upload               : 100%|██████████| 3.15MB / 3.15MB,  302kB/s  [A
+
+  ...nstruct-8da4w-gptq-8k.pte: 100%|██████████| 1.12GB / 1.12GB            [A[A
+
+  ...nstruct-8da4w-gptq-8k.pte: 100%|██████████| 1.12GB / 1.12GB            [A[AProcessing Files (1 / 1)      : 100%|██████████| 1.12GB / 1.12GB,  103MB/s  
+New Data Upload               : 100%|██████████| 3.15MB / 3.15MB,  299kB/s  
+  ...nstruct-8da4w-gptq-8k.pte: 100%|██████████| 1.12GB / 1.12GB            
+https://huggingface.co/experimentalmachines/Qwen2.5-1.5B-Instruct-ExecuTorch/commit/2d70ec3ea1f6f43ba5c42c774517ffa62f59f42e

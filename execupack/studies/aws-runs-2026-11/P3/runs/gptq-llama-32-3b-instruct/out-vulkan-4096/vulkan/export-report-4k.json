@@ -1,0 +1,234 @@
+{
+  "backend": "vulkan",
+  "target": null,
+  "tokenizer": "tokenizer.json",
+  "output_repo": "experimentalmachines/Llama-3.2-3B-Instruct-ExecuTorch",
+  "source": {
+    "id": "meta-llama/Llama-3.2-3B-Instruct",
+    "sha": "0cb88a4f764b7a12671c53f0838cd831a0843b95",
+    "created_at": "2024-09-18T15:19:20+00:00",
+    "total_params": 3212749824,
+    "family": "llama",
+    "variant": "instruct",
+    "license": {
+      "license": "llama3.2"
+    },
+    "license_files": [
+      "LICENSE.txt",
+      "USE_POLICY.md"
+    ]
+  },
+  "toolchain": {
+    "executorch": "1.5.1",
+    "torch": "2.14.0+cpu",
+    "torchao": "0.18.0"
+  },
+  "recipe": {
+    "model_class": "llama3_2",
+    "converter": "llama",
+    "params": {
+      "dim": 3072,
+      "ffn_dim_multiplier": 1,
+      "hidden_dim": 8192,
+      "n_heads": 24,
+      "head_dim": 128,
+      "n_kv_heads": 8,
+      "n_layers": 28,
+      "norm_eps": 1e-05,
+      "rope_theta": 500000.0,
+      "vocab_size": 128256,
+      "use_scaled_rope": true,
+      "use_hf_rope": false,
+      "attention_qkv_bias": false
+    },
+    "export_llm_qmode": "8da4w",
+    "embedding_hqq": false,
+    "qmode": "8da4w-gptq",
+    "embedding_quantize": "8,0",
+    "prefill_chunk": 2048,
+    "kv_cache_dtype": "fp32",
+    "group_size": 32,
+    "int4_codes": "gptq",
+    "label": "8da4w-gptq-g32, int8 embeddings, int4 codes solved with GPTQ",
+    "description": "ExecuTorch 1.5.1 `export_llm`: 8-bit dynamic activations and 4-bit weights in groups of 32, int8 per-channel embeddings, the Vulkan delegate, prefill chunk 2048, fp32 KV cache.",
+    "codes_sha256": "ca7188c2c50aeac70024347fdbfa91f78bceb7c8b7bd4744d593a5a3f4785a02"
+  },
+  "window": {
+    "context": 4096,
+    "reason": "requested window 4096",
+    "kv_cache_bytes_per_token": 229376,
+    "kv_cache_ring_bytes": 0,
+    "device_resident_bytes": 3671083059,
+    "phone_budget_bytes": 5000000000,
+    "fits_phone_budget": true,
+    "table": [
+      {
+        "context": 32768,
+        "kv_cache_bytes": 7516192768,
+        "device_resident_bytes": 10307059189,
+        "export_peak_bytes": 54507272448,
+        "fits_device": false,
+        "fits_host": true
+      },
+      {
+        "context": 16384,
+        "kv_cache_bytes": 3758096384,
+        "device_resident_bytes": 6515072829,
+        "export_peak_bytes": 28200597760,
+        "fits_device": false,
+        "fits_host": true
+      },
+      {
+        "context": 8192,
+        "kv_cache_bytes": 1879048192,
+        "device_resident_bytes": 4619079649,
+        "export_peak_bytes": 20684404992,
+        "fits_device": true,
+        "fits_host": true
+      },
+      {
+        "context": 4096,
+        "kv_cache_bytes": 939524096,
+        "device_resident_bytes": 3671083059,
+        "export_peak_bytes": 18335594752,
+        "fits_device": true,
+        "fits_host": true
+      },
+      {
+        "context": 2048,
+        "kv_cache_bytes": 469762048,
+        "device_resident_bytes": 3197084764,
+        "export_peak_bytes": 17513511168,
+        "fits_device": true,
+        "fits_host": true
+      }
+    ]
+  },
+  "files": [
+    {
+      "path": "vulkan/Llama-3.2-3B-Instruct-vulkan-8da4w-gptq-4k.pte",
+      "bytes": 2825976832,
+      "sha256": "6aa7f3591b3c1dfc62719c9f01742d4115951c68982fb04dfda39531004b778e"
+    }
+  ],
+  "estimates": {
+    "pte_bytes_estimate": 2231558963,
+    "pte_bytes_actual": 2825976832,
+    "export_peak_bytes_estimate": 18335594752
+  },
+  "host": {
+    "nproc": 32,
+    "mem_total_bytes": 265985806336,
+    "swap_total_bytes": 0,
+    "cpu_model": "Intel(R) Xeon(R) Platinum 8488C",
+    "peak_rss_convert_bytes": 7997173760,
+    "peak_rss_export_bytes": 21210361856,
+    "peak_swap_used_bytes": 0,
+    "min_mem_available_bytes": 199126372352,
+    "peak_in_use_bytes": 66859433984,
+    "peak_in_use_at": "2026-11-09T05:32:39Z",
+    "peak_cgroup_bytes": null,
+    "export_seconds": 208.3,
+    "total_seconds": 394.7
+  },
+  "conversion": {
+    "tensors": 255,
+    "tied_embeddings": true,
+    "dtypes": [
+      "torch.bfloat16"
+    ]
+  },
+  "metadata": {
+    "enable_dynamic_shape": true,
+    "get_bos_id": 128000,
+    "get_eos_ids": [
+      128001,
+      128008,
+      128009
+    ],
+    "get_max_context_len": 4096,
+    "get_max_seq_len": 2048,
+    "get_n_layers": 28,
+    "get_vocab_size": 128256,
+    "use_kv_cache": true,
+    "use_sdpa_with_kv_cache": true,
+    "methods": [
+      "enable_dynamic_shape",
+      "forward",
+      "get_bos_id",
+      "get_eos_ids",
+      "get_max_context_len",
+      "get_max_seq_len",
+      "get_n_layers",
+      "get_vocab_size",
+      "use_kv_cache",
+      "use_sdpa_with_kv_cache"
+    ]
+  },
+  "smoke": {
+    "kind": "structural",
+    "passed": true,
+    "problems": [],
+    "methods": [
+      "enable_dynamic_shape",
+      "forward",
+      "get_bos_id",
+      "get_eos_ids",
+      "get_max_context_len",
+      "get_max_seq_len",
+      "get_n_layers",
+      "get_vocab_size",
+      "use_kv_cache",
+      "use_sdpa_with_kv_cache"
+    ],
+    "delegates": {
+      "forward": {
+        "backends": [
+          "VulkanBackend"
+        ],
+        "delegate_calls": 1
+      }
+    },
+    "metadata": {
+      "enable_dynamic_shape": true,
+      "get_bos_id": 128000,
+      "get_eos_ids": [
+        128001,
+        128008,
+        128009
+      ],
+      "get_max_context_len": 4096,
+      "get_max_seq_len": 2048,
+      "get_n_layers": 28,
+      "get_vocab_size": 128256,
+      "use_kv_cache": true,
+      "use_sdpa_with_kv_cache": true,
+      "methods": [
+        "enable_dynamic_shape",
+        "forward",
+        "get_bos_id",
+        "get_eos_ids",
+        "get_max_context_len",
+        "get_max_seq_len",
+        "get_n_layers",
+        "get_vocab_size",
+        "use_kv_cache",
+        "use_sdpa_with_kv_cache"
+      ]
+    }
+  },
+  "gate_proxy": {
+    "report": "export-report-4k.json",
+    "file": "xnnpack/Llama-3.2-3B-Instruct-8da4w-gptq-4k.pte",
+    "sha256": "392d8deab0e47b13e0863ae4e25c50005990faa99cb395baee325b7ff1c3b235",
+    "gate": {
+      "passed": true,
+      "graded": 12,
+      "agreed": 12,
+      "fp32_mean": 0.9074,
+      "export_mean": 0.9111,
+      "override": null
+    }
+  },
+  "run": {}
+}

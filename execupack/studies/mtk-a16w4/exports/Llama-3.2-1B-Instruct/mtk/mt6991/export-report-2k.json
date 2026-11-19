@@ -1,0 +1,178 @@
+{
+  "weights_override": {
+    "from": "/workspace/runs/llama/gptq",
+    "files": {
+      "model.safetensors": "524eef8c718bfb66111443526a6afb505070f1f352a52fd602229128f1f9fab0"
+    },
+    "config_overrides": {
+      "tie_word_embeddings": false,
+      "tie_embedding": false
+    },
+    "transform": {
+      "rows": 104,
+      "tokens": 8416,
+      "seconds": 307,
+      "head": true,
+      "mismatched": 0
+    }
+  },
+  "backend": "mtk",
+  "target": "mt6991",
+  "target_name": "Dimensity 9400",
+  "tokenizer": "tokenizer.json",
+  "output_repo": "experimentalmachines/Llama-3.2-1B-Instruct-ExecuTorch",
+  "source": {
+    "id": "meta-llama/Llama-3.2-1B-Instruct",
+    "sha": "9213176726f574b556790deb65791e0c5aa438b6",
+    "created_at": "2024-09-18T15:12:47+00:00",
+    "total_params": 1235814400,
+    "family": "llama",
+    "variant": "instruct",
+    "license": {
+      "license": "llama3.2"
+    },
+    "license_files": [
+      "LICENSE.txt",
+      "USE_POLICY.md"
+    ]
+  },
+  "toolchain": {
+    "executorch": "1.5.1",
+    "torch": "2.14.0+cpu",
+    "torchao": "0.18.0",
+    "transformers": "4.57.6"
+  },
+  "neuropilot": {
+    "name": "NeuroPilot Express SDK",
+    "build": "8.0.8-build20250925",
+    "mtk_converter": "8.13.0+public",
+    "mtk_neuron": "8.2.23"
+  },
+  "recipe": {
+    "script": "llama.py",
+    "precision": "A16W4",
+    "num_chunks": 4,
+    "prompt_tokens": 128,
+    "cache_size": 2048,
+    "calibration": {
+      "prompts": "aot_utils/llm_utils/prompts/alpaca.txt",
+      "prompts_used": 9,
+      "prompts_available": 9,
+      "preformatter": "llama3.json"
+    },
+    "label": "NeuroPilot A16W4, 4 chunks",
+    "description": "ExecuTorch 1.5.1 MediaTek LLM export (`examples/mediatek`, `llama.py`): A16W4 (16-bit activations, 4-bit weights) calibrated on MediaTek's `alpaca.txt` prompts (9 of 9) in the llama3.json chat template, cut into 4 chunks, with a 128-token prompt graph and a one-token generation graph over a 2048-token cache, compiled with MediaTek NeuroPilot Express SDK (mtk_converter 8.13.0+public, mtk_neuron 8.2.23) for MT6991 (Dimensity 9400)."
+  },
+  "window": {
+    "context": 2048,
+    "reason": "forced with --context (static NPU graphs)",
+    "kv_cache_bytes_per_token": null
+  },
+  "runner": {
+    "prompt_token_batch_size": 128,
+    "cache_size": 2048,
+    "hidden_size": 2048,
+    "num_head": 32,
+    "num_layer": 16,
+    "head_dim": 64,
+    "max_token_length": 131072,
+    "rot_emb_base": 500000.0,
+    "input_type": "fp32",
+    "output_type": "fp32",
+    "cache_type": "fp32",
+    "mask_type": "fp32",
+    "rot_emb_type": "fp32",
+    "vocab_size": 128256,
+    "bos_token": 128000,
+    "eos_token": 128001,
+    "eos_tokens": [
+      128001,
+      128008,
+      128009
+    ],
+    "tokenizer_type": "hf",
+    "state_layout": "uniform",
+    "tokenizer_path": "tokenizer.json",
+    "token_embedding_path": "Llama-3.2-1B-Instruct-neuropilot-embedding-fp32.bin",
+    "model_package_paths": [
+      "Llama-3.2-1B-Instruct-neuropilot-a16w4-2k-chunk1of4.pte",
+      "Llama-3.2-1B-Instruct-neuropilot-a16w4-2k-chunk2of4.pte",
+      "Llama-3.2-1B-Instruct-neuropilot-a16w4-2k-chunk3of4.pte",
+      "Llama-3.2-1B-Instruct-neuropilot-a16w4-2k-chunk4of4.pte"
+    ]
+  },
+  "files": [
+    {
+      "path": "mtk/mt6991/Llama-3.2-1B-Instruct-neuropilot-a16w4-2k-chunk1of4.pte",
+      "bytes": 156403840,
+      "sha256": "333b897ebcbdc7d742f13d922737e0fe514dcb13a37a893d1333f7e303ff6a0b"
+    },
+    {
+      "path": "mtk/mt6991/Llama-3.2-1B-Instruct-neuropilot-a16w4-2k-chunk2of4.pte",
+      "bytes": 156403840,
+      "sha256": "eaceafdc9caa582efc9a66fe3052f2136fab70211b1388f2f1db2b47baada900"
+    },
+    {
+      "path": "mtk/mt6991/Llama-3.2-1B-Instruct-neuropilot-a16w4-2k-chunk3of4.pte",
+      "bytes": 156403840,
+      "sha256": "843f85b19855ab8a6d6ca4d3d919bd719903378cf8563ecabd1bec6368d18aef"
+    },
+    {
+      "path": "mtk/mt6991/Llama-3.2-1B-Instruct-neuropilot-a16w4-2k-chunk4of4.pte",
+      "bytes": 288795264,
+      "sha256": "4aa060f90aa5b5e70feb05e479b191f6aedf5e0a2d095b5a4d3673cae506f188"
+    },
+    {
+      "path": "mtk/mt6991/Llama-3.2-1B-Instruct-neuropilot-embedding-fp32.bin",
+      "bytes": 1050673152,
+      "sha256": "d1602ecf8f4e69be360b87191d1a4f6aa4b3fa26002ebf0ea058208613737400"
+    }
+  ],
+  "host": {
+    "nproc": 255,
+    "mem_total_bytes": 2151605800960,
+    "swap_total_bytes": 0,
+    "cpu_model": "AMD EPYC 7763 64-Core Processor",
+    "peak_rss_export_bytes": 39961681920,
+    "peak_swap_used_bytes": 0,
+    "min_mem_available_bytes": 2016683483136,
+    "peak_in_use_bytes": 134922317824,
+    "peak_in_use_at": "2026-11-19T05:36:37Z",
+    "peak_cgroup_bytes": 179132436480,
+    "export_seconds": 2317.7,
+    "total_seconds": 2359.7
+  },
+  "metadata": {},
+  "smoke": {
+    "kind": "structural",
+    "passed": true,
+    "problems": [],
+    "methods": {
+      "Llama-3.2-1B-Instruct-neuropilot-a16w4-2k-chunk1of4.pte": [
+        "Llama-3.2-1B-Instruct_A16W4_4_chunks_128t2048c_0",
+        "Llama-3.2-1B-Instruct_A16W4_4_chunks_1t2048c_0"
+      ],
+      "Llama-3.2-1B-Instruct-neuropilot-a16w4-2k-chunk2of4.pte": [
+        "Llama-3.2-1B-Instruct_A16W4_4_chunks_128t2048c_1",
+        "Llama-3.2-1B-Instruct_A16W4_4_chunks_1t2048c_1"
+      ],
+      "Llama-3.2-1B-Instruct-neuropilot-a16w4-2k-chunk3of4.pte": [
+        "Llama-3.2-1B-Instruct_A16W4_4_chunks_128t2048c_2",
+        "Llama-3.2-1B-Instruct_A16W4_4_chunks_1t2048c_2"
+      ],
+      "Llama-3.2-1B-Instruct-neuropilot-a16w4-2k-chunk4of4.pte": [
+        "Llama-3.2-1B-Instruct_A16W4_4_chunks_128t2048c_3",
+        "Llama-3.2-1B-Instruct_A16W4_4_chunks_1t2048c_3"
+      ]
+    }
+  },
+  "measuring_gate": {
+    "kind": "measuring_gate",
+    "passed": true,
+    "prefill_tok_per_sec": null,
+    "decode_tok_per_sec": null,
+    "prompt_tokens": null,
+    "generated_tokens": null
+  },
+  "run": {}
+}
