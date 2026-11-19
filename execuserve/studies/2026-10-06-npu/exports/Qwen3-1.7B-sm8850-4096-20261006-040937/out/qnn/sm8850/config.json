@@ -1,0 +1,28 @@
+{
+  "runtime": "executorch",
+  "runtime_version": "1.5.1",
+  "backend": "qnn",
+  "target": "sm8850",
+  "tokenizer": "tokenizer.json",
+  "source_model": "Qwen/Qwen3-1.7B",
+  "source_revision": "70d244cc86ccca08cf5af4e1e306ecf908b1ad5e",
+  "variants": [
+    {
+      "file": "Qwen3-1.7B-qnn-hybrid-4k.pte",
+      "size_bytes": 1759848704,
+      "sha256": "13db1905ac29c7c22a4180b308897fa95fb8ab9301dd185d965dee5a8a318adb",
+      "context": 4096,
+      "source_revision": "70d244cc86ccca08cf5af4e1e306ecf908b1ad5e",
+      "quantization": "QNN HTP, ExecuTorch qwen3-1_7b recipe",
+      "fits_phone_budget": null,
+      "methods": {
+        "get_max_context_len": 4096,
+        "get_max_seq_len": 4096,
+        "get_bos_id": 1,
+        "get_vocab_size": 151936,
+        "get_n_layers": 28
+      }
+    }
+  ],
+  "qnn_sdk_version": "2.37.0.250724"
+}

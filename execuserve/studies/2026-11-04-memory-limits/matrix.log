@@ -1,0 +1,61 @@
+### lfm2.5-1.2b-instruct-8da4w-gptq-4k cap=none 09:03:15
+  req0: http=200 2.5s pid=30857
+  req1: http=200 2.3s pid=30857
+  req2: http=200 9.2s pid=30857
+{"model": "lfm2.5-1.2b-instruct-8da4w-gptq-4k", "cap": "none", "load": 4.6, "same_process": true, "anon": 998, "file": 657, "current": 1661, "swap": 0, "high_events": 0, "rollup": {"Rss": 1130, "Pss": 1016, "Pss_Anon": 1000, "Pss_File": 15, "Anonymous": 1052, "Swap": 0}}
+### lfm2.5-1.2b-instruct-8da4w-gptq-4k cap=2048 09:05:11
+  req0: http=200 2.5s pid=31698
+  req1: http=200 2.3s pid=31698
+  req2: http=200 9.2s pid=31698
+{"model": "lfm2.5-1.2b-instruct-8da4w-gptq-4k", "cap": "2048", "load": 4.6, "same_process": true, "anon": 997, "file": 657, "current": 1661, "swap": 0, "high_events": 0, "rollup": {"Rss": 1130, "Pss": 1016, "Pss_Anon": 1000, "Pss_File": 15, "Anonymous": 1051, "Swap": 0}}
+### lfm2.5-1.2b-instruct-8da4w-gptq-4k cap=1024 09:07:06
+  req0: http=200 2.7s pid=32460
+  req1: http=200 2.3s pid=32460
+  req2: http=200 9.3s pid=32460
+{"model": "lfm2.5-1.2b-instruct-8da4w-gptq-4k", "cap": "1024", "load": 4.6, "same_process": true, "anon": 373, "file": 587, "current": 1021, "swap": 626, "high_events": 442, "rollup": {"Rss": 499, "Pss": 385, "Pss_Anon": 376, "Pss_File": 9, "Anonymous": 427, "Swap": 624}}
+### qwen3-1.7b-8da4w-gptq-4k cap=none 09:09:02
+  req0: http=200 2.9s pid=824
+  req1: http=200 2.7s pid=824
+  req2: http=200 22.8s pid=824
+{"model": "qwen3-1.7b-8da4w-gptq-4k", "cap": "none", "load": 4.7, "same_process": true, "anon": 2166, "file": 958, "current": 3135, "swap": 1, "high_events": 1942, "rollup": {"Rss": 2298, "Pss": 2184, "Pss_Anon": 2169, "Pss_File": 15, "Anonymous": 2220, "Swap": 0}}
+### qwen3-1.7b-8da4w-gptq-4k cap=3072 09:11:12
+  req0: http=200 2.9s pid=2513
+  req1: http=200 2.7s pid=2513
+  req2: http=200 23.1s pid=2513
+{"model": "qwen3-1.7b-8da4w-gptq-4k", "cap": "3072", "load": 4.6, "same_process": true, "anon": 2164, "file": 868, "current": 3043, "swap": 0, "high_events": 2072, "rollup": {"Rss": 2290, "Pss": 2176, "Pss_Anon": 2167, "Pss_File": 8, "Anonymous": 2218, "Swap": 0}}
+### qwen3-1.7b-8da4w-gptq-4k cap=2048 09:13:22
+  req0: http=200 2.9s pid=4010
+  req1: http=200 2.7s pid=4010
+  req2: http=200 23.7s pid=4010
+{"model": "qwen3-1.7b-8da4w-gptq-4k", "cap": "2048", "load": 4.6, "same_process": true, "anon": 1488, "file": 545, "current": 2046, "swap": 679, "high_events": 3075, "rollup": {"Rss": 1614, "Pss": 1500, "Pss_Anon": 1491, "Pss_File": 8, "Anonymous": 1542, "Swap": 676}}
+### qwen3-1.7b-8da4w-gptq-4k cap=1024 09:15:32
+  req0: http=200 3.9s pid=5956
+  req1: http=200 2.9s pid=5956
+  req2: http=000 181.7s pid=5956
+{"model": "qwen3-1.7b-8da4w-gptq-4k", "cap": "1024", "load": 4.7, "same_process": true, "anon": 960, "file": 53, "current": 1023, "swap": 1023, "high_events": 5582, "rollup": {"Rss": 1085, "Pss": 971, "Pss_Anon": 962, "Pss_File": 8, "Anonymous": 1014, "Swap": 1022}}
+### qwen3-4b-8da4w-gptq-4k cap=none 09:20:29
+  req0: http=200 4.3s pid=8179
+  req1: http=200 4.2s pid=8179
+  req2: http=200 48.9s pid=8179
+{"model": "qwen3-4b-8da4w-gptq-4k", "cap": "none", "load": 4.6, "same_process": true, "anon": 3767, "file": 2195, "current": 5980, "swap": 1, "high_events": 315903, "rollup": {"Rss": 3899, "Pss": 3785, "Pss_Anon": 3770, "Pss_File": 15, "Anonymous": 3821, "Swap": 0}}
+### qwen3-4b-8da4w-gptq-4k cap=5120 09:23:08
+  req0: http=200 5.7s pid=9189
+  req1: http=200 4.2s pid=9189
+  req2: http=200 50.6s pid=9189
+{"model": "qwen3-4b-8da4w-gptq-4k", "cap": "5120", "load": 4.6, "same_process": true, "anon": 2915, "file": 2182, "current": 5118, "swap": 856, "high_events": 316342, "rollup": {"Rss": 3046, "Pss": 2932, "Pss_Anon": 2918, "Pss_File": 14, "Anonymous": 2969, "Swap": 852}}
+### qwen3-4b-8da4w-gptq-4k cap=4096 09:26:01
+  req0: http=200 4.5s pid=10299
+  req1: http=200 4.2s pid=10299
+  req2: http=200 51.5s pid=10299
+{"model": "qwen3-4b-8da4w-gptq-4k", "cap": "4096", "load": 4.6, "same_process": true, "anon": 3139, "file": 934, "current": 4091, "swap": 630, "high_events": 317669, "rollup": {"Rss": 3264, "Pss": 3150, "Pss_Anon": 3141, "Pss_File": 8, "Anonymous": 3193, "Swap": 628}}
+### qwen3-4b-8da4w-gptq-4k cap=3072 09:28:43
+  req0: http=200 4.6s pid=11253
+  req1: http=200 4.2s pid=11253
+  req2: http=200 84.4s pid=11253
+{"model": "qwen3-4b-8da4w-gptq-4k", "cap": "3072", "load": 4.8, "same_process": true, "anon": 1624, "file": 998, "current": 3071, "swap": 2143, "high_events": 319757, "rollup": {"Rss": 1750, "Pss": 1636, "Pss_Anon": 1627, "Pss_File": 8, "Anonymous": 1678, "Swap": 2142}}
+### qwen3-4b-8da4w-gptq-4k cap=2048 09:31:57
+  req0: http=200 57.7s pid=12355
+  req1: http=200 68.6s pid=12355
+  req2: http=200 175.2s pid=12355
+{"model": "qwen3-4b-8da4w-gptq-4k", "cap": "2048", "load": 20.1, "same_process": true, "anon": 1625, "file": 221, "current": 2046, "swap": 2046, "high_events": 417627, "rollup": {"Rss": 1751, "Pss": 1637, "Pss_Anon": 1628, "Pss_File": 8, "Anonymous": 1679, "Swap": 2042}}
+### done 09:38:56

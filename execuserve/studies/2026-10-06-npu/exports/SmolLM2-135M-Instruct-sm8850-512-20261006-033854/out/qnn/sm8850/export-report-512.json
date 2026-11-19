@@ -1,0 +1,688 @@
+{
+  "backend": "qnn",
+  "target": "sm8850",
+  "target_name": "SM8850",
+  "tokenizer": "tokenizer.json",
+  "output_repo": "experimentalmachines/SmolLM2-135M-Instruct-ExecuTorch",
+  "source": {
+    "id": "HuggingFaceTB/SmolLM2-135M-Instruct",
+    "sha": "12fd25f77366fa6b3b4b768ec3050bf629380bac",
+    "created_at": "2024-10-31T13:41:10+00:00",
+    "total_params": 134515008,
+    "family": "llama",
+    "variant": "instruct",
+    "license": {
+      "license": "apache-2.0"
+    },
+    "license_files": []
+  },
+  "toolchain": {
+    "executorch": "1.5.1",
+    "torch": "2.14.0+cpu",
+    "torchao": "0.18.0",
+    "transformers": "5.0.0rc1",
+    "lm_eval": "0.4.5",
+    "qairt": "2.37.0.250724"
+  },
+  "recipe": {
+    "decoder_model": "smollm2_135m",
+    "params": "executorch: examples/models/smollm2/135M_config.json",
+    "model_mode": "hybrid",
+    "prefill_ar_len": 128,
+    "max_context_len": 512,
+    "calibration": {
+      "tasks": [
+        "wikitext"
+      ],
+      "limit": 1
+    },
+    "label": "QNN HTP, ExecuTorch smollm2_135m recipe",
+    "description": "ExecuTorch 1.5.1 Qualcomm static LLM (`examples/qualcomm/oss_scripts/llama`, `--decoder_model smollm2_135m`): the quantization recipe ExecuTorch registers for this model, calibrated on wikitext (1 sample), hybrid prefill (128 tokens per step) and decode graphs compiled with QAIRT 2.37.0.250724 for SM8850 (SM8850)."
+  },
+  "window": {
+    "context": 512,
+    "reason": "forced with --context (static NPU graphs)",
+    "kv_cache_bytes_per_token": null
+  },
+  "files": [
+    {
+      "path": "qnn/sm8850/SmolLM2-135M-Instruct-qnn-hybrid-512.pte",
+      "bytes": 200056448,
+      "sha256": "85153b041df3e0078a5dc58eb3608185626ad203e84d2e5f4e9082a7bb3f4bb2"
+    }
+  ],
+  "host": {
+    "nproc": 24,
+    "mem_total_bytes": 25769803776,
+    "swap_total_bytes": 0,
+    "cpu_model": "unknown",
+    "peak_rss_export_bytes": 9688690688,
+    "peak_swap_used_bytes": 0,
+    "min_mem_available_bytes": 17274109952,
+    "peak_in_use_bytes": 8495693824,
+    "peak_in_use_at": "2026-10-05T19:59:11Z",
+    "export_seconds": 1263.0,
+    "total_seconds": 1283.9
+  },
+  "metadata": {
+    "get_ar_len": 1,
+    "get_bos_id": 1,
+    "get_dim": 576,
+    "get_eos_id": 2,
+    "get_head_dim": 64,
+    "get_kv_io_bit_width": 16,
+    "get_kv_output_0_quant_attr": [
+      1.5267929484252818e-05,
+      39862,
+      0,
+      65535,
+      "torch.int32"
+    ],
+    "get_kv_output_10_quant_attr": [
+      0.00010777268471429124,
+      34140,
+      0,
+      65535,
+      "torch.int32"
+    ],
+    "get_kv_output_11_quant_attr": [
+      0.0002626990317367017,
+      33122,
+      0,
+      65535,
+      "torch.int32"
+    ],
+    "get_kv_output_12_quant_attr": [
+      0.00010441093036206439,
+      35700,
+      0,
+      65535,
+      "torch.int32"
+    ],
+    "get_kv_output_13_quant_attr": [
+      0.000255903578363359,
+      32695,
+      0,
+      65535,
+      "torch.int32"
+    ],
+    "get_kv_output_14_quant_attr": [
+      0.00015099234587978572,
+      34597,
+      0,
+      65535,
+      "torch.int32"
+    ],
+    "get_kv_output_15_quant_attr": [
+      0.0003261002420913428,
+      35515,
+      0,
+      65535,
+      "torch.int32"
+    ],
+    "get_kv_output_16_quant_attr": [
+      0.00015063805039972067,
+      31769,
+      0,
+      65535,
+      "torch.int32"
+    ],
+    "get_kv_output_17_quant_attr": [
+      0.00032568126334808767,
+      34569,
+      0,
+      65535,
+      "torch.int32"
+    ],
+    "get_kv_output_18_quant_attr": [
+      0.00015769207675475627,
+      32140,
+      0,
+      65535,
+      "torch.int32"
+    ],
+    "get_kv_output_19_quant_attr": [
+      0.00031141474028117955,
+      32484,
+      0,
+      65535,
+      "torch.int32"
+    ],
+    "get_kv_output_1_quant_attr": [
+      0.00030188419623300433,
+      31495,
+      0,
+      65535,
+      "torch.int32"
+    ],
+    "get_kv_output_20_quant_attr": [
+      0.00013779383152723312,
+      29833,
+      0,
+      65535,
+      "torch.int32"
+    ],
+    "get_kv_output_21_quant_attr": [
+      0.0002838307700585574,
+      33694,
+      0,
+      65535,
+      "torch.int32"
+    ],
+    "get_kv_output_22_quant_attr": [
+      0.00015307711146306247,
+      35627,
+      0,
+      65535,
+      "torch.int32"
+    ],
+    "get_kv_output_23_quant_attr": [
+      0.00034102972131222486,
+      33343,
+      0,
+      65535,
+      "torch.int32"
+    ],
+    "get_kv_output_24_quant_attr": [
+      0.00012932225945405662,
+      35438,
+      0,
+      65535,
+      "torch.int32"
+    ],
+    "get_kv_output_25_quant_attr": [
+      0.00024468940682709217,
+      33747,
+      0,
+      65535,
+      "torch.int32"
+    ],
+    "get_kv_output_26_quant_attr": [
+      0.000109820619400125,
+      28072,
+      0,
+      65535,
+      "torch.int32"
+    ],
+    "get_kv_output_27_quant_attr": [
+      0.00030317436903715134,
+      32217,
+      0,
+      65535,
+      "torch.int32"
+    ],
+    "get_kv_output_28_quant_attr": [
+      0.0001654829684412107,
+      28317,
+      0,
+      65535,
+      "torch.int32"
+    ],
+    "get_kv_output_29_quant_attr": [
+      0.0003136004088446498,
+      31125,
+      0,
+      65535,
+      "torch.int32"
+    ],
+    "get_kv_output_2_quant_attr": [
+      9.210902499035001e-05,
+      33498,
+      0,
+      65535,
+      "torch.int32"
+    ],
+    "get_kv_output_30_quant_attr": [
+      0.00014703029592055827,
+      29288,
+      0,
+      65535,
+      "torch.int32"
+    ],
+    "get_kv_output_31_quant_attr": [
+      0.00029729801462963223,
+      33557,
+      0,
+      65535,
+      "torch.int32"
+    ],
+    "get_kv_output_32_quant_attr": [
+      0.00014041749818716198,
+      35742,
+      0,
+      65535,
+      "torch.int32"
+    ],
+    "get_kv_output_33_quant_attr": [
+      0.0002643743937369436,
+      33171,
+      0,
+      65535,
+      "torch.int32"
+    ],
+    "get_kv_output_34_quant_attr": [
+      0.0001702366425888613,
+      34604,
+      0,
+      65535,
+      "torch.int32"
+    ],
+    "get_kv_output_35_quant_attr": [
+      0.0003134316357318312,
+      33468,
+      0,
+      65535,
+      "torch.int32"
+    ],
+    "get_kv_output_36_quant_attr": [
+      0.00027227666578255594,
+      28074,
+      0,
+      65535,
+      "torch.int32"
+    ],
+    "get_kv_output_37_quant_attr": [
+      0.0003521297185216099,
+      31653,
+      0,
+      65535,
+      "torch.int32"
+    ],
+    "get_kv_output_38_quant_attr": [
+      0.0002054895303444937,
+      32990,
+      0,
+      65535,
+      "torch.int32"
+    ],
+    "get_kv_output_39_quant_attr": [
+      0.0002680915058590472,
+      33254,
+      0,
+      65535,
+      "torch.int32"
+    ],
+    "get_kv_output_3_quant_attr": [
+      0.00030539327417500317,
+      32608,
+      0,
+      65535,
+      "torch.int32"
+    ],
+    "get_kv_output_40_quant_attr": [
+      0.0002093376824632287,
+      31727,
+      0,
+      65535,
+      "torch.int32"
+    ],
+    "get_kv_output_41_quant_attr": [
+      0.00028719843248836696,
+      33834,
+      0,
+      65535,
+      "torch.int32"
+    ],
+    "get_kv_output_42_quant_attr": [
+      0.00017388846026733518,
+      34086,
+      0,
+      65535,
+      "torch.int32"
+    ],
+    "get_kv_output_43_quant_attr": [
+      0.00029298936715349555,
+      31802,
+      0,
+      65535,
+      "torch.int32"
+    ],
+    "get_kv_output_44_quant_attr": [
+      0.00020190561190247536,
+      31109,
+      0,
+      65535,
+      "torch.int32"
+    ],
+    "get_kv_output_45_quant_attr": [
+      0.00029772863490507007,
+      32879,
+      0,
+      65535,
+      "torch.int32"
+    ],
+    "get_kv_output_46_quant_attr": [
+      0.00035436294274404645,
+      32669,
+      0,
+      65535,
+      "torch.int32"
+    ],
+    "get_kv_output_47_quant_attr": [
+      0.0003165214438922703,
+      33649,
+      0,
+      65535,
+      "torch.int32"
+    ],
+    "get_kv_output_48_quant_attr": [
+      0.00040485162753611803,
+      33224,
+      0,
+      65535,
+      "torch.int32"
+    ],
+    "get_kv_output_49_quant_attr": [
+      0.0002385504194535315,
+      31367,
+      0,
+      65535,
+      "torch.int32"
+    ],
+    "get_kv_output_4_quant_attr": [
+      0.00010259967530146241,
+      31861,
+      0,
+      65535,
+      "torch.int32"
+    ],
+    "get_kv_output_50_quant_attr": [
+      0.0002857781946659088,
+      28028,
+      0,
+      65535,
+      "torch.int32"
+    ],
+    "get_kv_output_51_quant_attr": [
+      0.00026776461163535714,
+      33115,
+      0,
+      65535,
+      "torch.int32"
+    ],
+    "get_kv_output_52_quant_attr": [
+      0.0003375497763045132,
+      33595,
+      0,
+      65535,
+      "torch.int32"
+    ],
+    "get_kv_output_53_quant_attr": [
+      0.0002484022988937795,
+      33126,
+      0,
+      65535,
+      "torch.int32"
+    ],
+    "get_kv_output_54_quant_attr": [
+      0.00026787587557919323,
+      32363,
+      0,
+      65535,
+      "torch.int32"
+    ],
+    "get_kv_output_55_quant_attr": [
+      0.00028554280288517475,
+      35596,
+      0,
+      65535,
+      "torch.int32"
+    ],
+    "get_kv_output_56_quant_attr": [
+      0.0004098783538211137,
+      31059,
+      0,
+      65535,
+      "torch.int32"
+    ],
+    "get_kv_output_57_quant_attr": [
+      0.00023289441014640033,
+      31550,
+      0,
+      65535,
+      "torch.int32"
+    ],
+    "get_kv_output_58_quant_attr": [
+      0.00034145615063607693,
+      31000,
+      0,
+      65535,
+      "torch.int32"
+    ],
+    "get_kv_output_59_quant_attr": [
+      0.00024097379355225712,
+      33278,
+      0,
+      65535,
+      "torch.int32"
+    ],
+    "get_kv_output_5_quant_attr": [
+      0.0003025913902092725,
+      33951,
+      0,
+      65535,
+      "torch.int32"
+    ],
+    "get_kv_output_6_quant_attr": [
+      0.00013226117880549282,
+      28958,
+      0,
+      65535,
+      "torch.int32"
+    ],
+    "get_kv_output_7_quant_attr": [
+      0.0002969893394038081,
+      34629,
+      0,
+      65535,
+      "torch.int32"
+    ],
+    "get_kv_output_8_quant_attr": [
+      0.00012059788423357531,
+      37412,
+      0,
+      65535,
+      "torch.int32"
+    ],
+    "get_kv_output_9_quant_attr": [
+      0.00030250559211708605,
+      32038,
+      0,
+      65535,
+      "torch.int32"
+    ],
+    "get_logits_scale": 0.0012348166201263666,
+    "get_logits_zero_point": 31070,
+    "get_max_batch_size": 1,
+    "get_max_context_len": 512,
+    "get_max_seq_len": 512,
+    "get_n_bos": 1,
+    "get_n_eos": 1,
+    "get_n_kv_heads": 3,
+    "get_n_layers": 30,
+    "get_use_kv_cache": true,
+    "get_vocab_size": 49152,
+    "methods": [
+      "get_ar_len",
+      "get_bos_id",
+      "get_dim",
+      "get_eos_id",
+      "get_head_dim",
+      "get_kv_io_bit_width",
+      "get_kv_output_0_quant_attr",
+      "get_kv_output_10_quant_attr",
+      "get_kv_output_11_quant_attr",
+      "get_kv_output_12_quant_attr",
+      "get_kv_output_13_quant_attr",
+      "get_kv_output_14_quant_attr",
+      "get_kv_output_15_quant_attr",
+      "get_kv_output_16_quant_attr",
+      "get_kv_output_17_quant_attr",
+      "get_kv_output_18_quant_attr",
+      "get_kv_output_19_quant_attr",
+      "get_kv_output_1_quant_attr",
+      "get_kv_output_20_quant_attr",
+      "get_kv_output_21_quant_attr",
+      "get_kv_output_22_quant_attr",
+      "get_kv_output_23_quant_attr",
+      "get_kv_output_24_quant_attr",
+      "get_kv_output_25_quant_attr",
+      "get_kv_output_26_quant_attr",
+      "get_kv_output_27_quant_attr",
+      "get_kv_output_28_quant_attr",
+      "get_kv_output_29_quant_attr",
+      "get_kv_output_2_quant_attr",
+      "get_kv_output_30_quant_attr",
+      "get_kv_output_31_quant_attr",
+      "get_kv_output_32_quant_attr",
+      "get_kv_output_33_quant_attr",
+      "get_kv_output_34_quant_attr",
+      "get_kv_output_35_quant_attr",
+      "get_kv_output_36_quant_attr",
+      "get_kv_output_37_quant_attr",
+      "get_kv_output_38_quant_attr",
+      "get_kv_output_39_quant_attr",
+      "get_kv_output_3_quant_attr",
+      "get_kv_output_40_quant_attr",
+      "get_kv_output_41_quant_attr",
+      "get_kv_output_42_quant_attr",
+      "get_kv_output_43_quant_attr",
+      "get_kv_output_44_quant_attr",
+      "get_kv_output_45_quant_attr",
+      "get_kv_output_46_quant_attr",
+      "get_kv_output_47_quant_attr",
+      "get_kv_output_48_quant_attr",
+      "get_kv_output_49_quant_attr",
+      "get_kv_output_4_quant_attr",
+      "get_kv_output_50_quant_attr",
+      "get_kv_output_51_quant_attr",
+      "get_kv_output_52_quant_attr",
+      "get_kv_output_53_quant_attr",
+      "get_kv_output_54_quant_attr",
+      "get_kv_output_55_quant_attr",
+      "get_kv_output_56_quant_attr",
+      "get_kv_output_57_quant_attr",
+      "get_kv_output_58_quant_attr",
+      "get_kv_output_59_quant_attr",
+      "get_kv_output_5_quant_attr",
+      "get_kv_output_6_quant_attr",
+      "get_kv_output_7_quant_attr",
+      "get_kv_output_8_quant_attr",
+      "get_kv_output_9_quant_attr",
+      "get_logits_scale",
+      "get_logits_zero_point",
+      "get_max_batch_size",
+      "get_max_context_len",
+      "get_max_seq_len",
+      "get_n_bos",
+      "get_n_eos",
+      "get_n_kv_heads",
+      "get_n_layers",
+      "get_use_kv_cache",
+      "get_vocab_size",
+      "kv_forward",
+      "prefill_forward"
+    ]
+  },
+  "smoke": {
+    "kind": "structural",
+    "passed": true,
+    "problems": [],
+    "methods": [
+      "get_ar_len",
+      "get_bos_id",
+      "get_dim",
+      "get_eos_id",
+      "get_head_dim",
+      "get_kv_io_bit_width",
+      "get_kv_output_0_quant_attr",
+      "get_kv_output_10_quant_attr",
+      "get_kv_output_11_quant_attr",
+      "get_kv_output_12_quant_attr",
+      "get_kv_output_13_quant_attr",
+      "get_kv_output_14_quant_attr",
+      "get_kv_output_15_quant_attr",
+      "get_kv_output_16_quant_attr",
+      "get_kv_output_17_quant_attr",
+      "get_kv_output_18_quant_attr",
+      "get_kv_output_19_quant_attr",
+      "get_kv_output_1_quant_attr",
+      "get_kv_output_20_quant_attr",
+      "get_kv_output_21_quant_attr",
+      "get_kv_output_22_quant_attr",
+      "get_kv_output_23_quant_attr",
+      "get_kv_output_24_quant_attr",
+      "get_kv_output_25_quant_attr",
+      "get_kv_output_26_quant_attr",
+      "get_kv_output_27_quant_attr",
+      "get_kv_output_28_quant_attr",
+      "get_kv_output_29_quant_attr",
+      "get_kv_output_2_quant_attr",
+      "get_kv_output_30_quant_attr",
+      "get_kv_output_31_quant_attr",
+      "get_kv_output_32_quant_attr",
+      "get_kv_output_33_quant_attr",
+      "get_kv_output_34_quant_attr",
+      "get_kv_output_35_quant_attr",
+      "get_kv_output_36_quant_attr",
+      "get_kv_output_37_quant_attr",
+      "get_kv_output_38_quant_attr",
+      "get_kv_output_39_quant_attr",
+      "get_kv_output_3_quant_attr",
+      "get_kv_output_40_quant_attr",
+      "get_kv_output_41_quant_attr",
+      "get_kv_output_42_quant_attr",
+      "get_kv_output_43_quant_attr",
+      "get_kv_output_44_quant_attr",
+      "get_kv_output_45_quant_attr",
+      "get_kv_output_46_quant_attr",
+      "get_kv_output_47_quant_attr",
+      "get_kv_output_48_quant_attr",
+      "get_kv_output_49_quant_attr",
+      "get_kv_output_4_quant_attr",
+      "get_kv_output_50_quant_attr",
+      "get_kv_output_51_quant_attr",
+      "get_kv_output_52_quant_attr",
+      "get_kv_output_53_quant_attr",
+      "get_kv_output_54_quant_attr",
+      "get_kv_output_55_quant_attr",
+      "get_kv_output_56_quant_attr",
+      "get_kv_output_57_quant_attr",
+      "get_kv_output_58_quant_attr",
+      "get_kv_output_59_quant_attr",
+      "get_kv_output_5_quant_attr",
+      "get_kv_output_6_quant_attr",
+      "get_kv_output_7_quant_attr",
+      "get_kv_output_8_quant_attr",
+      "get_kv_output_9_quant_attr",
+      "get_logits_scale",
+      "get_logits_zero_point",
+      "get_max_batch_size",
+      "get_max_context_len",
+      "get_max_seq_len",
+      "get_n_bos",
+      "get_n_eos",
+      "get_n_kv_heads",
+      "get_n_layers",
+      "get_use_kv_cache",
+      "get_vocab_size",
+      "kv_forward",
+      "prefill_forward"
+    ],
+    "delegates": {
+      "kv_forward": {
+        "backends": [
+          "QnnBackend"
+        ],
+        "delegate_calls": 1
+      },
+      "prefill_forward": {
+        "backends": [
+          "QnnBackend"
+        ],
+        "delegate_calls": 1
+      }
+    }
+  },
+  "run": {}
+}

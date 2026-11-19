@@ -1,0 +1,28 @@
+{
+  "runtime": "executorch",
+  "runtime_version": "1.5.1",
+  "backend": "qnn",
+  "target": "sm8850",
+  "tokenizer": "tokenizer.json",
+  "source_model": "HuggingFaceTB/SmolLM2-135M-Instruct",
+  "source_revision": "12fd25f77366fa6b3b4b768ec3050bf629380bac",
+  "variants": [
+    {
+      "file": "SmolLM2-135M-Instruct-qnn-hybrid-512.pte",
+      "size_bytes": 200056448,
+      "sha256": "85153b041df3e0078a5dc58eb3608185626ad203e84d2e5f4e9082a7bb3f4bb2",
+      "context": 512,
+      "source_revision": "12fd25f77366fa6b3b4b768ec3050bf629380bac",
+      "quantization": "QNN HTP, ExecuTorch smollm2_135m recipe",
+      "fits_phone_budget": null,
+      "methods": {
+        "get_max_context_len": 512,
+        "get_max_seq_len": 512,
+        "get_bos_id": 1,
+        "get_vocab_size": 49152,
+        "get_n_layers": 30
+      }
+    }
+  ],
+  "qnn_sdk_version": "2.37.0.250724"
+}
