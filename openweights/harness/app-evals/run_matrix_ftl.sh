@@ -1,0 +1,128 @@
+#!/bin/sh
+# The backend-parity matrix on a Firebase Test Lab device, where there is no adb session.
+#
+#   openweights/harness/app-evals/run_matrix_ftl.sh <model-id> <os-version> <prefix> <engine> [gs-bucket]
+#
+# e.g.  openweights/harness/app-evals/run_matrix_ftl.sh mustang 36 tensor- executorch
+#       openweights/harness/app-evals/run_matrix_ftl.sh e2s 36 exynos- llamacpp
+#
+# One engine per run, because Test Lab caps a physical-device run at 45 minutes and each
+# engine's class takes eight to ten minutes on the Dimensity alone. The models come from
+# the bucket rather than from this machine: `--other-files` accepts gs:// sources, and
+# fifteen gigabytes uploaded once is fifteen gigabytes not uploaded per run. The results
+# go to the same bucket, on purpose: Test Lab copies every pushed file into its results
+# bucket first, and a copy between storage locations gives up after thirty seconds on a
+# file this size (every run failed that way against its default US multi-region bucket
+# from a regional one). Same bucket, same location, no copy across it. Reports are
+# written by the evals to the test package's external files directory, which is a path
+# Test Lab can pull, and land in openweights/studies/on-device-evals/runs/ under <prefix> so compare.py knows
+# which phone they came from.
+set -eu
+
+MODEL=${1:?model id, e.g. mustang}
+VERSION=${2:?os version id, e.g. 36}
+PREFIX=${3:?results prefix, e.g. tensor-}
+ENGINE=${4:?executorch or llamacpp}
+BUCKET=${5:?a gs:// bucket holding the models; the old one was deleted on 2026-09-30}
+PKG=io.github.alpharomercoma.openweights.core.engine.test
+EVAL=/data/local/tmp/openweights/eval
+HERE=$(cd "$(dirname "$0")" && pwd)
+ROOT=${OPENWEIGHTS:?set OPENWEIGHTS to an openweights checkout}
+OUT="$HERE/../../studies/on-device-evals/runs"
+APK="$ROOT/core/engine/build/outputs/apk/androidTest/debug/engine-debug-androidTest.apk"
+
+case "$ENGINE" in
+  executorch) CLASS=ExecuTorchParityEval; PATTERN='\.pte$|\.tokenizer\.json$' ;;
+  llamacpp)   CLASS=LlamaCppParityEval;   PATTERN='\.gguf$' ;;
+  # The thread sweep, on the one GGUF it needs. See SpeedProbe.kt.
+  probe)      CLASS=SpeedProbe;           PATTERN='Qwen3-1.7B-Q8_0\.gguf$' ;;
+  # The public benchmarks (BenchmarkSuite.kt). BENCH_MODEL narrows to one family's
+  # files and BENCH_SETS to some of gsm8k,ifeval,bfcl, because one family's ninety
+  # prompts do not fit the 45-minute window on the slower phones.
+  bench-executorch) CLASS=ExecuTorchBenchmarkEval; PATTERN='\.pte$|\.tokenizer\.json$' ;;
+  bench-llamacpp)   CLASS=LlamaCppBenchmarkEval;   PATTERN='\.gguf$' ;;
+  # The disaggregated path's CPU decode half on a phone with no NPU export: the pool policy,
+  # the libraries' build and MediaTek's performance lock. See PdDecodeProbe.kt. One file is
+  # enough; it times decode steps, not answers.
+  pd-probe)         CLASS=PdDecodeProbe;           PATTERN='LFM2\.5-1\.2B-Instruct-8da4w-16k\.pte$' ;;
+  *) echo "engine must be executorch, llamacpp, probe, pd-probe, bench-executorch or bench-llamacpp" >&2; exit 2 ;;
+esac
+BENCH_MODEL=${BENCH_MODEL:-}
+BENCH_SETS=${BENCH_SETS:-}
+BENCH_BUDGET=${BENCH_BUDGET:-38}
+BENCH_SKIP=${BENCH_SKIP:-}
+BENCH_CONTEXT=${BENCH_CONTEXT:-}
+BENCH_CAP=${BENCH_CAP:-}
+ENV_VARS=""
+case "$CLASS" in
+  *BenchmarkEval)
+    # gcloud's dict flag splits on commas; the ^:^ prefix makes the colon the separator
+    # so a sets value such as gsm8k,bfcl survives.
+    ENV_VARS="^:^budget=$BENCH_BUDGET${BENCH_MODEL:+:model=$BENCH_MODEL}${BENCH_SETS:+:sets=$BENCH_SETS}${BENCH_SKIP:+:skip=$BENCH_SKIP}${BENCH_CONTEXT:+:context=$BENCH_CONTEXT}${BENCH_CAP:+:cap=$BENCH_CAP}"
+    [ -z "$BENCH_MODEL" ] || PATTERN="$BENCH_MODEL.*($PATTERN)" ;;
+esac
+
+if [ -z "${SKIP_BUILD:-}" ]; then
+  echo "== building the test APK (both engines live in it)"
+  (cd "$ROOT" && ./gradlew :core:engine:assembleDebugAndroidTest --console=plain -q)
+fi
+
+echo "== the $ENGINE models in $BUCKET"
+FILES=""
+for uri in $(gcloud storage ls "$BUCKET/" | grep -E "$PATTERN"); do
+  name=$(basename "$uri")
+  FILES="${FILES:+$FILES,}$EVAL/$name=$uri"
+  echo "   $name"
+done
+[ -n "$FILES" ] || { echo "no $ENGINE models in $BUCKET" >&2; exit 1; }
+case "$CLASS" in
+  *BenchmarkEval) FILES="$FILES,$EVAL/benchmarks.json=$BUCKET/benchmarks.json" ;;
+esac
+
+mkdir -p "$OUT"
+LOG="$OUT/$PREFIX$ENGINE${BENCH_MODEL:+-$BENCH_MODEL}${BENCH_SETS:+-$(echo "$BENCH_SETS" | tr , +)}${BENCH_CAP:+-cap$BENCH_CAP}${BENCH_SKIP:+@$BENCH_SKIP}.ftl.log"
+echo "== running $CLASS on $MODEL ($VERSION); log in $LOG"
+gcloud firebase test android run --quiet --type instrumentation \
+  --app "$APK" --test "$APK" \
+  --device "model=$MODEL,version=$VERSION,locale=en,orientation=portrait" \
+  --test-targets "class io.github.alpharomercoma.openweights.core.engine.eval.$CLASS" \
+  --timeout 45m ${ENV_VARS:+--environment-variables "$ENV_VARS"} \
+  --results-bucket "$BUCKET" --results-dir "runs/$(date +%Y%m%d-%H%M%S)-$$-$MODEL-$ENGINE${BENCH_MODEL:+-$BENCH_MODEL}" \
+  --other-files "$FILES" \
+  --directories-to-pull "/sdcard/Android/data/$PKG/files/eval-results" \
+  --results-history-name "openweights-parity-$MODEL" 2>&1 | tee "$LOG" | grep -E "Test is|OUTCOME|Passed|Failed|error|ERROR" || true
+
+# The raw results directory is named in the log; the pulled reports sit under it beside
+# the logcat, in a folder named for the device path they were pulled from.
+RESULTS=$(grep -o 'storage/browser/[^]]*' "$LOG" | head -1 | sed 's|storage/browser/|gs://|')
+echo "== pulling reports from $RESULTS"
+TMP=$(mktemp -d)
+# The artifacts can land in the bucket a little after gcloud returns; a pull that finds
+# nothing is retried for a few minutes before the whole run directory is copied.
+tries=0
+until gcloud storage cp -r "${RESULTS}*/artifacts/sdcard/Android/data/$PKG/files/eval-results/*.json" "$TMP/" >/dev/null 2>&1 \
+      && [ -n "$(find "$TMP" -name '*.json' | grep -v 'instrumentation\|benchmarks.json')" ]; do
+  tries=$((tries + 1))
+  if [ "$tries" -ge 8 ]; then gcloud storage cp -r "${RESULTS}" "$TMP/" >/dev/null 2>&1; break; fi
+  sleep 30
+done
+# Two matrices created in the same second once shared a results directory and the
+# second failed validation, hence the pid in the name above; and the pushed prompts
+# file comes back with the artifacts, so it is not a report.
+PULLED=0
+for f in $(find "$TMP" -name '*.json' | grep -v 'instrumentation\|benchmarks.json'); do
+  cp "$f" "$OUT/$PREFIX$(basename "$f")"
+  echo "   $OUT/$PREFIX$(basename "$f")"
+  PULLED=$((PULLED + 1))
+done
+[ "$PULLED" -gt 0 ] || { echo "no report came back from $RESULTS" >&2; exit 1; }
+gcloud storage cp "${RESULTS}$MODEL-$VERSION-en-portrait/logcat" "${LOG%.ftl.log}.logcat" >/dev/null 2>&1 || true
+
+case "$CLASS" in
+  *BenchmarkEval) echo "done: grade with openweights/harness/app-evals/bench/grade.py, render with bench/report.py" ;;
+  PdDecodeProbe) echo "done: $OUT/${PREFIX}pd-decode-probe.json" ;;
+  *)
+    echo "== rendering comparison"
+    python3 "$HERE/compare.py" "$OUT" --out "$ROOT/docs/research/backend-parity.md"
+    echo "done: docs/research/backend-parity.md" ;;
+esac

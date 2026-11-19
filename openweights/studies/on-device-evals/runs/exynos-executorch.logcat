@@ -1,0 +1,690 @@
+09-02 13:35:45.416  1148  4383 W libc    : Access denied finding property "ro.bootimage.build.fingerprint"
+09-02 13:35:45.539  1148  4383 W libc    : Access denied finding property "ro.bootimage.build.fingerprint"
+09-02 13:35:50.288 31908 31908 D AndroidRuntime: >>>>>> START com.android.internal.os.RuntimeInit uid 2000 <<<<<<
+09-02 13:35:50.303 31908 31908 I AndroidRuntime: Using default boot image
+09-02 13:35:50.303 31908 31908 I AndroidRuntime: Leaving lock profiling enabled
+09-02 13:35:50.458 31908 31908 D AndroidRuntime: Calling main entry com.android.commands.am.Am
+09-02 13:35:50.656 31908 31908 I AndroidRuntime: VM exiting with result code 0.
+09-02 13:35:51.435 32216 32216 W libc    : Unable to set property "persist.sys.language" to "en": PROP_ERROR_PERMISSION_DENIED (0x18)
+09-02 13:35:51.435 32216 32216 W libc    : Unable to set property "persist.sys.language" to "en": PROP_ERROR_PERMISSION_DENIED (0x18)
+09-02 13:35:51.435 32216 32216 W libc    : Unable to set property "persist.sys.language" to "en": PROP_ERROR_PERMISSION_DENIED (0x18)
+09-02 13:35:51.489 32230 32230 W libc    : Unable to set property "persist.sys.language" to "en": PROP_ERROR_PERMISSION_DENIED (0x18)
+09-02 13:35:51.489 32230 32230 W libc    : Unable to set property "persist.sys.language" to "en": PROP_ERROR_PERMISSION_DENIED (0x18)
+09-02 13:35:51.489 32230 32230 W libc    : Unable to set property "persist.sys.language" to "en": PROP_ERROR_PERMISSION_DENIED (0x18)
+09-02 13:35:51.567 32257 32257 W libc    : Unable to set property "ro.product.locale.language" to "en": PROP_ERROR_PERMISSION_DENIED (0x18)
+09-02 13:35:51.567 32257 32257 W libc    : Unable to set property "ro.product.locale.language" to "en": PROP_ERROR_PERMISSION_DENIED (0x18)
+09-02 13:35:51.567 32257 32257 W libc    : Unable to set property "ro.product.locale.language" to "en": PROP_ERROR_PERMISSION_DENIED (0x18)
+09-02 13:35:51.618 32299 32299 W libc    : Unable to set property "ro.product.locale.language" to "en": PROP_ERROR_PERMISSION_DENIED (0x18)
+09-02 13:35:51.618 32299 32299 W libc    : Unable to set property "ro.product.locale.language" to "en": PROP_ERROR_PERMISSION_DENIED (0x18)
+09-02 13:35:51.618 32299 32299 W libc    : Unable to set property "ro.product.locale.language" to "en": PROP_ERROR_PERMISSION_DENIED (0x18)
+09-02 13:35:51.637 32332 32332 W libc    : Unable to set property "persist.sys.locale" to "en": PROP_ERROR_PERMISSION_DENIED (0x18)
+09-02 13:35:51.637 32332 32332 W libc    : Unable to set property "persist.sys.locale" to "en": PROP_ERROR_PERMISSION_DENIED (0x18)
+09-02 13:35:51.637 32332 32332 W libc    : Unable to set property "persist.sys.locale" to "en": PROP_ERROR_PERMISSION_DENIED (0x18)
+09-02 13:35:51.674 32340 32340 W libc    : Unable to set property "persist.sys.locale" to "en": PROP_ERROR_PERMISSION_DENIED (0x18)
+09-02 13:35:51.674 32340 32340 W libc    : Unable to set property "persist.sys.locale" to "en": PROP_ERROR_PERMISSION_DENIED (0x18)
+09-02 13:35:51.675 32340 32340 W libc    : Unable to set property "persist.sys.locale" to "en": PROP_ERROR_PERMISSION_DENIED (0x18)
+09-02 13:35:52.049  1148  4383 W libc    : Access denied finding property "ro.bootimage.build.fingerprint"
+09-02 13:35:52.121  1148  4383 W libc    : Access denied finding property "ro.bootimage.build.fingerprint"
+09-02 13:35:52.222 24529 24529 W libc    : Access denied finding property "persist.dm.passive.display_brightness"
+09-02 13:35:52.222 24529 24529 W libc    : Access denied finding property "persist.dm.passive.ambient_brightness"
+09-02 13:35:52.285 32595 32595 E libc    : SetHeapTaggingLevel: re-enabling tagging after it was disabled is not supported
+09-02 13:35:52.983  1148  4383 W libc    : Access denied finding property "ro.bootimage.build.fingerprint"
+09-02 13:35:53.032  1148  4383 W libc    : Access denied finding property "ro.bootimage.build.fingerprint"
+09-02 13:35:53.307  1372  1372 D AndroidRuntime: >>>>>> START com.android.internal.os.RuntimeInit uid 2000 <<<<<<
+09-02 13:35:53.314  1372  1372 I AndroidRuntime: Using default boot image
+09-02 13:35:53.314  1372  1372 I AndroidRuntime: Leaving lock profiling enabled
+09-02 13:35:53.452  1372  1372 D AndroidRuntime: Calling main entry com.android.commands.am.Am
+09-02 13:35:53.491  1520  1520 I libc    : SetHeapTaggingLevel: tag level set to 0
+09-02 13:35:53.621  1372  1372 I AndroidRuntime: VM exiting with result code 0.
+09-02 13:35:54.016  1656  1656 D AndroidRuntime: >>>>>> START com.android.internal.os.RuntimeInit uid 2000 <<<<<<
+09-02 13:35:54.020  1656  1656 I AndroidRuntime: Using default boot image
+09-02 13:35:54.020  1656  1656 I AndroidRuntime: Leaving lock profiling enabled
+09-02 13:35:54.099  1656  1656 D AndroidRuntime: Calling main entry com.android.commands.am.Am
+09-02 13:35:54.121  1710  1710 I libc    : SetHeapTaggingLevel: tag level set to 0
+09-02 13:35:54.224  1798  1798 I libc    : SetHeapTaggingLevel: tag level set to 0
+09-02 13:35:54.567 24128 24209 W libc    : Access denied finding property "persist.adb.tls_server.enable"
+09-02 13:35:54.567 24128 24209 W libc    : Access denied finding property "service.adb.tls.port"
+09-02 13:35:55.497 24128 24145 W libc    : Access denied finding property "persist.adb.tls_server.enable"
+09-02 13:35:55.497 24128 24145 W libc    : Access denied finding property "service.adb.tls.port"
+09-02 13:35:55.609  1656  1656 I AndroidRuntime: VM exiting with result code 0.
+09-02 13:35:55.624 24128 24209 W libc    : Access denied finding property "persist.adb.tls_server.enable"
+09-02 13:35:55.626 24128 24209 W libc    : Access denied finding property "service.adb.tls.port"
+09-02 13:35:55.775  2408  2408 D AndroidRuntime: >>>>>> START com.android.internal.os.RuntimeInit uid 2000 <<<<<<
+09-02 13:35:55.779  2408  2408 I AndroidRuntime: Using default boot image
+09-02 13:35:55.779  2408  2408 I AndroidRuntime: Leaving lock profiling enabled
+09-02 13:35:55.869  2408  2408 D AndroidRuntime: Calling main entry com.android.commands.content.Content
+09-02 13:35:55.904  2408  2408 D AndroidRuntime: Shutting down VM
+09-02 13:35:56.177 24128 24209 W libc    : Access denied finding property "persist.adb.tls_server.enable"
+09-02 13:35:56.177 24128 24209 W libc    : Access denied finding property "service.adb.tls.port"
+09-02 13:35:56.924  3232  3232 D AndroidRuntime: >>>>>> START com.android.internal.os.RuntimeInit uid 2000 <<<<<<
+09-02 13:35:56.928  3232  3232 I AndroidRuntime: Using default boot image
+09-02 13:35:56.928  3232  3232 I AndroidRuntime: Leaving lock profiling enabled
+09-02 13:35:57.018  3232  3232 D AndroidRuntime: Calling main entry com.android.commands.content.Content
+09-02 13:35:57.026  3232  3232 D AndroidRuntime: Shutting down VM
+09-02 13:35:57.079 24128 24145 W libc    : Access denied finding property "persist.adb.tls_server.enable"
+09-02 13:35:57.080 24128 24145 W libc    : Access denied finding property "service.adb.tls.port"
+09-02 13:35:57.646 24128 24209 W libc    : Access denied finding property "persist.adb.tls_server.enable"
+09-02 13:35:57.646 24128 24209 W libc    : Access denied finding property "service.adb.tls.port"
+09-02 13:35:57.879 24128 24174 W libc    : Access denied finding property "persist.adb.tls_server.enable"
+09-02 13:35:57.879 24128 24174 W libc    : Access denied finding property "service.adb.tls.port"
+09-02 13:35:58.138  1148  1233 I HeimdAllFS: DEBUG: TRUE Dry-run: FALSE Last-run:  mForceService: FALSE mForceDefragService: FALSE mForceCompressService:  mIsUserTrial: false
+09-02 13:35:58.254  1148  7595 I HeimdAllFS: DEBUG: TRUE Dry-run: FALSE Last-run:  mForceService: FALSE mForceDefragService: FALSE mForceCompressService:  mIsUserTrial: false
+09-02 13:35:58.722  1148  4383 W libc    : Access denied finding property "ro.bootimage.build.fingerprint"
+09-02 13:35:58.906  1148  7183 I HeimdAllFS: DEBUG: TRUE Dry-run: FALSE Last-run:  mForceService: FALSE mForceDefragService: FALSE mForceCompressService:  mIsUserTrial: false
+09-02 13:35:58.933  1148  4383 W libc    : Access denied finding property "ro.bootimage.build.fingerprint"
+09-02 13:35:58.984  1148  5143 I HeimdAllFS: DEBUG: TRUE Dry-run: FALSE Last-run:  mForceService: FALSE mForceDefragService: FALSE mForceCompressService:  mIsUserTrial: false
+09-02 13:35:59.365 24128 24174 W libc    : Access denied finding property "persist.adb.tls_server.enable"
+09-02 13:35:59.366 24128 24174 W libc    : Access denied finding property "service.adb.tls.port"
+09-02 13:35:59.568  1148  4383 W libc    : Access denied finding property "ro.bootimage.build.fingerprint"
+09-02 13:35:59.654  1148  4383 W libc    : Access denied finding property "ro.bootimage.build.fingerprint"
+09-02 13:35:59.807  1148  7183 I HeimdAllFS: DEBUG: TRUE Dry-run: FALSE Last-run:  mForceService: FALSE mForceDefragService: FALSE mForceCompressService:  mIsUserTrial: false
+09-02 13:35:59.874  1148  5144 I HeimdAllFS: DEBUG: TRUE Dry-run: FALSE Last-run:  mForceService: FALSE mForceDefragService: FALSE mForceCompressService:  mIsUserTrial: false
+09-02 13:35:59.979  4225  4225 E libc    : SetHeapTaggingLevel: re-enabling tagging after it was disabled is not supported
+09-02 13:36:01.799 24128 24209 W libc    : Access denied finding property "persist.adb.tls_server.enable"
+09-02 13:36:01.800 24128 24209 W libc    : Access denied finding property "service.adb.tls.port"
+09-02 13:36:04.538  4801  4801 E libc    : SetHeapTaggingLevel: re-enabling tagging after it was disabled is not supported
+09-02 13:36:04.601  4823  4823 E libc    : SetHeapTaggingLevel: re-enabling tagging after it was disabled is not supported
+09-02 13:36:04.916  1148  4383 W libc    : Access denied finding property "ro.bootimage.build.fingerprint"
+09-02 13:36:04.987  1148  4383 W libc    : Access denied finding property "ro.bootimage.build.fingerprint"
+09-02 13:36:05.539  1148  4383 W libc    : Access denied finding property "ro.bootimage.build.fingerprint"
+09-02 13:36:05.597  1148  4383 W libc    : Access denied finding property "ro.bootimage.build.fingerprint"
+09-02 13:36:05.794  5101  5101 D AndroidRuntime: >>>>>> START com.android.internal.os.RuntimeInit uid 2000 <<<<<<
+09-02 13:36:05.798  5101  5101 I AndroidRuntime: Using default boot image
+09-02 13:36:05.798  5101  5101 I AndroidRuntime: Leaving lock profiling enabled
+09-02 13:36:05.865  5101  5101 D AndroidRuntime: Calling main entry com.android.commands.content.Content
+09-02 13:36:05.871  5101  5101 D AndroidRuntime: Shutting down VM
+09-02 13:36:07.423  5229  5229 D AndroidRuntime: >>>>>> START com.android.internal.os.RuntimeInit uid 2000 <<<<<<
+09-02 13:36:07.426  5229  5229 I AndroidRuntime: Using default boot image
+09-02 13:36:07.426  5229  5229 I AndroidRuntime: Leaving lock profiling enabled
+09-02 13:36:07.491  5229  5229 D AndroidRuntime: Calling main entry com.android.commands.content.Content
+09-02 13:36:07.635  5229  5229 D AndroidRuntime: Shutting down VM
+09-02 13:36:08.124  5281  5281 I AndroidRuntime: VM exiting with result code 0, cleanup skipped.
+09-02 13:36:08.277  5346  5346 I AndroidRuntime: VM exiting with result code 0, cleanup skipped.
+09-02 13:36:08.442  5381  5381 I AndroidRuntime: VM exiting with result code 0, cleanup skipped.
+09-02 13:36:08.619  5400  5400 I AndroidRuntime: VM exiting with result code 0, cleanup skipped.
+09-02 13:36:08.624  5401  5401 D AndroidRuntime: >>>>>> START com.android.internal.os.RuntimeInit uid 2000 <<<<<<
+09-02 13:36:08.627  5401  5401 I AndroidRuntime: Using default boot image
+09-02 13:36:08.627  5401  5401 I AndroidRuntime: Leaving lock profiling enabled
+09-02 13:36:08.708  5401  5401 D AndroidRuntime: Calling main entry com.android.commands.am.Am
+09-02 13:36:09.057  5441  5458 I TestRunner: run started: 1 tests
+09-02 13:36:09.059  5441  5458 I TestRunner: started: evaluateEveryPushedPte(io.github.alpharomercoma.openweights.core.engine.eval.ExecuTorchParityEval)
+09-02 13:36:09.092  5441  5458 I ExecuTorchParityEval: evaluating Gemma3-1B-IT-INT8-INT4-ExecuTorch-XNNPACK.pte
+09-02 13:36:09.102  5441  5458 W libc    : Access denied finding property "ro.mediatek.platform"
+09-02 13:36:09.103  5441  5458 I ExecuTorch: Reading file /sys/devices/soc0/image_version
+09-02 13:36:09.104  5441  5458 I ExecuTorch: Failed to open midr file /sys/devices/soc0/image_version
+09-02 13:36:09.104  5441  5458 I ExecuTorch: Number of efficient cores 4
+09-02 13:36:09.104  5441  5458 I ExecuTorch: Resetting threadpool to 5 threads
+09-02 13:36:09.104  5441  5458 I ExecuTorch: Reading file /sys/devices/soc0/image_version
+09-02 13:36:09.104  5441  5458 I ExecuTorch: Failed to open midr file /sys/devices/soc0/image_version
+09-02 13:36:09.104  5441  5458 I ExecuTorch: Number of efficient cores 4
+09-02 13:36:09.104  5441  5458 I ExecuTorch: Resetting threadpool to 5 threads.
+09-02 13:36:09.381 24128 24209 W libc    : Access denied finding property "persist.adb.tls_server.enable"
+09-02 13:36:09.382 24128 24209 W libc    : Access denied finding property "service.adb.tls.port"
+09-02 13:36:11.454  5441  5458 I ExecuTorch: Loaded json tokenizer
+09-02 13:36:11.456  5441  5458 I ExecuTorch: Reading metadata from model
+09-02 13:36:11.461  5441  5458 I ExecuTorch: Metadata: use_sdpa_with_kv_cache = 1
+09-02 13:36:11.461  5441  5458 I ExecuTorch: Metadata: use_kv_cache = 1
+09-02 13:36:11.461  5441  5458 I ExecuTorch: Method get_max_context_len not found, using the default value 128
+09-02 13:36:11.461  5441  5458 I ExecuTorch: Metadata: get_max_context_len = 128
+09-02 13:36:11.461  5441  5458 I ExecuTorch: Metadata: get_max_seq_len = 1024
+09-02 13:36:11.461  5441  5458 I ExecuTorch: Metadata: enable_dynamic_shape = 1
+09-02 13:36:11.461  5441  5458 I ExecuTorch: Setting kMaxContextLen to kMaxSeqLen value: 1024
+09-02 13:36:11.461  5441  5458 I ExecuTorch: Using method: forward
+09-02 13:36:13.783  5441  5635 I ExecuTorch: RSS after loading model: 1593.117188 MiB (0 if unsupported)
+09-02 13:36:14.076  5441  5635 I ExecuTorch: Prefill token result numel(): 9961472
+09-02 13:36:14.076  5441  5635 I ExecuTorch: Max new tokens resolved: 986, given pos_ 38, num_prompt_tokens 38, max_context_len 1024
+09-02 13:36:14.079  5441  5635 I ExecuTorch: RSS after prompt prefill: 1593.117188 MiB (0 if unsupported)
+09-02 13:36:14.432  5441  5635 I ExecuTorch: RSS after finishing text generation: 1593.117188 MiB (0 if unsupported)
+09-02 13:36:14.433  5441  5635 I ExecuTorch: 	Prompt Tokens: 38    Generated Tokens: 10
+09-02 13:36:14.433  5441  5635 I ExecuTorch: 	Model Load Time:		0.000000 (seconds)
+09-02 13:36:14.433  5441  5635 I ExecuTorch: 	Total inference time:		0.649000 (seconds)		 Rate: 	15.408320 (tokens/second)
+09-02 13:36:14.433  5441  5635 I ExecuTorch: 		Prompt evaluation:	0.293000 (seconds)		 Rate: 	129.692833 (tokens/second)
+09-02 13:36:14.433  5441  5635 I ExecuTorch: 		Generated 10 tokens:	0.356000 (seconds)		 Rate: 	28.089888 (tokens/second)
+09-02 13:36:14.433  5441  5635 I ExecuTorch: 	Time to first generated token:	0.293000 (seconds)
+09-02 13:36:14.433  5441  5635 I ExecuTorch: 	Sampling time over 48 tokens:	0.020000 (seconds)
+09-02 13:36:14.439  5441  5635 I ExecuTorch: RSS after loading model: 1593.117188 MiB (0 if unsupported)
+09-02 13:36:14.809  5441  5635 I ExecuTorch: Prefill token result numel(): 12058624
+09-02 13:36:14.809  5441  5635 I ExecuTorch: Max new tokens resolved: 978, given pos_ 46, num_prompt_tokens 46, max_context_len 1024
+09-02 13:36:14.809  5441  5635 I ExecuTorch: RSS after prompt prefill: 1593.117188 MiB (0 if unsupported)
+09-02 13:36:14.968  5441  5635 I ExecuTorch: RSS after finishing text generation: 1593.117188 MiB (0 if unsupported)
+09-02 13:36:14.968  5441  5635 I ExecuTorch: 	Prompt Tokens: 46    Generated Tokens: 4
+09-02 13:36:14.968  5441  5635 I ExecuTorch: 	Model Load Time:		0.000000 (seconds)
+09-02 13:36:14.968  5441  5635 I ExecuTorch: 	Total inference time:		0.529000 (seconds)		 Rate: 	7.561437 (tokens/second)
+09-02 13:36:14.968  5441  5635 I ExecuTorch: 		Prompt evaluation:	0.370000 (seconds)		 Rate: 	124.324324 (tokens/second)
+09-02 13:36:14.968  5441  5635 I ExecuTorch: 		Generated 4 tokens:	0.159000 (seconds)		 Rate: 	25.157233 (tokens/second)
+09-02 13:36:14.968  5441  5635 I ExecuTorch: 	Time to first generated token:	0.370000 (seconds)
+09-02 13:36:14.968  5441  5635 I ExecuTorch: 	Sampling time over 50 tokens:	0.008000 (seconds)
+09-02 13:36:14.971  5441  5635 I ExecuTorch: RSS after loading model: 1593.117188 MiB (0 if unsupported)
+09-02 13:36:15.254  5441  5635 I ExecuTorch: Prefill token result numel(): 7864320
+09-02 13:36:15.255  5441  5635 I ExecuTorch: Max new tokens resolved: 994, given pos_ 30, num_prompt_tokens 30, max_context_len 1024
+09-02 13:36:15.255  5441  5635 I ExecuTorch: RSS after prompt prefill: 1593.117188 MiB (0 if unsupported)
+09-02 13:36:15.341 24128 24447 W libc    : Access denied finding property "persist.adb.tls_server.enable"
+09-02 13:36:15.341 24128 24447 W libc    : Access denied finding property "service.adb.tls.port"
+09-02 13:36:33.439  1148  4383 W libc    : Access denied finding property "ro.bootimage.build.fingerprint"
+09-02 13:36:33.642  1148  4383 W libc    : Access denied finding property "ro.bootimage.build.fingerprint"
+09-02 13:36:49.464  5441  5635 I ExecuTorch: RSS after finishing text generation: 1593.117188 MiB (0 if unsupported)
+09-02 13:36:49.464  5441  5635 I ExecuTorch: 	Prompt Tokens: 30    Generated Tokens: 767
+09-02 13:36:49.464  5441  5635 I ExecuTorch: 	Model Load Time:		0.000000 (seconds)
+09-02 13:36:49.464  5441  5635 I ExecuTorch: 	Total inference time:		34.493000 (seconds)		 Rate: 	22.236396 (tokens/second)
+09-02 13:36:49.464  5441  5635 I ExecuTorch: 		Prompt evaluation:	0.284000 (seconds)		 Rate: 	105.633803 (tokens/second)
+09-02 13:36:49.464  5441  5635 I ExecuTorch: 		Generated 767 tokens:	34.209000 (seconds)		 Rate: 	22.421000 (tokens/second)
+09-02 13:36:49.464  5441  5635 I ExecuTorch: 	Time to first generated token:	0.284000 (seconds)
+09-02 13:36:49.464  5441  5635 I ExecuTorch: 	Sampling time over 797 tokens:	1.996000 (seconds)
+09-02 13:36:49.487  5441  5635 I ExecuTorch: RSS after loading model: 1593.117188 MiB (0 if unsupported)
+09-02 13:36:50.101  5441  5635 I ExecuTorch: Prefill token result numel(): 23330816
+09-02 13:36:50.102  5441  5635 I ExecuTorch: Max new tokens resolved: 935, given pos_ 89, num_prompt_tokens 89, max_context_len 1024
+09-02 13:36:50.102  5441  5635 I ExecuTorch: RSS after prompt prefill: 1593.117188 MiB (0 if unsupported)
+09-02 13:36:50.300  5441  5635 I ExecuTorch: RSS after finishing text generation: 1593.117188 MiB (0 if unsupported)
+09-02 13:36:50.300  5441  5635 I ExecuTorch: 	Prompt Tokens: 89    Generated Tokens: 4
+09-02 13:36:50.300  5441  5635 I ExecuTorch: 	Model Load Time:		0.000000 (seconds)
+09-02 13:36:50.300  5441  5635 I ExecuTorch: 	Total inference time:		0.813000 (seconds)		 Rate: 	4.920049 (tokens/second)
+09-02 13:36:50.300  5441  5635 I ExecuTorch: 		Prompt evaluation:	0.615000 (seconds)		 Rate: 	144.715447 (tokens/second)
+09-02 13:36:50.300  5441  5635 I ExecuTorch: 		Generated 4 tokens:	0.198000 (seconds)		 Rate: 	20.202020 (tokens/second)
+09-02 13:36:50.300  5441  5635 I ExecuTorch: 	Time to first generated token:	0.615000 (seconds)
+09-02 13:36:50.300  5441  5635 I ExecuTorch: 	Sampling time over 93 tokens:	0.011000 (seconds)
+09-02 13:36:50.305  5441  5635 I ExecuTorch: RSS after loading model: 1593.117188 MiB (0 if unsupported)
+09-02 13:36:50.447  5441  5635 I ExecuTorch: Prefill token result numel(): 4718592
+09-02 13:36:50.448  5441  5635 I ExecuTorch: Max new tokens resolved: 1006, given pos_ 18, num_prompt_tokens 18, max_context_len 1024
+09-02 13:36:50.448  5441  5635 I ExecuTorch: RSS after prompt prefill: 1593.117188 MiB (0 if unsupported)
+09-02 13:36:53.371  5441  5635 I ExecuTorch: RSS after finishing text generation: 1593.117188 MiB (0 if unsupported)
+09-02 13:36:53.372  5441  5635 I ExecuTorch: 	Prompt Tokens: 18    Generated Tokens: 60
+09-02 13:36:53.372  5441  5635 I ExecuTorch: 	Model Load Time:		0.000000 (seconds)
+09-02 13:36:53.372  5441  5635 I ExecuTorch: 	Total inference time:		3.066000 (seconds)		 Rate: 	19.569472 (tokens/second)
+09-02 13:36:53.372  5441  5635 I ExecuTorch: 		Prompt evaluation:	0.143000 (seconds)		 Rate: 	125.874126 (tokens/second)
+09-02 13:36:53.372  5441  5635 I ExecuTorch: 		Generated 60 tokens:	2.923000 (seconds)		 Rate: 	20.526856 (tokens/second)
+09-02 13:36:53.372  5441  5635 I ExecuTorch: 	Time to first generated token:	0.143000 (seconds)
+09-02 13:36:53.372  5441  5635 I ExecuTorch: 	Sampling time over 78 tokens:	0.174000 (seconds)
+09-02 13:36:53.380  5441  5635 I ExecuTorch: RSS after loading model: 1593.117188 MiB (0 if unsupported)
+09-02 13:36:53.585  5441  5635 I ExecuTorch: Prefill token result numel(): 6291456
+09-02 13:36:53.586  5441  5635 I ExecuTorch: Max new tokens resolved: 922, given pos_ 102, num_prompt_tokens 24, max_context_len 1024
+09-02 13:36:53.586  5441  5635 I ExecuTorch: RSS after prompt prefill: 1593.117188 MiB (0 if unsupported)
+09-02 13:36:53.958  5441  5635 I ExecuTorch: RSS after finishing text generation: 1593.117188 MiB (0 if unsupported)
+09-02 13:36:53.958  5441  5635 I ExecuTorch: 	Prompt Tokens: 24    Generated Tokens: 8
+09-02 13:36:53.958  5441  5635 I ExecuTorch: 	Model Load Time:		0.000000 (seconds)
+09-02 13:36:53.958  5441  5635 I ExecuTorch: 	Total inference time:		0.578000 (seconds)		 Rate: 	13.840830 (tokens/second)
+09-02 13:36:53.958  5441  5635 I ExecuTorch: 		Prompt evaluation:	0.206000 (seconds)		 Rate: 	116.504854 (tokens/second)
+09-02 13:36:53.958  5441  5635 I ExecuTorch: 		Generated 8 tokens:	0.372000 (seconds)		 Rate: 	21.505376 (tokens/second)
+09-02 13:36:53.958  5441  5635 I ExecuTorch: 	Time to first generated token:	0.206000 (seconds)
+09-02 13:36:53.958  5441  5635 I ExecuTorch: 	Sampling time over 32 tokens:	0.195000 (seconds)
+09-02 13:36:53.990  5441  5458 I ExecuTorchParityEval: wrote /storage/emulated/0/Android/data/io.github.alpharomercoma.openweights.core.engine.test/files/eval-results/Gemma3-1B-IT-INT8-INT4-ExecuTorch-XNNPACK.json
+09-02 13:36:54.240  5441  5458 I ExecuTorchParityEval: evaluating Qwen3-1.7B-INT8-INT4-ExecuTorch-XNNPACK.pte
+09-02 13:36:54.242  5441  5458 I ExecuTorch: Reading file /sys/devices/soc0/image_version
+09-02 13:36:54.242  5441  5458 I ExecuTorch: Failed to open midr file /sys/devices/soc0/image_version
+09-02 13:36:54.242  5441  5458 I ExecuTorch: Number of efficient cores 4
+09-02 13:36:54.242  5441  5458 I ExecuTorch: Resetting threadpool to 5 threads
+09-02 13:36:54.242  5441  5458 I ExecuTorch: Resetting threadpool to 5 threads.
+09-02 13:36:54.932  5441  5458 I ExecuTorch: Loaded json tokenizer
+09-02 13:36:54.932  5441  5458 I ExecuTorch: Reading metadata from model
+09-02 13:36:54.936  5441  5458 I ExecuTorch: Metadata: use_sdpa_with_kv_cache = 1
+09-02 13:36:54.937  5441  5458 I ExecuTorch: Metadata: use_kv_cache = 1
+09-02 13:36:54.937  5441  5458 I ExecuTorch: Method get_max_context_len not found, using the default value 128
+09-02 13:36:54.937  5441  5458 I ExecuTorch: Metadata: get_max_context_len = 128
+09-02 13:36:54.937  5441  5458 I ExecuTorch: Metadata: get_max_seq_len = 2048
+09-02 13:36:54.937  5441  5458 I ExecuTorch: Metadata: enable_dynamic_shape = 1
+09-02 13:36:54.937  5441  5458 I ExecuTorch: Setting kMaxContextLen to kMaxSeqLen value: 2048
+09-02 13:36:54.937  5441  5458 I ExecuTorch: Using method: forward
+09-02 13:37:00.162  5441  5635 I ExecuTorch: RSS after loading model: 3325.179688 MiB (0 if unsupported)
+09-02 13:37:00.569  5441  5635 I ExecuTorch: Prefill token result numel(): 5773568
+09-02 13:37:00.569  5441  5635 I ExecuTorch: Max new tokens resolved: 2010, given pos_ 38, num_prompt_tokens 38, max_context_len 2048
+09-02 13:37:00.570  5441  5635 I ExecuTorch: RSS after prompt prefill: 3325.179688 MiB (0 if unsupported)
+09-02 13:37:49.837  5441  5635 I ExecuTorch: RSS after finishing text generation: 3325.179688 MiB (0 if unsupported)
+09-02 13:37:49.838  5441  5635 I ExecuTorch: 	Prompt Tokens: 38    Generated Tokens: 767
+09-02 13:37:49.838  5441  5635 I ExecuTorch: 	Model Load Time:		0.000000 (seconds)
+09-02 13:37:49.838  5441  5635 I ExecuTorch: 	Total inference time:		49.675000 (seconds)		 Rate: 	15.440362 (tokens/second)
+09-02 13:37:49.838  5441  5635 I ExecuTorch: 		Prompt evaluation:	0.407000 (seconds)		 Rate: 	93.366093 (tokens/second)
+09-02 13:37:49.838  5441  5635 I ExecuTorch: 		Generated 767 tokens:	49.268000 (seconds)		 Rate: 	15.567914 (tokens/second)
+09-02 13:37:49.838  5441  5635 I ExecuTorch: 	Time to first generated token:	0.407000 (seconds)
+09-02 13:37:49.838  5441  5635 I ExecuTorch: 	Sampling time over 805 tokens:	1.318000 (seconds)
+09-02 13:37:49.860  5441  5635 I ExecuTorch: RSS after loading model: 3325.179688 MiB (0 if unsupported)
+09-02 13:37:50.304  5441  5635 I ExecuTorch: Prefill token result numel(): 6989056
+09-02 13:37:50.305  5441  5635 I ExecuTorch: Max new tokens resolved: 2002, given pos_ 46, num_prompt_tokens 46, max_context_len 2048
+09-02 13:37:50.305  5441  5635 I ExecuTorch: RSS after prompt prefill: 3325.179688 MiB (0 if unsupported)
+09-02 13:38:47.733  5441  5635 I ExecuTorch: RSS after finishing text generation: 3325.179688 MiB (0 if unsupported)
+09-02 13:38:47.733  5441  5635 I ExecuTorch: 	Prompt Tokens: 46    Generated Tokens: 654
+09-02 13:38:47.733  5441  5635 I ExecuTorch: 	Model Load Time:		0.000000 (seconds)
+09-02 13:38:47.733  5441  5635 I ExecuTorch: 	Total inference time:		57.873000 (seconds)		 Rate: 	11.300607 (tokens/second)
+09-02 13:38:47.733  5441  5635 I ExecuTorch: 		Prompt evaluation:	0.445000 (seconds)		 Rate: 	103.370787 (tokens/second)
+09-02 13:38:47.733  5441  5635 I ExecuTorch: 		Generated 654 tokens:	57.428000 (seconds)		 Rate: 	11.388173 (tokens/second)
+09-02 13:38:47.733  5441  5635 I ExecuTorch: 	Time to first generated token:	0.445000 (seconds)
+09-02 13:38:47.733  5441  5635 I ExecuTorch: 	Sampling time over 700 tokens:	1.189000 (seconds)
+09-02 13:38:47.752  5441  5635 I ExecuTorch: RSS after loading model: 3325.179688 MiB (0 if unsupported)
+09-02 13:38:48.100  5441  5635 I ExecuTorch: Prefill token result numel(): 4558080
+09-02 13:38:48.100  5441  5635 I ExecuTorch: Max new tokens resolved: 2018, given pos_ 30, num_prompt_tokens 30, max_context_len 2048
+09-02 13:38:48.101  5441  5635 I ExecuTorch: RSS after prompt prefill: 3325.179688 MiB (0 if unsupported)
+09-02 13:39:10.654  5441  5635 I ExecuTorch: RSS after finishing text generation: 3325.179688 MiB (0 if unsupported)
+09-02 13:39:10.654  5441  5635 I ExecuTorch: 	Prompt Tokens: 30    Generated Tokens: 316
+09-02 13:39:10.654  5441  5635 I ExecuTorch: 	Model Load Time:		0.000000 (seconds)
+09-02 13:39:10.654  5441  5635 I ExecuTorch: 	Total inference time:		22.902000 (seconds)		 Rate: 	13.797922 (tokens/second)
+09-02 13:39:10.654  5441  5635 I ExecuTorch: 		Prompt evaluation:	0.348000 (seconds)		 Rate: 	86.206897 (tokens/second)
+09-02 13:39:10.654  5441  5635 I ExecuTorch: 		Generated 316 tokens:	22.554000 (seconds)		 Rate: 	14.010818 (tokens/second)
+09-02 13:39:10.654  5441  5635 I ExecuTorch: 	Time to first generated token:	0.348000 (seconds)
+09-02 13:39:10.654  5441  5635 I ExecuTorch: 	Sampling time over 346 tokens:	0.556000 (seconds)
+09-02 13:39:10.669  5441  5635 I ExecuTorch: RSS after loading model: 3325.179688 MiB (0 if unsupported)
+09-02 13:39:11.615  5441  5635 I ExecuTorch: Prefill token result numel(): 14130048
+09-02 13:39:11.616  5441  5635 I ExecuTorch: Max new tokens resolved: 1955, given pos_ 93, num_prompt_tokens 93, max_context_len 2048
+09-02 13:39:11.616  5441  5635 I ExecuTorch: RSS after prompt prefill: 3325.179688 MiB (0 if unsupported)
+09-02 13:39:45.153  5441  5635 I ExecuTorch: RSS after finishing text generation: 3325.179688 MiB (0 if unsupported)
+09-02 13:39:45.153  5441  5635 I ExecuTorch: 	Prompt Tokens: 93    Generated Tokens: 410
+09-02 13:39:45.153  5441  5635 I ExecuTorch: 	Model Load Time:		0.000000 (seconds)
+09-02 13:39:45.153  5441  5635 I ExecuTorch: 	Total inference time:		34.484000 (seconds)		 Rate: 	11.889572 (tokens/second)
+09-02 13:39:45.153  5441  5635 I ExecuTorch: 		Prompt evaluation:	0.947000 (seconds)		 Rate: 	98.204857 (tokens/second)
+09-02 13:39:45.153  5441  5635 I ExecuTorch: 		Generated 410 tokens:	33.537000 (seconds)		 Rate: 	12.225303 (tokens/second)
+09-02 13:39:45.153  5441  5635 I ExecuTorch: 	Time to first generated token:	0.947000 (seconds)
+09-02 13:39:45.153  5441  5635 I ExecuTorch: 	Sampling time over 503 tokens:	0.753000 (seconds)
+09-02 13:39:45.166  5441  5635 I ExecuTorch: RSS after loading model: 3325.179688 MiB (0 if unsupported)
+09-02 13:39:45.373  5441  5635 I ExecuTorch: Prefill token result numel(): 2734848
+09-02 13:39:45.373  5441  5635 I ExecuTorch: Max new tokens resolved: 2030, given pos_ 18, num_prompt_tokens 18, max_context_len 2048
+09-02 13:39:45.374  5441  5635 I ExecuTorch: RSS after prompt prefill: 3325.179688 MiB (0 if unsupported)
+09-02 13:40:17.847  5441  5635 I ExecuTorch: Reached to the end of generation
+09-02 13:40:17.847  5441  5635 I ExecuTorch: RSS after finishing text generation: 3325.179688 MiB (0 if unsupported)
+09-02 13:40:17.847  5441  5635 I ExecuTorch: 	Prompt Tokens: 18    Generated Tokens: 428
+09-02 13:40:17.847  5441  5635 I ExecuTorch: 	Model Load Time:		0.000000 (seconds)
+09-02 13:40:17.847  5441  5635 I ExecuTorch: 	Total inference time:		32.681000 (seconds)		 Rate: 	13.096294 (tokens/second)
+09-02 13:40:17.847  5441  5635 I ExecuTorch: 		Prompt evaluation:	0.207000 (seconds)		 Rate: 	86.956522 (tokens/second)
+09-02 13:40:17.847  5441  5635 I ExecuTorch: 		Generated 428 tokens:	32.474000 (seconds)		 Rate: 	13.179775 (tokens/second)
+09-02 13:40:17.847  5441  5635 I ExecuTorch: 	Time to first generated token:	0.207000 (seconds)
+09-02 13:40:17.847  5441  5635 I ExecuTorch: 	Sampling time over 446 tokens:	0.769000 (seconds)
+09-02 13:40:17.864  5441  5635 I ExecuTorch: RSS after loading model: 3325.179688 MiB (0 if unsupported)
+09-02 13:40:22.912  5441  5635 I ExecuTorch: Prefill token result numel(): 71409920
+09-02 13:40:22.912  5441  5635 I ExecuTorch: Max new tokens resolved: 1578, given pos_ 470, num_prompt_tokens 470, max_context_len 2048
+09-02 13:40:22.913  5441  5635 I ExecuTorch: RSS after prompt prefill: 3325.179688 MiB (0 if unsupported)
+09-02 13:40:40.402  5441  5635 I ExecuTorch: RSS after finishing text generation: 3325.179688 MiB (0 if unsupported)
+09-02 13:40:40.403  5441  5635 I ExecuTorch: 	Prompt Tokens: 470    Generated Tokens: 175
+09-02 13:40:40.403  5441  5635 I ExecuTorch: 	Model Load Time:		0.000000 (seconds)
+09-02 13:40:40.403  5441  5635 I ExecuTorch: 	Total inference time:		22.538000 (seconds)		 Rate: 	7.764664 (tokens/second)
+09-02 13:40:40.403  5441  5635 I ExecuTorch: 		Prompt evaluation:	5.048000 (seconds)		 Rate: 	93.106181 (tokens/second)
+09-02 13:40:40.403  5441  5635 I ExecuTorch: 		Generated 175 tokens:	17.490000 (seconds)		 Rate: 	10.005718 (tokens/second)
+09-02 13:40:40.403  5441  5635 I ExecuTorch: 	Time to first generated token:	5.048000 (seconds)
+09-02 13:40:40.403  5441  5635 I ExecuTorch: 	Sampling time over 645 tokens:	0.319000 (seconds)
+09-02 13:40:40.411  5441  5635 I ExecuTorch: RSS after loading model: 3325.179688 MiB (0 if unsupported)
+09-02 13:40:42.097  5441  5635 I ExecuTorch: Prefill token result numel(): 25373312
+09-02 13:40:42.097  5441  5635 I ExecuTorch: Max new tokens resolved: 1881, given pos_ 167, num_prompt_tokens 167, max_context_len 2048
+09-02 13:40:42.098  5441  5635 I ExecuTorch: RSS after prompt prefill: 3325.179688 MiB (0 if unsupported)
+09-02 13:40:49.338  5441  5635 I ExecuTorch: RSS after finishing text generation: 3325.179688 MiB (0 if unsupported)
+09-02 13:40:49.338  5441  5635 I ExecuTorch: 	Prompt Tokens: 167    Generated Tokens: 91
+09-02 13:40:49.338  5441  5635 I ExecuTorch: 	Model Load Time:		0.000000 (seconds)
+09-02 13:40:49.338  5441  5635 I ExecuTorch: 	Total inference time:		8.927000 (seconds)		 Rate: 	10.193794 (tokens/second)
+09-02 13:40:49.338  5441  5635 I ExecuTorch: 		Prompt evaluation:	1.686000 (seconds)		 Rate: 	99.051008 (tokens/second)
+09-02 13:40:49.338  5441  5635 I ExecuTorch: 		Generated 91 tokens:	7.241000 (seconds)		 Rate: 	12.567325 (tokens/second)
+09-02 13:40:49.338  5441  5635 I ExecuTorch: 	Time to first generated token:	1.686000 (seconds)
+09-02 13:40:49.338  5441  5635 I ExecuTorch: 	Sampling time over 258 tokens:	0.162000 (seconds)
+09-02 13:40:49.351  5441  5635 I ExecuTorch: RSS after loading model: 3325.179688 MiB (0 if unsupported)
+09-02 13:40:49.696  5441  5635 I ExecuTorch: Prefill token result numel(): 4254208
+09-02 13:40:49.696  5441  5635 I ExecuTorch: Max new tokens resolved: 1762, given pos_ 286, num_prompt_tokens 28, max_context_len 2048
+09-02 13:40:49.696  5441  5635 I ExecuTorch: RSS after prompt prefill: 3325.179688 MiB (0 if unsupported)
+09-02 13:41:03.787  5441  5635 I ExecuTorch: Reached to the end of generation
+09-02 13:41:03.787  5441  5635 I ExecuTorch: RSS after finishing text generation: 3325.179688 MiB (0 if unsupported)
+09-02 13:41:03.787  5441  5635 I ExecuTorch: 	Prompt Tokens: 28    Generated Tokens: 164
+09-02 13:41:03.787  5441  5635 I ExecuTorch: 	Model Load Time:		0.000000 (seconds)
+09-02 13:41:03.787  5441  5635 I ExecuTorch: 	Total inference time:		14.436000 (seconds)		 Rate: 	11.360488 (tokens/second)
+09-02 13:41:03.787  5441  5635 I ExecuTorch: 		Prompt evaluation:	0.345000 (seconds)		 Rate: 	81.159420 (tokens/second)
+09-02 13:41:03.787  5441  5635 I ExecuTorch: 		Generated 164 tokens:	14.091000 (seconds)		 Rate: 	11.638635 (tokens/second)
+09-02 13:41:03.787  5441  5635 I ExecuTorch: 	Time to first generated token:	0.345000 (seconds)
+09-02 13:41:03.787  5441  5635 I ExecuTorch: 	Sampling time over 192 tokens:	0.461000 (seconds)
+09-02 13:41:03.809  5441  5458 I ExecuTorchParityEval: wrote /storage/emulated/0/Android/data/io.github.alpharomercoma.openweights.core.engine.test/files/eval-results/Qwen3-1.7B-INT8-INT4-ExecuTorch-XNNPACK.json
+09-02 13:41:04.172  5441  5458 I ExecuTorchParityEval: evaluating SmolLM3-3B-INT8-INT4.pte
+09-02 13:41:04.176  5441  5458 I ExecuTorch: Reading file /sys/devices/soc0/image_version
+09-02 13:41:04.176  5441  5458 I ExecuTorch: Failed to open midr file /sys/devices/soc0/image_version
+09-02 13:41:04.176  5441  5458 I ExecuTorch: Number of efficient cores 4
+09-02 13:41:04.176  5441  5458 I ExecuTorch: Resetting threadpool to 5 threads
+09-02 13:41:04.176  5441  5458 I ExecuTorch: Resetting threadpool to 5 threads.
+09-02 13:41:05.384  5441  5458 I ExecuTorch: Loaded json tokenizer
+09-02 13:41:05.384  5441  5458 I ExecuTorch: Reading metadata from model
+09-02 13:41:05.388  5441  5458 I ExecuTorch: Metadata: use_sdpa_with_kv_cache = 1
+09-02 13:41:05.388  5441  5458 I ExecuTorch: Metadata: use_kv_cache = 1
+09-02 13:41:05.388  5441  5458 I ExecuTorch: Method get_max_context_len not found, using the default value 128
+09-02 13:41:05.388  5441  5458 I ExecuTorch: Metadata: get_max_context_len = 128
+09-02 13:41:05.388  5441  5458 I ExecuTorch: Metadata: get_max_seq_len = 2048
+09-02 13:41:05.388  5441  5458 I ExecuTorch: Method enable_dynamic_shape not found, using the default value 0
+09-02 13:41:05.388  5441  5458 I ExecuTorch: Metadata: enable_dynamic_shape = 0
+09-02 13:41:05.388  5441  5458 I ExecuTorch: Setting kMaxContextLen to kMaxSeqLen value: 2048
+09-02 13:41:05.388  5441  5458 I ExecuTorch: Using method: forward
+09-02 13:41:13.502  5441  5635 I ExecuTorch: RSS after loading model: 3394.757812 MiB (0 if unsupported)
+09-02 13:41:40.354  5441  5635 I ExecuTorch: Max new tokens resolved: 1771, given pos_ 277, num_prompt_tokens 277, max_context_len 2048
+09-02 13:41:40.354  5441  5635 I ExecuTorch: RSS after prompt prefill: 3394.757812 MiB (0 if unsupported)
+09-02 13:43:03.102  5441  5635 I ExecuTorch: RSS after finishing text generation: 3394.757812 MiB (0 if unsupported)
+09-02 13:43:03.102  5441  5635 I ExecuTorch: 	Prompt Tokens: 277    Generated Tokens: 562
+09-02 13:43:03.102  5441  5635 I ExecuTorch: 	Model Load Time:		0.000000 (seconds)
+09-02 13:43:03.102  5441  5635 I ExecuTorch: 	Total inference time:		109.600000 (seconds)		 Rate: 	5.127737 (tokens/second)
+09-02 13:43:03.102  5441  5635 I ExecuTorch: 		Prompt evaluation:	26.852000 (seconds)		 Rate: 	10.315805 (tokens/second)
+09-02 13:43:03.102  5441  5635 I ExecuTorch: 		Generated 562 tokens:	82.748000 (seconds)		 Rate: 	6.791705 (tokens/second)
+09-02 13:43:03.102  5441  5635 I ExecuTorch: 	Time to first generated token:	26.852000 (seconds)
+09-02 13:43:03.102  5441  5635 I ExecuTorch: 	Sampling time over 839 tokens:	0.882000 (seconds)
+09-02 13:43:03.117  5441  5635 I ExecuTorch: RSS after loading model: 3394.757812 MiB (0 if unsupported)
+09-02 13:43:30.046  5441  5635 I ExecuTorch: Max new tokens resolved: 1765, given pos_ 283, num_prompt_tokens 283, max_context_len 2048
+09-02 13:43:30.047  5441  5635 I ExecuTorch: RSS after prompt prefill: 3394.757812 MiB (0 if unsupported)
+09-02 13:44:31.046  5441  5635 I ExecuTorch: RSS after finishing text generation: 3394.757812 MiB (0 if unsupported)
+09-02 13:44:31.046  5441  5635 I ExecuTorch: 	Prompt Tokens: 283    Generated Tokens: 427
+09-02 13:44:31.046  5441  5635 I ExecuTorch: 	Model Load Time:		0.000000 (seconds)
+09-02 13:44:31.046  5441  5635 I ExecuTorch: 	Total inference time:		87.929000 (seconds)		 Rate: 	4.856191 (tokens/second)
+09-02 13:44:31.046  5441  5635 I ExecuTorch: 		Prompt evaluation:	26.929000 (seconds)		 Rate: 	10.509117 (tokens/second)
+09-02 13:44:31.046  5441  5635 I ExecuTorch: 		Generated 427 tokens:	61.000000 (seconds)		 Rate: 	7.000000 (tokens/second)
+09-02 13:44:31.046  5441  5635 I ExecuTorch: 	Time to first generated token:	26.929000 (seconds)
+09-02 13:44:31.046  5441  5635 I ExecuTorch: 	Sampling time over 710 tokens:	0.637000 (seconds)
+09-02 13:44:31.066  5441  5635 I ExecuTorch: RSS after loading model: 3394.757812 MiB (0 if unsupported)
+09-02 13:44:56.605  5441  5635 I ExecuTorch: Max new tokens resolved: 1778, given pos_ 270, num_prompt_tokens 270, max_context_len 2048
+09-02 13:44:56.606  5441  5635 I ExecuTorch: RSS after prompt prefill: 3394.757812 MiB (0 if unsupported)
+09-02 13:45:27.650  5441  5635 I ExecuTorch: RSS after finishing text generation: 3394.757812 MiB (0 if unsupported)
+09-02 13:45:27.650  5441  5635 I ExecuTorch: 	Prompt Tokens: 270    Generated Tokens: 236
+09-02 13:45:27.650  5441  5635 I ExecuTorch: 	Model Load Time:		0.000000 (seconds)
+09-02 13:45:27.650  5441  5635 I ExecuTorch: 	Total inference time:		56.584000 (seconds)		 Rate: 	4.170790 (tokens/second)
+09-02 13:45:27.650  5441  5635 I ExecuTorch: 		Prompt evaluation:	25.539000 (seconds)		 Rate: 	10.572066 (tokens/second)
+09-02 13:45:27.650  5441  5635 I ExecuTorch: 		Generated 236 tokens:	31.045000 (seconds)		 Rate: 	7.601868 (tokens/second)
+09-02 13:45:27.650  5441  5635 I ExecuTorch: 	Time to first generated token:	25.539000 (seconds)
+09-02 13:45:27.650  5441  5635 I ExecuTorch: 	Sampling time over 506 tokens:	0.397000 (seconds)
+09-02 13:45:27.666  5441  5635 I ExecuTorch: RSS after loading model: 3394.757812 MiB (0 if unsupported)
+09-02 13:46:00.478  5441  5635 I ExecuTorch: Max new tokens resolved: 1720, given pos_ 328, num_prompt_tokens 328, max_context_len 2048
+09-02 13:46:00.478  5441  5635 I ExecuTorch: RSS after prompt prefill: 3394.757812 MiB (0 if unsupported)
+09-02 13:47:06.128  5441  5635 I ExecuTorch: RSS after finishing text generation: 3394.757812 MiB (0 if unsupported)
+09-02 13:47:06.128  5441  5635 I ExecuTorch: 	Prompt Tokens: 328    Generated Tokens: 439
+09-02 13:47:06.128  5441  5635 I ExecuTorch: 	Model Load Time:		0.000000 (seconds)
+09-02 13:47:06.128  5441  5635 I ExecuTorch: 	Total inference time:		98.462000 (seconds)		 Rate: 	4.458573 (tokens/second)
+09-02 13:47:06.128  5441  5635 I ExecuTorch: 		Prompt evaluation:	32.812000 (seconds)		 Rate: 	9.996343 (tokens/second)
+09-02 13:47:06.128  5441  5635 I ExecuTorch: 		Generated 439 tokens:	65.650000 (seconds)		 Rate: 	6.686976 (tokens/second)
+09-02 13:47:06.128  5441  5635 I ExecuTorch: 	Time to first generated token:	32.812000 (seconds)
+09-02 13:47:06.128  5441  5635 I ExecuTorch: 	Sampling time over 767 tokens:	0.713000 (seconds)
+09-02 13:47:06.145  5441  5635 I ExecuTorch: RSS after loading model: 3394.757812 MiB (0 if unsupported)
+09-02 13:47:28.898  5441  5635 I ExecuTorch: Max new tokens resolved: 1790, given pos_ 258, num_prompt_tokens 258, max_context_len 2048
+09-02 13:47:28.899  5441  5635 I ExecuTorch: RSS after prompt prefill: 3394.757812 MiB (0 if unsupported)
+09-02 13:48:39.430  5441  5635 I ExecuTorch: RSS after finishing text generation: 3394.757812 MiB (0 if unsupported)
+09-02 13:48:39.431  5441  5635 I ExecuTorch: 	Prompt Tokens: 258    Generated Tokens: 484
+09-02 13:48:39.431  5441  5635 I ExecuTorch: 	Model Load Time:		0.000000 (seconds)
+09-02 13:48:39.431  5441  5635 I ExecuTorch: 	Total inference time:		93.285000 (seconds)		 Rate: 	5.188401 (tokens/second)
+09-02 13:48:39.431  5441  5635 I ExecuTorch: 		Prompt evaluation:	22.753000 (seconds)		 Rate: 	11.339164 (tokens/second)
+09-02 13:48:39.431  5441  5635 I ExecuTorch: 		Generated 484 tokens:	70.532000 (seconds)		 Rate: 	6.862133 (tokens/second)
+09-02 13:48:39.431  5441  5635 I ExecuTorch: 	Time to first generated token:	22.753000 (seconds)
+09-02 13:48:39.431  5441  5635 I ExecuTorch: 	Sampling time over 742 tokens:	0.767000 (seconds)
+09-02 13:48:39.450  5441  5635 I ExecuTorch: RSS after loading model: 3394.757812 MiB (0 if unsupported)
+09-02 13:48:42.024  5441  5635 I ExecuTorch: Max new tokens resolved: 1283, given pos_ 765, num_prompt_tokens 23, max_context_len 2048
+09-02 13:48:42.024  5441  5635 I ExecuTorch: RSS after prompt prefill: 3394.757812 MiB (0 if unsupported)
+09-02 13:49:11.884  5441  5635 I ExecuTorch: RSS after finishing text generation: 3394.757812 MiB (0 if unsupported)
+09-02 13:49:11.884  5441  5635 I ExecuTorch: 	Prompt Tokens: 23    Generated Tokens: 183
+09-02 13:49:11.884  5441  5635 I ExecuTorch: 	Model Load Time:		0.000000 (seconds)
+09-02 13:49:11.884  5441  5635 I ExecuTorch: 	Total inference time:		32.434000 (seconds)		 Rate: 	5.642227 (tokens/second)
+09-02 13:49:11.884  5441  5635 I ExecuTorch: 		Prompt evaluation:	2.574000 (seconds)		 Rate: 	8.935509 (tokens/second)
+09-02 13:49:11.884  5441  5635 I ExecuTorch: 		Generated 183 tokens:	29.860000 (seconds)		 Rate: 	6.128600 (tokens/second)
+09-02 13:49:11.884  5441  5635 I ExecuTorch: 	Time to first generated token:	2.574000 (seconds)
+09-02 13:49:11.884  5441  5635 I ExecuTorch: 	Sampling time over 206 tokens:	1.042000 (seconds)
+09-02 13:49:11.897  5441  5635 I ExecuTorch: RSS after loading model: 3394.757812 MiB (0 if unsupported)
+09-02 13:49:54.065  5441  5635 I ExecuTorch: Max new tokens resolved: 1643, given pos_ 405, num_prompt_tokens 405, max_context_len 2048
+09-02 13:49:54.066  5441  5635 I ExecuTorch: RSS after prompt prefill: 3394.757812 MiB (0 if unsupported)
+09-02 13:50:08.915  5441  5635 I ExecuTorch: RSS after finishing text generation: 3394.757812 MiB (0 if unsupported)
+09-02 13:50:08.915  5441  5635 I ExecuTorch: 	Prompt Tokens: 405    Generated Tokens: 99
+09-02 13:50:08.915  5441  5635 I ExecuTorch: 	Model Load Time:		0.000000 (seconds)
+09-02 13:50:08.915  5441  5635 I ExecuTorch: 	Total inference time:		57.018000 (seconds)		 Rate: 	1.736294 (tokens/second)
+09-02 13:50:08.915  5441  5635 I ExecuTorch: 		Prompt evaluation:	42.168000 (seconds)		 Rate: 	9.604439 (tokens/second)
+09-02 13:50:08.915  5441  5635 I ExecuTorch: 		Generated 99 tokens:	14.850000 (seconds)		 Rate: 	6.666667 (tokens/second)
+09-02 13:50:08.915  5441  5635 I ExecuTorch: 	Time to first generated token:	42.168000 (seconds)
+09-02 13:50:08.915  5441  5635 I ExecuTorch: 	Sampling time over 504 tokens:	0.170000 (seconds)
+09-02 13:50:08.925  5441  5635 I ExecuTorch: RSS after loading model: 3394.757812 MiB (0 if unsupported)
+09-02 13:51:08.632  5441  5635 I ExecuTorch: Max new tokens resolved: 1518, given pos_ 530, num_prompt_tokens 530, max_context_len 2048
+09-02 13:51:08.633  5441  5635 I ExecuTorch: RSS after prompt prefill: 3394.757812 MiB (0 if unsupported)
+09-02 13:51:21.822  5441  5635 I ExecuTorch: RSS after finishing text generation: 3394.757812 MiB (0 if unsupported)
+09-02 13:51:21.822  5441  5635 I ExecuTorch: 	Prompt Tokens: 530    Generated Tokens: 82
+09-02 13:51:21.822  5441  5635 I ExecuTorch: 	Model Load Time:		0.000000 (seconds)
+09-02 13:51:21.822  5441  5635 I ExecuTorch: 	Total inference time:		72.897000 (seconds)		 Rate: 	1.124875 (tokens/second)
+09-02 13:51:21.822  5441  5635 I ExecuTorch: 		Prompt evaluation:	59.707000 (seconds)		 Rate: 	8.876681 (tokens/second)
+09-02 13:51:21.822  5441  5635 I ExecuTorch: 		Generated 82 tokens:	13.190000 (seconds)		 Rate: 	6.216831 (tokens/second)
+09-02 13:51:21.822  5441  5635 I ExecuTorch: 	Time to first generated token:	59.707000 (seconds)
+09-02 13:51:21.822  5441  5635 I ExecuTorch: 	Sampling time over 612 tokens:	0.136000 (seconds)
+09-02 13:51:21.845  5441  5458 I ExecuTorchParityEval: wrote /storage/emulated/0/Android/data/io.github.alpharomercoma.openweights.core.engine.test/files/eval-results/SmolLM3-3B-INT8-INT4.json
+09-02 13:51:22.212  5441  5458 I ExecuTorchParityEval: evaluating react-native-executorch-lfm-2.5-lfm_2_5_1_2b_xnnpack_8da4w.pte
+09-02 13:51:22.215  5441  5458 I ExecuTorch: Reading file /sys/devices/soc0/image_version
+09-02 13:51:22.215  5441  5458 I ExecuTorch: Failed to open midr file /sys/devices/soc0/image_version
+09-02 13:51:22.215  5441  5458 I ExecuTorch: Number of efficient cores 4
+09-02 13:51:22.215  5441  5458 I ExecuTorch: Resetting threadpool to 5 threads
+09-02 13:51:22.215  5441  5458 I ExecuTorch: Resetting threadpool to 5 threads.
+09-02 13:51:22.562  5441  5458 I ExecuTorch: Loaded json tokenizer
+09-02 13:51:22.562  5441  5458 I ExecuTorch: Reading metadata from model
+09-02 13:51:22.567  5441  5458 I ExecuTorch: Metadata: use_sdpa_with_kv_cache = 1
+09-02 13:51:22.567  5441  5458 I ExecuTorch: Metadata: use_kv_cache = 1
+09-02 13:51:22.567  5441  5458 I ExecuTorch: Metadata: get_max_context_len = 2048
+09-02 13:51:22.567  5441  5458 I ExecuTorch: Metadata: get_max_seq_len = 2048
+09-02 13:51:22.567  5441  5458 I ExecuTorch: Metadata: enable_dynamic_shape = 1
+09-02 13:51:22.567  5441  5458 I ExecuTorch: eos_id = 7
+09-02 13:51:22.567  5441  5458 I ExecuTorch: Using method: forward
+09-02 13:51:25.360  5441  5635 I ExecuTorch: RSS after loading model: 3394.757812 MiB (0 if unsupported)
+09-02 13:51:25.717  5441  5635 I ExecuTorch: Prefill token result numel(): 65536
+09-02 13:51:25.717  5441  5635 I ExecuTorch: Max new tokens resolved: 2011, given pos_ 37, num_prompt_tokens 37, max_context_len 2048
+09-02 13:51:25.718  5441  5635 I ExecuTorch: RSS after prompt prefill: 3394.757812 MiB (0 if unsupported)
+09-02 13:51:25.754  5441  5635 I ExecuTorch: RSS after finishing text generation: 3394.757812 MiB (0 if unsupported)
+09-02 13:51:25.754  5441  5635 I ExecuTorch: 	Prompt Tokens: 37    Generated Tokens: 1
+09-02 13:51:25.754  5441  5635 I ExecuTorch: 	Model Load Time:		0.000000 (seconds)
+09-02 13:51:25.754  5441  5635 I ExecuTorch: 	Total inference time:		0.394000 (seconds)		 Rate: 	2.538071 (tokens/second)
+09-02 13:51:25.754  5441  5635 I ExecuTorch: 		Prompt evaluation:	0.357000 (seconds)		 Rate: 	103.641457 (tokens/second)
+09-02 13:51:25.754  5441  5635 I ExecuTorch: 		Generated 1 tokens:	0.037000 (seconds)		 Rate: 	27.027027 (tokens/second)
+09-02 13:51:25.754  5441  5635 I ExecuTorch: 	Time to first generated token:	0.357000 (seconds)
+09-02 13:51:25.754  5441  5635 I ExecuTorch: 	Sampling time over 38 tokens:	0.001000 (seconds)
+09-02 13:51:25.756  5441  5635 I ExecuTorch: RSS after loading model: 3394.757812 MiB (0 if unsupported)
+09-02 13:51:25.972  5441  5635 I ExecuTorch: Prefill token result numel(): 65536
+09-02 13:51:25.973  5441  5635 I ExecuTorch: Max new tokens resolved: 2002, given pos_ 46, num_prompt_tokens 46, max_context_len 2048
+09-02 13:51:25.973  5441  5635 I ExecuTorch: RSS after prompt prefill: 3394.757812 MiB (0 if unsupported)
+09-02 13:51:26.009  5441  5635 I ExecuTorch: RSS after finishing text generation: 3394.757812 MiB (0 if unsupported)
+09-02 13:51:26.009  5441  5635 I ExecuTorch: 	Prompt Tokens: 46    Generated Tokens: 1
+09-02 13:51:26.009  5441  5635 I ExecuTorch: 	Model Load Time:		0.000000 (seconds)
+09-02 13:51:26.009  5441  5635 I ExecuTorch: 	Total inference time:		0.253000 (seconds)		 Rate: 	3.952569 (tokens/second)
+09-02 13:51:26.009  5441  5635 I ExecuTorch: 		Prompt evaluation:	0.217000 (seconds)		 Rate: 	211.981567 (tokens/second)
+09-02 13:51:26.009  5441  5635 I ExecuTorch: 		Generated 1 tokens:	0.036000 (seconds)		 Rate: 	27.777778 (tokens/second)
+09-02 13:51:26.009  5441  5635 I ExecuTorch: 	Time to first generated token:	0.217000 (seconds)
+09-02 13:51:26.009  5441  5635 I ExecuTorch: 	Sampling time over 47 tokens:	0.000000 (seconds)
+09-02 13:51:26.011  5441  5635 I ExecuTorch: RSS after loading model: 3394.757812 MiB (0 if unsupported)
+09-02 13:51:26.191  5441  5635 I ExecuTorch: Prefill token result numel(): 65536
+09-02 13:51:26.191  5441  5635 I ExecuTorch: Max new tokens resolved: 2017, given pos_ 31, num_prompt_tokens 31, max_context_len 2048
+09-02 13:51:26.192  5441  5635 I ExecuTorch: RSS after prompt prefill: 3394.757812 MiB (0 if unsupported)
+09-02 13:51:26.721  5441  5635 I ExecuTorch: RSS after finishing text generation: 3394.757812 MiB (0 if unsupported)
+09-02 13:51:26.721  5441  5635 I ExecuTorch: 	Prompt Tokens: 31    Generated Tokens: 14
+09-02 13:51:26.721  5441  5635 I ExecuTorch: 	Model Load Time:		0.000000 (seconds)
+09-02 13:51:26.721  5441  5635 I ExecuTorch: 	Total inference time:		0.710000 (seconds)		 Rate: 	19.718310 (tokens/second)
+09-02 13:51:26.721  5441  5635 I ExecuTorch: 		Prompt evaluation:	0.181000 (seconds)		 Rate: 	171.270718 (tokens/second)
+09-02 13:51:26.721  5441  5635 I ExecuTorch: 		Generated 14 tokens:	0.529000 (seconds)		 Rate: 	26.465028 (tokens/second)
+09-02 13:51:26.721  5441  5635 I ExecuTorch: 	Time to first generated token:	0.181000 (seconds)
+09-02 13:51:26.721  5441  5635 I ExecuTorch: 	Sampling time over 45 tokens:	0.016000 (seconds)
+09-02 13:51:26.724  5441  5635 I ExecuTorch: RSS after loading model: 3394.757812 MiB (0 if unsupported)
+09-02 13:51:27.136  5441  5635 I ExecuTorch: Prefill token result numel(): 65536
+09-02 13:51:27.136  5441  5635 I ExecuTorch: Max new tokens resolved: 1958, given pos_ 90, num_prompt_tokens 90, max_context_len 2048
+09-02 13:51:27.137  5441  5635 I ExecuTorch: RSS after prompt prefill: 3394.757812 MiB (0 if unsupported)
+09-02 13:51:27.249  5441  5635 I ExecuTorch: RSS after finishing text generation: 3394.757812 MiB (0 if unsupported)
+09-02 13:51:27.249  5441  5635 I ExecuTorch: 	Prompt Tokens: 90    Generated Tokens: 3
+09-02 13:51:27.249  5441  5635 I ExecuTorch: 	Model Load Time:		0.000000 (seconds)
+09-02 13:51:27.249  5441  5635 I ExecuTorch: 	Total inference time:		0.525000 (seconds)		 Rate: 	5.714286 (tokens/second)
+09-02 13:51:27.249  5441  5635 I ExecuTorch: 		Prompt evaluation:	0.412000 (seconds)		 Rate: 	218.446602 (tokens/second)
+09-02 13:51:27.249  5441  5635 I ExecuTorch: 		Generated 3 tokens:	0.113000 (seconds)		 Rate: 	26.548673 (tokens/second)
+09-02 13:51:27.249  5441  5635 I ExecuTorch: 	Time to first generated token:	0.412000 (seconds)
+09-02 13:51:27.249  5441  5635 I ExecuTorch: 	Sampling time over 93 tokens:	0.002000 (seconds)
+09-02 13:51:27.252  5441  5635 I ExecuTorch: RSS after loading model: 3394.757812 MiB (0 if unsupported)
+09-02 13:51:27.362  5441  5635 I ExecuTorch: Prefill token result numel(): 65536
+09-02 13:51:27.362  5441  5635 I ExecuTorch: Max new tokens resolved: 2029, given pos_ 19, num_prompt_tokens 19, max_context_len 2048
+09-02 13:51:27.362  5441  5635 I ExecuTorch: RSS after prompt prefill: 3394.757812 MiB (0 if unsupported)
+09-02 13:51:27.765  5441  5635 I ExecuTorch: Current token buffer is not valid UTF-8. Waiting for more.
+09-02 13:51:27.840  5441  5635 I ExecuTorch: RSS after finishing text generation: 3394.757812 MiB (0 if unsupported)
+09-02 13:51:27.840  5441  5635 I ExecuTorch: 	Prompt Tokens: 19    Generated Tokens: 13
+09-02 13:51:27.840  5441  5635 I ExecuTorch: 	Model Load Time:		0.000000 (seconds)
+09-02 13:51:27.840  5441  5635 I ExecuTorch: 	Total inference time:		0.588000 (seconds)		 Rate: 	22.108844 (tokens/second)
+09-02 13:51:27.840  5441  5635 I ExecuTorch: 		Prompt evaluation:	0.110000 (seconds)		 Rate: 	172.727273 (tokens/second)
+09-02 13:51:27.840  5441  5635 I ExecuTorch: 		Generated 13 tokens:	0.478000 (seconds)		 Rate: 	27.196653 (tokens/second)
+09-02 13:51:27.840  5441  5635 I ExecuTorch: 	Time to first generated token:	0.110000 (seconds)
+09-02 13:51:27.840  5441  5635 I ExecuTorch: 	Sampling time over 32 tokens:	0.011000 (seconds)
+09-02 13:51:27.844  5441  5635 I ExecuTorch: RSS after loading model: 3394.757812 MiB (0 if unsupported)
+09-02 13:51:27.958  5441  5635 I ExecuTorch: Prefill token result numel(): 65536
+09-02 13:51:27.958  5441  5635 I ExecuTorch: Max new tokens resolved: 1993, given pos_ 55, num_prompt_tokens 23, max_context_len 2048
+09-02 13:51:27.959  5441  5635 I ExecuTorch: RSS after prompt prefill: 3394.757812 MiB (0 if unsupported)
+09-02 13:51:28.071  5441  5635 I ExecuTorch: RSS after finishing text generation: 3394.757812 MiB (0 if unsupported)
+09-02 13:51:28.071  5441  5635 I ExecuTorch: 	Prompt Tokens: 23    Generated Tokens: 3
+09-02 13:51:28.071  5441  5635 I ExecuTorch: 	Model Load Time:		0.000000 (seconds)
+09-02 13:51:28.071  5441  5635 I ExecuTorch: 	Total inference time:		0.227000 (seconds)		 Rate: 	13.215859 (tokens/second)
+09-02 13:51:28.071  5441  5635 I ExecuTorch: 		Prompt evaluation:	0.114000 (seconds)		 Rate: 	201.754386 (tokens/second)
+09-02 13:51:28.071  5441  5635 I ExecuTorch: 		Generated 3 tokens:	0.113000 (seconds)		 Rate: 	26.548673 (tokens/second)
+09-02 13:51:28.071  5441  5635 I ExecuTorch: 	Time to first generated token:	0.114000 (seconds)
+09-02 13:51:28.071  5441  5635 I ExecuTorch: 	Sampling time over 26 tokens:	0.013000 (seconds)
+09-02 13:51:28.076  5441  5635 I ExecuTorch: RSS after loading model: 3394.757812 MiB (0 if unsupported)
+09-02 13:51:28.489  5441  5635 I ExecuTorch: Prefill token result numel(): 65536
+09-02 13:51:28.489  5441  5635 I ExecuTorch: Max new tokens resolved: 1952, given pos_ 96, num_prompt_tokens 96, max_context_len 2048
+09-02 13:51:28.490  5441  5635 I ExecuTorch: RSS after prompt prefill: 3394.757812 MiB (0 if unsupported)
+09-02 13:51:28.981  5441  5635 I ExecuTorch: RSS after finishing text generation: 3394.757812 MiB (0 if unsupported)
+09-02 13:51:28.982  5441  5635 I ExecuTorch: 	Prompt Tokens: 96    Generated Tokens: 13
+09-02 13:51:28.982  5441  5635 I ExecuTorch: 	Model Load Time:		0.000000 (seconds)
+09-02 13:51:28.982  5441  5635 I ExecuTorch: 	Total inference time:		0.905000 (seconds)		 Rate: 	14.364641 (tokens/second)
+09-02 13:51:28.982  5441  5635 I ExecuTorch: 		Prompt evaluation:	0.414000 (seconds)		 Rate: 	231.884058 (tokens/second)
+09-02 13:51:28.982  5441  5635 I ExecuTorch: 		Generated 13 tokens:	0.491000 (seconds)		 Rate: 	26.476578 (tokens/second)
+09-02 13:51:28.982  5441  5635 I ExecuTorch: 	Time to first generated token:	0.414000 (seconds)
+09-02 13:51:28.982  5441  5635 I ExecuTorch: 	Sampling time over 109 tokens:	0.013000 (seconds)
+09-02 13:51:28.991  5441  5635 I ExecuTorch: RSS after loading model: 3394.757812 MiB (0 if unsupported)
+09-02 13:51:29.133  5441  5635 I ExecuTorch: Prefill token result numel(): 65536
+09-02 13:51:29.134  5441  5635 I ExecuTorch: Max new tokens resolved: 1913, given pos_ 135, num_prompt_tokens 26, max_context_len 2048
+09-02 13:51:29.134  5441  5635 I ExecuTorch: RSS after prompt prefill: 3394.757812 MiB (0 if unsupported)
+09-02 13:51:30.022  5441  5635 I ExecuTorch: RSS after finishing text generation: 3394.757812 MiB (0 if unsupported)
+09-02 13:51:30.022  5441  5635 I ExecuTorch: 	Prompt Tokens: 26    Generated Tokens: 26
+09-02 13:51:30.022  5441  5635 I ExecuTorch: 	Model Load Time:		0.000000 (seconds)
+09-02 13:51:30.022  5441  5635 I ExecuTorch: 	Total inference time:		1.031000 (seconds)		 Rate: 	25.218235 (tokens/second)
+09-02 13:51:30.022  5441  5635 I ExecuTorch: 		Prompt evaluation:	0.143000 (seconds)		 Rate: 	181.818182 (tokens/second)
+09-02 13:51:30.022  5441  5635 I ExecuTorch: 		Generated 26 tokens:	0.888000 (seconds)		 Rate: 	29.279279 (tokens/second)
+09-02 13:51:30.022  5441  5635 I ExecuTorch: 	Time to first generated token:	0.143000 (seconds)
+09-02 13:51:30.022  5441  5635 I ExecuTorch: 	Sampling time over 52 tokens:	0.032000 (seconds)
+09-02 13:51:30.030  5441  5458 I ExecuTorchParityEval: wrote /storage/emulated/0/Android/data/io.github.alpharomercoma.openweights.core.engine.test/files/eval-results/react-native-executorch-lfm-2.5-lfm_2_5_1_2b_xnnpack_8da4w.json
+09-02 13:51:30.091  5441  5458 I ExecuTorchParityEval: evaluating react-native-executorch-llama-3.2-llama_3_2_3b_xnnpack_spinquant.pte
+09-02 13:51:30.092  5441  5458 I ExecuTorch: Reading file /sys/devices/soc0/image_version
+09-02 13:51:30.092  5441  5458 I ExecuTorch: Failed to open midr file /sys/devices/soc0/image_version
+09-02 13:51:30.092  5441  5458 I ExecuTorch: Number of efficient cores 4
+09-02 13:51:30.092  5441  5458 I ExecuTorch: Resetting threadpool to 5 threads
+09-02 13:51:30.092  5441  5458 I ExecuTorch: Resetting threadpool to 5 threads.
+09-02 13:51:30.960  5441  5458 I ExecuTorch: Loaded json tokenizer
+09-02 13:51:30.960  5441  5458 I ExecuTorch: Reading metadata from model
+09-02 13:51:30.964  5441  5458 I ExecuTorch: Metadata: use_sdpa_with_kv_cache = 1
+09-02 13:51:30.964  5441  5458 I ExecuTorch: Metadata: use_kv_cache = 1
+09-02 13:51:30.964  5441  5458 I ExecuTorch: Metadata: get_max_context_len = 2048
+09-02 13:51:30.964  5441  5458 I ExecuTorch: Metadata: get_max_seq_len = 2048
+09-02 13:51:30.964  5441  5458 I ExecuTorch: Metadata: enable_dynamic_shape = 1
+09-02 13:51:30.964  5441  5458 I ExecuTorch: eos_id = 128009
+09-02 13:51:30.964  5441  5458 I ExecuTorch: eos_id = 128001
+09-02 13:51:30.964  5441  5458 I ExecuTorch: Using method: forward
+09-02 13:51:39.511  5441  5635 I ExecuTorch: RSS after loading model: 3394.757812 MiB (0 if unsupported)
+09-02 13:51:40.675  5441  5635 I ExecuTorch: Prefill token result numel(): 128256
+09-02 13:51:40.676  5441  5635 I ExecuTorch: Max new tokens resolved: 1985, given pos_ 63, num_prompt_tokens 63, max_context_len 2048
+09-02 13:51:40.676  5441  5635 I ExecuTorch: RSS after prompt prefill: 3394.757812 MiB (0 if unsupported)
+09-02 13:51:40.765  5441  5635 I ExecuTorch: RSS after finishing text generation: 3394.757812 MiB (0 if unsupported)
+09-02 13:51:40.765  5441  5635 I ExecuTorch: 	Prompt Tokens: 63    Generated Tokens: 1
+09-02 13:51:40.765  5441  5635 I ExecuTorch: 	Model Load Time:		0.000000 (seconds)
+09-02 13:51:40.765  5441  5635 I ExecuTorch: 	Total inference time:		1.254000 (seconds)		 Rate: 	0.797448 (tokens/second)
+09-02 13:51:40.765  5441  5635 I ExecuTorch: 		Prompt evaluation:	1.165000 (seconds)		 Rate: 	54.077253 (tokens/second)
+09-02 13:51:40.765  5441  5635 I ExecuTorch: 		Generated 1 tokens:	0.089000 (seconds)		 Rate: 	11.235955 (tokens/second)
+09-02 13:51:40.765  5441  5635 I ExecuTorch: 	Time to first generated token:	1.165000 (seconds)
+09-02 13:51:40.765  5441  5635 I ExecuTorch: 	Sampling time over 64 tokens:	0.004000 (seconds)
+09-02 13:51:40.767  5441  5635 I ExecuTorch: RSS after loading model: 3394.757812 MiB (0 if unsupported)
+09-02 13:51:41.829  5441  5635 I ExecuTorch: Prefill token result numel(): 128256
+09-02 13:51:41.829  5441  5635 I ExecuTorch: Max new tokens resolved: 1979, given pos_ 69, num_prompt_tokens 69, max_context_len 2048
+09-02 13:51:41.830  5441  5635 I ExecuTorch: RSS after prompt prefill: 3394.757812 MiB (0 if unsupported)
+09-02 13:51:41.925  5441  5635 I ExecuTorch: RSS after finishing text generation: 3394.757812 MiB (0 if unsupported)
+09-02 13:51:41.925  5441  5635 I ExecuTorch: 	Prompt Tokens: 69    Generated Tokens: 1
+09-02 13:51:41.925  5441  5635 I ExecuTorch: 	Model Load Time:		0.000000 (seconds)
+09-02 13:51:41.925  5441  5635 I ExecuTorch: 	Total inference time:		1.157000 (seconds)		 Rate: 	0.864304 (tokens/second)
+09-02 13:51:41.925  5441  5635 I ExecuTorch: 		Prompt evaluation:	1.062000 (seconds)		 Rate: 	64.971751 (tokens/second)
+09-02 13:51:41.925  5441  5635 I ExecuTorch: 		Generated 1 tokens:	0.095000 (seconds)		 Rate: 	10.526316 (tokens/second)
+09-02 13:51:41.925  5441  5635 I ExecuTorch: 	Time to first generated token:	1.062000 (seconds)
+09-02 13:51:41.925  5441  5635 I ExecuTorch: 	Sampling time over 70 tokens:	0.001000 (seconds)
+09-02 13:51:41.927  5441  5635 I ExecuTorch: RSS after loading model: 3394.757812 MiB (0 if unsupported)
+09-02 13:51:42.846  5441  5635 I ExecuTorch: Prefill token result numel(): 128256
+09-02 13:51:42.846  5441  5635 I ExecuTorch: Max new tokens resolved: 1992, given pos_ 56, num_prompt_tokens 56, max_context_len 2048
+09-02 13:51:42.846  5441  5635 I ExecuTorch: RSS after prompt prefill: 3394.757812 MiB (0 if unsupported)
+09-02 13:51:44.642  5441  5635 I ExecuTorch: RSS after finishing text generation: 3394.757812 MiB (0 if unsupported)
+09-02 13:51:44.642  5441  5635 I ExecuTorch: 	Prompt Tokens: 56    Generated Tokens: 20
+09-02 13:51:44.642  5441  5635 I ExecuTorch: 	Model Load Time:		0.000000 (seconds)
+09-02 13:51:44.642  5441  5635 I ExecuTorch: 	Total inference time:		2.715000 (seconds)		 Rate: 	7.366483 (tokens/second)
+09-02 13:51:44.642  5441  5635 I ExecuTorch: 		Prompt evaluation:	0.919000 (seconds)		 Rate: 	60.935800 (tokens/second)
+09-02 13:51:44.642  5441  5635 I ExecuTorch: 		Generated 20 tokens:	1.796000 (seconds)		 Rate: 	11.135857 (tokens/second)
+09-02 13:51:44.642  5441  5635 I ExecuTorch: 	Time to first generated token:	0.919000 (seconds)
+09-02 13:51:44.642  5441  5635 I ExecuTorch: 	Sampling time over 76 tokens:	0.031000 (seconds)
+09-02 13:51:44.645  5441  5635 I ExecuTorch: RSS after loading model: 3394.757812 MiB (0 if unsupported)
+09-02 13:51:46.388  5441  5635 I ExecuTorch: Prefill token result numel(): 128256
+09-02 13:51:46.388  5441  5635 I ExecuTorch: Max new tokens resolved: 1934, given pos_ 114, num_prompt_tokens 114, max_context_len 2048
+09-02 13:51:46.389  5441  5635 I ExecuTorch: RSS after prompt prefill: 3394.757812 MiB (0 if unsupported)
+09-02 13:51:46.708  5441  5635 I ExecuTorch: RSS after finishing text generation: 3394.757812 MiB (0 if unsupported)
+09-02 13:51:46.708  5441  5635 I ExecuTorch: 	Prompt Tokens: 114    Generated Tokens: 3
+09-02 13:51:46.708  5441  5635 I ExecuTorch: 	Model Load Time:		0.000000 (seconds)
+09-02 13:51:46.708  5441  5635 I ExecuTorch: 	Total inference time:		2.063000 (seconds)		 Rate: 	1.454193 (tokens/second)
+09-02 13:51:46.708  5441  5635 I ExecuTorch: 		Prompt evaluation:	1.743000 (seconds)		 Rate: 	65.404475 (tokens/second)
+09-02 13:51:46.708  5441  5635 I ExecuTorch: 		Generated 3 tokens:	0.320000 (seconds)		 Rate: 	9.375000 (tokens/second)
+09-02 13:51:46.708  5441  5635 I ExecuTorch: 	Time to first generated token:	1.743000 (seconds)
+09-02 13:51:46.708  5441  5635 I ExecuTorch: 	Sampling time over 117 tokens:	0.003000 (seconds)
+09-02 13:51:46.711  5441  5635 I ExecuTorch: RSS after loading model: 3394.757812 MiB (0 if unsupported)
+09-02 13:51:47.367  5441  5635 I ExecuTorch: Prefill token result numel(): 128256
+09-02 13:51:47.367  5441  5635 I ExecuTorch: Max new tokens resolved: 2004, given pos_ 44, num_prompt_tokens 44, max_context_len 2048
+09-02 13:51:47.367  5441  5635 I ExecuTorch: RSS after prompt prefill: 3394.757812 MiB (0 if unsupported)
+09-02 13:51:51.403  5441  5635 I ExecuTorch: RSS after finishing text generation: 3394.757812 MiB (0 if unsupported)
+09-02 13:51:51.403  5441  5635 I ExecuTorch: 	Prompt Tokens: 44    Generated Tokens: 45
+09-02 13:51:51.403  5441  5635 I ExecuTorch: 	Model Load Time:		0.000000 (seconds)
+09-02 13:51:51.403  5441  5635 I ExecuTorch: 	Total inference time:		4.692000 (seconds)		 Rate: 	9.590793 (tokens/second)
+09-02 13:51:51.403  5441  5635 I ExecuTorch: 		Prompt evaluation:	0.656000 (seconds)		 Rate: 	67.073171 (tokens/second)
+09-02 13:51:51.403  5441  5635 I ExecuTorch: 		Generated 45 tokens:	4.036000 (seconds)		 Rate: 	11.149653 (tokens/second)
+09-02 13:51:51.403  5441  5635 I ExecuTorch: 	Time to first generated token:	0.656000 (seconds)
+09-02 13:51:51.403  5441  5635 I ExecuTorch: 	Sampling time over 89 tokens:	0.060000 (seconds)
+09-02 13:51:51.411  5441  5635 I ExecuTorch: RSS after loading model: 3394.757812 MiB (0 if unsupported)
+09-02 13:51:51.832  5441  5635 I ExecuTorch: Prefill token result numel(): 128256
+09-02 13:51:51.832  5441  5635 I ExecuTorch: Max new tokens resolved: 1936, given pos_ 112, num_prompt_tokens 23, max_context_len 2048
+09-02 13:51:51.832  5441  5635 I ExecuTorch: RSS after prompt prefill: 3394.757812 MiB (0 if unsupported)
+09-02 13:51:52.034  5441  5635 I ExecuTorch: RSS after finishing text generation: 3394.757812 MiB (0 if unsupported)
+09-02 13:51:52.034  5441  5635 I ExecuTorch: 	Prompt Tokens: 23    Generated Tokens: 2
+09-02 13:51:52.034  5441  5635 I ExecuTorch: 	Model Load Time:		0.000000 (seconds)
+09-02 13:51:52.034  5441  5635 I ExecuTorch: 	Total inference time:		0.623000 (seconds)		 Rate: 	3.210273 (tokens/second)
+09-02 13:51:52.034  5441  5635 I ExecuTorch: 		Prompt evaluation:	0.421000 (seconds)		 Rate: 	54.631829 (tokens/second)
+09-02 13:51:52.034  5441  5635 I ExecuTorch: 		Generated 2 tokens:	0.202000 (seconds)		 Rate: 	9.900990 (tokens/second)
+09-02 13:51:52.034  5441  5635 I ExecuTorch: 	Time to first generated token:	0.421000 (seconds)
+09-02 13:51:52.034  5441  5635 I ExecuTorch: 	Sampling time over 25 tokens:	0.064000 (seconds)
+09-02 13:51:52.041  5441  5635 I ExecuTorch: RSS after loading model: 3394.757812 MiB (0 if unsupported)
+09-02 13:51:55.053  5441  5635 I ExecuTorch: Prefill token result numel(): 128256
+09-02 13:51:55.054  5441  5635 I ExecuTorch: Max new tokens resolved: 1855, given pos_ 193, num_prompt_tokens 193, max_context_len 2048
+09-02 13:51:55.054  5441  5635 I ExecuTorch: RSS after prompt prefill: 3394.757812 MiB (0 if unsupported)
+09-02 13:51:57.028  5441  5635 I ExecuTorch: RSS after finishing text generation: 3394.757812 MiB (0 if unsupported)
+09-02 13:51:57.028  5441  5635 I ExecuTorch: 	Prompt Tokens: 193    Generated Tokens: 17
+09-02 13:51:57.028  5441  5635 I ExecuTorch: 	Model Load Time:		0.000000 (seconds)
+09-02 13:51:57.028  5441  5635 I ExecuTorch: 	Total inference time:		4.987000 (seconds)		 Rate: 	3.408863 (tokens/second)
+09-02 13:51:57.028  5441  5635 I ExecuTorch: 		Prompt evaluation:	3.013000 (seconds)		 Rate: 	64.055758 (tokens/second)
+09-02 13:51:57.028  5441  5635 I ExecuTorch: 		Generated 17 tokens:	1.974000 (seconds)		 Rate: 	8.611955 (tokens/second)
+09-02 13:51:57.028  5441  5635 I ExecuTorch: 	Time to first generated token:	3.013000 (seconds)
+09-02 13:51:57.028  5441  5635 I ExecuTorch: 	Sampling time over 210 tokens:	0.022000 (seconds)
+09-02 13:51:57.037  5441  5635 I ExecuTorch: RSS after loading model: 3394.757812 MiB (0 if unsupported)
+09-02 13:51:57.493  5441  5635 I ExecuTorch: Prefill token result numel(): 128256
+09-02 13:51:57.494  5441  5635 I ExecuTorch: Max new tokens resolved: 1811, given pos_ 237, num_prompt_tokens 27, max_context_len 2048
+09-02 13:51:57.494  5441  5635 I ExecuTorch: RSS after prompt prefill: 3394.757812 MiB (0 if unsupported)
+09-02 13:52:02.766  5441  5635 I ExecuTorch: RSS after finishing text generation: 3394.757812 MiB (0 if unsupported)
+09-02 13:52:02.766  5441  5635 I ExecuTorch: 	Prompt Tokens: 27    Generated Tokens: 44
+09-02 13:52:02.766  5441  5635 I ExecuTorch: 	Model Load Time:		0.000000 (seconds)
+09-02 13:52:02.766  5441  5635 I ExecuTorch: 	Total inference time:		5.729000 (seconds)		 Rate: 	7.680223 (tokens/second)
+09-02 13:52:02.766  5441  5635 I ExecuTorch: 		Prompt evaluation:	0.457000 (seconds)		 Rate: 	59.080963 (tokens/second)
+09-02 13:52:02.766  5441  5635 I ExecuTorch: 		Generated 44 tokens:	5.272000 (seconds)		 Rate: 	8.345979 (tokens/second)
+09-02 13:52:02.766  5441  5635 I ExecuTorch: 	Time to first generated token:	0.457000 (seconds)
+09-02 13:52:02.766  5441  5635 I ExecuTorch: 	Sampling time over 71 tokens:	0.093000 (seconds)
+09-02 13:52:02.777  5441  5458 I ExecuTorchParityEval: wrote /storage/emulated/0/Android/data/io.github.alpharomercoma.openweights.core.engine.test/files/eval-results/react-native-executorch-llama-3.2-llama_3_2_3b_xnnpack_spinquant.json
+09-02 13:52:03.042  5441  5458 I TestRunner: finished: evaluateEveryPushedPte(io.github.alpharomercoma.openweights.core.engine.eval.ExecuTorchParityEval)
+09-02 13:52:03.050  5441  5458 I TestRunner: run finished: 1 tests, 0 failed, 0 ignored
+09-02 13:52:03.076  5401  5401 I AndroidRuntime: VM exiting with result code 0.
+09-02 13:52:03.899 16114 16114 D AndroidRuntime: >>>>>> START com.android.internal.os.RuntimeInit uid 2000 <<<<<<
+09-02 13:52:03.935 16114 16114 I AndroidRuntime: Using default boot image
+09-02 13:52:03.935 16114 16114 I AndroidRuntime: Leaving lock profiling enabled
+09-02 13:52:04.255 16114 16114 D AndroidRuntime: Calling main entry com.android.commands.content.Content
+09-02 13:52:04.564 16114 16114 D AndroidRuntime: Shutting down VM
+09-02 13:52:05.813 16168 16168 D AndroidRuntime: >>>>>> START com.android.internal.os.RuntimeInit uid 2000 <<<<<<
+09-02 13:52:05.820 16168 16168 I AndroidRuntime: Using default boot image
+09-02 13:52:05.820 16168 16168 I AndroidRuntime: Leaving lock profiling enabled
+09-02 13:52:05.939 16168 16168 D AndroidRuntime: Calling main entry com.android.commands.content.Content
+09-02 13:52:05.950 16168 16168 D AndroidRuntime: Shutting down VM
+09-02 13:52:20.428 16375 16375 D AndroidRuntime: >>>>>> START com.android.internal.os.RuntimeInit uid 2000 <<<<<<
+09-02 13:52:20.432 16375 16375 I AndroidRuntime: Using default boot image
+09-02 13:52:20.432 16375 16375 I AndroidRuntime: Leaving lock profiling enabled
+09-02 13:52:20.518 16375 16375 D AndroidRuntime: Calling main entry com.android.commands.am.Am
+09-02 13:52:20.550 16387 16387 I libc    : SetHeapTaggingLevel: tag level set to 0
+09-02 13:52:20.650 16375 16375 I AndroidRuntime: VM exiting with result code 0.
+09-02 13:52:20.872 16403 16403 D AndroidRuntime: >>>>>> START com.android.internal.os.RuntimeInit uid 2000 <<<<<<
+09-02 13:52:20.876 16403 16403 I AndroidRuntime: Using default boot image
+09-02 13:52:20.876 16403 16403 I AndroidRuntime: Leaving lock profiling enabled
+09-02 13:52:20.956 16403 16403 D AndroidRuntime: Calling main entry com.android.commands.am.Am
+09-02 13:52:20.986 16415 16415 I libc    : SetHeapTaggingLevel: tag level set to 0
+09-02 13:52:21.114 16428 16428 I libc    : SetHeapTaggingLevel: tag level set to 0
+09-02 13:52:21.388 16403 16403 I AndroidRuntime: VM exiting with result code 0.
+09-02 13:52:21.510 24820 24820 I AndroidRuntime: VM exiting with result code 0, cleanup skipped.
+09-02 13:52:22.554 16719 16751 W libc    : Access denied finding property "persist.adb.tls_server.enable"
+09-02 13:52:22.554 16719 16751 W libc    : Access denied finding property "service.adb.tls.port"
+09-02 13:52:22.610 16719 16806 W libc    : Access denied finding property "persist.adb.tls_server.enable"
+09-02 13:52:22.610 16719 16806 W libc    : Access denied finding property "service.adb.tls.port"
+09-02 13:52:23.057 23684 24819 E oneway spamming:   #21 pc 0000000000131808  /system/lib64/libandroid_runtime.so (android::AndroidRuntime::javaThreadShell(void*)+144) (BuildId: 659d5f63765a73e4a3e0927eec3c6b4c)
+09-02 13:52:25.697 17698 17698 I libc    : SetHeapTaggingLevel: tag level set to 0
+09-02 13:52:25.804 17719 17719 E libc    : SetHeapTaggingLevel: re-enabling tagging after it was disabled is not supported

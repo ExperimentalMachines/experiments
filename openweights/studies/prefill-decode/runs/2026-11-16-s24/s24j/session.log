@@ -1,0 +1,8 @@
+15:01:30 reserving for s24j: google_gemma-3-1b-it-Q4_0.gguf 
+15:02:25 active projects/gcp-project-5358f6/deviceSessions/session-101di9y0fucub unit unit-c611ee expires 2026-11-16 18:02:04 UTC
+15:05:19 pushed; dl.log: google_gemma-3-1b-it-Q4_0.gguf 721918720 4c62ce8950bc6d5b 07:05:15 pushed;
+15:05:21 chain started, admits until 17:54:04 UTC
+16:33:27 chain done: 2 processes, 0 skipped
+16:33:28 pulled: 33 files
+cancelled projects/gcp-project-5358f6/deviceSessions/session-101di9y0fucub
+16:33:32 SESSION_END s24j 91 min

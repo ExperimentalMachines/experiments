@@ -1,0 +1,125 @@
+09-02 14:39:43.699  1585  6310 W libc    : Access denied finding property "ro.bootimage.build.fingerprint"
+09-02 14:39:43.934  1585  6310 W libc    : Access denied finding property "ro.bootimage.build.fingerprint"
+09-02 14:39:48.354 22368 22368 D AndroidRuntime: >>>>>> START com.android.internal.os.RuntimeInit uid 2000 <<<<<<
+09-02 14:39:48.360 22368 22368 I AndroidRuntime: Using default boot image
+09-02 14:39:48.360 22368 22368 I AndroidRuntime: Leaving lock profiling enabled
+09-02 14:39:48.473 22368 22368 D AndroidRuntime: Calling main entry com.android.commands.am.Am
+09-02 14:39:48.716 22368 22368 I AndroidRuntime: VM exiting with result code 0.
+09-02 14:39:48.899 22438 22438 W libc    : Unable to set property "persist.sys.language" to "en": PROP_ERROR_PERMISSION_DENIED (0x18)
+09-02 14:39:48.927 22446 22446 W libc    : Unable to set property "persist.sys.language" to "en": PROP_ERROR_PERMISSION_DENIED (0x18)
+09-02 14:39:48.978 22462 22462 W libc    : Unable to set property "ro.product.locale.language" to "en": PROP_ERROR_PERMISSION_DENIED (0x18)
+09-02 14:39:48.996 22468 22468 W libc    : Unable to set property "ro.product.locale.language" to "en": PROP_ERROR_PERMISSION_DENIED (0x18)
+09-02 14:39:49.035 22478 22478 W libc    : Unable to set property "persist.sys.locale" to "en": PROP_ERROR_PERMISSION_DENIED (0x18)
+09-02 14:39:49.065 22494 22494 W libc    : Unable to set property "persist.sys.locale" to "en": PROP_ERROR_PERMISSION_DENIED (0x18)
+09-02 14:39:50.139  1585  6310 W libc    : Access denied finding property "ro.bootimage.build.fingerprint"
+09-02 14:39:50.232  1585  6310 W libc    : Access denied finding property "ro.bootimage.build.fingerprint"
+09-02 14:39:50.451  5634 11062 W libc    : Access denied finding property "ro.vendor.aware_available"
+09-02 14:39:50.494 22946 22946 E libc    : SetHeapTaggingLevel: re-enabling tagging after it was disabled is not supported
+09-02 14:39:50.816  5634 22273 W libc    : Access denied finding property "ro.vendor.aware_available"
+09-02 14:39:50.883  1585  6310 W libc    : Access denied finding property "ro.bootimage.build.fingerprint"
+09-02 14:39:50.923  1585  6310 W libc    : Access denied finding property "ro.bootimage.build.fingerprint"
+09-02 14:39:51.071 23038 23038 D AndroidRuntime: >>>>>> START com.android.internal.os.RuntimeInit uid 2000 <<<<<<
+09-02 14:39:51.077 23038 23038 I AndroidRuntime: Using default boot image
+09-02 14:39:51.077 23038 23038 I AndroidRuntime: Leaving lock profiling enabled
+09-02 14:39:51.182 23038 23038 D AndroidRuntime: Calling main entry com.android.commands.am.Am
+09-02 14:39:51.248 23085 23085 I libc    : SetHeapTaggingLevel: tag level set to 0
+09-02 14:39:51.294 23038 23038 I AndroidRuntime: VM exiting with result code 0.
+09-02 14:39:51.535 23129 23129 D AndroidRuntime: >>>>>> START com.android.internal.os.RuntimeInit uid 2000 <<<<<<
+09-02 14:39:51.540 23129 23129 I AndroidRuntime: Using default boot image
+09-02 14:39:51.540 23129 23129 I AndroidRuntime: Leaving lock profiling enabled
+09-02 14:39:51.634 23129 23129 D AndroidRuntime: Calling main entry com.android.commands.am.Am
+09-02 14:39:51.664 23143 23143 I libc    : SetHeapTaggingLevel: tag level set to 0
+09-02 14:39:51.767 23158 23158 I libc    : SetHeapTaggingLevel: tag level set to 0
+09-02 14:39:52.116 15019 22075 W libc    : Access denied finding property "persist.adb.tls_server.enable"
+09-02 14:39:52.116 15019 22075 W libc    : Access denied finding property "service.adb.tls.port"
+09-02 14:39:52.829 15019 22460 W libc    : Access denied finding property "persist.adb.tls_server.enable"
+09-02 14:39:52.829 15019 22460 W libc    : Access denied finding property "service.adb.tls.port"
+09-02 14:39:53.182 23129 23129 I AndroidRuntime: VM exiting with result code 0.
+09-02 14:39:53.207 15607 15607 I AndroidRuntime: VM exiting with result code 0, cleanup skipped.
+09-02 14:39:53.224 15019 15027 W libc    : Access denied finding property "persist.adb.tls_server.enable"
+09-02 14:39:53.224 15019 15027 W libc    : Access denied finding property "service.adb.tls.port"
+09-02 14:39:53.336 23467 23467 D AndroidRuntime: >>>>>> START com.android.internal.os.RuntimeInit uid 2000 <<<<<<
+09-02 14:39:53.341 23467 23467 I AndroidRuntime: Using default boot image
+09-02 14:39:53.341 23467 23467 I AndroidRuntime: Leaving lock profiling enabled
+09-02 14:39:53.442 15019 15027 W libc    : Access denied finding property "persist.adb.tls_server.enable"
+09-02 14:39:53.442 15019 15027 W libc    : Access denied finding property "service.adb.tls.port"
+09-02 14:39:53.458 23467 23467 D AndroidRuntime: Calling main entry com.android.commands.content.Content
+09-02 14:39:53.481 23467 23467 D AndroidRuntime: Shutting down VM
+09-02 14:39:54.077 15019 22075 W libc    : Access denied finding property "persist.adb.tls_server.enable"
+09-02 14:39:54.077 15019 22075 W libc    : Access denied finding property "service.adb.tls.port"
+09-02 14:39:54.213 15019 22075 W libc    : Access denied finding property "persist.adb.tls_server.enable"
+09-02 14:39:54.214 15019 22075 W libc    : Access denied finding property "service.adb.tls.port"
+09-02 14:39:54.584 23735 23735 D AndroidRuntime: >>>>>> START com.android.internal.os.RuntimeInit uid 2000 <<<<<<
+09-02 14:39:54.588 23735 23735 I AndroidRuntime: Using default boot image
+09-02 14:39:54.588 23735 23735 I AndroidRuntime: Leaving lock profiling enabled
+09-02 14:39:54.704 23735 23735 D AndroidRuntime: Calling main entry com.android.commands.content.Content
+09-02 14:39:54.727 23735 23735 D AndroidRuntime: Shutting down VM
+09-02 14:39:54.902 15019 22460 W libc    : Access denied finding property "persist.adb.tls_server.enable"
+09-02 14:39:54.902 15019 22460 W libc    : Access denied finding property "service.adb.tls.port"
+09-02 14:39:56.276  5634 11062 W libc    : Access denied finding property "ro.vendor.aware_available"
+09-02 14:39:56.276  5634 11062 W libc    : Access denied finding property "ro.vendor.aware_available"
+09-02 14:39:59.988  1585  6310 W libc    : Access denied finding property "ro.bootimage.build.fingerprint"
+09-02 14:40:00.075  1585  6310 W libc    : Access denied finding property "ro.bootimage.build.fingerprint"
+09-02 14:40:00.119  1585  6310 W libc    : Access denied finding property "ro.bootimage.build.fingerprint"
+09-02 14:40:00.146  1585  6310 W libc    : Access denied finding property "ro.bootimage.build.fingerprint"
+09-02 14:40:03.838  1585  6310 W libc    : Access denied finding property "ro.bootimage.build.fingerprint"
+09-02 14:40:03.914  1585  6310 W libc    : Access denied finding property "ro.bootimage.build.fingerprint"
+09-02 14:40:04.283  1585  6310 W libc    : Access denied finding property "ro.bootimage.build.fingerprint"
+09-02 14:40:04.348  1585  6310 W libc    : Access denied finding property "ro.bootimage.build.fingerprint"
+09-02 14:40:04.728 24483 24483 D AndroidRuntime: >>>>>> START com.android.internal.os.RuntimeInit uid 2000 <<<<<<
+09-02 14:40:04.734 24483 24483 I AndroidRuntime: Using default boot image
+09-02 14:40:04.734 24483 24483 I AndroidRuntime: Leaving lock profiling enabled
+09-02 14:40:04.849 24483 24483 D AndroidRuntime: Calling main entry com.android.commands.content.Content
+09-02 14:40:04.857 24483 24483 D AndroidRuntime: Shutting down VM
+09-02 14:40:05.314 24505 24505 I AndroidRuntime: VM exiting with result code 0, cleanup skipped.
+09-02 14:40:05.488 24542 24542 I AndroidRuntime: VM exiting with result code 0, cleanup skipped.
+09-02 14:40:05.629 24563 24563 I AndroidRuntime: VM exiting with result code 0, cleanup skipped.
+09-02 14:40:06.357 24637 24637 D AndroidRuntime: >>>>>> START com.android.internal.os.RuntimeInit uid 2000 <<<<<<
+09-02 14:40:06.361 24637 24637 I AndroidRuntime: Using default boot image
+09-02 14:40:06.361 24637 24637 I AndroidRuntime: Leaving lock profiling enabled
+09-02 14:40:06.483 24637 24637 D AndroidRuntime: Calling main entry com.android.commands.content.Content
+09-02 14:40:06.667 24637 24637 D AndroidRuntime: Shutting down VM
+09-02 14:40:07.692 24723 24723 D AndroidRuntime: >>>>>> START com.android.internal.os.RuntimeInit uid 2000 <<<<<<
+09-02 14:40:07.698 24723 24723 I AndroidRuntime: Using default boot image
+09-02 14:40:07.698 24723 24723 I AndroidRuntime: Leaving lock profiling enabled
+09-02 14:40:07.803 24723 24723 D AndroidRuntime: Calling main entry com.android.commands.am.Am
+09-02 14:40:08.020 24754 24771 I TestRunner: run started: 1 tests
+09-02 14:40:08.021 24754 24771 I TestRunner: started: sweepThreads(io.github.alpharomercoma.openweights.core.engine.eval.SpeedProbe)
+09-02 14:40:08.090 24754 24773 I OpenWeights: using CPU backend libggml-cpu-android_armv9.0_1.so (score 55)
+09-02 14:40:08.130 24754 24773 W OpenWeights: ggml_opencl: unsupported GPU 'PowerVR D-Series DXT-48-1536'.
+09-02 14:40:08.131 24754 24773 W OpenWeights: ggml_opencl: drop unsupported device 'PowerVR D-Series DXT-48-1536'.
+09-02 14:40:08.131 24754 24773 I OpenWeights: OpenCL backend registered
+09-02 14:40:08.486 24754 24773 W OpenWeights: load: control-looking token: 128247 '</s>' was not control-type; this is probably a bug in the model. its type will be overridden
+09-02 14:40:16.138 24754 24773 I OpenWeights: kv: this template drops past thinking; every turn after a thought reply re-reads the conversation
+09-02 14:40:16.177 24754 24773 I OpenWeights: loaded: tools=true results=true thinking=true effort=false vision=false audio=false emits=text ctx=4096
+09-02 14:40:48.380 24754 24771 I TestRunner: finished: sweepThreads(io.github.alpharomercoma.openweights.core.engine.eval.SpeedProbe)
+09-02 14:40:48.387 24754 24771 I TestRunner: run finished: 1 tests, 0 failed, 0 ignored
+09-02 14:40:48.413 24723 24723 I AndroidRuntime: VM exiting with result code 0.
+09-02 14:40:48.836 25566 25566 D AndroidRuntime: >>>>>> START com.android.internal.os.RuntimeInit uid 2000 <<<<<<
+09-02 14:40:48.849 25566 25566 I AndroidRuntime: Using default boot image
+09-02 14:40:48.849 25566 25566 I AndroidRuntime: Leaving lock profiling enabled
+09-02 14:40:49.034 25566 25566 D AndroidRuntime: Calling main entry com.android.commands.content.Content
+09-02 14:40:49.059 25566 25566 D AndroidRuntime: Shutting down VM
+09-02 14:40:50.238 25601 25601 D AndroidRuntime: >>>>>> START com.android.internal.os.RuntimeInit uid 2000 <<<<<<
+09-02 14:40:50.242 25601 25601 I AndroidRuntime: Using default boot image
+09-02 14:40:50.242 25601 25601 I AndroidRuntime: Leaving lock profiling enabled
+09-02 14:40:50.369 25601 25601 D AndroidRuntime: Calling main entry com.android.commands.content.Content
+09-02 14:40:50.397 25601 25601 D AndroidRuntime: Shutting down VM
+09-02 14:41:05.536 25798 25798 D AndroidRuntime: >>>>>> START com.android.internal.os.RuntimeInit uid 2000 <<<<<<
+09-02 14:41:05.542 25798 25798 I AndroidRuntime: Using default boot image
+09-02 14:41:05.542 25798 25798 I AndroidRuntime: Leaving lock profiling enabled
+09-02 14:41:05.679 25798 25798 D AndroidRuntime: Calling main entry com.android.commands.am.Am
+09-02 14:41:05.751 25813 25813 I libc    : SetHeapTaggingLevel: tag level set to 0
+09-02 14:41:05.841 25798 25798 I AndroidRuntime: VM exiting with result code 0.
+09-02 14:41:06.068 25827 25827 D AndroidRuntime: >>>>>> START com.android.internal.os.RuntimeInit uid 2000 <<<<<<
+09-02 14:41:06.073 25827 25827 I AndroidRuntime: Using default boot image
+09-02 14:41:06.073 25827 25827 I AndroidRuntime: Leaving lock profiling enabled
+09-02 14:41:06.177 25827 25827 D AndroidRuntime: Calling main entry com.android.commands.am.Am
+09-02 14:41:06.232 25839 25839 I libc    : SetHeapTaggingLevel: tag level set to 0
+09-02 14:41:06.515 25827 25827 I AndroidRuntime: VM exiting with result code 0.
+09-02 14:41:06.760 24017 24017 I AndroidRuntime: VM exiting with result code 0, cleanup skipped.
+09-02 14:41:06.771 15019 22460 W libc    : Access denied finding property "persist.adb.tls_server.enable"
+09-02 14:41:06.771 15019 22460 W libc    : Access denied finding property "service.adb.tls.port"
+09-02 14:41:06.892 15019 15029 W libc    : Access denied finding property "persist.adb.tls_server.enable"
+09-02 14:41:06.893 15019 15029 W libc    : Access denied finding property "service.adb.tls.port"
+09-02 14:41:07.407  5634 22273 W libc    : Access denied finding property "ro.vendor.aware_available"

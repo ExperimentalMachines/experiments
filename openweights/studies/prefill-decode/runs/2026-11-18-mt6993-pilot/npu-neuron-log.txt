@@ -1,0 +1,60 @@
+11-18 12:09:19.590 32193 32193 W NeuronBackend: unknown compile spec: gno
+11-18 12:09:19.590 32193 32193 W NeuronBackend: unknown compile spec: gno-exp
+11-18 12:09:19.590 32193 32193 W NeuronBackend: unknown compile spec: gno-non-4d-tiling
+11-18 12:09:19.590 32193 32193 I NeuronBackend: IsImportForever Enable : 1
+11-18 12:09:19.590 32193 32193 W NeuronBackend: unknown compile spec: platform-config
+11-18 12:09:19.590 32193 32193 I NeuronBackend: SharedWeights Enabled for Qwen3-0.6B_A16W8_4_chunks_0
+11-18 12:09:19.661 32193 32193 I NeuronBackend: Loaded shared weights from named_data_map. Size: 139965440
+11-18 12:09:19.705 32193 32193 D APUWARELIB: ApuWare : open library libapuwareutils_v2.mtk.so
+11-18 12:09:19.706 32193 32193 E apuware_hidl: can't get getUtilsHidl service tried(1) times
+11-18 12:09:19.706 32193 32193 E apuware_hidl: can't get getUtilsHidl service, return
+11-18 12:09:19.826 32193 32193 I NeuronBackend: version 1, input 5, output 6, length 53267, payload size: 53280
+11-18 12:09:19.852 32193 32193 E NeuronBackend: Check fail: err != NEURON_NO_ERROR at line 155 at file /home/alpha/w/executorch/backends/mediatek/runtime/NeuronExecutor.cpp
+11-18 12:09:19.852 32193 32193 E NeuronBackend: Check fail: res != NEURON_NO_ERROR at line 167 at file /home/alpha/w/executorch/backends/mediatek/runtime/include/NeuronBackend.h
+11-18 12:09:19.852 32193 32193 W NeuronBackend: unknown compile spec: gno
+11-18 12:09:19.852 32193 32193 W NeuronBackend: unknown compile spec: gno-exp
+11-18 12:09:19.852 32193 32193 W NeuronBackend: unknown compile spec: gno-non-4d-tiling
+11-18 12:09:19.852 32193 32193 I NeuronBackend: IsImportForever Enable : 1
+11-18 12:09:19.852 32193 32193 W NeuronBackend: unknown compile spec: platform-config
+11-18 12:09:19.852 32193 32193 I NeuronBackend: SharedWeights Enabled for Qwen3-0.6B_A16W8_4_chunks_0
+11-18 12:09:19.852 32193 32193 I NeuronBackend: Reusing cached shared weights with key Qwen3-0.6B_A16W8_4_chunks_0
+11-18 12:09:19.852 32193 32193 I NeuronBackend: version 1, input 6, output 4, length 71165, payload size: 71178
+11-18 12:09:19.853 32193 32193 E NeuronBackend: Check fail: err != NEURON_NO_ERROR at line 155 at file /home/alpha/w/executorch/backends/mediatek/runtime/NeuronExecutor.cpp
+11-18 12:09:19.853 32193 32193 E NeuronBackend: Check fail: res != NEURON_NO_ERROR at line 167 at file /home/alpha/w/executorch/backends/mediatek/runtime/include/NeuronBackend.h
+11-18 12:09:19.853 32193 32193 W NeuronBackend: unknown compile spec: gno
+11-18 12:09:19.853 32193 32193 W NeuronBackend: unknown compile spec: gno-exp
+11-18 12:09:19.853 32193 32193 W NeuronBackend: unknown compile spec: gno-non-4d-tiling
+11-18 12:09:19.853 32193 32193 I NeuronBackend: IsImportForever Enable : 1
+11-18 12:09:19.853 32193 32193 W NeuronBackend: unknown compile spec: platform-config
+11-18 12:09:19.853 32193 32193 I NeuronBackend: SharedWeights Enabled for Qwen3-0.6B_A16W8_4_chunks_0
+11-18 12:09:19.853 32193 32193 I NeuronBackend: Reusing cached shared weights with key Qwen3-0.6B_A16W8_4_chunks_0
+11-18 12:09:19.853 32193 32193 I NeuronBackend: version 1, input 6, output 4, length 71165, payload size: 71178
+11-18 12:09:19.854 32193 32193 E NeuronBackend: Check fail: err != NEURON_NO_ERROR at line 155 at file /home/alpha/w/executorch/backends/mediatek/runtime/NeuronExecutor.cpp
+11-18 12:09:19.854 32193 32193 E NeuronBackend: Check fail: res != NEURON_NO_ERROR at line 167 at file /home/alpha/w/executorch/backends/mediatek/runtime/include/NeuronBackend.h
+11-18 12:09:19.854 32193 32193 W NeuronBackend: unknown compile spec: gno
+11-18 12:09:19.854 32193 32193 W NeuronBackend: unknown compile spec: gno-exp
+11-18 12:09:19.854 32193 32193 W NeuronBackend: unknown compile spec: gno-non-4d-tiling
+11-18 12:09:19.854 32193 32193 I NeuronBackend: IsImportForever Enable : 1
+11-18 12:09:19.854 32193 32193 W NeuronBackend: unknown compile spec: platform-config
+11-18 12:09:19.854 32193 32193 I NeuronBackend: SharedWeights Enabled for Qwen3-0.6B_A16W8_4_chunks_0
+11-18 12:09:19.854 32193 32193 I NeuronBackend: Reusing cached shared weights with key Qwen3-0.6B_A16W8_4_chunks_0
+11-18 12:09:19.854 32193 32193 I NeuronBackend: version 1, input 6, output 4, length 71165, payload size: 71178
+11-18 12:09:19.855 32193 32193 E NeuronBackend: Check fail: err != NEURON_NO_ERROR at line 155 at file /home/alpha/w/executorch/backends/mediatek/runtime/NeuronExecutor.cpp
+11-18 12:09:19.855 32193 32193 E NeuronBackend: Check fail: res != NEURON_NO_ERROR at line 167 at file /home/alpha/w/executorch/backends/mediatek/runtime/include/NeuronBackend.h
+11-18 12:09:19.855 32193 32193 W NeuronBackend: unknown compile spec: gno
+11-18 12:09:19.855 32193 32193 W NeuronBackend: unknown compile spec: gno-exp
+11-18 12:09:19.855 32193 32193 W NeuronBackend: unknown compile spec: gno-non-4d-tiling
+11-18 12:09:19.855 32193 32193 I NeuronBackend: IsImportForever Enable : 1
+11-18 12:09:19.855 32193 32193 W NeuronBackend: unknown compile spec: platform-config
+11-18 12:09:19.855 32193 32193 I NeuronBackend: SharedWeights Enabled for Qwen3-0.6B_A16W8_4_chunks_0
+11-18 12:09:19.855 32193 32193 I NeuronBackend: Reusing cached shared weights with key Qwen3-0.6B_A16W8_4_chunks_0
+11-18 12:09:19.855 32193 32193 I NeuronBackend: version 1, input 6, output 4, length 71165, payload size: 71178
+11-18 12:09:19.856 32193 32193 E NeuronBackend: Check fail: err != NEURON_NO_ERROR at line 155 at file /home/alpha/w/executorch/backends/mediatek/runtime/NeuronExecutor.cpp
+11-18 12:09:19.856 32193 32193 E NeuronBackend: Check fail: res != NEURON_NO_ERROR at line 167 at file /home/alpha/w/executorch/backends/mediatek/runtime/include/NeuronBackend.h
+11-18 12:09:19.856 32193 32193 W NeuronBackend: unknown compile spec: gno
+11-18 12:09:19.856 32193 32193 W NeuronBackend: unknown compile spec: gno-exp
+11-18 12:09:19.856 32193 32193 W NeuronBackend: unknown compile spec: gno-non-4d-tiling
+11-18 12:09:19.856 32193 32193 I NeuronBackend: IsImportForever Enable : 1
+11-18 12:09:19.856 32193 32193 W NeuronBackend: unknown compile spec: platform-config
+11-18 12:09:19.856 32193 32193 I NeuronBackend: SharedWeights Enabled for Qwen3-0.6B_A16W8_4_chunks_0
+11-18 12:09:19.856 32193 32193 I NeuronBackend: Reusing cached shared weights with key Qwen3-0.6B_A16W8_4_chunks_0

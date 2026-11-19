@@ -1,0 +1,57 @@
+#!/bin/sh
+# The public benchmarks on the phone over adb: every pushed model, both engines, no
+# time box worth speaking of. Results land in openweights/studies/on-device-evals/runs/ unprefixed, which is
+# the Dimensity's column.
+#
+#   openweights/harness/app-evals/bench/run_local.sh [adb-serial]        BENCH_MODEL=<substring> narrows;
+#                                                     PREFIX=qdc- names another phone's column
+#                                                     CONTEXT=0 loads each .pte at its own exported window
+#                                                     CLASSES narrows to one eval class
+#                                                     SETS=gsm8k,ifeval narrows the sets; CAP=2048 caps every reply
+#
+# The instrumentation is started detached rather than with -w: a wireless-debugging
+# session that drops takes an attached run with it, and one did at prompt 54. The
+# script polls for the test process instead, and pulls whatever reports exist.
+set -eu
+SERIAL=${1:-}
+ADB="adb ${SERIAL:+-s $SERIAL}"
+PKG=io.github.alpharomercoma.openweights.core.engine.test
+RUNNER=androidx.test.runner.AndroidJUnitRunner
+EVAL=/data/local/tmp/openweights/eval
+HERE=$(cd "$(dirname "$0")" && pwd)
+ROOT=${OPENWEIGHTS:?set OPENWEIGHTS to an openweights checkout}
+OUT="$HERE/../../../studies/on-device-evals/runs"
+APK="$ROOT/core/engine/build/outputs/apk/androidTest/debug/engine-debug-androidTest.apk"
+MODEL=${BENCH_MODEL:-}
+PREFIX=${PREFIX:-}
+
+# A dozing phone throttles instrumentation to a fraction of its speed (2x to 5x, with wild
+# variance, measured 2026-09-07); awake and unlocked for the whole run.
+# Saved first and put back on the way out: "never" outlasted a run and sat on a daily phone.
+SCREEN_TIMEOUT=$($ADB shell settings get system screen_off_timeout 2>/dev/null | tr -d '\r' || true)
+# Bounded, because this runs on the way out and a dropped phone would hang it.
+restore_screen() {
+  [ -z "$SCREEN_TIMEOUT" ] ||
+    perl -e 'alarm 30; exec @ARGV' $ADB shell settings put system screen_off_timeout "$SCREEN_TIMEOUT" >/dev/null 2>&1 ||
+    echo "could not put the screen timeout back to $SCREEN_TIMEOUT; set it on the phone" >&2
+}
+trap restore_screen EXIT
+$ADB shell "settings put system screen_off_timeout 2147483647; input keyevent KEYCODE_WAKEUP; wm dismiss-keyguard" >/dev/null 2>&1 || true
+$ADB push "$HERE/benchmarks.json" "$EVAL/benchmarks.json" >/dev/null
+$ADB push "$APK" /data/local/tmp/owtest.apk >/dev/null
+$ADB shell pm install -r -t --user 0 /data/local/tmp/owtest.apk
+# Reports from an earlier run survive a reinstall in the package's external files, so only
+# files newer than this marker are pulled; a failed class cannot pass off an old report.
+$ADB shell "touch /data/local/tmp/bench-start"
+for class in ${CLASSES:-ExecuTorchBenchmarkEval LlamaCppBenchmarkEval}; do
+  echo "== $class $(date +%H:%M)"
+  $ADB shell "nohup am instrument -r -e budget 600 ${MODEL:+-e model $MODEL} ${CONTEXT:+-e context $CONTEXT} ${SETS:+-e sets $SETS} ${CAP:+-e cap $CAP} -e class io.github.alpharomercoma.openweights.core.engine.eval.$class $PKG/$RUNNER >/data/local/tmp/bench-$class.log 2>&1 &"
+  n=0; until $ADB shell pidof $PKG >/dev/null 2>&1 || [ $n -ge 12 ]; do sleep 5; n=$((n + 1)); done
+  while $ADB shell pidof $PKG >/dev/null 2>&1; do sleep 60; done
+  $ADB shell "grep -E 'INSTRUMENTATION_(RESULT|STATUS: stack)' /data/local/tmp/bench-$class.log | head -3" || true
+done
+TMP=$(mktemp -d)
+for f in $($ADB shell "find /sdcard/Android/data/$PKG/files/eval-results -name '*.bench*.json' -newer /data/local/tmp/bench-start"); do
+  $ADB pull "$f" "$TMP/" >/dev/null && cp "$TMP/$(basename "$f")" "$OUT/$PREFIX$(basename "$f")" && echo "   $PREFIX$(basename "$f")"
+done
+echo "== done $(date +%H:%M)"

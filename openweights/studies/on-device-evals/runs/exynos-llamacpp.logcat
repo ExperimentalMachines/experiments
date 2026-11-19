@@ -1,0 +1,195 @@
+09-02 14:04:56.409  1111  4318 W libc    : Access denied finding property "ro.bootimage.build.fingerprint"
+09-02 14:04:56.574  1111  4318 W libc    : Access denied finding property "ro.bootimage.build.fingerprint"
+09-02 14:05:01.267 19415 19415 D AndroidRuntime: >>>>>> START com.android.internal.os.RuntimeInit uid 2000 <<<<<<
+09-02 14:05:01.291 19415 19415 I AndroidRuntime: Using default boot image
+09-02 14:05:01.291 19415 19415 I AndroidRuntime: Leaving lock profiling enabled
+09-02 14:05:01.499 19415 19415 D AndroidRuntime: Calling main entry com.android.commands.am.Am
+09-02 14:05:01.782 19415 19415 I AndroidRuntime: VM exiting with result code 0.
+09-02 14:05:03.380 24603 24603 W libc    : Access denied finding property "persist.dm.passive.display_brightness"
+09-02 14:05:03.380 24603 24603 W libc    : Access denied finding property "persist.dm.passive.ambient_brightness"
+09-02 14:05:03.440 20111 20111 E libc    : SetHeapTaggingLevel: re-enabling tagging after it was disabled is not supported
+09-02 14:05:03.528 20080 20080 W libc    : Unable to set property "persist.sys.language" to "en": PROP_ERROR_PERMISSION_DENIED (0x18)
+09-02 14:05:03.529 20080 20080 W libc    : Unable to set property "persist.sys.language" to "en": PROP_ERROR_PERMISSION_DENIED (0x18)
+09-02 14:05:03.531 20080 20080 W libc    : Unable to set property "persist.sys.language" to "en": PROP_ERROR_PERMISSION_DENIED (0x18)
+09-02 14:05:03.581 20205 20205 W libc    : Unable to set property "persist.sys.language" to "en": PROP_ERROR_PERMISSION_DENIED (0x18)
+09-02 14:05:03.581 20205 20205 W libc    : Unable to set property "persist.sys.language" to "en": PROP_ERROR_PERMISSION_DENIED (0x18)
+09-02 14:05:03.581 20205 20205 W libc    : Unable to set property "persist.sys.language" to "en": PROP_ERROR_PERMISSION_DENIED (0x18)
+09-02 14:05:03.720 20283 20283 W libc    : Unable to set property "ro.product.locale.language" to "en": PROP_ERROR_PERMISSION_DENIED (0x18)
+09-02 14:05:03.720 20283 20283 W libc    : Unable to set property "ro.product.locale.language" to "en": PROP_ERROR_PERMISSION_DENIED (0x18)
+09-02 14:05:03.720 20283 20283 W libc    : Unable to set property "ro.product.locale.language" to "en": PROP_ERROR_PERMISSION_DENIED (0x18)
+09-02 14:05:03.738 20341 20341 W libc    : Unable to set property "ro.product.locale.language" to "en": PROP_ERROR_PERMISSION_DENIED (0x18)
+09-02 14:05:03.738 20341 20341 W libc    : Unable to set property "ro.product.locale.language" to "en": PROP_ERROR_PERMISSION_DENIED (0x18)
+09-02 14:05:03.738 20341 20341 W libc    : Unable to set property "ro.product.locale.language" to "en": PROP_ERROR_PERMISSION_DENIED (0x18)
+09-02 14:05:03.822 20352 20352 W libc    : Unable to set property "persist.sys.locale" to "en": PROP_ERROR_PERMISSION_DENIED (0x18)
+09-02 14:05:03.822 20352 20352 W libc    : Unable to set property "persist.sys.locale" to "en": PROP_ERROR_PERMISSION_DENIED (0x18)
+09-02 14:05:03.822 20352 20352 W libc    : Unable to set property "persist.sys.locale" to "en": PROP_ERROR_PERMISSION_DENIED (0x18)
+09-02 14:05:03.931 20395 20395 W libc    : Unable to set property "persist.sys.locale" to "en": PROP_ERROR_PERMISSION_DENIED (0x18)
+09-02 14:05:03.931 20395 20395 W libc    : Unable to set property "persist.sys.locale" to "en": PROP_ERROR_PERMISSION_DENIED (0x18)
+09-02 14:05:03.931 20395 20395 W libc    : Unable to set property "persist.sys.locale" to "en": PROP_ERROR_PERMISSION_DENIED (0x18)
+09-02 14:05:04.287  1111  4318 W libc    : Access denied finding property "ro.bootimage.build.fingerprint"
+09-02 14:05:04.368  1111  4318 W libc    : Access denied finding property "ro.bootimage.build.fingerprint"
+09-02 14:05:04.877  1111  4318 W libc    : Access denied finding property "ro.bootimage.build.fingerprint"
+09-02 14:05:04.953  1111  4318 W libc    : Access denied finding property "ro.bootimage.build.fingerprint"
+09-02 14:05:05.098 20737 20737 D AndroidRuntime: >>>>>> START com.android.internal.os.RuntimeInit uid 2000 <<<<<<
+09-02 14:05:05.102 20737 20737 I AndroidRuntime: Using default boot image
+09-02 14:05:05.102 20737 20737 I AndroidRuntime: Leaving lock profiling enabled
+09-02 14:05:05.184 20737 20737 D AndroidRuntime: Calling main entry com.android.commands.am.Am
+09-02 14:05:05.215 20835 20835 I libc    : SetHeapTaggingLevel: tag level set to 0
+09-02 14:05:05.302 20737 20737 I AndroidRuntime: VM exiting with result code 0.
+09-02 14:05:05.575 20931 20931 D AndroidRuntime: >>>>>> START com.android.internal.os.RuntimeInit uid 2000 <<<<<<
+09-02 14:05:05.578 20931 20931 I AndroidRuntime: Using default boot image
+09-02 14:05:05.578 20931 20931 I AndroidRuntime: Leaving lock profiling enabled
+09-02 14:05:05.650 20931 20931 D AndroidRuntime: Calling main entry com.android.commands.am.Am
+09-02 14:05:05.674 20990 20990 I libc    : SetHeapTaggingLevel: tag level set to 0
+09-02 14:05:05.775 21044 21044 I libc    : SetHeapTaggingLevel: tag level set to 0
+09-02 14:05:06.135 24209 26308 W libc    : Access denied finding property "persist.adb.tls_server.enable"
+09-02 14:05:06.135 24209 26308 W libc    : Access denied finding property "service.adb.tls.port"
+09-02 14:05:06.905 24209 24533 W libc    : Access denied finding property "persist.adb.tls_server.enable"
+09-02 14:05:06.905 24209 24533 W libc    : Access denied finding property "service.adb.tls.port"
+09-02 14:05:07.099 24209 24533 W libc    : Access denied finding property "persist.adb.tls_server.enable"
+09-02 14:05:07.102 24209 24533 W libc    : Access denied finding property "service.adb.tls.port"
+09-02 14:05:07.160 20931 20931 I AndroidRuntime: VM exiting with result code 0.
+09-02 14:05:07.640 21388 21388 D AndroidRuntime: >>>>>> START com.android.internal.os.RuntimeInit uid 2000 <<<<<<
+09-02 14:05:07.646 21388 21388 I AndroidRuntime: Using default boot image
+09-02 14:05:07.646 21388 21388 I AndroidRuntime: Leaving lock profiling enabled
+09-02 14:05:07.689 24955 24955 I AndroidRuntime: VM exiting with result code 0, cleanup skipped.
+09-02 14:05:07.746 21388 21388 D AndroidRuntime: Calling main entry com.android.commands.content.Content
+09-02 14:05:07.757 21388 21388 D AndroidRuntime: Shutting down VM
+09-02 14:05:08.106 24209 24533 W libc    : Access denied finding property "persist.adb.tls_server.enable"
+09-02 14:05:08.106 24209 24533 W libc    : Access denied finding property "service.adb.tls.port"
+09-02 14:05:08.800 21817 21817 D AndroidRuntime: >>>>>> START com.android.internal.os.RuntimeInit uid 2000 <<<<<<
+09-02 14:05:08.803 21817 21817 I AndroidRuntime: Using default boot image
+09-02 14:05:08.803 21817 21817 I AndroidRuntime: Leaving lock profiling enabled
+09-02 14:05:08.879 21817 21817 D AndroidRuntime: Calling main entry com.android.commands.content.Content
+09-02 14:05:08.885 21817 21817 D AndroidRuntime: Shutting down VM
+09-02 14:05:09.061 24209 24533 W libc    : Access denied finding property "persist.adb.tls_server.enable"
+09-02 14:05:09.061 24209 24533 W libc    : Access denied finding property "service.adb.tls.port"
+09-02 14:05:09.118 24209 26308 W libc    : Access denied finding property "persist.adb.tls_server.enable"
+09-02 14:05:09.118 24209 26308 W libc    : Access denied finding property "service.adb.tls.port"
+09-02 14:05:09.946  1111  4541 I HeimdAllFS: DEBUG: TRUE Dry-run: FALSE Last-run:  mForceService: FALSE mForceDefragService: FALSE mForceCompressService:  mIsUserTrial: false
+09-02 14:05:10.064  1111  4541 I HeimdAllFS: DEBUG: TRUE Dry-run: FALSE Last-run:  mForceService: FALSE mForceDefragService: FALSE mForceCompressService:  mIsUserTrial: false
+09-02 14:05:10.255 21974 21974 E libc    : SetHeapTaggingLevel: re-enabling tagging after it was disabled is not supported
+09-02 14:05:10.492  1111  4318 W libc    : Access denied finding property "ro.bootimage.build.fingerprint"
+09-02 14:05:10.671  1111  4318 W libc    : Access denied finding property "ro.bootimage.build.fingerprint"
+09-02 14:05:10.700  1111  2715 I HeimdAllFS: DEBUG: TRUE Dry-run: FALSE Last-run:  mForceService: FALSE mForceDefragService: FALSE mForceCompressService:  mIsUserTrial: false
+09-02 14:05:10.773  1111  5709 I HeimdAllFS: DEBUG: TRUE Dry-run: FALSE Last-run:  mForceService: FALSE mForceDefragService: FALSE mForceCompressService:  mIsUserTrial: false
+09-02 14:05:11.406  1111  4318 W libc    : Access denied finding property "ro.bootimage.build.fingerprint"
+09-02 14:05:11.486  1111  4318 W libc    : Access denied finding property "ro.bootimage.build.fingerprint"
+09-02 14:05:11.622  1111  7553 I HeimdAllFS: DEBUG: TRUE Dry-run: FALSE Last-run:  mForceService: FALSE mForceDefragService: FALSE mForceCompressService:  mIsUserTrial: false
+09-02 14:05:11.709  1111  7553 I HeimdAllFS: DEBUG: TRUE Dry-run: FALSE Last-run:  mForceService: FALSE mForceDefragService: FALSE mForceCompressService:  mIsUserTrial: false
+09-02 14:05:16.468 22660 22660 I AndroidRuntime: VM exiting with result code 0, cleanup skipped.
+09-02 14:05:16.623 22723 22723 I AndroidRuntime: VM exiting with result code 0, cleanup skipped.
+09-02 14:05:16.748 22791 22791 E libc    : SetHeapTaggingLevel: re-enabling tagging after it was disabled is not supported
+09-02 14:05:16.810 22805 22805 E libc    : SetHeapTaggingLevel: re-enabling tagging after it was disabled is not supported
+09-02 14:05:16.834  1111  4318 W libc    : Access denied finding property "ro.bootimage.build.fingerprint"
+09-02 14:05:16.965 22774 22774 I AndroidRuntime: VM exiting with result code 0, cleanup skipped.
+09-02 14:05:16.968  1111  4318 W libc    : Access denied finding property "ro.bootimage.build.fingerprint"
+09-02 14:05:17.105 22852 22852 I AndroidRuntime: VM exiting with result code 0, cleanup skipped.
+09-02 14:05:17.369  1111  4318 W libc    : Access denied finding property "ro.bootimage.build.fingerprint"
+09-02 14:05:17.496  1111  4318 W libc    : Access denied finding property "ro.bootimage.build.fingerprint"
+09-02 14:05:17.800 22961 22961 D AndroidRuntime: >>>>>> START com.android.internal.os.RuntimeInit uid 2000 <<<<<<
+09-02 14:05:17.803 22961 22961 I AndroidRuntime: Using default boot image
+09-02 14:05:17.803 22961 22961 I AndroidRuntime: Leaving lock profiling enabled
+09-02 14:05:17.883 22961 22961 D AndroidRuntime: Calling main entry com.android.commands.content.Content
+09-02 14:05:17.893 22961 22961 D AndroidRuntime: Shutting down VM
+09-02 14:05:19.107 24209 24533 W libc    : Access denied finding property "persist.adb.tls_server.enable"
+09-02 14:05:19.107 24209 24533 W libc    : Access denied finding property "service.adb.tls.port"
+09-02 14:05:19.351 23103 23103 D AndroidRuntime: >>>>>> START com.android.internal.os.RuntimeInit uid 2000 <<<<<<
+09-02 14:05:19.354 23103 23103 I AndroidRuntime: Using default boot image
+09-02 14:05:19.354 23103 23103 I AndroidRuntime: Leaving lock profiling enabled
+09-02 14:05:19.432 23103 23103 D AndroidRuntime: Calling main entry com.android.commands.content.Content
+09-02 14:05:19.599 23103 23103 D AndroidRuntime: Shutting down VM
+09-02 14:05:20.311 24209 24237 W libc    : Access denied finding property "persist.adb.tls_server.enable"
+09-02 14:05:20.311 24209 24237 W libc    : Access denied finding property "service.adb.tls.port"
+09-02 14:05:20.584 23230 23230 D AndroidRuntime: >>>>>> START com.android.internal.os.RuntimeInit uid 2000 <<<<<<
+09-02 14:05:20.588 23230 23230 I AndroidRuntime: Using default boot image
+09-02 14:05:20.588 23230 23230 I AndroidRuntime: Leaving lock profiling enabled
+09-02 14:05:20.676 23230 23230 D AndroidRuntime: Calling main entry com.android.commands.am.Am
+09-02 14:05:20.910 23247 23261 I TestRunner: run started: 1 tests
+09-02 14:05:20.911 23247 23261 I TestRunner: started: evaluateEveryPushedGguf(io.github.alpharomercoma.openweights.core.engine.eval.LlamaCppParityEval)
+09-02 14:05:21.008 23247 23270 I OpenWeights: using CPU backend libggml-cpu-android_armv9.0_1.so (score 55)
+09-02 14:05:21.028 23247 23270 W libc    : Access denied finding property "vendor.socl.trace.events"
+09-02 14:05:21.028 23247 23270 W libc    : Access denied finding property "vendor.socl.pagefault.dump"
+09-02 14:05:21.045 23247 23270 W OpenWeights: ggml_opencl: unsupported GPU 'Samsung Xclipse 940'.
+09-02 14:05:21.046 23247 23270 W OpenWeights: ggml_opencl: drop unsupported device 'Samsung Xclipse 940'.
+09-02 14:05:21.046 23247 23270 I OpenWeights: OpenCL backend registered
+09-02 14:05:21.206 24209 24533 W libc    : Access denied finding property "persist.adb.tls_server.enable"
+09-02 14:05:21.206 24209 24533 W libc    : Access denied finding property "service.adb.tls.port"
+09-02 14:05:24.204 23247 23270 I OpenWeights: kv: this template keeps past thinking inline; replaying it verbatim
+09-02 14:05:24.212 23247 23270 I OpenWeights: loaded: tools=true results=true thinking=false effort=false vision=false audio=false emits=text ctx=4096
+09-02 14:05:24.226 23247 23270 W OpenWeights: kleidiai: no kernel for tensor type q6_K, not accelerated by KleidiAI (kernels available for Q4_0 and Q8_0)
+09-02 14:05:24.556 24209 24237 W libc    : Access denied finding property "persist.adb.tls_server.enable"
+09-02 14:05:24.557 24209 24237 W libc    : Access denied finding property "service.adb.tls.port"
+09-02 14:05:25.271 24209 24533 W libc    : Access denied finding property "persist.adb.tls_server.enable"
+09-02 14:05:25.272 24209 24533 W libc    : Access denied finding property "service.adb.tls.port"
+09-02 14:05:26.985 23247 23270 I OpenWeights: kv: diverged at 5 of 39 cached, prompt 47, re-reading 42
+09-02 14:05:26.985 23247 23270 I OpenWeights: kv: rollback to 5 refused (recurrent state), re-reading all 47
+09-02 14:05:27.796 23247 23270 I OpenWeights: kv: diverged at 4 of 48 cached, prompt 32, re-reading 28
+09-02 14:05:27.796 23247 23270 I OpenWeights: kv: rollback to 4 refused (recurrent state), re-reading all 32
+09-02 14:05:28.756 23247 23270 I OpenWeights: kv: diverged at 4 of 44 cached, prompt 91, re-reading 87
+09-02 14:05:28.756 23247 23270 I OpenWeights: kv: rollback to 4 refused (recurrent state), re-reading all 91
+09-02 14:05:29.668 23247 23270 I OpenWeights: kv: diverged at 4 of 94 cached, prompt 20, re-reading 16
+09-02 14:05:29.668 23247 23270 I OpenWeights: kv: rollback to 4 refused (recurrent state), re-reading all 20
+09-02 14:05:32.296 23247 23270 I OpenWeights: kv: diverged at 2 of 86 cached, prompt 97, re-reading 95
+09-02 14:05:32.296 23247 23270 I OpenWeights: kv: rollback to 2 refused (recurrent state), re-reading all 97
+09-02 14:05:39.215 23247 24244 I OpenWeights: kv: this template keeps past thinking inline; replaying it verbatim
+09-02 14:05:39.243 23247 24244 I OpenWeights: loaded: tools=true results=true thinking=false effort=false vision=false audio=false emits=text ctx=4096
+09-02 14:05:40.742 23247 24244 I OpenWeights: kv: diverged at 30 of 65 cached, prompt 70, re-reading 40
+09-02 14:05:41.655 23247 24244 I OpenWeights: kv: diverged at 30 of 71 cached, prompt 57, re-reading 27
+09-02 14:06:02.100 23247 24244 I OpenWeights: kv: diverged at 30 of 238 cached, prompt 115, re-reading 85
+09-02 14:06:04.955 23247 24244 I OpenWeights: kv: diverged at 30 of 118 cached, prompt 45, re-reading 15
+09-02 14:06:11.450 23247 24244 I OpenWeights: kv: diverged at 5 of 110 cached, prompt 194, re-reading 189
+09-02 14:06:23.941 23247 25969 W OpenWeights: load: control-looking token: 128247 '</s>' was not control-type; this is probably a bug in the model. its type will be overridden
+09-02 14:06:37.232 23247 25969 I OpenWeights: kv: this template drops past thinking; every turn after a thought reply re-reads the conversation
+09-02 14:06:37.299 23247 25969 I OpenWeights: loaded: tools=true results=true thinking=true effort=false vision=false audio=false emits=text ctx=4096
+09-02 14:07:55.052 23247 25969 I OpenWeights: kv: diverged at 3 of 806 cached, prompt 46, re-reading 43
+09-02 14:08:28.377 23247 25969 I OpenWeights: kv: diverged at 3 of 390 cached, prompt 30, re-reading 27
+09-02 14:08:55.979 23247 25969 I OpenWeights: kv: diverged at 3 of 316 cached, prompt 93, re-reading 90
+09-02 14:09:30.103 23247 25969 I OpenWeights: kv: diverged at 3 of 419 cached, prompt 18, re-reading 15
+09-02 14:09:52.600 23247 25969 I OpenWeights: kv: diverged at 17 of 233 cached, prompt 82, re-reading 65
+09-02 14:10:13.766 23247 25969 I OpenWeights: kv: diverged at 1 of 271 cached, prompt 167, re-reading 166
+09-02 14:10:51.381 23247  9172 I OpenWeights: kv: this template keeps past thinking inline; replaying it verbatim
+09-02 14:10:51.407 23247  9172 I OpenWeights: loaded: tools=false results=true thinking=true effort=false vision=false audio=false emits=text ctx=4096
+09-02 14:11:31.370 23247  9172 I OpenWeights: kv: diverged at 243 of 504 cached, prompt 283, re-reading 40
+09-02 14:12:15.606 23247  9172 I OpenWeights: kv: diverged at 243 of 606 cached, prompt 270, re-reading 27
+09-02 14:12:56.890 23247  9172 I OpenWeights: kv: diverged at 243 of 571 cached, prompt 328, re-reading 85
+09-02 14:13:34.210 23247  9172 I OpenWeights: kv: diverged at 243 of 573 cached, prompt 258, re-reading 15
+09-02 14:14:39.173 23247  9172 I OpenWeights: kv: diverged at 243 of 742 cached, prompt 260, re-reading 17
+09-02 14:17:03.949 23247 25266 W OpenWeights: load: control-looking token:    212 '</s>' was not control-type; this is probably a bug in the model. its type will be overridden
+09-02 14:17:07.988 23247 25266 W OpenWeights: llama_kv_cache_iswa: using full-size SWA cache (ref: https://github.com/ggml-org/llama.cpp/pull/13194#issuecomment-2868343055)
+09-02 14:17:08.081 23247 25266 I OpenWeights: kv: this template keeps past thinking inline; replaying it verbatim
+09-02 14:17:08.137 23247 25266 I OpenWeights: loaded: tools=false results=false thinking=false effort=false vision=false audio=false emits=text ctx=4096
+09-02 14:17:09.087 23247 25266 I OpenWeights: kv: diverged at 4 of 41 cached, prompt 47, re-reading 43
+09-02 14:17:10.085 23247 25266 I OpenWeights: kv: diverged at 4 of 49 cached, prompt 31, re-reading 27
+09-02 14:17:12.328 23247 25266 I OpenWeights: kv: diverged at 4 of 55 cached, prompt 90, re-reading 86
+09-02 14:17:14.841 23247 25266 I OpenWeights: kv: diverged at 4 of 94 cached, prompt 19, re-reading 15
+09-02 14:17:18.221 23247 23261 I TestRunner: finished: evaluateEveryPushedGguf(io.github.alpharomercoma.openweights.core.engine.eval.LlamaCppParityEval)
+09-02 14:17:18.227 23247 23261 I TestRunner: run finished: 1 tests, 0 failed, 0 ignored
+09-02 14:17:18.258 23230 23230 I AndroidRuntime: VM exiting with result code 0.
+09-02 14:17:18.985 25736 25736 D AndroidRuntime: >>>>>> START com.android.internal.os.RuntimeInit uid 2000 <<<<<<
+09-02 14:17:19.011 25736 25736 I AndroidRuntime: Using default boot image
+09-02 14:17:19.011 25736 25736 I AndroidRuntime: Leaving lock profiling enabled
+09-02 14:17:19.314 25736 25736 D AndroidRuntime: Calling main entry com.android.commands.content.Content
+09-02 14:17:19.358 25736 25736 D AndroidRuntime: Shutting down VM
+09-02 14:17:20.620 25775 25775 D AndroidRuntime: >>>>>> START com.android.internal.os.RuntimeInit uid 2000 <<<<<<
+09-02 14:17:20.625 25775 25775 I AndroidRuntime: Using default boot image
+09-02 14:17:20.626 25775 25775 I AndroidRuntime: Leaving lock profiling enabled
+09-02 14:17:20.743 25775 25775 D AndroidRuntime: Calling main entry com.android.commands.content.Content
+09-02 14:17:20.758 25775 25775 D AndroidRuntime: Shutting down VM
+09-02 14:17:33.935 25968 25968 D AndroidRuntime: >>>>>> START com.android.internal.os.RuntimeInit uid 2000 <<<<<<
+09-02 14:17:33.939 25968 25968 I AndroidRuntime: Using default boot image
+09-02 14:17:33.939 25968 25968 I AndroidRuntime: Leaving lock profiling enabled
+09-02 14:17:34.034 25968 25968 D AndroidRuntime: Calling main entry com.android.commands.am.Am
+09-02 14:17:34.067 25986 25986 I libc    : SetHeapTaggingLevel: tag level set to 0
+09-02 14:17:34.179 25968 25968 I AndroidRuntime: VM exiting with result code 0.
+09-02 14:17:34.370 26003 26003 D AndroidRuntime: >>>>>> START com.android.internal.os.RuntimeInit uid 2000 <<<<<<
+09-02 14:17:34.374 26003 26003 I AndroidRuntime: Using default boot image
+09-02 14:17:34.374 26003 26003 I AndroidRuntime: Leaving lock profiling enabled
+09-02 14:17:34.450 26003 26003 D AndroidRuntime: Calling main entry com.android.commands.am.Am
+09-02 14:17:34.477 26015 26015 I libc    : SetHeapTaggingLevel: tag level set to 0
+09-02 14:17:34.772 26003 26003 I AndroidRuntime: VM exiting with result code 0.
+09-02 14:17:35.244 24209 24237 W libc    : Access denied finding property "persist.adb.tls_server.enable"
+09-02 14:17:35.244 24209 24237 W libc    : Access denied finding property "service.adb.tls.port"
+09-02 14:17:35.293 24209 26308 W libc    : Access denied finding property "persist.adb.tls_server.enable"
+09-02 14:17:35.293 24209 26308 W libc    : Access denied finding property "service.adb.tls.port"
+09-02 14:17:35.561 21576 21576 I AndroidRuntime: VM exiting with result code 0, cleanup skipped.
