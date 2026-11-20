@@ -126,14 +126,21 @@ def is_text(path: str, data: bytes) -> bool:
     return True
 
 
+# Line-oriented records: a stray non-UTF-8 byte does not stop them being text.
+RECORD_SUFFIXES = {".log", ".logcat", ".txt", ".out", ".err", ".json", ".jsonl", ".csv", ".tsv", ".md", ".patch", ".diff"}
+# The only files whose bytes an edit, a rewrite, a redaction or a pseudonym may change without a
+# transform of their own. A PDF or an archive can be valid UTF-8 and still break when a byte moves.
+CHANGEABLE = RECORD_SUFFIXES | REWRITE_SUFFIXES | {".patch", ".diff", ".xml", ".html"}
+
+
 def scrub_bytes(src, path: str, data: bytes) -> bytes:
     """Redactions and pseudonyms for a file that is not UTF-8.
 
     A device log with one stray byte is still a log, and it names the same units and projects
-    as its neighbours, so it is read byte for byte (latin-1 maps each byte to one character and
-    back) and gets the same replacements. Anything else that would change (an identifier inside
-    an image or a compressed stream) stops the import, because replacing bytes there would
-    corrupt the file without anyone seeing it.
+    as its neighbours, so a record (by its suffix) is read byte for byte (latin-1 maps each byte
+    to one character and back) and gets the same replacements. Any other file that would change
+    (an identifier inside an image, a PDF or a compressed stream) stops the import, because
+    replacing bytes there would corrupt the file without anyone seeing it.
     """
     text = original = data.decode("latin-1")
     for glob, pattern, replacement in src.redact:
@@ -143,8 +150,9 @@ def scrub_bytes(src, path: str, data: bytes) -> bytes:
         text = hook(text)
     if text == original:
         return data
-    if b"\0" in data[:8192]:
-        raise SystemExit(f"{src.label}: {path} is binary and holds an identifier; give it a transform")
+    if Path(path).suffix not in RECORD_SUFFIXES or b"\0" in data:
+        raise SystemExit(f"{src.label}: {path} is not a text record and holds an identifier; "
+                         "give it a transform")
     return text.encode("latin-1")
 
 
@@ -243,14 +251,16 @@ def relink(src: Source, path: str, dest: str, text: str, imported: dict[str, str
 
 def transform(src: Source, path: str, dest: str, data: bytes, moves: list[tuple[str, str]],
               imported: dict[str, str], kinds: dict) -> bytes:
+    transformed = False
     for glob, fn in src.transforms:
         if fnmatch.fnmatch(path, glob):
-            data = fn(path, data)
+            data, transformed = fn(path, data), True
     edits = src.edits.get(path, [])
     if not is_text(path, data):
         if edits:
             raise SystemExit(f"{src.label}: edits listed for {path}, which is not text")
         return scrub_bytes(src, path, data)
+    original = data
     text = data.decode("utf-8")
     for edit in edits:
         found = len(re.findall(edit.old, text)) if edit.regex else text.count(edit.old)
@@ -278,7 +288,12 @@ def transform(src: Source, path: str, dest: str, data: bytes, moves: list[tuple[
             text = re.sub(pattern, replacement, text)
     for hook in src.hooks:
         text = hook(text)
-    return text.encode("utf-8")
+    out = text.encode("utf-8")
+    if out != original and not transformed and (b"\0" in original or not (Path(path).suffix in CHANGEABLE
+                                                                           or rewritable(path, original))):
+        raise SystemExit(f"{src.label}: {path} would change but is not a kind of file that may; "
+                         "give it a transform")
+    return out
 
 
 def listing(src: Source):
@@ -351,6 +366,13 @@ def run(project: Project, check: bool) -> int:
         if unused:
             raise SystemExit(f"{src.label}: edits for paths that were not imported: {sorted(unused)}")
         src._imported = imported
+    # A run recorded here is never written over, whether this is a check or a write.
+    destinations = [d for _, _, d, *_ in plan] + [d for s in project.sources for d in s.patches]
+    for folder in added_folders(project.name):
+        clash = sorted(d for d in destinations if d.startswith(folder))
+        if clash:
+            raise SystemExit(f"{project.name}/ADDED.tsv records {folder} here, but the import would write "
+                             f"{len(clash)} files into it, starting with {clash[0]}")
     kinds = {}
     for src, path, dest, mode, load, sha, state, touched in plan:
         data = load()
@@ -370,6 +392,8 @@ def run(project: Project, check: bool) -> int:
                 for hook in src.hooks:
                     text = hook(text)
                 data = text.encode("utf-8")
+            elif src.hooks:
+                data = scrub_bytes(src, dest, data)
             if dest in written:
                 raise SystemExit(f"{dest} would be written twice")
             written[dest] = src.label
@@ -396,13 +420,36 @@ def run(project: Project, check: bool) -> int:
     return 0
 
 
+def added_folders(name: str) -> list[str]:
+    """Run folders recorded here directly, not imported: one per row of `<project>/ADDED.tsv`
+    (folder, date, what it holds). The importer never writes or removes them."""
+    table = REPO / name / "ADDED.tsv"
+    if not table.exists():
+        return []
+    return [line.split("\t", 1)[0].rstrip("/") + "/" for line in table.read_text().splitlines()
+            if line.strip() and not line.startswith("#")]
+
+
 def audit_tree(name: str, expected: set[str]) -> int:
     """Files under the project that no source accounts for, and imported files git would drop.
 
-    Only a README.md may be in the tree without a PROVENANCE row: those are written by hand.
+    A file needs a PROVENANCE row, or must sit in a run folder listed in ADDED.tsv, or be a
+    README.md (those are written by hand).
     """
     problems = 0
     on_disk = {str(p.relative_to(REPO)) for p in (REPO / name).rglob("*") if p.is_file()}
+    added = added_folders(name)
+    for folder in added:
+        if not (REPO / folder).is_dir():
+            print(f"ADDED.tsv names a folder that is not here: {folder}")
+            problems += 1
+        for path in sorted(p for p in expected if p.startswith(folder)):
+            print(f"imported into a folder ADDED.tsv claims: {path}")
+            problems += 1
+    local = {p for p in on_disk - expected if any(p.startswith(f) for f in added)}
+    manifest = f"{name}/ADDED.tsv"
+    # The list itself has to be committed, or a fresh checkout would reject the runs it names.
+    expected = expected | local | ({manifest} if manifest in on_disk else set())
     for path in sorted(on_disk - expected):
         if Path(path).name != "README.md":
             print(f"no provenance: {path}")

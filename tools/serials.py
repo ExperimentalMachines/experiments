@@ -24,10 +24,13 @@ CONTEXTS = [
 SERIAL = re.compile(r"^(?=.*\d)[A-Za-z0-9]{7,16}$")
 
 
-# Test Lab prints a console link (`console.firebase.google.com/project/<id>/...`) in every run log,
-# and one run note names the project a rerun used (`cl080 in <id>,`).
+# Test Lab prints a console link (`console.firebase.google.com/project/<id>/...`) in every run log
+# (only a console's: `pypi.org/project/<name>/` is a package),
+# one run note names the project a rerun used (`cl080 in <id>,`), and a command line can carry it
+# as a flag. A variable (`--project "$PROJECT"`) does not start with a letter and is left alone.
 PROJECT_CONTEXTS = [r"projects/([a-z][a-z0-9-]{4,28}[a-z0-9])/", r"projects/(\d{6,})/", r"[?&]project=(\d{6,})\b",
-                    r"console\.[a-z.]+/project/([a-z][a-z0-9-]{4,28}[a-z0-9])/", r"\(cl\d+ in ([a-z][a-z0-9-]{4,28}[a-z0-9]),"]
+                    r"console\.[a-z.]+/project/([a-z][a-z0-9-]{4,28}[a-z0-9]|\d{6,})/",
+                    r"(?<![\w-])--project(?:=|\s+)['\"]?([a-z][a-z0-9-]{4,28}[a-z0-9]|\d{6,})(?![\w-])", r"\(cl\d+ in ([a-z][a-z0-9-]{4,28}[a-z0-9]),"]
 PROJECT = re.compile(r"^(?:[a-z][a-z0-9-]{4,28}[a-z0-9]|\d{6,})$")
 # An address in a run's prose or logs (not in a dataset row). Library names like
 # `android.hardware...@1.0.so` and documentation placeholders are not accounts.
@@ -36,7 +39,7 @@ ACCOUNT = re.compile(r"^(?!.*\.so$)(?!.*@example\.(?:com|org)$)(?!.*qualcomm\.co
 
 
 def grep(checkout: Path, commit: str, paths: list[str], context: str) -> list[str]:
-    run = subprocess.run(["git", "-C", str(checkout), "grep", "-h", "-o", "-P", context, commit, "--", *paths],
+    run = subprocess.run(["git", "-C", str(checkout), "grep", "-h", "-o", "-P", "-e", context, commit, "--", *paths],
                          capture_output=True, text=True)
     # git grep exits 1 when nothing matches; anything else is a failed search, and a failed
     # search must not pass for a clean one, or nothing would be replaced.

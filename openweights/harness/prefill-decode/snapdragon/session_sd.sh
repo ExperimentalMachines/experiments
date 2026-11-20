@@ -13,7 +13,7 @@
 set -u
 LAB=$1; Q=$2; WARM=$3; HOT=$4
 HERE=$(cd "$(dirname "$0")" && pwd)
-RES=$HERE/../../../studies/prefill-decode/runs/2026-11-16-s24; R=$RES/$LAB; mkdir -p "$R"
+RES=${RES:?set RES to a new run folder under studies/prefill-decode/runs}; R=$RES/$LAB; mkdir -p "$R"
 GG=$HOME/ow-models/gguf-pd; PKG=$HOME/ow-models/sd-pd/pkg; DEVICE=${DEVICE:-e3q}; ANDROID=${ANDROID:-36}; D=/data/local/tmp/sd
 PORT=${PORT:-5599}; S=localhost:$PORT; A="adb -s $S"; ST=$HERE/../../device-streaming
 bridge() { (cd "$ST" && uv run --with google-cloud-devicestreaming python ds_bridge.py "$@"); }

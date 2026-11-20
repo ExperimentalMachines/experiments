@@ -212,15 +212,17 @@ EDITS = {
     "tools/mediatek/session.sh": [
         Edit('HERE=$(cd "$(dirname "$0")" && pwd); ROOT=$(cd "$HERE/../.." && pwd)',
              'HERE=$(cd "$(dirname "$0")" && pwd)'),
+        # The archived folder is a record; a new session names its own (2026-11-16-mt6989 ran here).
         Edit("RES=$HERE/results/2026-11-16-mt6989",
-             "RES=$HERE/../../../studies/prefill-decode/runs/2026-11-16-mt6989"),
+             "RES=${RES:?set RES to a new run folder under studies/prefill-decode/runs}"),
         Edit("ST=$ROOT/tools/eval/streaming", "ST=$HERE/../../device-streaming"),
     ],
     "tools/snapdragon/session_sd.sh": [
         Edit('HERE=$(cd "$(dirname "$0")" && pwd); ROOT=$(cd "$HERE/../.." && pwd)',
              'HERE=$(cd "$(dirname "$0")" && pwd)'),
+        # The archived folder is a record; a new session names its own (2026-11-16-s24 ran here).
         Edit("RES=$HERE/results/2026-11-16-s24",
-             "RES=$HERE/../../../studies/prefill-decode/runs/2026-11-16-s24"),
+             "RES=${RES:?set RES to a new run folder under studies/prefill-decode/runs}"),
         Edit("ST=$ROOT/tools/eval/streaming", "ST=$HERE/../../device-streaming"),
     ],
     "tools/snapdragon/llama_bench_ab.sh": [
