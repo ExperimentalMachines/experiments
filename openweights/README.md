@@ -1,80 +1,83 @@
 # OpenWeights experiments
 
-The device harness and every recorded run of [OpenWeights](https://github.com/ExperimentalMachines/openweights),
-the Android app that runs open-weight models on the phone, imported from its `tools/` and `eval/`
-at commit 81734dee (2026-11-17), plus eight run files that were never committed. The write-ups
-stay in the app's `docs/research/`, because the app's KDoc cites them; each study here links to
-them at that commit.
+**The measurements behind [OpenWeights](https://github.com/ExperimentalMachines/openweights), an
+Android app that runs open-weight chat models entirely on the phone.**
+
+`10 studies` `16 phones and tablets, 1 emulator` `Aug to Nov 2026`
+
+OpenWeights runs a model two ways: as a [GGUF](../docs/glossary.md#gguf) file through [llama.cpp](../docs/glossary.md#llamacpp),
+and as a compiled [`.pte`](../docs/glossary.md#pte) file through [ExecuTorch](../docs/glossary.md#executorch). Nearly every
+default in the app (thread counts, cache handling, which file to recommend, how the prompt is laid
+out) was set by a measurement on a real phone. These are those measurements: the harness that
+drove the phones and every run it recorded.
+
+## What we found
+
+> [!TIP]
+> - **Keep the cache, and know how each reply ended.** Reuse made second turns 30 to 41 times
+>   faster on every phone, but a reply cut short, cancelled or ended on an unreported stop token
+>   silently turned reuse into a full re-read. → [prefix reuse](studies/prefix-reuse/)
+> - **Threads are a trap on a throttled phone.** With six of eight cores paused, as the Snapdragon
+>   8 Elite Gen 5's hard throttle does, llama.cpp at 4 threads decoded at 0.35 tokens/s and at 2
+>   threads at 10.7. The engine now drops
+>   to 2 threads after two slow steps (not yet in a Play release). → [prefill and decode](studies/prefill-decode/)
+> - **A compiled 4-bit file can lose tool calling while its benchmark scores barely move.** In a
+>   one-tool test on a Galaxy S25 Ultra, the plainly rounded compiled LFM2.5 1.2B made 10% of the
+>   searches it needed, the GGUF of the same weights 51%.
+>   → [compiled tool calling](studies/compiled-tool-calling/), [retrieve or answer](studies/retrieve-or-answer/)
+> - **Measure upgrades where chats live.** llama.cpp v1.0.0 was level on an empty context and 20 to
+>   23% slower at the 1,500 to 6,000 tokens of a real chat on a Galaxy S24, so it was reverted the
+>   morning it landed. → [runtime upgrades](studies/runtime-upgrades/)
+> - **Test the build users get.** With every search engine failing, the signed release let the
+>   model invent a currency conversion; only a test of the release through its real UI found it.
+>   → [shipped build](studies/shipped-build/)
 
 ## Studies
 
-| Study | Question | Write-ups |
+| Study | The question | When |
 |---|---|---|
-| [`on-device-evals`](studies/on-device-evals/) | Do both runtimes answer alike on every chip; public benchmark scores; does the exported window matter | backend-parity, parity-five-socs, public-benchmarks, window-matrix and four more |
-| [`retrieve-or-answer`](studies/retrieve-or-answer/) | When should the model search; the doubt gate; TypeSafe's reading | retrieve-or-answer, judged-decisions, typesafe-experiments, recommended-runtime |
-| [`compiled-tool-calling`](studies/compiled-tool-calling/) | Why the compiled LFM2.5 narrates a search it never makes | executorch-tool-calling, executorch-tool-calling-qad |
-| [`vulkan`](studies/vulkan/) | Do Vulkan GPU exports run and beat the CPU | vulkan-on-device |
-| [`test-lab-archive`](studies/test-lab-archive/) | The Test Lab runs kept when the eval bucket was deleted | four, listed there |
-| [`memory-paging`](studies/memory-paging/) | Swap, peak memory, and prefetching paged-out weights | swap-and-peak-memory |
-| [`prefill-decode`](studies/prefill-decode/) | Prefill on one processor, decode on another; heat and threads | snapdragon-pd-matrix; the cross-vendor runs are not written up yet |
-| [`runtime-upgrades`](studies/runtime-upgrades/) | Did each llama.cpp and ExecuTorch upgrade keep speed and answers | llama-cpp-v080, llama-cpp-v100-executorch-160 |
-| [`shipped-build`](studies/shipped-build/) | The signed release, measured as it ships | llama-cpp-v080 |
-| [`prefix-reuse`](studies/prefix-reuse/) | What a retained prefix saves, and what a second turn re-reads | reply-end-and-reuse |
+| [Prefix reuse](studies/prefix-reuse/) | What does keeping the cache save, and when does reuse silently fail? | Nov 2026 |
+| [Prefill and decode](studies/prefill-decode/) | Which processor should read the prompt and which should write the reply; what do heat and threads do? | Oct to Nov 2026 |
+| [On-device evals](studies/on-device-evals/) | Do both runtimes answer alike on every chip, how do they score on public benchmarks, and does the compiled window matter? | Aug to Sep 2026 |
+| [Retrieve or answer](studies/retrieve-or-answer/) | When should a small on-phone model search the web, and what can the app do about it? | Sep 2026 |
+| [Compiled tool calling](studies/compiled-tool-calling/) | Why does the compiled LFM2.5 narrate a search it never makes? | Sep 2026 |
+| [Memory and paging](studies/memory-paging/) | When does swap slow a reply, how good is the "will it fit" estimate, and does prefetching help? | Oct 2026 |
+| [Runtime upgrades](studies/runtime-upgrades/) | Did each llama.cpp and ExecuTorch upgrade keep speed, memory and answers? | Oct to Nov 2026 |
+| [Shipped build](studies/shipped-build/) | Does the signed release, with its real prompt, tools and UI, behave the way the tests did? | Nov 2026 |
+| [Vulkan](studies/vulkan/) | Do GPU exports run, and are they faster than the CPU? | Oct 2026 |
+| [Test Lab archive](studies/test-lab-archive/) | What did the deleted Test Lab bucket hold that existed nowhere else? | Sep 2026 |
 
-A few questions have a harness here but no study folder, because their outputs were working files
-outside the repository and the write-up holds the numbers: where the date goes in the prompt and
-how the model routes tools (`harness/host-prompt/`) and what a picture costs
-(`image_speed_probe.py`). Whether NPU prefill pays for itself on real conversations
-(`harness/npu/multiturn/`) keeps its two sweep records beside the scripts that read them. See
-[`harness/README.md`](harness/README.md).
+Three more questions have a harness here but no run folder, because their outputs were working
+files and the write-up holds the numbers: whether NPU prefill pays on real conversations, where
+the date and tools go in the prompt, and what a picture costs. The
+[harness README](harness/README.md) covers all three.
 
-## What stayed in OpenWeights, and why
+## The write-ups
 
-- The instrumented benchmarks and probes under `app/` and `core/` (`BenchmarkSuite`,
-  `ThreadCountBenchmark`, `DecisionSuiteOnDeviceTest` and the rest): they compile against the
-  engine. The harness here builds and runs them from an OpenWeights checkout.
-- `docs/research/` and `docs/CONTEXT.md`: the code cites them.
-- `tools/npu/` apart from the benchmarks and the multi-turn replay: it builds the runtime the app
-  links. Its `build_pd_libs.sh` also compiles `cpu_forward_bench.cpp`, so that file is in both
-  places until the script stops needing it.
-- `tools/release`, `tools/hooks`, `tools/review`, `tools/executorch`, and the two test-image
-  generators the instrumented tests use: product tooling.
-- `tools/run_python_tests.sh` still runs `tools/eval/bench`'s tests in OpenWeights' CI.
-
-## What did not come across
-
-- `tools/snapdragon/results/2026-11-04-chat-capture/` (untracked, 38 MB): a dump of the app's
-  data from the phone (its databases, preferences and a full logcat) and screen frames for the
-  website. It is personal data and site material, not a measurement.
-- `tools/eval/results/aar/` (untracked): classes unpacked from an AAR while inspecting it.
-- `tools/snapdragon/results/2026-10-24-sm8850/.pull.err` (untracked): the copy loop's adb errors.
-- `tools/eval/__pycache__/` and `tools/eval/bench/ifeval/__pycache__/`: compiled Python,
-  committed by mistake.
-- Two tokenizers committed into `tools/eval/results/`: model files.
-- The raw logcats OpenWeights' own `.gitignore` keeps out of git (`*.logcat` under
-  `tools/eval/results/`, `*.logcat.txt` under `tools/memory/results/`): they stay on the Mac.
-- An uncommitted "Run it yourself" section in `2026-11-16-reuse-boundary/README.md`: every
-  tracked file was read from the commit, not the working tree.
-
-Changed on the way: the 100 Test Lab logcats were cut to the app's own lines (10.4 million
-lines became 61 thousand), because they were whole devices' logs with network names, addresses
-and test accounts; the full logs stay in OpenWeights at 81734dee. Every device serial a run
-record named (26 lab units, in `unit` fields, chain logs and adb listings) is replaced by a
-stable pseudonym, `unit-` and six hex digits, so results still group by unit (`analyze_pd.py`
-on the SM8850 rows gives the same tables, with the pseudonyms in place of the serials). The Google
-Cloud projects the Device Streaming runs used (two ids and a project number) become
-`gcp-project-` and six hex digits the same way, and the two login addresses in their notes and
-logs become `account-` and six hex digits. Redacted: the phone's wireless-debugging name, its home-network address, and
-the Qualcomm device-cloud addresses and cluster names in the Vulkan session's logs. Each change is a
-`changed` row in [`PROVENANCE.tsv`](PROVENANCE.tsv).
+The full write-ups stay in OpenWeights' `docs/research/`, because the app's code comments cite
+them by path. Each study page links to its write-ups at the commit these runs were imported from,
+[`81734dee`](https://github.com/ExperimentalMachines/openweights/tree/81734deed5048f5691518d0e739662c50e51e1a3/docs/research).
+Where a run was never written up, the study page says so and the run folder's README is the
+record.
 
 ## Running the harness
 
 ```sh
-export OPENWEIGHTS=~/mobile-inference   # the app checkout the scripts build and drive
+export OPENWEIGHTS=~/path/to/openweights   # the app checkout the scripts build and drive
+export SER=<adb serial>                    # where a script needs one phone
 ```
 
-Scripts run from this repository's root or by their full path; results land in the study they
-belong to. The exception is the tool-call probe, kept as it ran (see
-[`compiled-tool-calling`](studies/compiled-tool-calling/README.md)). The phone-side procedure (finding the phone, installing around the ROM's block on
-`adb install`) is OpenWeights' `phone-deploy` skill.
+Scripts run from this repository's root or by their full path, and write their results into the
+study they belong to. The tool-call probe is the exception: it is kept exactly as it ran (see
+[compiled tool calling](studies/compiled-tool-calling/)). The phone-side procedure, from finding
+a phone on wireless debugging to installing around a ROM that blocks `adb install`, is
+OpenWeights' `phone-deploy` skill. [The harness README](harness/README.md) says what each folder
+does.
+
+## Where these files came from
+
+Imported from OpenWeights' `tools/` and `eval/` at commit `81734dee` (17 Nov 2026), plus eight
+run files that were never committed, by `tools/import_openweights.py`. Every file has a row in
+[`PROVENANCE.tsv`](PROVENANCE.tsv). Device logs were cut to the app's own lines and device serials
+and cloud ids replaced by pseudonyms on the way; what stayed in OpenWeights and what was left out
+is in [how this repository was built](../docs/provenance.md).

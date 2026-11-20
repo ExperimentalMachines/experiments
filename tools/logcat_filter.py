@@ -66,3 +66,24 @@ def filter_xz_logcat(path: str, data: bytes, *hooks) -> bytes:
     for hook in hooks:
         text = hook(text)
     return lzma.compress(text.encode("utf-8", "surrogateescape"), preset=9)
+
+
+def main() -> None:
+    """`python3 tools/logcat_filter.py <full.logcat[.xz]> > <run>/app.logcat`: the same cut and
+    redactions the imports applied, for a log you are about to commit. Serials still need their
+    pseudonyms (see docs/adding-a-run.md)."""
+    import lzma
+    import sys
+    if len(sys.argv) != 2:
+        raise SystemExit(main.__doc__)
+    data = open(sys.argv[1], "rb").read()
+    if sys.argv[1].endswith(".xz"):
+        data = lzma.decompress(data)
+    text = keep_app_lines(data.decode("utf-8", "surrogateescape"))
+    for pattern, replacement in REDACT:
+        text = pattern.sub(replacement, text)
+    sys.stdout.buffer.write(text.encode("utf-8", "surrogateescape"))
+
+
+if __name__ == "__main__":
+    main()
