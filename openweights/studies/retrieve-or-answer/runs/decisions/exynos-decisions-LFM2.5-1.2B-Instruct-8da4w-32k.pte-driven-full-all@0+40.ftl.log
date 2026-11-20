@@ -15,7 +15,7 @@ Creating individual test executions...
 ....................................................................................................................................................................................................................................................................................................................................................done.
 Firebase Test Lab will execute your instrumentation test on 1 device(s). More devices may be added later if flaky test attempts are specified.
 
-Test results will be streamed to [ https://console.firebase.google.com/project/angelic-sight-504306-f5/testlab/histories/bh.66e4b27d94a09eb6/matrices/4934970450814488942 ].
+Test results will be streamed to [ https://console.firebase.google.com/project/gcp-project-82a6b0/testlab/histories/bh.66e4b27d94a09eb6/matrices/4934970450814488942 ].
 16:15:06 Test is Pending
 16:15:31 Starting attempt 1.
 16:15:31 Infrastructure error occurred.

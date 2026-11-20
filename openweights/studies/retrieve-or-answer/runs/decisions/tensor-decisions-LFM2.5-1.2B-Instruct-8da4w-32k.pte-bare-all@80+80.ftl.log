@@ -15,7 +15,7 @@ Creating individual test executions...
 ............................................................................................................................................................................................................................................................................................................................done.
 Firebase Test Lab will execute your instrumentation test on 1 device(s). More devices may be added later if flaky test attempts are specified.
 
-Test results will be streamed to [ https://console.firebase.google.com/project/angelic-sight-504306-f5/testlab/histories/bh.9724488f91bc783d/matrices/9049145272710799536 ].
+Test results will be streamed to [ https://console.firebase.google.com/project/gcp-project-82a6b0/testlab/histories/bh.9724488f91bc783d/matrices/9049145272710799536 ].
 07:11:18 Test is Pending
 07:12:23 Starting attempt 1.
 07:12:23 Test is Running
@@ -26,7 +26,7 @@ Test results will be streamed to [ https://console.firebase.google.com/project/a
 
 Instrumentation testing complete.
 
-More details are available at [ https://console.firebase.google.com/project/angelic-sight-504306-f5/testlab/histories/bh.9724488f91bc783d/matrices/9049145272710799536 ].
+More details are available at [ https://console.firebase.google.com/project/gcp-project-82a6b0/testlab/histories/bh.9724488f91bc783d/matrices/9049145272710799536 ].
 ┌─────────┬────────────────────────┬─────────────────────┐
 │ OUTCOME │    TEST_AXIS_VALUE     │     TEST_DETAILS    │
 ├─────────┼────────────────────────┼─────────────────────┤

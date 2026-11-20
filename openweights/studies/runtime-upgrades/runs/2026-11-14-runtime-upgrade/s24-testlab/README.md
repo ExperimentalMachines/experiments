@@ -2,7 +2,7 @@
 
 Each run landed on whichever unit was free. `sp080*`/`sp100*` are SpeedProbe with llama.cpp v0.8.0
 and v1.0.0 (test APKs that differ only in llama.cpp), three units each. `context-depth.txt` is
-ContextLengthBenchmark.measuresWhatAFullWindowCosts, two units each (cl080 in micromarc-research,
+ContextLengthBenchmark.measuresWhatAFullWindowCosts, two units each (cl080 in gcp-project-a031fa,
 cl100 in a second project about 40 minutes later; same device pool). `gpu-offload.txt` is
 GpuOffloadTest's load and reply lines on both versions. The two JSONs and `final-build-junit.xml`
 are ExecuTorchParityEval and the test outcomes of the eaef5b18 build (llama.cpp v1.0.0, ExecuTorch

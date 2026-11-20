@@ -14,7 +14,7 @@ Creating individual test executions...
 ...............................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................done.
 Firebase Test Lab will execute your instrumentation test on 1 device(s). More devices may be added later if flaky test attempts are specified.
 
-Test results will be streamed to [ https://console.firebase.google.com/project/angelic-sight-504306-f5/testlab/histories/bh.24361860f96340fe/matrices/6846709024132232744 ].
+Test results will be streamed to [ https://console.firebase.google.com/project/gcp-project-82a6b0/testlab/histories/bh.24361860f96340fe/matrices/6846709024132232744 ].
 13:44:34 Test is Pending
 13:45:37 Starting attempt 1.
 13:45:37 Test is Running
@@ -25,7 +25,7 @@ Test results will be streamed to [ https://console.firebase.google.com/project/a
 
 Instrumentation testing complete.
 
-More details are available at [ https://console.firebase.google.com/project/angelic-sight-504306-f5/testlab/histories/bh.24361860f96340fe/matrices/6846709024132232744 ].
+More details are available at [ https://console.firebase.google.com/project/gcp-project-82a6b0/testlab/histories/bh.24361860f96340fe/matrices/6846709024132232744 ].
 ┌─────────┬────────────────────────┬─────────────────────┐
 │ OUTCOME │    TEST_AXIS_VALUE     │     TEST_DETAILS    │
 ├─────────┼────────────────────────┼─────────────────────┤

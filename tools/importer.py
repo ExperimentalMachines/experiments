@@ -126,6 +126,28 @@ def is_text(path: str, data: bytes) -> bool:
     return True
 
 
+def scrub_bytes(src, path: str, data: bytes) -> bytes:
+    """Redactions and pseudonyms for a file that is not UTF-8.
+
+    A device log with one stray byte is still a log, and it names the same units and projects
+    as its neighbours, so it is read byte for byte (latin-1 maps each byte to one character and
+    back) and gets the same replacements. Anything else that would change (an identifier inside
+    an image or a compressed stream) stops the import, because replacing bytes there would
+    corrupt the file without anyone seeing it.
+    """
+    text = original = data.decode("latin-1")
+    for glob, pattern, replacement in src.redact:
+        if fnmatch.fnmatch(path, glob):
+            text = re.sub(pattern, replacement, text)
+    for hook in src.hooks:
+        text = hook(text)
+    if text == original:
+        return data
+    if b"\0" in data[:8192]:
+        raise SystemExit(f"{src.label}: {path} is binary and holds an identifier; give it a transform")
+    return text.encode("latin-1")
+
+
 def rewritable(path: str, data: bytes) -> bool:
     suffix = Path(path).suffix
     if suffix in REWRITE_SUFFIXES:
@@ -228,7 +250,7 @@ def transform(src: Source, path: str, dest: str, data: bytes, moves: list[tuple[
     if not is_text(path, data):
         if edits:
             raise SystemExit(f"{src.label}: edits listed for {path}, which is not text")
-        return data
+        return scrub_bytes(src, path, data)
     text = data.decode("utf-8")
     for edit in edits:
         found = len(re.findall(edit.old, text)) if edit.regex else text.count(edit.old)

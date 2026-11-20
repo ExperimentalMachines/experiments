@@ -21,7 +21,7 @@ Creating individual test executions...
 .......................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................done.
 Firebase Test Lab will execute your instrumentation test on 1 device(s). More devices may be added later if flaky test attempts are specified.
 
-Test results will be streamed to [ https://console.firebase.google.com/project/angelic-sight-504306-f5/testlab/histories/bh.24361860f96340fe/matrices/5718179415514831799 ].
+Test results will be streamed to [ https://console.firebase.google.com/project/gcp-project-82a6b0/testlab/histories/bh.24361860f96340fe/matrices/5718179415514831799 ].
 04:32:00 Test is Pending
 04:32:51 Starting attempt 1.
 04:32:51 Test is Running
@@ -32,7 +32,7 @@ Test results will be streamed to [ https://console.firebase.google.com/project/a
 
 Instrumentation testing complete.
 
-More details are available at [ https://console.firebase.google.com/project/angelic-sight-504306-f5/testlab/histories/bh.24361860f96340fe/matrices/5718179415514831799 ].
+More details are available at [ https://console.firebase.google.com/project/gcp-project-82a6b0/testlab/histories/bh.24361860f96340fe/matrices/5718179415514831799 ].
 ┌─────────┬────────────────────────┬─────────────────────┐
 │ OUTCOME │    TEST_AXIS_VALUE     │     TEST_DETAILS    │
 ├─────────┼────────────────────────┼─────────────────────┤

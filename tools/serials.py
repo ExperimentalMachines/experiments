@@ -24,7 +24,10 @@ CONTEXTS = [
 SERIAL = re.compile(r"^(?=.*\d)[A-Za-z0-9]{7,16}$")
 
 
-PROJECT_CONTEXTS = [r"projects/([a-z][a-z0-9-]{4,28}[a-z0-9])/", r"projects/(\d{6,})/", r"[?&]project=(\d{6,})\b"]
+# Test Lab prints a console link (`console.firebase.google.com/project/<id>/...`) in every run log,
+# and one run note names the project a rerun used (`cl080 in <id>,`).
+PROJECT_CONTEXTS = [r"projects/([a-z][a-z0-9-]{4,28}[a-z0-9])/", r"projects/(\d{6,})/", r"[?&]project=(\d{6,})\b",
+                    r"console\.[a-z.]+/project/([a-z][a-z0-9-]{4,28}[a-z0-9])/", r"\(cl\d+ in ([a-z][a-z0-9-]{4,28}[a-z0-9]),"]
 PROJECT = re.compile(r"^(?:[a-z][a-z0-9-]{4,28}[a-z0-9]|\d{6,})$")
 # An address in a run's prose or logs (not in a dataset row). Library names like
 # `android.hardware...@1.0.so` and documentation placeholders are not accounts.
