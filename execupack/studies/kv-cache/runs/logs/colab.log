@@ -1,0 +1,53 @@
+12:14:44 setup: installing the toolchain
+12:14:58 setup: done; 2.14.0+cpu
+12:15:05 TUNNEL <tunnel>
+12:15:35 READY 2k/q8kv-LFM2.5-1.2B-Instruct-8da4w-gptq-2k.pte from the Volume
+12:15:48 READY 8k/f32kv-LFM2.5-1.2B-Instruct-8da4w-gptq-8k.pte from the Volume
+12:16:01 READY 2k/q8kv-Llama-3.2-1B-Instruct-8da4w-gptq-2k.pte from the Volume
+12:16:35 READY 8k/q8kv-Llama-3.2-1B-Instruct-8da4w-gptq-8k.pte from the Volume
+12:16:46 READY 32k/q8kv-Llama-3.2-1B-Instruct-8da4w-gptq-32k.pte from the Volume
+12:17:00 READY 2k/f32kv-Qwen3-1.7B-8da4w-gptq-2k.pte from the Volume
+12:17:13 READY 32k/f32kv-Qwen3-1.7B-8da4w-gptq-32k.pte from the Volume
+12:17:27 READY 32k/q8kv-Qwen3-1.7B-8da4w-gptq-32k.pte from the Volume
+12:18:37 FAILED export-Qwen3-1.7B-int8-2k rc 1 | ==> converting checkpoint / ==> export_llm (codes: gptq, state fix: False, lfm3: False) / {"model": "Qwen/Qwen3-1.7B", "kv": "int8", "context": 2048, "host": {"cpu": "Intel(R) Xeon(R) CPU @ 2.20GHz", "avx512fp16": false, "avx512_fp16": false, "f16c": true, "avx512f": true, "amx_fp16": fals
+12:32:42 gemma solve DONE
+12:37:37 READY 8k/f32kv-Qwen3-1.7B-8da4w-gptq-8k.pte 1297MB 1136s "aris. Yep, that's right.\n</think>\n\nParis<|im_end|>"
+12:38:22 FAILED export-Qwen3-1.7B-int8-8k rc 1 | ==> converting checkpoint / ==> export_llm (codes: gptq, state fix: False, lfm3: False) / {"model": "Qwen/Qwen3-1.7B", "kv": "int8", "context": 8192, "host": {"cpu": "Intel(R) Xeon(R) CPU @ 2.20GHz", "avx512fp16": false, "avx512_fp16": false, "f16c": true, "avx512f": true, "amx_fp16": fals
+12:50:15 READY 2k/f32kv-gemma-3-1b-it-8da4w-gptq-2k.pte 884MB 1051s 'Paris<end_of_turn>'
+12:50:58 FAILED export-gemma-3-1b-it-int8-2k rc 1 | ==> converting checkpoint / ==> export_llm (codes: gptq, state fix: False, lfm3: False, gemma3: True) / {"model": "google/gemma-3-1b-it", "kv": "int8", "context": 2048, "host": {"cpu": "Intel(R) Xeon(R) CPU @ 2.20GHz", "avx512fp16": false, "avx512_fp16": false, "f16c": true, "avx512f": true, "amx_fp16":
+13:08:47 READY 8k/f32kv-gemma-3-1b-it-8da4w-gptq-8k.pte 934MB 1066s 'Paris<end_of_turn>'
+13:09:25 FAILED export-gemma-3-1b-it-int8-8k rc 1 | ==> converting checkpoint / ==> export_llm (codes: gptq, state fix: False, lfm3: False, gemma3: True) / {"model": "google/gemma-3-1b-it", "kv": "int8", "context": 8192, "host": {"cpu": "Intel(R) Xeon(R) CPU @ 2.20GHz", "avx512fp16": false, "avx512_fp16": false, "f16c": true, "avx512f": true, "amx_fp16":
+13:28:41 READY 32k/f32kv-gemma-3-1b-it-8da4w-gptq-32k.pte 1135MB 1152s 'Paris<end_of_turn>'
+13:29:58 FAILED export-gemma-3-1b-it-int8-32k rc 1 | ==> converting checkpoint / ==> export_llm (codes: gptq, state fix: False, lfm3: False, gemma3: True) / {"model": "google/gemma-3-1b-it", "kv": "int8", "context": 32768, "host": {"cpu": "Intel(R) Xeon(R) CPU @ 2.20GHz", "avx512fp16": false, "avx512_fp16": false, "f16c": true, "avx512f": true, "amx_fp16"
+13:29:58 builds done; saving the new files to the Volume
+13:33:44 ALL BUILT; serving until /content/serve.done
+13:34:44 serving
+13:35:44 serving
+13:36:44 serving
+13:37:44 serving
+13:38:44 serving
+13:39:44 serving
+13:40:44 serving
+13:41:44 serving
+13:42:44 serving
+13:43:44 serving
+13:44:44 serving
+13:45:44 serving
+13:46:44 serving
+13:47:44 serving
+13:48:44 serving
+13:49:44 serving
+13:50:44 serving
+13:51:44 serving
+13:52:44 serving
+13:53:44 serving
+13:54:44 serving
+13:55:44 serving
+13:56:44 serving
+13:57:44 serving
+13:58:44 serving
+13:59:44 serving
+14:00:44 serving
+14:01:44 serving
+14:02:44 serving
+14:03:44 serving

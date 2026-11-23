@@ -1,0 +1,8 @@
+22:19:46 setup: installing
+22:20:06 TUNNEL <tunnel>
+22:20:21 setup: done
+22:25:20 BUILT 32k/f16kv-Llama-3.2-1B-Instruct-vulkan-8da4w-gptq-32k.pte 1155MB 297s ''
+22:25:20 READY 32k/f16kv-Llama-3.2-1B-Instruct-vulkan-8da4w-gptq-32k-pc256.pte (renamed)
+22:30:17 BUILT 32k/f32kv-Llama-3.2-1B-Instruct-vulkan-8da4w-gptq-32k.pte 1274MB 294s ''
+22:30:17 READY 32k/f32kv-Llama-3.2-1B-Instruct-vulkan-8da4w-gptq-32k-pc256.pte (renamed)
+22:30:17 ALL BUILT; serving until /content/serve.done

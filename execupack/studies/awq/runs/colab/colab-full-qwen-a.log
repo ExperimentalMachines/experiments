@@ -1,0 +1,9 @@
+10:04:31 setup: installing cpus=8
+10:04:44 setup: done
+10:04:44 START qwen3-1.7b-rtn
+10:04:44 START qwen3-1.7b-gptq
+12:40:31 RESULT qwen3-1.7b-rtn gate=PASS app_kl=2.0366 book_kl@1900=0.1758 book_kl@7900=0.2030 solve=Nones books=1901.6s
+12:40:31 START qwen3-1.7b-published
+14:18:20 RESULT qwen3-1.7b-gptq gate=PASS app_kl=1.2212 book_kl@1900=0.1353 book_kl@7900=0.1522 solve=5141.5s books=1860.9s
+14:49:51 RESULT qwen3-1.7b-published gate=PASS app_kl=2.3461 book_kl@1900=0.1475 book_kl@7900=0.1763 solve=Nones books=1197.0s
+14:49:51 ALL DONE

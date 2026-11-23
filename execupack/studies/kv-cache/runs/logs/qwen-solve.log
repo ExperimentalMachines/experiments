@@ -1,0 +1,38 @@
+uploaded 1 input(s) to execupack-runs:/local-1-c88a2b9a/in
+Modal Sandbox: 40960 MiB, 8 cores, timeout 330 min
+Failed to load /usr/local/lib/python3.11/site-packages/torchao/_C_cutlass_90a.abi3.so: Could not load this library: /usr/local/lib/python3.11/site-packages/torchao/_C_cutlass_90a.abi3.so
+Failed to load /usr/local/lib/python3.11/site-packages/torchao/_C_mxfp8.cpython-310-x86_64-linux-gnu.so: Could not load this library: /usr/local/lib/python3.11/site-packages/torchao/_C_mxfp8.cpython-310-x86_64-linux-gnu.so
+W1120 11:11:59.240000 5 site-packages/torch/utils/_pytree.py:630] <enum 'KernelPreference'> is an Enum subclass and is now natively supported by torch.compile as an opaque value type. Calling register_constant() on Enum subclasses is deprecated and will be an error in a future release.
+W1120 11:11:59.490000 5 site-packages/torch/utils/_pytree.py:630] <enum 'ScaleCalculationMode'> is an Enum subclass and is now natively supported by torch.compile as an opaque value type. Calling register_constant() on Enum subclasses is deprecated and will be an error in a future release.
+layer 0 solved, 41s
+layer 1 solved, 81s
+layer 2 solved, 122s
+layer 3 solved, 158s
+layer 4 solved, 194s
+layer 5 solved, 228s
+layer 6 solved, 262s
+layer 7 solved, 299s
+layer 8 solved, 339s
+layer 9 solved, 376s
+layer 10 solved, 414s
+layer 11 solved, 450s
+layer 12 solved, 486s
+layer 13 solved, 524s
+layer 14 solved, 563s
+layer 15 solved, 601s
+layer 16 solved, 638s
+layer 17 solved, 674s
+layer 18 solved, 712s
+layer 19 solved, 752s
+layer 20 solved, 791s
+layer 21 solved, 827s
+layer 22 solved, 865s
+layer 23 solved, 901s
+layer 24 solved, 939s
+layer 25 solved, 978s
+layer 26 solved, 1013s
+layer 27 solved, 1050s
+output head solved, 1074s
+{"model": "Qwen/Qwen3-1.7B", "revision": "70d244cc86ccca08cf5af4e1e306ecf908b1ad5e", "codes": "/vol/study/codes/qwen-codes-gptq.pt", "rows": 104, "download_convert_s": 9, "solve_s": 1079, "host": "x86_64"}
+Modal Sandbox exited 0 after 18.3 min
+downloaded 1 file(s) to /Users/alpha/execupack-kvstudy/work/kvstudy/res/qwen-solve

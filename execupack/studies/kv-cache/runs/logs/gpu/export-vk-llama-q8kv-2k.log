@@ -1,0 +1,485 @@
+==> meta-llama/Llama-3.2-1B-Instruct@9213176726f5: family llama, class llama3_2, window 2048
+Fetching 9 files:   0%|          | 0/9 [00:00<?, ?it/s]Fetching 9 files:  11%|█         | 1/9 [00:00<00:02,  3.49it/s]Fetching 9 files:  33%|███▎      | 3/9 [00:00<00:00,  6.10it/s]Fetching 9 files:  89%|████████▉ | 8/9 [00:01<00:00,  5.34it/s]Fetching 9 files: 100%|██████████| 9/9 [00:07<00:00,  1.18s/it]Fetching 9 files: 100%|██████████| 9/9 [00:07<00:00,  1.20it/s]
+Failed to load /content/venv/lib/python3.11/site-packages/torchao/_C_mxfp8.cpython-310-x86_64-linux-gnu.so: Could not load this library: /content/venv/lib/python3.11/site-packages/torchao/_C_mxfp8.cpython-310-x86_64-linux-gnu.so
+Failed to load /content/venv/lib/python3.11/site-packages/torchao/_C_cutlass_90a.abi3.so: Could not load this library: /content/venv/lib/python3.11/site-packages/torchao/_C_cutlass_90a.abi3.so
+W1120 17:25:00.366000 2876 torch/utils/_pytree.py:630] <enum 'KernelPreference'> is an Enum subclass and is now natively supported by torch.compile as an opaque value type. Calling register_constant() on Enum subclasses is deprecated and will be an error in a future release.
+W1120 17:25:00.413000 2876 torch/utils/_pytree.py:630] <enum 'ScaleCalculationMode'> is an Enum subclass and is now natively supported by torch.compile as an opaque value type. Calling register_constant() on Enum subclasses is deprecated and will be an error in a future release.
+I tokenizers:regex.cpp:40] Registering override fallback regex
+[2026-11-20 17:25:05,532][root][INFO] - Applying quantizers: []
+[2026-11-20 17:25:05,644][root][INFO] - Checkpoint dtype: torch.bfloat16
+quantize ('tok_embeddings', Embedding(128256, 2048)) with group_size None, bitwidth 8
+injected calibrated codes into 113 linears
+[2026-11-20 17:25:12,754][root][INFO] - Looking for libcustom_ops_aot_lib.so in /content/venv/lib/python3.11/site-packages/executorch/extension/llm/custom_ops
+[2026-11-20 17:25:12,755][root][INFO] - Loading custom ops library: /content/venv/lib/python3.11/site-packages/executorch/extension/llm/custom_ops/libcustom_ops_aot_lib.so
+[2026-11-20 17:25:12,765][root][INFO] - Replacing KVCache with CustomKVCache. This modifies the model in place.
+[2026-11-20 17:25:12,810][root][INFO] - Loading custom ops library: /content/venv/lib/python3.11/site-packages/executorch/kernels/quantized/libquantized_ops_aot_lib.so
+[2026-11-20 17:25:12,819][root][INFO] - Replacing KVCache with QuantizedKVCache. This modifies the model in place.
+[2026-11-20 17:25:12,929][root][INFO] - Model after source transforms: Transformer(
+  (tok_embeddings): QuantizedGroupEmbedding()
+  (layers): ModuleList(
+    (0-15): 16 x TransformerBlock(
+      (attention): AttentionMHA(
+        (wq): Linear(in_features=2048, out_features=2048, bias=False, weight=IntxUnpackedToInt8Tensor(target_dtype=torch.int4, block_size=(1, 32), shape=torch.Size([2048, 2048]), dtype=torch.float32, device=cpu, activation_quantization=int8_asym_per_token))
+        (wk): Linear(in_features=2048, out_features=512, bias=False, weight=IntxUnpackedToInt8Tensor(target_dtype=torch.int4, block_size=(1, 32), shape=torch.Size([512, 2048]), dtype=torch.float32, device=cpu, activation_quantization=int8_asym_per_token))
+        (wv): Linear(in_features=2048, out_features=512, bias=False, weight=IntxUnpackedToInt8Tensor(target_dtype=torch.int4, block_size=(1, 32), shape=torch.Size([512, 2048]), dtype=torch.float32, device=cpu, activation_quantization=int8_asym_per_token))
+        (wo): Linear(in_features=2048, out_features=2048, bias=False, weight=IntxUnpackedToInt8Tensor(target_dtype=torch.int4, block_size=(1, 32), shape=torch.Size([2048, 2048]), dtype=torch.float32, device=cpu, activation_quantization=int8_asym_per_token))
+        (rope): Rope(
+          (apply_rotary_emb): RotaryEmbedding()
+        )
+        (kv_cache): QuantizedKVCache()
+        (SDPA): QuantizedSDPA(
+          (kv_cache): QuantizedKVCache()
+        )
+      )
+      (feed_forward): FeedForward(
+        (w1): Linear(in_features=2048, out_features=8192, bias=False, weight=IntxUnpackedToInt8Tensor(target_dtype=torch.int4, block_size=(1, 32), shape=torch.Size([8192, 2048]), dtype=torch.float32, device=cpu, activation_quantization=int8_asym_per_token))
+        (w2): Linear(in_features=8192, out_features=2048, bias=False, weight=IntxUnpackedToInt8Tensor(target_dtype=torch.int4, block_size=(1, 32), shape=torch.Size([2048, 8192]), dtype=torch.float32, device=cpu, activation_quantization=int8_asym_per_token))
+        (w3): Linear(in_features=2048, out_features=8192, bias=False, weight=IntxUnpackedToInt8Tensor(target_dtype=torch.int4, block_size=(1, 32), shape=torch.Size([8192, 2048]), dtype=torch.float32, device=cpu, activation_quantization=int8_asym_per_token))
+      )
+      (attention_norm): RMSNorm()
+      (ffn_norm): RMSNorm()
+    )
+  )
+  (rope): Rope(
+    (apply_rotary_emb): RotaryEmbedding()
+  )
+  (norm): RMSNorm()
+  (output): Linear(in_features=2048, out_features=128256, bias=False, weight=IntxUnpackedToInt8Tensor(target_dtype=torch.int4, block_size=(1, 32), shape=torch.Size([128256, 2048]), dtype=torch.float32, device=cpu, activation_quantization=int8_asym_per_token))
+)
+[2026-11-20 17:25:12,929][root][INFO] - Exporting with:
+[2026-11-20 17:25:12,931][root][INFO] - inputs: (tensor([[2, 3, 4]]), {'input_pos': tensor([0])})
+[2026-11-20 17:25:12,931][root][INFO] - kwargs: None
+[2026-11-20 17:25:12,931][root][INFO] - dynamic shapes: ({1: Dim('token_dim', min=0, max=2047)}, {'input_pos': {0: 1}})
+/content/venv/lib/python3.11/site-packages/torch/_dynamo/utils.py:4415: FutureWarning: _check_is_size will be removed in a future PyTorch release along with guard_size_oblivious.     Use _check(i >= 0) instead.
+  return node.target(*args, **kwargs)  # type: ignore[operator]
+/content/venv/lib/python3.11/site-packages/executorch/extension/llm/custom_ops/custom_ops.py:317: FutureWarning: _check_is_size will be removed in a future PyTorch release along with guard_size_oblivious.     Use _check(i >= 0) instead.
+  torch._check_is_size(start_pos)
+/content/venv/lib/python3.11/site-packages/torch/fx/interpreter.py:377: FutureWarning: _check_is_size will be removed in a future PyTorch release along with guard_size_oblivious.     Use _check(i >= 0) instead.
+  return target(*args, **kwargs)
+/content/venv/lib/python3.11/site-packages/executorch/extension/llm/custom_ops/custom_ops.py:317: FutureWarning: _check_is_size will be removed in a future PyTorch release along with guard_size_oblivious.     Use _check(i >= 0) instead.
+  torch._check_is_size(start_pos)
+/content/venv/lib/python3.11/site-packages/executorch/extension/llm/custom_ops/custom_ops.py:317: FutureWarning: _check_is_size will be removed in a future PyTorch release along with guard_size_oblivious.     Use _check(i >= 0) instead.
+  torch._check_is_size(start_pos)
+/content/venv/lib/python3.11/site-packages/executorch/extension/llm/custom_ops/custom_ops.py:317: FutureWarning: _check_is_size will be removed in a future PyTorch release along with guard_size_oblivious.     Use _check(i >= 0) instead.
+  torch._check_is_size(start_pos)
+[2026-11-20 17:26:05,849][root][INFO] - Running canonical pass: RemoveRedundantTransposes
+[2026-11-20 17:26:06,016][root][INFO] - Using pt2e [] to quantizing the model...
+[2026-11-20 17:26:06,016][root][INFO] - No quantizer provided, passing...
+/content/venv/lib/python3.11/site-packages/executorch/extension/llm/custom_ops/custom_ops.py:317: FutureWarning: _check_is_size will be removed in a future PyTorch release along with guard_size_oblivious.     Use _check(i >= 0) instead.
+  torch._check_is_size(start_pos)
+/content/venv/lib/python3.11/site-packages/executorch/extension/llm/custom_ops/custom_ops.py:317: FutureWarning: _check_is_size will be removed in a future PyTorch release along with guard_size_oblivious.     Use _check(i >= 0) instead.
+  torch._check_is_size(start_pos)
+/content/venv/lib/python3.11/site-packages/executorch/extension/llm/custom_ops/custom_ops.py:317: FutureWarning: _check_is_size will be removed in a future PyTorch release along with guard_size_oblivious.     Use _check(i >= 0) instead.
+  torch._check_is_size(start_pos)
+/content/venv/lib/python3.11/site-packages/executorch/extension/llm/custom_ops/custom_ops.py:317: FutureWarning: _check_is_size will be removed in a future PyTorch release along with guard_size_oblivious.     Use _check(i >= 0) instead.
+  torch._check_is_size(start_pos)
+/content/venv/lib/python3.11/site-packages/executorch/extension/llm/custom_ops/custom_ops.py:317: FutureWarning: _check_is_size will be removed in a future PyTorch release along with guard_size_oblivious.     Use _check(i >= 0) instead.
+  torch._check_is_size(start_pos)
+[2026-11-20 17:27:48,202][root][INFO] - Lowering model using following partitioner(s): 
+[2026-11-20 17:27:48,202][root][INFO] - --> VulkanPartitioner
+[2026-11-20 17:27:51,703][root][INFO] - [Vulkan Partitioner] Due to [no operator implementation], skipping torch.float32: torch.Size([1, s11, 32, 64]) = llama.custom_quantized_sdpa.default(torch.int8: torch.Size([1, s11, 32, 64]), torch.int8: torch.Size([1, 2048, 8, 64]), torch.int8: torch.Size([1, 2048, 8, 64]), u538, None, 0.0, True, None, torch.int8: torch.Size([1, s11, 32, 1]), torch.float32: torch.Size([1, s11, 32, 1]), torch.int8: torch.Size([1, 2048, 8, 1]), torch.float32: torch.Size([1, 2048, 8, 1]), torch.int8: torch.Size([1, 2048, 8, 1]), torch.float32: torch.Size([1, 2048, 8, 1]),  ...)
+[2026-11-20 17:27:51,703][root][INFO] - [Vulkan Partitioner] Due to [input[0] dtype torch.float64 not in {torch.float16, torch.int32, torch.bool, torch.float32, torch.int64}], skipping torch.float32: torch.Size([1, s11, 32, 1]) = aten._to_copy.default(torch.float64: torch.Size([1, s11, 32, 1]),  ...)
+[2026-11-20 17:27:51,703][root][INFO] - [Vulkan Partitioner] Due to [output dtype torch.int8 not in {torch.float16, torch.int32, torch.bool, torch.float32, torch.int64}], skipping torch.int8: torch.Size([1, s11, 32, 1]) = aten._to_copy.default(torch.int64: torch.Size([1, s11, 32, 1]),  ...)
+[2026-11-20 17:27:51,705][root][INFO] - [Vulkan Partitioner] Due to [output[0] dtype torch.int8 not in {torch.float32, torch.float16}], skipping [torch.int8: torch.Size([1]), torch.int8: torch.Size([1, 2048, 8, 1])] = auto_functionalized_v2(llama.update_cache.default,  ...)
+[2026-11-20 17:27:51,706][root][INFO] - [Vulkan Partitioner] Due to [output[0] dtype torch.int8 not in {torch.float32, torch.float16}], skipping [torch.int8: torch.Size([1]), torch.int8: torch.Size([1, 2048, 8, 64])] = auto_functionalized_v2(llama.update_cache.default,  ...)
+[2026-11-20 17:27:51,706][root][INFO] - [Vulkan Partitioner] Due to [output[0] dtype torch.int8 not in {torch.float32, torch.float16}], skipping [torch.int8: torch.Size([1]), torch.int8: torch.Size([1, 2048, 8, 1])] = auto_functionalized_v2(llama.update_cache.default,  ...)
+[2026-11-20 17:27:51,707][root][INFO] - [Vulkan Partitioner] Due to [output[0] dtype torch.int8 not in {torch.float32, torch.float16}], skipping [torch.int8: torch.Size([1]), torch.int8: torch.Size([1, 2048, 8, 64])] = auto_functionalized_v2(llama.update_cache.default,  ...)
+[2026-11-20 17:27:51,708][root][INFO] - [Vulkan Partitioner] Due to [output dtype torch.int8 not in {torch.float16, torch.int32, torch.bool, torch.float32, torch.int64}], skipping torch.int8: torch.Size([1, s11, 8, 1]) = aten._to_copy.default(torch.int64: torch.Size([1, s11, 8, 1]),  ...)
+[2026-11-20 17:27:51,708][root][INFO] - [Vulkan Partitioner] Due to [input[0] dtype torch.float64 not in {torch.float16, torch.int32, torch.bool, torch.float32, torch.int64}], skipping torch.float32: torch.Size([1, s11, 8, 1]) = aten._to_copy.default(torch.float64: torch.Size([1, s11, 8, 1]),  ...)
+[2026-11-20 17:27:51,708][root][INFO] - [Vulkan Partitioner] Due to [output dtype torch.int8 not in {torch.float16, torch.int32, torch.bool, torch.float32, torch.int64}], skipping torch.int8: torch.Size([1, s11, 8, 1]) = aten._to_copy.default(torch.int64: torch.Size([1, s11, 8, 1]),  ...)
+[2026-11-20 17:27:51,708][root][INFO] - [Vulkan Partitioner] Due to [input[0] dtype torch.float64 not in {torch.float16, torch.int32, torch.bool, torch.float32, torch.int64}], skipping torch.float32: torch.Size([1, s11, 8, 1]) = aten._to_copy.default(torch.float64: torch.Size([1, s11, 8, 1]),  ...)
+[2026-11-20 17:27:51,770][root][INFO] - [Vulkan Partitioner] Due to [no operator implementation], skipping torch.float32: torch.Size([1, s11, 32, 64]) = llama.custom_quantized_sdpa.default(torch.int8: torch.Size([1, s11, 32, 64]), torch.int8: torch.Size([1, 2048, 8, 64]), torch.int8: torch.Size([1, 2048, 8, 64]), u535, None, 0.0, True, None, torch.int8: torch.Size([1, s11, 32, 1]), torch.float32: torch.Size([1, s11, 32, 1]), torch.int8: torch.Size([1, 2048, 8, 1]), torch.float32: torch.Size([1, 2048, 8, 1]), torch.int8: torch.Size([1, 2048, 8, 1]), torch.float32: torch.Size([1, 2048, 8, 1]),  ...)
+[2026-11-20 17:27:51,771][root][INFO] - [Vulkan Partitioner] Due to [input[0] dtype torch.float64 not in {torch.float16, torch.int32, torch.bool, torch.float32, torch.int64}], skipping torch.float32: torch.Size([1, s11, 32, 1]) = aten._to_copy.default(torch.float64: torch.Size([1, s11, 32, 1]),  ...)
+[2026-11-20 17:27:51,771][root][INFO] - [Vulkan Partitioner] Due to [output dtype torch.int8 not in {torch.float16, torch.int32, torch.bool, torch.float32, torch.int64}], skipping torch.int8: torch.Size([1, s11, 32, 1]) = aten._to_copy.default(torch.int64: torch.Size([1, s11, 32, 1]),  ...)
+[2026-11-20 17:27:51,774][root][INFO] - [Vulkan Partitioner] Due to [output[0] dtype torch.int8 not in {torch.float32, torch.float16}], skipping [torch.int8: torch.Size([1]), torch.int8: torch.Size([1, 2048, 8, 1])] = auto_functionalized_v2(llama.update_cache.default,  ...)
+[2026-11-20 17:27:51,776][root][INFO] - [Vulkan Partitioner] Due to [output[0] dtype torch.int8 not in {torch.float32, torch.float16}], skipping [torch.int8: torch.Size([1]), torch.int8: torch.Size([1, 2048, 8, 64])] = auto_functionalized_v2(llama.update_cache.default,  ...)
+[2026-11-20 17:27:51,776][root][INFO] - [Vulkan Partitioner] Due to [output[0] dtype torch.int8 not in {torch.float32, torch.float16}], skipping [torch.int8: torch.Size([1]), torch.int8: torch.Size([1, 2048, 8, 1])] = auto_functionalized_v2(llama.update_cache.default,  ...)
+[2026-11-20 17:27:51,778][root][INFO] - [Vulkan Partitioner] Due to [output[0] dtype torch.int8 not in {torch.float32, torch.float16}], skipping [torch.int8: torch.Size([1]), torch.int8: torch.Size([1, 2048, 8, 64])] = auto_functionalized_v2(llama.update_cache.default,  ...)
+[2026-11-20 17:27:51,780][root][INFO] - [Vulkan Partitioner] Due to [output dtype torch.int8 not in {torch.float16, torch.int32, torch.bool, torch.float32, torch.int64}], skipping torch.int8: torch.Size([1, s11, 8, 1]) = aten._to_copy.default(torch.int64: torch.Size([1, s11, 8, 1]),  ...)
+[2026-11-20 17:27:51,780][root][INFO] - [Vulkan Partitioner] Due to [input[0] dtype torch.float64 not in {torch.float16, torch.int32, torch.bool, torch.float32, torch.int64}], skipping torch.float32: torch.Size([1, s11, 8, 1]) = aten._to_copy.default(torch.float64: torch.Size([1, s11, 8, 1]),  ...)
+[2026-11-20 17:27:51,780][root][INFO] - [Vulkan Partitioner] Due to [output dtype torch.int8 not in {torch.float16, torch.int32, torch.bool, torch.float32, torch.int64}], skipping torch.int8: torch.Size([1, s11, 8, 1]) = aten._to_copy.default(torch.int64: torch.Size([1, s11, 8, 1]),  ...)
+[2026-11-20 17:27:51,780][root][INFO] - [Vulkan Partitioner] Due to [input[0] dtype torch.float64 not in {torch.float16, torch.int32, torch.bool, torch.float32, torch.int64}], skipping torch.float32: torch.Size([1, s11, 8, 1]) = aten._to_copy.default(torch.float64: torch.Size([1, s11, 8, 1]),  ...)
+[2026-11-20 17:27:51,950][root][INFO] - [Vulkan Partitioner] Due to [no operator implementation], skipping torch.float32: torch.Size([1, s11, 32, 64]) = llama.custom_quantized_sdpa.default(torch.int8: torch.Size([1, s11, 32, 64]), torch.int8: torch.Size([1, 2048, 8, 64]), torch.int8: torch.Size([1, 2048, 8, 64]), u532, None, 0.0, True, None, torch.int8: torch.Size([1, s11, 32, 1]), torch.float32: torch.Size([1, s11, 32, 1]), torch.int8: torch.Size([1, 2048, 8, 1]), torch.float32: torch.Size([1, 2048, 8, 1]), torch.int8: torch.Size([1, 2048, 8, 1]), torch.float32: torch.Size([1, 2048, 8, 1]),  ...)
+[2026-11-20 17:27:51,951][root][INFO] - [Vulkan Partitioner] Due to [input[0] dtype torch.float64 not in {torch.float16, torch.int32, torch.bool, torch.float32, torch.int64}], skipping torch.float32: torch.Size([1, s11, 32, 1]) = aten._to_copy.default(torch.float64: torch.Size([1, s11, 32, 1]),  ...)
+[2026-11-20 17:27:51,951][root][INFO] - [Vulkan Partitioner] Due to [output dtype torch.int8 not in {torch.float16, torch.int32, torch.bool, torch.float32, torch.int64}], skipping torch.int8: torch.Size([1, s11, 32, 1]) = aten._to_copy.default(torch.int64: torch.Size([1, s11, 32, 1]),  ...)
+[2026-11-20 17:27:51,957][root][INFO] - [Vulkan Partitioner] Due to [output[0] dtype torch.int8 not in {torch.float32, torch.float16}], skipping [torch.int8: torch.Size([1]), torch.int8: torch.Size([1, 2048, 8, 1])] = auto_functionalized_v2(llama.update_cache.default,  ...)
+[2026-11-20 17:27:51,960][root][INFO] - [Vulkan Partitioner] Due to [output[0] dtype torch.int8 not in {torch.float32, torch.float16}], skipping [torch.int8: torch.Size([1]), torch.int8: torch.Size([1, 2048, 8, 64])] = auto_functionalized_v2(llama.update_cache.default,  ...)
+[2026-11-20 17:27:51,961][root][INFO] - [Vulkan Partitioner] Due to [output[0] dtype torch.int8 not in {torch.float32, torch.float16}], skipping [torch.int8: torch.Size([1]), torch.int8: torch.Size([1, 2048, 8, 1])] = auto_functionalized_v2(llama.update_cache.default,  ...)
+[2026-11-20 17:27:51,964][root][INFO] - [Vulkan Partitioner] Due to [output[0] dtype torch.int8 not in {torch.float32, torch.float16}], skipping [torch.int8: torch.Size([1]), torch.int8: torch.Size([1, 2048, 8, 64])] = auto_functionalized_v2(llama.update_cache.default,  ...)
+[2026-11-20 17:27:51,966][root][INFO] - [Vulkan Partitioner] Due to [output dtype torch.int8 not in {torch.float16, torch.int32, torch.bool, torch.float32, torch.int64}], skipping torch.int8: torch.Size([1, s11, 8, 1]) = aten._to_copy.default(torch.int64: torch.Size([1, s11, 8, 1]),  ...)
+[2026-11-20 17:27:51,967][root][INFO] - [Vulkan Partitioner] Due to [input[0] dtype torch.float64 not in {torch.float16, torch.int32, torch.bool, torch.float32, torch.int64}], skipping torch.float32: torch.Size([1, s11, 8, 1]) = aten._to_copy.default(torch.float64: torch.Size([1, s11, 8, 1]),  ...)
+[2026-11-20 17:27:51,967][root][INFO] - [Vulkan Partitioner] Due to [output dtype torch.int8 not in {torch.float16, torch.int32, torch.bool, torch.float32, torch.int64}], skipping torch.int8: torch.Size([1, s11, 8, 1]) = aten._to_copy.default(torch.int64: torch.Size([1, s11, 8, 1]),  ...)
+[2026-11-20 17:27:51,967][root][INFO] - [Vulkan Partitioner] Due to [input[0] dtype torch.float64 not in {torch.float16, torch.int32, torch.bool, torch.float32, torch.int64}], skipping torch.float32: torch.Size([1, s11, 8, 1]) = aten._to_copy.default(torch.float64: torch.Size([1, s11, 8, 1]),  ...)
+[2026-11-20 17:27:52,267][root][INFO] - [Vulkan Partitioner] Due to [no operator implementation], skipping torch.float32: torch.Size([1, s11, 32, 64]) = llama.custom_quantized_sdpa.default(torch.int8: torch.Size([1, s11, 32, 64]), torch.int8: torch.Size([1, 2048, 8, 64]), torch.int8: torch.Size([1, 2048, 8, 64]), u529, None, 0.0, True, None, torch.int8: torch.Size([1, s11, 32, 1]), torch.float32: torch.Size([1, s11, 32, 1]), torch.int8: torch.Size([1, 2048, 8, 1]), torch.float32: torch.Size([1, 2048, 8, 1]), torch.int8: torch.Size([1, 2048, 8, 1]), torch.float32: torch.Size([1, 2048, 8, 1]),  ...)
+[2026-11-20 17:27:52,270][root][INFO] - [Vulkan Partitioner] Due to [input[0] dtype torch.float64 not in {torch.float16, torch.int32, torch.bool, torch.float32, torch.int64}], skipping torch.float32: torch.Size([1, s11, 32, 1]) = aten._to_copy.default(torch.float64: torch.Size([1, s11, 32, 1]),  ...)
+[2026-11-20 17:27:52,271][root][INFO] - [Vulkan Partitioner] Due to [output dtype torch.int8 not in {torch.float16, torch.int32, torch.bool, torch.float32, torch.int64}], skipping torch.int8: torch.Size([1, s11, 32, 1]) = aten._to_copy.default(torch.int64: torch.Size([1, s11, 32, 1]),  ...)
+[2026-11-20 17:27:52,280][root][INFO] - [Vulkan Partitioner] Due to [output[0] dtype torch.int8 not in {torch.float32, torch.float16}], skipping [torch.int8: torch.Size([1]), torch.int8: torch.Size([1, 2048, 8, 1])] = auto_functionalized_v2(llama.update_cache.default,  ...)
+[2026-11-20 17:27:52,287][root][INFO] - [Vulkan Partitioner] Due to [output[0] dtype torch.int8 not in {torch.float32, torch.float16}], skipping [torch.int8: torch.Size([1]), torch.int8: torch.Size([1, 2048, 8, 64])] = auto_functionalized_v2(llama.update_cache.default,  ...)
+[2026-11-20 17:27:52,289][root][INFO] - [Vulkan Partitioner] Due to [output[0] dtype torch.int8 not in {torch.float32, torch.float16}], skipping [torch.int8: torch.Size([1]), torch.int8: torch.Size([1, 2048, 8, 1])] = auto_functionalized_v2(llama.update_cache.default,  ...)
+[2026-11-20 17:27:52,295][root][INFO] - [Vulkan Partitioner] Due to [output[0] dtype torch.int8 not in {torch.float32, torch.float16}], skipping [torch.int8: torch.Size([1]), torch.int8: torch.Size([1, 2048, 8, 64])] = auto_functionalized_v2(llama.update_cache.default,  ...)
+[2026-11-20 17:27:52,300][root][INFO] - [Vulkan Partitioner] Due to [output dtype torch.int8 not in {torch.float16, torch.int32, torch.bool, torch.float32, torch.int64}], skipping torch.int8: torch.Size([1, s11, 8, 1]) = aten._to_copy.default(torch.int64: torch.Size([1, s11, 8, 1]),  ...)
+[2026-11-20 17:27:52,301][root][INFO] - [Vulkan Partitioner] Due to [input[0] dtype torch.float64 not in {torch.float16, torch.int32, torch.bool, torch.float32, torch.int64}], skipping torch.float32: torch.Size([1, s11, 8, 1]) = aten._to_copy.default(torch.float64: torch.Size([1, s11, 8, 1]),  ...)
+[2026-11-20 17:27:52,301][root][INFO] - [Vulkan Partitioner] Due to [output dtype torch.int8 not in {torch.float16, torch.int32, torch.bool, torch.float32, torch.int64}], skipping torch.int8: torch.Size([1, s11, 8, 1]) = aten._to_copy.default(torch.int64: torch.Size([1, s11, 8, 1]),  ...)
+[2026-11-20 17:27:52,301][root][INFO] - [Vulkan Partitioner] Due to [input[0] dtype torch.float64 not in {torch.float16, torch.int32, torch.bool, torch.float32, torch.int64}], skipping torch.float32: torch.Size([1, s11, 8, 1]) = aten._to_copy.default(torch.float64: torch.Size([1, s11, 8, 1]),  ...)
+[2026-11-20 17:27:52,789][root][INFO] - [Vulkan Partitioner] Due to [no operator implementation], skipping torch.float32: torch.Size([1, s11, 32, 64]) = llama.custom_quantized_sdpa.default(torch.int8: torch.Size([1, s11, 32, 64]), torch.int8: torch.Size([1, 2048, 8, 64]), torch.int8: torch.Size([1, 2048, 8, 64]), u526, None, 0.0, True, None, torch.int8: torch.Size([1, s11, 32, 1]), torch.float32: torch.Size([1, s11, 32, 1]), torch.int8: torch.Size([1, 2048, 8, 1]), torch.float32: torch.Size([1, 2048, 8, 1]), torch.int8: torch.Size([1, 2048, 8, 1]), torch.float32: torch.Size([1, 2048, 8, 1]),  ...)
+[2026-11-20 17:27:52,792][root][INFO] - [Vulkan Partitioner] Due to [input[0] dtype torch.float64 not in {torch.float16, torch.int32, torch.bool, torch.float32, torch.int64}], skipping torch.float32: torch.Size([1, s11, 32, 1]) = aten._to_copy.default(torch.float64: torch.Size([1, s11, 32, 1]),  ...)
+[2026-11-20 17:27:52,792][root][INFO] - [Vulkan Partitioner] Due to [output dtype torch.int8 not in {torch.float16, torch.int32, torch.bool, torch.float32, torch.int64}], skipping torch.int8: torch.Size([1, s11, 32, 1]) = aten._to_copy.default(torch.int64: torch.Size([1, s11, 32, 1]),  ...)
+[2026-11-20 17:27:52,803][root][INFO] - [Vulkan Partitioner] Due to [output[0] dtype torch.int8 not in {torch.float32, torch.float16}], skipping [torch.int8: torch.Size([1]), torch.int8: torch.Size([1, 2048, 8, 1])] = auto_functionalized_v2(llama.update_cache.default,  ...)
+[2026-11-20 17:27:52,811][root][INFO] - [Vulkan Partitioner] Due to [output[0] dtype torch.int8 not in {torch.float32, torch.float16}], skipping [torch.int8: torch.Size([1]), torch.int8: torch.Size([1, 2048, 8, 64])] = auto_functionalized_v2(llama.update_cache.default,  ...)
+[2026-11-20 17:27:52,814][root][INFO] - [Vulkan Partitioner] Due to [output[0] dtype torch.int8 not in {torch.float32, torch.float16}], skipping [torch.int8: torch.Size([1]), torch.int8: torch.Size([1, 2048, 8, 1])] = auto_functionalized_v2(llama.update_cache.default,  ...)
+[2026-11-20 17:27:52,821][root][INFO] - [Vulkan Partitioner] Due to [output[0] dtype torch.int8 not in {torch.float32, torch.float16}], skipping [torch.int8: torch.Size([1]), torch.int8: torch.Size([1, 2048, 8, 64])] = auto_functionalized_v2(llama.update_cache.default,  ...)
+[2026-11-20 17:27:52,828][root][INFO] - [Vulkan Partitioner] Due to [output dtype torch.int8 not in {torch.float16, torch.int32, torch.bool, torch.float32, torch.int64}], skipping torch.int8: torch.Size([1, s11, 8, 1]) = aten._to_copy.default(torch.int64: torch.Size([1, s11, 8, 1]),  ...)
+[2026-11-20 17:27:52,828][root][INFO] - [Vulkan Partitioner] Due to [input[0] dtype torch.float64 not in {torch.float16, torch.int32, torch.bool, torch.float32, torch.int64}], skipping torch.float32: torch.Size([1, s11, 8, 1]) = aten._to_copy.default(torch.float64: torch.Size([1, s11, 8, 1]),  ...)
+[2026-11-20 17:27:52,828][root][INFO] - [Vulkan Partitioner] Due to [output dtype torch.int8 not in {torch.float16, torch.int32, torch.bool, torch.float32, torch.int64}], skipping torch.int8: torch.Size([1, s11, 8, 1]) = aten._to_copy.default(torch.int64: torch.Size([1, s11, 8, 1]),  ...)
+[2026-11-20 17:27:52,828][root][INFO] - [Vulkan Partitioner] Due to [input[0] dtype torch.float64 not in {torch.float16, torch.int32, torch.bool, torch.float32, torch.int64}], skipping torch.float32: torch.Size([1, s11, 8, 1]) = aten._to_copy.default(torch.float64: torch.Size([1, s11, 8, 1]),  ...)
+[2026-11-20 17:27:53,565][root][INFO] - [Vulkan Partitioner] Due to [no operator implementation], skipping torch.float32: torch.Size([1, s11, 32, 64]) = llama.custom_quantized_sdpa.default(torch.int8: torch.Size([1, s11, 32, 64]), torch.int8: torch.Size([1, 2048, 8, 64]), torch.int8: torch.Size([1, 2048, 8, 64]), u523, None, 0.0, True, None, torch.int8: torch.Size([1, s11, 32, 1]), torch.float32: torch.Size([1, s11, 32, 1]), torch.int8: torch.Size([1, 2048, 8, 1]), torch.float32: torch.Size([1, 2048, 8, 1]), torch.int8: torch.Size([1, 2048, 8, 1]), torch.float32: torch.Size([1, 2048, 8, 1]),  ...)
+[2026-11-20 17:27:53,575][root][INFO] - [Vulkan Partitioner] Due to [input[0] dtype torch.float64 not in {torch.float16, torch.int32, torch.bool, torch.float32, torch.int64}], skipping torch.float32: torch.Size([1, s11, 32, 1]) = aten._to_copy.default(torch.float64: torch.Size([1, s11, 32, 1]),  ...)
+[2026-11-20 17:27:53,576][root][INFO] - [Vulkan Partitioner] Due to [output dtype torch.int8 not in {torch.float16, torch.int32, torch.bool, torch.float32, torch.int64}], skipping torch.int8: torch.Size([1, s11, 32, 1]) = aten._to_copy.default(torch.int64: torch.Size([1, s11, 32, 1]),  ...)
+[2026-11-20 17:27:53,602][root][INFO] - [Vulkan Partitioner] Due to [output[0] dtype torch.int8 not in {torch.float32, torch.float16}], skipping [torch.int8: torch.Size([1]), torch.int8: torch.Size([1, 2048, 8, 1])] = auto_functionalized_v2(llama.update_cache.default,  ...)
+[2026-11-20 17:27:53,621][root][INFO] - [Vulkan Partitioner] Due to [output[0] dtype torch.int8 not in {torch.float32, torch.float16}], skipping [torch.int8: torch.Size([1]), torch.int8: torch.Size([1, 2048, 8, 64])] = auto_functionalized_v2(llama.update_cache.default,  ...)
+[2026-11-20 17:27:53,628][root][INFO] - [Vulkan Partitioner] Due to [output[0] dtype torch.int8 not in {torch.float32, torch.float16}], skipping [torch.int8: torch.Size([1]), torch.int8: torch.Size([1, 2048, 8, 1])] = auto_functionalized_v2(llama.update_cache.default,  ...)
+[2026-11-20 17:27:53,647][root][INFO] - [Vulkan Partitioner] Due to [output[0] dtype torch.int8 not in {torch.float32, torch.float16}], skipping [torch.int8: torch.Size([1]), torch.int8: torch.Size([1, 2048, 8, 64])] = auto_functionalized_v2(llama.update_cache.default,  ...)
+[2026-11-20 17:27:53,657][root][INFO] - [Vulkan Partitioner] Due to [output dtype torch.int8 not in {torch.float16, torch.int32, torch.bool, torch.float32, torch.int64}], skipping torch.int8: torch.Size([1, s11, 8, 1]) = aten._to_copy.default(torch.int64: torch.Size([1, s11, 8, 1]),  ...)
+[2026-11-20 17:27:53,658][root][INFO] - [Vulkan Partitioner] Due to [input[0] dtype torch.float64 not in {torch.float16, torch.int32, torch.bool, torch.float32, torch.int64}], skipping torch.float32: torch.Size([1, s11, 8, 1]) = aten._to_copy.default(torch.float64: torch.Size([1, s11, 8, 1]),  ...)
+[2026-11-20 17:27:53,658][root][INFO] - [Vulkan Partitioner] Due to [output dtype torch.int8 not in {torch.float16, torch.int32, torch.bool, torch.float32, torch.int64}], skipping torch.int8: torch.Size([1, s11, 8, 1]) = aten._to_copy.default(torch.int64: torch.Size([1, s11, 8, 1]),  ...)
+[2026-11-20 17:27:53,658][root][INFO] - [Vulkan Partitioner] Due to [input[0] dtype torch.float64 not in {torch.float16, torch.int32, torch.bool, torch.float32, torch.int64}], skipping torch.float32: torch.Size([1, s11, 8, 1]) = aten._to_copy.default(torch.float64: torch.Size([1, s11, 8, 1]),  ...)
+[2026-11-20 17:27:54,646][root][INFO] - [Vulkan Partitioner] Due to [no operator implementation], skipping torch.float32: torch.Size([1, s11, 32, 64]) = llama.custom_quantized_sdpa.default(torch.int8: torch.Size([1, s11, 32, 64]), torch.int8: torch.Size([1, 2048, 8, 64]), torch.int8: torch.Size([1, 2048, 8, 64]), u520, None, 0.0, True, None, torch.int8: torch.Size([1, s11, 32, 1]), torch.float32: torch.Size([1, s11, 32, 1]), torch.int8: torch.Size([1, 2048, 8, 1]), torch.float32: torch.Size([1, 2048, 8, 1]), torch.int8: torch.Size([1, 2048, 8, 1]), torch.float32: torch.Size([1, 2048, 8, 1]),  ...)
+[2026-11-20 17:27:54,656][root][INFO] - [Vulkan Partitioner] Due to [input[0] dtype torch.float64 not in {torch.float16, torch.int32, torch.bool, torch.float32, torch.int64}], skipping torch.float32: torch.Size([1, s11, 32, 1]) = aten._to_copy.default(torch.float64: torch.Size([1, s11, 32, 1]),  ...)
+[2026-11-20 17:27:54,656][root][INFO] - [Vulkan Partitioner] Due to [output dtype torch.int8 not in {torch.float16, torch.int32, torch.bool, torch.float32, torch.int64}], skipping torch.int8: torch.Size([1, s11, 32, 1]) = aten._to_copy.default(torch.int64: torch.Size([1, s11, 32, 1]),  ...)
+[2026-11-20 17:27:54,682][root][INFO] - [Vulkan Partitioner] Due to [output[0] dtype torch.int8 not in {torch.float32, torch.float16}], skipping [torch.int8: torch.Size([1]), torch.int8: torch.Size([1, 2048, 8, 1])] = auto_functionalized_v2(llama.update_cache.default,  ...)
+[2026-11-20 17:27:54,703][root][INFO] - [Vulkan Partitioner] Due to [output[0] dtype torch.int8 not in {torch.float32, torch.float16}], skipping [torch.int8: torch.Size([1]), torch.int8: torch.Size([1, 2048, 8, 64])] = auto_functionalized_v2(llama.update_cache.default,  ...)
+[2026-11-20 17:27:54,711][root][INFO] - [Vulkan Partitioner] Due to [output[0] dtype torch.int8 not in {torch.float32, torch.float16}], skipping [torch.int8: torch.Size([1]), torch.int8: torch.Size([1, 2048, 8, 1])] = auto_functionalized_v2(llama.update_cache.default,  ...)
+[2026-11-20 17:27:54,731][root][INFO] - [Vulkan Partitioner] Due to [output[0] dtype torch.int8 not in {torch.float32, torch.float16}], skipping [torch.int8: torch.Size([1]), torch.int8: torch.Size([1, 2048, 8, 64])] = auto_functionalized_v2(llama.update_cache.default,  ...)
+[2026-11-20 17:27:54,739][root][INFO] - [Vulkan Partitioner] Due to [output dtype torch.int8 not in {torch.float16, torch.int32, torch.bool, torch.float32, torch.int64}], skipping torch.int8: torch.Size([1, s11, 8, 1]) = aten._to_copy.default(torch.int64: torch.Size([1, s11, 8, 1]),  ...)
+[2026-11-20 17:27:54,740][root][INFO] - [Vulkan Partitioner] Due to [input[0] dtype torch.float64 not in {torch.float16, torch.int32, torch.bool, torch.float32, torch.int64}], skipping torch.float32: torch.Size([1, s11, 8, 1]) = aten._to_copy.default(torch.float64: torch.Size([1, s11, 8, 1]),  ...)
+[2026-11-20 17:27:54,740][root][INFO] - [Vulkan Partitioner] Due to [output dtype torch.int8 not in {torch.float16, torch.int32, torch.bool, torch.float32, torch.int64}], skipping torch.int8: torch.Size([1, s11, 8, 1]) = aten._to_copy.default(torch.int64: torch.Size([1, s11, 8, 1]),  ...)
+[2026-11-20 17:27:54,740][root][INFO] - [Vulkan Partitioner] Due to [input[0] dtype torch.float64 not in {torch.float16, torch.int32, torch.bool, torch.float32, torch.int64}], skipping torch.float32: torch.Size([1, s11, 8, 1]) = aten._to_copy.default(torch.float64: torch.Size([1, s11, 8, 1]),  ...)
+[2026-11-20 17:27:55,946][root][INFO] - [Vulkan Partitioner] Due to [no operator implementation], skipping torch.float32: torch.Size([1, s11, 32, 64]) = llama.custom_quantized_sdpa.default(torch.int8: torch.Size([1, s11, 32, 64]), torch.int8: torch.Size([1, 2048, 8, 64]), torch.int8: torch.Size([1, 2048, 8, 64]), u517, None, 0.0, True, None, torch.int8: torch.Size([1, s11, 32, 1]), torch.float32: torch.Size([1, s11, 32, 1]), torch.int8: torch.Size([1, 2048, 8, 1]), torch.float32: torch.Size([1, 2048, 8, 1]), torch.int8: torch.Size([1, 2048, 8, 1]), torch.float32: torch.Size([1, 2048, 8, 1]),  ...)
+[2026-11-20 17:27:55,958][root][INFO] - [Vulkan Partitioner] Due to [input[0] dtype torch.float64 not in {torch.float16, torch.int32, torch.bool, torch.float32, torch.int64}], skipping torch.float32: torch.Size([1, s11, 32, 1]) = aten._to_copy.default(torch.float64: torch.Size([1, s11, 32, 1]),  ...)
+[2026-11-20 17:27:55,959][root][INFO] - [Vulkan Partitioner] Due to [output dtype torch.int8 not in {torch.float16, torch.int32, torch.bool, torch.float32, torch.int64}], skipping torch.int8: torch.Size([1, s11, 32, 1]) = aten._to_copy.default(torch.int64: torch.Size([1, s11, 32, 1]),  ...)
+[2026-11-20 17:27:56,000][root][INFO] - [Vulkan Partitioner] Due to [output[0] dtype torch.int8 not in {torch.float32, torch.float16}], skipping [torch.int8: torch.Size([1]), torch.int8: torch.Size([1, 2048, 8, 1])] = auto_functionalized_v2(llama.update_cache.default,  ...)
+[2026-11-20 17:27:56,024][root][INFO] - [Vulkan Partitioner] Due to [output[0] dtype torch.int8 not in {torch.float32, torch.float16}], skipping [torch.int8: torch.Size([1]), torch.int8: torch.Size([1, 2048, 8, 64])] = auto_functionalized_v2(llama.update_cache.default,  ...)
+[2026-11-20 17:27:56,034][root][INFO] - [Vulkan Partitioner] Due to [output[0] dtype torch.int8 not in {torch.float32, torch.float16}], skipping [torch.int8: torch.Size([1]), torch.int8: torch.Size([1, 2048, 8, 1])] = auto_functionalized_v2(llama.update_cache.default,  ...)
+[2026-11-20 17:27:56,062][root][INFO] - [Vulkan Partitioner] Due to [output[0] dtype torch.int8 not in {torch.float32, torch.float16}], skipping [torch.int8: torch.Size([1]), torch.int8: torch.Size([1, 2048, 8, 64])] = auto_functionalized_v2(llama.update_cache.default,  ...)
+[2026-11-20 17:27:56,073][root][INFO] - [Vulkan Partitioner] Due to [output dtype torch.int8 not in {torch.float16, torch.int32, torch.bool, torch.float32, torch.int64}], skipping torch.int8: torch.Size([1, s11, 8, 1]) = aten._to_copy.default(torch.int64: torch.Size([1, s11, 8, 1]),  ...)
+[2026-11-20 17:27:56,073][root][INFO] - [Vulkan Partitioner] Due to [input[0] dtype torch.float64 not in {torch.float16, torch.int32, torch.bool, torch.float32, torch.int64}], skipping torch.float32: torch.Size([1, s11, 8, 1]) = aten._to_copy.default(torch.float64: torch.Size([1, s11, 8, 1]),  ...)
+[2026-11-20 17:27:56,073][root][INFO] - [Vulkan Partitioner] Due to [output dtype torch.int8 not in {torch.float16, torch.int32, torch.bool, torch.float32, torch.int64}], skipping torch.int8: torch.Size([1, s11, 8, 1]) = aten._to_copy.default(torch.int64: torch.Size([1, s11, 8, 1]),  ...)
+[2026-11-20 17:27:56,074][root][INFO] - [Vulkan Partitioner] Due to [input[0] dtype torch.float64 not in {torch.float16, torch.int32, torch.bool, torch.float32, torch.int64}], skipping torch.float32: torch.Size([1, s11, 8, 1]) = aten._to_copy.default(torch.float64: torch.Size([1, s11, 8, 1]),  ...)
+[2026-11-20 17:27:57,556][root][INFO] - [Vulkan Partitioner] Due to [no operator implementation], skipping torch.float32: torch.Size([1, s11, 32, 64]) = llama.custom_quantized_sdpa.default(torch.int8: torch.Size([1, s11, 32, 64]), torch.int8: torch.Size([1, 2048, 8, 64]), torch.int8: torch.Size([1, 2048, 8, 64]), u514, None, 0.0, True, None, torch.int8: torch.Size([1, s11, 32, 1]), torch.float32: torch.Size([1, s11, 32, 1]), torch.int8: torch.Size([1, 2048, 8, 1]), torch.float32: torch.Size([1, 2048, 8, 1]), torch.int8: torch.Size([1, 2048, 8, 1]), torch.float32: torch.Size([1, 2048, 8, 1]),  ...)
+[2026-11-20 17:27:57,563][root][INFO] - [Vulkan Partitioner] Due to [input[0] dtype torch.float64 not in {torch.float16, torch.int32, torch.bool, torch.float32, torch.int64}], skipping torch.float32: torch.Size([1, s11, 32, 1]) = aten._to_copy.default(torch.float64: torch.Size([1, s11, 32, 1]),  ...)
+[2026-11-20 17:27:57,563][root][INFO] - [Vulkan Partitioner] Due to [output dtype torch.int8 not in {torch.float16, torch.int32, torch.bool, torch.float32, torch.int64}], skipping torch.int8: torch.Size([1, s11, 32, 1]) = aten._to_copy.default(torch.int64: torch.Size([1, s11, 32, 1]),  ...)
+[2026-11-20 17:27:57,595][root][INFO] - [Vulkan Partitioner] Due to [output[0] dtype torch.int8 not in {torch.float32, torch.float16}], skipping [torch.int8: torch.Size([1]), torch.int8: torch.Size([1, 2048, 8, 1])] = auto_functionalized_v2(llama.update_cache.default,  ...)
+[2026-11-20 17:27:57,611][root][INFO] - [Vulkan Partitioner] Due to [output[0] dtype torch.int8 not in {torch.float32, torch.float16}], skipping [torch.int8: torch.Size([1]), torch.int8: torch.Size([1, 2048, 8, 64])] = auto_functionalized_v2(llama.update_cache.default,  ...)
+[2026-11-20 17:27:57,617][root][INFO] - [Vulkan Partitioner] Due to [output[0] dtype torch.int8 not in {torch.float32, torch.float16}], skipping [torch.int8: torch.Size([1]), torch.int8: torch.Size([1, 2048, 8, 1])] = auto_functionalized_v2(llama.update_cache.default,  ...)
+[2026-11-20 17:27:57,632][root][INFO] - [Vulkan Partitioner] Due to [output[0] dtype torch.int8 not in {torch.float32, torch.float16}], skipping [torch.int8: torch.Size([1]), torch.int8: torch.Size([1, 2048, 8, 64])] = auto_functionalized_v2(llama.update_cache.default,  ...)
+[2026-11-20 17:27:57,650][root][INFO] - [Vulkan Partitioner] Due to [output dtype torch.int8 not in {torch.float16, torch.int32, torch.bool, torch.float32, torch.int64}], skipping torch.int8: torch.Size([1, s11, 8, 1]) = aten._to_copy.default(torch.int64: torch.Size([1, s11, 8, 1]),  ...)
+[2026-11-20 17:27:57,650][root][INFO] - [Vulkan Partitioner] Due to [input[0] dtype torch.float64 not in {torch.float16, torch.int32, torch.bool, torch.float32, torch.int64}], skipping torch.float32: torch.Size([1, s11, 8, 1]) = aten._to_copy.default(torch.float64: torch.Size([1, s11, 8, 1]),  ...)
+[2026-11-20 17:27:57,650][root][INFO] - [Vulkan Partitioner] Due to [output dtype torch.int8 not in {torch.float16, torch.int32, torch.bool, torch.float32, torch.int64}], skipping torch.int8: torch.Size([1, s11, 8, 1]) = aten._to_copy.default(torch.int64: torch.Size([1, s11, 8, 1]),  ...)
+[2026-11-20 17:27:57,651][root][INFO] - [Vulkan Partitioner] Due to [input[0] dtype torch.float64 not in {torch.float16, torch.int32, torch.bool, torch.float32, torch.int64}], skipping torch.float32: torch.Size([1, s11, 8, 1]) = aten._to_copy.default(torch.float64: torch.Size([1, s11, 8, 1]),  ...)
+[2026-11-20 17:27:59,387][root][INFO] - [Vulkan Partitioner] Due to [no operator implementation], skipping torch.float32: torch.Size([1, s11, 32, 64]) = llama.custom_quantized_sdpa.default(torch.int8: torch.Size([1, s11, 32, 64]), torch.int8: torch.Size([1, 2048, 8, 64]), torch.int8: torch.Size([1, 2048, 8, 64]), u511, None, 0.0, True, None, torch.int8: torch.Size([1, s11, 32, 1]), torch.float32: torch.Size([1, s11, 32, 1]), torch.int8: torch.Size([1, 2048, 8, 1]), torch.float32: torch.Size([1, 2048, 8, 1]), torch.int8: torch.Size([1, 2048, 8, 1]), torch.float32: torch.Size([1, 2048, 8, 1]),  ...)
+[2026-11-20 17:27:59,411][root][INFO] - [Vulkan Partitioner] Due to [input[0] dtype torch.float64 not in {torch.float16, torch.int32, torch.bool, torch.float32, torch.int64}], skipping torch.float32: torch.Size([1, s11, 32, 1]) = aten._to_copy.default(torch.float64: torch.Size([1, s11, 32, 1]),  ...)
+[2026-11-20 17:27:59,411][root][INFO] - [Vulkan Partitioner] Due to [output dtype torch.int8 not in {torch.float16, torch.int32, torch.bool, torch.float32, torch.int64}], skipping torch.int8: torch.Size([1, s11, 32, 1]) = aten._to_copy.default(torch.int64: torch.Size([1, s11, 32, 1]),  ...)
+[2026-11-20 17:27:59,448][root][INFO] - [Vulkan Partitioner] Due to [output[0] dtype torch.int8 not in {torch.float32, torch.float16}], skipping [torch.int8: torch.Size([1]), torch.int8: torch.Size([1, 2048, 8, 1])] = auto_functionalized_v2(llama.update_cache.default,  ...)
+[2026-11-20 17:27:59,474][root][INFO] - [Vulkan Partitioner] Due to [output[0] dtype torch.int8 not in {torch.float32, torch.float16}], skipping [torch.int8: torch.Size([1]), torch.int8: torch.Size([1, 2048, 8, 64])] = auto_functionalized_v2(llama.update_cache.default,  ...)
+[2026-11-20 17:27:59,484][root][INFO] - [Vulkan Partitioner] Due to [output[0] dtype torch.int8 not in {torch.float32, torch.float16}], skipping [torch.int8: torch.Size([1]), torch.int8: torch.Size([1, 2048, 8, 1])] = auto_functionalized_v2(llama.update_cache.default,  ...)
+[2026-11-20 17:27:59,525][root][INFO] - [Vulkan Partitioner] Due to [output[0] dtype torch.int8 not in {torch.float32, torch.float16}], skipping [torch.int8: torch.Size([1]), torch.int8: torch.Size([1, 2048, 8, 64])] = auto_functionalized_v2(llama.update_cache.default,  ...)
+[2026-11-20 17:27:59,547][root][INFO] - [Vulkan Partitioner] Due to [output dtype torch.int8 not in {torch.float16, torch.int32, torch.bool, torch.float32, torch.int64}], skipping torch.int8: torch.Size([1, s11, 8, 1]) = aten._to_copy.default(torch.int64: torch.Size([1, s11, 8, 1]),  ...)
+[2026-11-20 17:27:59,547][root][INFO] - [Vulkan Partitioner] Due to [input[0] dtype torch.float64 not in {torch.float16, torch.int32, torch.bool, torch.float32, torch.int64}], skipping torch.float32: torch.Size([1, s11, 8, 1]) = aten._to_copy.default(torch.float64: torch.Size([1, s11, 8, 1]),  ...)
+[2026-11-20 17:27:59,548][root][INFO] - [Vulkan Partitioner] Due to [output dtype torch.int8 not in {torch.float16, torch.int32, torch.bool, torch.float32, torch.int64}], skipping torch.int8: torch.Size([1, s11, 8, 1]) = aten._to_copy.default(torch.int64: torch.Size([1, s11, 8, 1]),  ...)
+[2026-11-20 17:27:59,548][root][INFO] - [Vulkan Partitioner] Due to [input[0] dtype torch.float64 not in {torch.float16, torch.int32, torch.bool, torch.float32, torch.int64}], skipping torch.float32: torch.Size([1, s11, 8, 1]) = aten._to_copy.default(torch.float64: torch.Size([1, s11, 8, 1]),  ...)
+[2026-11-20 17:28:01,622][root][INFO] - [Vulkan Partitioner] Due to [no operator implementation], skipping torch.float32: torch.Size([1, s11, 32, 64]) = llama.custom_quantized_sdpa.default(torch.int8: torch.Size([1, s11, 32, 64]), torch.int8: torch.Size([1, 2048, 8, 64]), torch.int8: torch.Size([1, 2048, 8, 64]), u508, None, 0.0, True, None, torch.int8: torch.Size([1, s11, 32, 1]), torch.float32: torch.Size([1, s11, 32, 1]), torch.int8: torch.Size([1, 2048, 8, 1]), torch.float32: torch.Size([1, 2048, 8, 1]), torch.int8: torch.Size([1, 2048, 8, 1]), torch.float32: torch.Size([1, 2048, 8, 1]),  ...)
+[2026-11-20 17:28:01,666][root][INFO] - [Vulkan Partitioner] Due to [input[0] dtype torch.float64 not in {torch.float16, torch.int32, torch.bool, torch.float32, torch.int64}], skipping torch.float32: torch.Size([1, s11, 32, 1]) = aten._to_copy.default(torch.float64: torch.Size([1, s11, 32, 1]),  ...)
+[2026-11-20 17:28:01,666][root][INFO] - [Vulkan Partitioner] Due to [output dtype torch.int8 not in {torch.float16, torch.int32, torch.bool, torch.float32, torch.int64}], skipping torch.int8: torch.Size([1, s11, 32, 1]) = aten._to_copy.default(torch.int64: torch.Size([1, s11, 32, 1]),  ...)
+[2026-11-20 17:28:01,728][root][INFO] - [Vulkan Partitioner] Due to [output[0] dtype torch.int8 not in {torch.float32, torch.float16}], skipping [torch.int8: torch.Size([1]), torch.int8: torch.Size([1, 2048, 8, 1])] = auto_functionalized_v2(llama.update_cache.default,  ...)
+[2026-11-20 17:28:01,825][root][INFO] - [Vulkan Partitioner] Due to [output[0] dtype torch.int8 not in {torch.float32, torch.float16}], skipping [torch.int8: torch.Size([1]), torch.int8: torch.Size([1, 2048, 8, 64])] = auto_functionalized_v2(llama.update_cache.default,  ...)
+[2026-11-20 17:28:01,860][root][INFO] - [Vulkan Partitioner] Due to [output[0] dtype torch.int8 not in {torch.float32, torch.float16}], skipping [torch.int8: torch.Size([1]), torch.int8: torch.Size([1, 2048, 8, 1])] = auto_functionalized_v2(llama.update_cache.default,  ...)
+[2026-11-20 17:28:01,930][root][INFO] - [Vulkan Partitioner] Due to [output[0] dtype torch.int8 not in {torch.float32, torch.float16}], skipping [torch.int8: torch.Size([1]), torch.int8: torch.Size([1, 2048, 8, 64])] = auto_functionalized_v2(llama.update_cache.default,  ...)
+[2026-11-20 17:28:01,948][root][INFO] - [Vulkan Partitioner] Due to [output dtype torch.int8 not in {torch.float16, torch.int32, torch.bool, torch.float32, torch.int64}], skipping torch.int8: torch.Size([1, s11, 8, 1]) = aten._to_copy.default(torch.int64: torch.Size([1, s11, 8, 1]),  ...)
+[2026-11-20 17:28:01,948][root][INFO] - [Vulkan Partitioner] Due to [input[0] dtype torch.float64 not in {torch.float16, torch.int32, torch.bool, torch.float32, torch.int64}], skipping torch.float32: torch.Size([1, s11, 8, 1]) = aten._to_copy.default(torch.float64: torch.Size([1, s11, 8, 1]),  ...)
+[2026-11-20 17:28:01,949][root][INFO] - [Vulkan Partitioner] Due to [output dtype torch.int8 not in {torch.float16, torch.int32, torch.bool, torch.float32, torch.int64}], skipping torch.int8: torch.Size([1, s11, 8, 1]) = aten._to_copy.default(torch.int64: torch.Size([1, s11, 8, 1]),  ...)
+[2026-11-20 17:28:01,949][root][INFO] - [Vulkan Partitioner] Due to [input[0] dtype torch.float64 not in {torch.float16, torch.int32, torch.bool, torch.float32, torch.int64}], skipping torch.float32: torch.Size([1, s11, 8, 1]) = aten._to_copy.default(torch.float64: torch.Size([1, s11, 8, 1]),  ...)
+[2026-11-20 17:28:04,385][root][INFO] - [Vulkan Partitioner] Due to [no operator implementation], skipping torch.float32: torch.Size([1, s11, 32, 64]) = llama.custom_quantized_sdpa.default(torch.int8: torch.Size([1, s11, 32, 64]), torch.int8: torch.Size([1, 2048, 8, 64]), torch.int8: torch.Size([1, 2048, 8, 64]), u505, None, 0.0, True, None, torch.int8: torch.Size([1, s11, 32, 1]), torch.float32: torch.Size([1, s11, 32, 1]), torch.int8: torch.Size([1, 2048, 8, 1]), torch.float32: torch.Size([1, 2048, 8, 1]), torch.int8: torch.Size([1, 2048, 8, 1]), torch.float32: torch.Size([1, 2048, 8, 1]),  ...)
+[2026-11-20 17:28:04,418][root][INFO] - [Vulkan Partitioner] Due to [input[0] dtype torch.float64 not in {torch.float16, torch.int32, torch.bool, torch.float32, torch.int64}], skipping torch.float32: torch.Size([1, s11, 32, 1]) = aten._to_copy.default(torch.float64: torch.Size([1, s11, 32, 1]),  ...)
+[2026-11-20 17:28:04,418][root][INFO] - [Vulkan Partitioner] Due to [output dtype torch.int8 not in {torch.float16, torch.int32, torch.bool, torch.float32, torch.int64}], skipping torch.int8: torch.Size([1, s11, 32, 1]) = aten._to_copy.default(torch.int64: torch.Size([1, s11, 32, 1]),  ...)
+[2026-11-20 17:28:04,530][root][INFO] - [Vulkan Partitioner] Due to [output[0] dtype torch.int8 not in {torch.float32, torch.float16}], skipping [torch.int8: torch.Size([1]), torch.int8: torch.Size([1, 2048, 8, 1])] = auto_functionalized_v2(llama.update_cache.default,  ...)
+[2026-11-20 17:28:04,603][root][INFO] - [Vulkan Partitioner] Due to [output[0] dtype torch.int8 not in {torch.float32, torch.float16}], skipping [torch.int8: torch.Size([1]), torch.int8: torch.Size([1, 2048, 8, 64])] = auto_functionalized_v2(llama.update_cache.default,  ...)
+[2026-11-20 17:28:04,632][root][INFO] - [Vulkan Partitioner] Due to [output[0] dtype torch.int8 not in {torch.float32, torch.float16}], skipping [torch.int8: torch.Size([1]), torch.int8: torch.Size([1, 2048, 8, 1])] = auto_functionalized_v2(llama.update_cache.default,  ...)
+[2026-11-20 17:28:04,720][root][INFO] - [Vulkan Partitioner] Due to [output[0] dtype torch.int8 not in {torch.float32, torch.float16}], skipping [torch.int8: torch.Size([1]), torch.int8: torch.Size([1, 2048, 8, 64])] = auto_functionalized_v2(llama.update_cache.default,  ...)
+[2026-11-20 17:28:04,749][root][INFO] - [Vulkan Partitioner] Due to [output dtype torch.int8 not in {torch.float16, torch.int32, torch.bool, torch.float32, torch.int64}], skipping torch.int8: torch.Size([1, s11, 8, 1]) = aten._to_copy.default(torch.int64: torch.Size([1, s11, 8, 1]),  ...)
+[2026-11-20 17:28:04,749][root][INFO] - [Vulkan Partitioner] Due to [input[0] dtype torch.float64 not in {torch.float16, torch.int32, torch.bool, torch.float32, torch.int64}], skipping torch.float32: torch.Size([1, s11, 8, 1]) = aten._to_copy.default(torch.float64: torch.Size([1, s11, 8, 1]),  ...)
+[2026-11-20 17:28:04,750][root][INFO] - [Vulkan Partitioner] Due to [output dtype torch.int8 not in {torch.float16, torch.int32, torch.bool, torch.float32, torch.int64}], skipping torch.int8: torch.Size([1, s11, 8, 1]) = aten._to_copy.default(torch.int64: torch.Size([1, s11, 8, 1]),  ...)
+[2026-11-20 17:28:04,750][root][INFO] - [Vulkan Partitioner] Due to [input[0] dtype torch.float64 not in {torch.float16, torch.int32, torch.bool, torch.float32, torch.int64}], skipping torch.float32: torch.Size([1, s11, 8, 1]) = aten._to_copy.default(torch.float64: torch.Size([1, s11, 8, 1]),  ...)
+[2026-11-20 17:28:07,566][root][INFO] - [Vulkan Partitioner] Due to [no operator implementation], skipping torch.float32: torch.Size([1, s11, 32, 64]) = llama.custom_quantized_sdpa.default(torch.int8: torch.Size([1, s11, 32, 64]), torch.int8: torch.Size([1, 2048, 8, 64]), torch.int8: torch.Size([1, 2048, 8, 64]), u502, None, 0.0, True, None, torch.int8: torch.Size([1, s11, 32, 1]), torch.float32: torch.Size([1, s11, 32, 1]), torch.int8: torch.Size([1, 2048, 8, 1]), torch.float32: torch.Size([1, 2048, 8, 1]), torch.int8: torch.Size([1, 2048, 8, 1]), torch.float32: torch.Size([1, 2048, 8, 1]),  ...)
+[2026-11-20 17:28:07,579][root][INFO] - [Vulkan Partitioner] Due to [input[0] dtype torch.float64 not in {torch.float16, torch.int32, torch.bool, torch.float32, torch.int64}], skipping torch.float32: torch.Size([1, s11, 32, 1]) = aten._to_copy.default(torch.float64: torch.Size([1, s11, 32, 1]),  ...)
+[2026-11-20 17:28:07,579][root][INFO] - [Vulkan Partitioner] Due to [output dtype torch.int8 not in {torch.float16, torch.int32, torch.bool, torch.float32, torch.int64}], skipping torch.int8: torch.Size([1, s11, 32, 1]) = aten._to_copy.default(torch.int64: torch.Size([1, s11, 32, 1]),  ...)
+[2026-11-20 17:28:07,639][root][INFO] - [Vulkan Partitioner] Due to [output[0] dtype torch.int8 not in {torch.float32, torch.float16}], skipping [torch.int8: torch.Size([1]), torch.int8: torch.Size([1, 2048, 8, 1])] = auto_functionalized_v2(llama.update_cache.default,  ...)
+[2026-11-20 17:28:07,676][root][INFO] - [Vulkan Partitioner] Due to [output[0] dtype torch.int8 not in {torch.float32, torch.float16}], skipping [torch.int8: torch.Size([1]), torch.int8: torch.Size([1, 2048, 8, 64])] = auto_functionalized_v2(llama.update_cache.default,  ...)
+[2026-11-20 17:28:07,687][root][INFO] - [Vulkan Partitioner] Due to [output[0] dtype torch.int8 not in {torch.float32, torch.float16}], skipping [torch.int8: torch.Size([1]), torch.int8: torch.Size([1, 2048, 8, 1])] = auto_functionalized_v2(llama.update_cache.default,  ...)
+[2026-11-20 17:28:07,738][root][INFO] - [Vulkan Partitioner] Due to [output[0] dtype torch.int8 not in {torch.float32, torch.float16}], skipping [torch.int8: torch.Size([1]), torch.int8: torch.Size([1, 2048, 8, 64])] = auto_functionalized_v2(llama.update_cache.default,  ...)
+[2026-11-20 17:28:07,766][root][INFO] - [Vulkan Partitioner] Due to [output dtype torch.int8 not in {torch.float16, torch.int32, torch.bool, torch.float32, torch.int64}], skipping torch.int8: torch.Size([1, s11, 8, 1]) = aten._to_copy.default(torch.int64: torch.Size([1, s11, 8, 1]),  ...)
+[2026-11-20 17:28:07,767][root][INFO] - [Vulkan Partitioner] Due to [input[0] dtype torch.float64 not in {torch.float16, torch.int32, torch.bool, torch.float32, torch.int64}], skipping torch.float32: torch.Size([1, s11, 8, 1]) = aten._to_copy.default(torch.float64: torch.Size([1, s11, 8, 1]),  ...)
+[2026-11-20 17:28:07,768][root][INFO] - [Vulkan Partitioner] Due to [output dtype torch.int8 not in {torch.float16, torch.int32, torch.bool, torch.float32, torch.int64}], skipping torch.int8: torch.Size([1, s11, 8, 1]) = aten._to_copy.default(torch.int64: torch.Size([1, s11, 8, 1]),  ...)
+[2026-11-20 17:28:07,768][root][INFO] - [Vulkan Partitioner] Due to [input[0] dtype torch.float64 not in {torch.float16, torch.int32, torch.bool, torch.float32, torch.int64}], skipping torch.float32: torch.Size([1, s11, 8, 1]) = aten._to_copy.default(torch.float64: torch.Size([1, s11, 8, 1]),  ...)
+[2026-11-20 17:28:11,091][root][INFO] - [Vulkan Partitioner] Due to [no operator implementation], skipping torch.float32: torch.Size([1, s11, 32, 64]) = llama.custom_quantized_sdpa.default(torch.int8: torch.Size([1, s11, 32, 64]), torch.int8: torch.Size([1, 2048, 8, 64]), torch.int8: torch.Size([1, 2048, 8, 64]), u499, None, 0.0, True, None, torch.int8: torch.Size([1, s11, 32, 1]), torch.float32: torch.Size([1, s11, 32, 1]), torch.int8: torch.Size([1, 2048, 8, 1]), torch.float32: torch.Size([1, 2048, 8, 1]), torch.int8: torch.Size([1, 2048, 8, 1]), torch.float32: torch.Size([1, 2048, 8, 1]),  ...)
+[2026-11-20 17:28:11,139][root][INFO] - [Vulkan Partitioner] Due to [input[0] dtype torch.float64 not in {torch.float16, torch.int32, torch.bool, torch.float32, torch.int64}], skipping torch.float32: torch.Size([1, s11, 32, 1]) = aten._to_copy.default(torch.float64: torch.Size([1, s11, 32, 1]),  ...)
+[2026-11-20 17:28:11,139][root][INFO] - [Vulkan Partitioner] Due to [output dtype torch.int8 not in {torch.float16, torch.int32, torch.bool, torch.float32, torch.int64}], skipping torch.int8: torch.Size([1, s11, 32, 1]) = aten._to_copy.default(torch.int64: torch.Size([1, s11, 32, 1]),  ...)
+[2026-11-20 17:28:11,247][root][INFO] - [Vulkan Partitioner] Due to [output[0] dtype torch.int8 not in {torch.float32, torch.float16}], skipping [torch.int8: torch.Size([1]), torch.int8: torch.Size([1, 2048, 8, 1])] = auto_functionalized_v2(llama.update_cache.default,  ...)
+[2026-11-20 17:28:11,320][root][INFO] - [Vulkan Partitioner] Due to [output[0] dtype torch.int8 not in {torch.float32, torch.float16}], skipping [torch.int8: torch.Size([1]), torch.int8: torch.Size([1, 2048, 8, 64])] = auto_functionalized_v2(llama.update_cache.default,  ...)
+[2026-11-20 17:28:11,343][root][INFO] - [Vulkan Partitioner] Due to [output[0] dtype torch.int8 not in {torch.float32, torch.float16}], skipping [torch.int8: torch.Size([1]), torch.int8: torch.Size([1, 2048, 8, 1])] = auto_functionalized_v2(llama.update_cache.default,  ...)
+[2026-11-20 17:28:11,420][root][INFO] - [Vulkan Partitioner] Due to [output[0] dtype torch.int8 not in {torch.float32, torch.float16}], skipping [torch.int8: torch.Size([1]), torch.int8: torch.Size([1, 2048, 8, 64])] = auto_functionalized_v2(llama.update_cache.default,  ...)
+[2026-11-20 17:28:11,479][root][INFO] - [Vulkan Partitioner] Due to [output dtype torch.int8 not in {torch.float16, torch.int32, torch.bool, torch.float32, torch.int64}], skipping torch.int8: torch.Size([1, s11, 8, 1]) = aten._to_copy.default(torch.int64: torch.Size([1, s11, 8, 1]),  ...)
+[2026-11-20 17:28:11,480][root][INFO] - [Vulkan Partitioner] Due to [input[0] dtype torch.float64 not in {torch.float16, torch.int32, torch.bool, torch.float32, torch.int64}], skipping torch.float32: torch.Size([1, s11, 8, 1]) = aten._to_copy.default(torch.float64: torch.Size([1, s11, 8, 1]),  ...)
+[2026-11-20 17:28:11,480][root][INFO] - [Vulkan Partitioner] Due to [output dtype torch.int8 not in {torch.float16, torch.int32, torch.bool, torch.float32, torch.int64}], skipping torch.int8: torch.Size([1, s11, 8, 1]) = aten._to_copy.default(torch.int64: torch.Size([1, s11, 8, 1]),  ...)
+[2026-11-20 17:28:11,481][root][INFO] - [Vulkan Partitioner] Due to [input[0] dtype torch.float64 not in {torch.float16, torch.int32, torch.bool, torch.float32, torch.int64}], skipping torch.float32: torch.Size([1, s11, 8, 1]) = aten._to_copy.default(torch.float64: torch.Size([1, s11, 8, 1]),  ...)
+[2026-11-20 17:28:15,420][root][INFO] - [Vulkan Partitioner] Due to [no operator implementation], skipping torch.float32: torch.Size([1, s11, 32, 64]) = llama.custom_quantized_sdpa.default(torch.int8: torch.Size([1, s11, 32, 64]), torch.int8: torch.Size([1, 2048, 8, 64]), torch.int8: torch.Size([1, 2048, 8, 64]), u496, None, 0.0, True, None, torch.int8: torch.Size([1, s11, 32, 1]), torch.float32: torch.Size([1, s11, 32, 1]), torch.int8: torch.Size([1, 2048, 8, 1]), torch.float32: torch.Size([1, 2048, 8, 1]), torch.int8: torch.Size([1, 2048, 8, 1]), torch.float32: torch.Size([1, 2048, 8, 1]),  ...)
+[2026-11-20 17:28:15,469][root][INFO] - [Vulkan Partitioner] Due to [input[0] dtype torch.float64 not in {torch.float16, torch.int32, torch.bool, torch.float32, torch.int64}], skipping torch.float32: torch.Size([1, s11, 32, 1]) = aten._to_copy.default(torch.float64: torch.Size([1, s11, 32, 1]),  ...)
+[2026-11-20 17:28:15,470][root][INFO] - [Vulkan Partitioner] Due to [output dtype torch.int8 not in {torch.float16, torch.int32, torch.bool, torch.float32, torch.int64}], skipping torch.int8: torch.Size([1, s11, 32, 1]) = aten._to_copy.default(torch.int64: torch.Size([1, s11, 32, 1]),  ...)
+[2026-11-20 17:28:15,587][root][INFO] - [Vulkan Partitioner] Due to [output[0] dtype torch.int8 not in {torch.float32, torch.float16}], skipping [torch.int8: torch.Size([1]), torch.int8: torch.Size([1, 2048, 8, 1])] = auto_functionalized_v2(llama.update_cache.default,  ...)
+[2026-11-20 17:28:15,675][root][INFO] - [Vulkan Partitioner] Due to [output[0] dtype torch.int8 not in {torch.float32, torch.float16}], skipping [torch.int8: torch.Size([1]), torch.int8: torch.Size([1, 2048, 8, 64])] = auto_functionalized_v2(llama.update_cache.default,  ...)
+[2026-11-20 17:28:15,712][root][INFO] - [Vulkan Partitioner] Due to [output[0] dtype torch.int8 not in {torch.float32, torch.float16}], skipping [torch.int8: torch.Size([1]), torch.int8: torch.Size([1, 2048, 8, 1])] = auto_functionalized_v2(llama.update_cache.default,  ...)
+[2026-11-20 17:28:15,822][root][INFO] - [Vulkan Partitioner] Due to [output[0] dtype torch.int8 not in {torch.float32, torch.float16}], skipping [torch.int8: torch.Size([1]), torch.int8: torch.Size([1, 2048, 8, 64])] = auto_functionalized_v2(llama.update_cache.default,  ...)
+[2026-11-20 17:28:15,858][root][INFO] - [Vulkan Partitioner] Due to [output dtype torch.int8 not in {torch.float16, torch.int32, torch.bool, torch.float32, torch.int64}], skipping torch.int8: torch.Size([1, s11, 8, 1]) = aten._to_copy.default(torch.int64: torch.Size([1, s11, 8, 1]),  ...)
+[2026-11-20 17:28:15,859][root][INFO] - [Vulkan Partitioner] Due to [input[0] dtype torch.float64 not in {torch.float16, torch.int32, torch.bool, torch.float32, torch.int64}], skipping torch.float32: torch.Size([1, s11, 8, 1]) = aten._to_copy.default(torch.float64: torch.Size([1, s11, 8, 1]),  ...)
+[2026-11-20 17:28:15,859][root][INFO] - [Vulkan Partitioner] Due to [output dtype torch.int8 not in {torch.float16, torch.int32, torch.bool, torch.float32, torch.int64}], skipping torch.int8: torch.Size([1, s11, 8, 1]) = aten._to_copy.default(torch.int64: torch.Size([1, s11, 8, 1]),  ...)
+[2026-11-20 17:28:15,860][root][INFO] - [Vulkan Partitioner] Due to [input[0] dtype torch.float64 not in {torch.float16, torch.int32, torch.bool, torch.float32, torch.int64}], skipping torch.float32: torch.Size([1, s11, 8, 1]) = aten._to_copy.default(torch.float64: torch.Size([1, s11, 8, 1]),  ...)
+[2026-11-20 17:28:20,417][root][INFO] - [Vulkan Partitioner] Due to [no operator implementation], skipping torch.float32: torch.Size([1, s11, 32, 64]) = llama.custom_quantized_sdpa.default(torch.int8: torch.Size([1, s11, 32, 64]), torch.int8: torch.Size([1, 2048, 8, 64]), torch.int8: torch.Size([1, 2048, 8, 64]), u493, None, 0.0, True, None, torch.int8: torch.Size([1, s11, 32, 1]), torch.float32: torch.Size([1, s11, 32, 1]), torch.int8: torch.Size([1, 2048, 8, 1]), torch.float32: torch.Size([1, 2048, 8, 1]), torch.int8: torch.Size([1, 2048, 8, 1]), torch.float32: torch.Size([1, 2048, 8, 1]),  ...)
+[2026-11-20 17:28:20,453][root][INFO] - [Vulkan Partitioner] Due to [input[0] dtype torch.float64 not in {torch.float16, torch.int32, torch.bool, torch.float32, torch.int64}], skipping torch.float32: torch.Size([1, s11, 32, 1]) = aten._to_copy.default(torch.float64: torch.Size([1, s11, 32, 1]),  ...)
+[2026-11-20 17:28:20,454][root][INFO] - [Vulkan Partitioner] Due to [output dtype torch.int8 not in {torch.float16, torch.int32, torch.bool, torch.float32, torch.int64}], skipping torch.int8: torch.Size([1, s11, 32, 1]) = aten._to_copy.default(torch.int64: torch.Size([1, s11, 32, 1]),  ...)
+[2026-11-20 17:28:20,522][root][INFO] - [Vulkan Partitioner] Due to [output[0] dtype torch.int8 not in {torch.float32, torch.float16}], skipping [torch.int8: torch.Size([1]), torch.int8: torch.Size([1, 2048, 8, 1])] = auto_functionalized_v2(llama.update_cache.default,  ...)
+[2026-11-20 17:28:20,552][root][INFO] - [Vulkan Partitioner] Due to [output[0] dtype torch.int8 not in {torch.float32, torch.float16}], skipping [torch.int8: torch.Size([1]), torch.int8: torch.Size([1, 2048, 8, 64])] = auto_functionalized_v2(llama.update_cache.default,  ...)
+[2026-11-20 17:28:20,558][root][INFO] - [Vulkan Partitioner] Due to [output[0] dtype torch.int8 not in {torch.float32, torch.float16}], skipping [torch.int8: torch.Size([1]), torch.int8: torch.Size([1, 2048, 8, 1])] = auto_functionalized_v2(llama.update_cache.default,  ...)
+[2026-11-20 17:28:20,577][root][INFO] - [Vulkan Partitioner] Due to [output[0] dtype torch.int8 not in {torch.float32, torch.float16}], skipping [torch.int8: torch.Size([1]), torch.int8: torch.Size([1, 2048, 8, 64])] = auto_functionalized_v2(llama.update_cache.default,  ...)
+[2026-11-20 17:28:20,641][root][INFO] - [Vulkan Partitioner] Due to [output dtype torch.int8 not in {torch.float16, torch.int32, torch.bool, torch.float32, torch.int64}], skipping torch.int8: torch.Size([1, s11, 8, 1]) = aten._to_copy.default(torch.int64: torch.Size([1, s11, 8, 1]),  ...)
+[2026-11-20 17:28:20,642][root][INFO] - [Vulkan Partitioner] Due to [input[0] dtype torch.float64 not in {torch.float16, torch.int32, torch.bool, torch.float32, torch.int64}], skipping torch.float32: torch.Size([1, s11, 8, 1]) = aten._to_copy.default(torch.float64: torch.Size([1, s11, 8, 1]),  ...)
+[2026-11-20 17:28:20,642][root][INFO] - [Vulkan Partitioner] Due to [output dtype torch.int8 not in {torch.float16, torch.int32, torch.bool, torch.float32, torch.int64}], skipping torch.int8: torch.Size([1, s11, 8, 1]) = aten._to_copy.default(torch.int64: torch.Size([1, s11, 8, 1]),  ...)
+[2026-11-20 17:28:20,643][root][INFO] - [Vulkan Partitioner] Due to [input[0] dtype torch.float64 not in {torch.float16, torch.int32, torch.bool, torch.float32, torch.int64}], skipping torch.float32: torch.Size([1, s11, 8, 1]) = aten._to_copy.default(torch.float64: torch.Size([1, s11, 8, 1]),  ...)
+[2026-11-20 17:28:23,958][root][INFO] - [Vulkan Partitioner] Due to [no operator implementation], skipping torch.float32: torch.Size([1, s11, 2048]) = quantized_decomposed.embedding_byte.dtype(torch.int8: torch.Size([128256, 2048]), torch.float32: torch.Size([128256]), None, -128, 127, torch.int64: torch.Size([1, s11]),  ...)
+[2026-11-20 17:28:24,585][root][INFO] - Found 33 Vulkan subgraphs to be partitioned.
+E1120 17:28:34.313000 2876 torch/_subclasses/fake_tensor.py:3212] failed while attempting to run meta for aten.slice_copy.Tensor
+E1120 17:28:34.313000 2876 torch/_subclasses/fake_tensor.py:3212] Traceback (most recent call last):
+E1120 17:28:34.313000 2876 torch/_subclasses/fake_tensor.py:3212]   File "/content/venv/lib/python3.11/site-packages/torch/_subclasses/fake_tensor.py", line 3208, in _dispatch_impl
+E1120 17:28:34.313000 2876 torch/_subclasses/fake_tensor.py:3212]     r = func(*args, **kwargs)
+E1120 17:28:34.313000 2876 torch/_subclasses/fake_tensor.py:3212]         ^^^^^^^^^^^^^^^^^^^^^
+E1120 17:28:34.313000 2876 torch/_subclasses/fake_tensor.py:3212]   File "/content/venv/lib/python3.11/site-packages/torch/_ops.py", line 916, in __call__
+E1120 17:28:34.313000 2876 torch/_subclasses/fake_tensor.py:3212]     return self._op(*args, **kwargs)
+E1120 17:28:34.313000 2876 torch/_subclasses/fake_tensor.py:3212]            ^^^^^^^^^^^^^^^^^^^^^^^^^
+E1120 17:28:34.313000 2876 torch/_subclasses/fake_tensor.py:3212]   File "/content/venv/lib/python3.11/site-packages/torch/_decomp/decompositions.py", line 779, in slice_forward
+E1120 17:28:34.313000 2876 torch/_subclasses/fake_tensor.py:3212]     if start_val < 0:
+E1120 17:28:34.313000 2876 torch/_subclasses/fake_tensor.py:3212]        ^^^^^^^^^^^^^
+E1120 17:28:34.313000 2876 torch/_subclasses/fake_tensor.py:3212]   File "/content/venv/lib/python3.11/site-packages/torch/__init__.py", line 1090, in __bool__
+E1120 17:28:34.313000 2876 torch/_subclasses/fake_tensor.py:3212]     return self.node.bool_()
+E1120 17:28:34.313000 2876 torch/_subclasses/fake_tensor.py:3212]            ^^^^^^^^^^^^^^^^^
+E1120 17:28:34.313000 2876 torch/_subclasses/fake_tensor.py:3212]   File "/content/venv/lib/python3.11/site-packages/torch/fx/experimental/sym_node.py", line 654, in bool_
+E1120 17:28:34.313000 2876 torch/_subclasses/fake_tensor.py:3212]     return self.guard_bool("", 0)
+E1120 17:28:34.313000 2876 torch/_subclasses/fake_tensor.py:3212]            ^^^^^^^^^^^^^^^^^^^^^^
+E1120 17:28:34.313000 2876 torch/_subclasses/fake_tensor.py:3212]   File "/content/venv/lib/python3.11/site-packages/torch/fx/experimental/sym_node.py", line 585, in guard_bool
+E1120 17:28:34.313000 2876 torch/_subclasses/fake_tensor.py:3212]     r = self.evaluate()
+E1120 17:28:34.313000 2876 torch/_subclasses/fake_tensor.py:3212]         ^^^^^^^^^^^^^^^
+E1120 17:28:34.313000 2876 torch/_subclasses/fake_tensor.py:3212]   File "/content/venv/lib/python3.11/site-packages/torch/fx/experimental/sym_node.py", line 559, in evaluate
+E1120 17:28:34.313000 2876 torch/_subclasses/fake_tensor.py:3212]     return self.shape_env.evaluate_sym_node(self, size_oblivious)
+E1120 17:28:34.313000 2876 torch/_subclasses/fake_tensor.py:3212]            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E1120 17:28:34.313000 2876 torch/_subclasses/fake_tensor.py:3212]   File "/content/venv/lib/python3.11/site-packages/torch/fx/experimental/symbolic_shapes.py", line 8514, in evaluate_sym_node
+E1120 17:28:34.313000 2876 torch/_subclasses/fake_tensor.py:3212]     return self.evaluate_expr(
+E1120 17:28:34.313000 2876 torch/_subclasses/fake_tensor.py:3212]            ^^^^^^^^^^^^^^^^^^^
+E1120 17:28:34.313000 2876 torch/_subclasses/fake_tensor.py:3212]   File "/content/venv/lib/python3.11/site-packages/torch/fx/experimental/symbolic_shapes.py", line 8610, in evaluate_expr
+E1120 17:28:34.313000 2876 torch/_subclasses/fake_tensor.py:3212]     return self._inner_evaluate_expr(
+E1120 17:28:34.313000 2876 torch/_subclasses/fake_tensor.py:3212]            ^^^^^^^^^^^^^^^^^^^^^^^^^^
+E1120 17:28:34.313000 2876 torch/_subclasses/fake_tensor.py:3212]   File "/content/venv/lib/python3.11/site-packages/torch/fx/experimental/recording.py", line 298, in wrapper
+E1120 17:28:34.313000 2876 torch/_subclasses/fake_tensor.py:3212]     return retlog(fn(*args, **kwargs))
+E1120 17:28:34.313000 2876 torch/_subclasses/fake_tensor.py:3212]                   ^^^^^^^^^^^^^^^^^^^
+E1120 17:28:34.313000 2876 torch/_subclasses/fake_tensor.py:3212]   File "/content/venv/lib/python3.11/site-packages/torch/fx/experimental/symbolic_shapes.py", line 8633, in _inner_evaluate_expr
+E1120 17:28:34.313000 2876 torch/_subclasses/fake_tensor.py:3212]     return self._evaluate_expr(
+E1120 17:28:34.313000 2876 torch/_subclasses/fake_tensor.py:3212]            ^^^^^^^^^^^^^^^^^^^^
+E1120 17:28:34.313000 2876 torch/_subclasses/fake_tensor.py:3212]   File "/content/venv/lib/python3.11/site-packages/torch/fx/experimental/symbolic_shapes.py", line 8866, in _evaluate_expr
+E1120 17:28:34.313000 2876 torch/_subclasses/fake_tensor.py:3212]     raise self._make_data_dependent_error(
+E1120 17:28:34.313000 2876 torch/_subclasses/fake_tensor.py:3212] torch.fx.experimental.symbolic_shapes.GuardOnDataDependentSymNode: Could not guard on data-dependent expression u539 < 0 (unhinted: u539 < 0).  (Size-like symbols: none)
+E1120 17:28:34.313000 2876 torch/_subclasses/fake_tensor.py:3212] 
+E1120 17:28:34.313000 2876 torch/_subclasses/fake_tensor.py:3212] consider using data-dependent friendly APIs such as guard_or_false, guard_or_true and statically_known_true.
+E1120 17:28:34.313000 2876 torch/_subclasses/fake_tensor.py:3212] Caused by: (_decomp/decompositions.py:779 in slice_forward)
+E1120 17:28:34.313000 2876 torch/_subclasses/fake_tensor.py:3212] For more information, run with TORCH_LOGS="dynamic"
+E1120 17:28:34.313000 2876 torch/_subclasses/fake_tensor.py:3212] For extended logs when we create symbols, also add TORCHDYNAMO_EXTENDED_DEBUG_CREATE_SYMBOL="u539"
+E1120 17:28:34.313000 2876 torch/_subclasses/fake_tensor.py:3212] If you suspect the guard was triggered from C++, add TORCHDYNAMO_EXTENDED_DEBUG_CPP=1
+E1120 17:28:34.313000 2876 torch/_subclasses/fake_tensor.py:3212] For more debugging help, see https://docs.google.com/document/d/1HSuTTVvYH1pTew89Rtpeu84Ht3nQEFTYhAX3Ypa_xJs/edit?usp=sharing
+E1120 17:28:34.313000 2876 torch/_subclasses/fake_tensor.py:3212] 
+E1120 17:28:34.313000 2876 torch/_subclasses/fake_tensor.py:3212] For C++ stack trace, run with TORCHDYNAMO_EXTENDED_DEBUG_CPP=1
+Error executing job with overrides: []
+Traceback (most recent call last):
+  File "/content/venv/lib/python3.11/site-packages/executorch/exir/pass_manager.py", line 211, in __call__
+    res = fn(exported_program.graph_module)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/content/venv/lib/python3.11/site-packages/torch/fx/passes/infra/pass_manager.py", line 39, in wrapped_fn
+    res = fn(gm)
+          ^^^^^^
+  File "/content/venv/lib/python3.11/site-packages/torch/fx/passes/infra/pass_base.py", line 46, in __call__
+    res = self.call(graph_module)
+          ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/content/venv/lib/python3.11/site-packages/executorch/backends/xnnpack/_passes/fuse_batch_norm.py", line 77, in call
+    graph_module = super().call(graph_module).graph_module
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/content/venv/lib/python3.11/site-packages/executorch/exir/pass_base.py", line 876, in call
+    result = self.call_submodule(graph_module, tuple(inputs))
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/content/venv/lib/python3.11/site-packages/executorch/exir/pass_base.py", line 962, in call_submodule
+    res = super().call_submodule(graph_module, inputs)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/content/venv/lib/python3.11/site-packages/executorch/exir/pass_base.py", line 836, in call_submodule
+    interpreter.run(*inputs_data)
+  File "/content/venv/lib/python3.11/site-packages/torch/fx/interpreter.py", line 197, in run
+    self.env[node] = self.run_node(node)
+                     ^^^^^^^^^^^^^^^^^^^
+  File "/content/venv/lib/python3.11/site-packages/executorch/exir/pass_base.py", line 521, in run_node
+    return super().run_node(n)
+           ^^^^^^^^^^^^^^^^^^^
+  File "/content/venv/lib/python3.11/site-packages/torch/fx/interpreter.py", line 294, in run_node
+    return getattr(self, n.op)(n.target, args, kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/content/venv/lib/python3.11/site-packages/executorch/exir/pass_base.py", line 911, in call_function
+    return self.callback.call_operator(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/content/venv/lib/python3.11/site-packages/executorch/exir/pass_base.py", line 656, in call_operator
+    return self._fx("call_function", op, args, kwargs, meta)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/content/venv/lib/python3.11/site-packages/executorch/exir/pass_base.py", line 587, in _fx
+    res_data = getattr(self.interpreter, kind)(target, args_data, kwargs_data)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/content/venv/lib/python3.11/site-packages/torch/fx/interpreter.py", line 377, in call_function
+    return target(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/content/venv/lib/python3.11/site-packages/executorch/exir/dialects/edge/_ops.py", line 332, in __call__
+    return self._op(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/content/venv/lib/python3.11/site-packages/torch/_ops.py", line 916, in __call__
+    return self._op(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/content/venv/lib/python3.11/site-packages/torch/_compile.py", line 54, in inner
+    return disable_fn(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/content/venv/lib/python3.11/site-packages/torch/_dynamo/eval_frame.py", line 1548, in _fn
+    return fn(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^
+  File "/content/venv/lib/python3.11/site-packages/torch/utils/_stats.py", line 29, in wrapper
+    return fn(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^
+  File "/content/venv/lib/python3.11/site-packages/torch/_subclasses/fake_tensor.py", line 1707, in __torch_dispatch__
+    return self.dispatch(func, types, args, kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/content/venv/lib/python3.11/site-packages/torch/_subclasses/fake_tensor.py", line 2495, in dispatch
+    return self._cached_dispatch_impl(func, types, args, kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/content/venv/lib/python3.11/site-packages/torch/_subclasses/fake_tensor.py", line 1855, in _cached_dispatch_impl
+    output = self._dispatch_impl(func, types, args, kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/content/venv/lib/python3.11/site-packages/torch/_subclasses/fake_tensor.py", line 3208, in _dispatch_impl
+    r = func(*args, **kwargs)
+        ^^^^^^^^^^^^^^^^^^^^^
+  File "/content/venv/lib/python3.11/site-packages/torch/_ops.py", line 916, in __call__
+    return self._op(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/content/venv/lib/python3.11/site-packages/torch/_decomp/decompositions.py", line 779, in slice_forward
+    if start_val < 0:
+       ^^^^^^^^^^^^^
+  File "/content/venv/lib/python3.11/site-packages/torch/__init__.py", line 1090, in __bool__
+    return self.node.bool_()
+           ^^^^^^^^^^^^^^^^^
+  File "/content/venv/lib/python3.11/site-packages/torch/fx/experimental/sym_node.py", line 654, in bool_
+    return self.guard_bool("", 0)
+           ^^^^^^^^^^^^^^^^^^^^^^
+  File "/content/venv/lib/python3.11/site-packages/torch/fx/experimental/sym_node.py", line 585, in guard_bool
+    r = self.evaluate()
+        ^^^^^^^^^^^^^^^
+  File "/content/venv/lib/python3.11/site-packages/torch/fx/experimental/sym_node.py", line 559, in evaluate
+    return self.shape_env.evaluate_sym_node(self, size_oblivious)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/content/venv/lib/python3.11/site-packages/torch/fx/experimental/symbolic_shapes.py", line 8514, in evaluate_sym_node
+    return self.evaluate_expr(
+           ^^^^^^^^^^^^^^^^^^^
+  File "/content/venv/lib/python3.11/site-packages/torch/fx/experimental/symbolic_shapes.py", line 8610, in evaluate_expr
+    return self._inner_evaluate_expr(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/content/venv/lib/python3.11/site-packages/torch/fx/experimental/recording.py", line 298, in wrapper
+    return retlog(fn(*args, **kwargs))
+                  ^^^^^^^^^^^^^^^^^^^
+  File "/content/venv/lib/python3.11/site-packages/torch/fx/experimental/symbolic_shapes.py", line 8633, in _inner_evaluate_expr
+    return self._evaluate_expr(
+           ^^^^^^^^^^^^^^^^^^^^
+  File "/content/venv/lib/python3.11/site-packages/torch/fx/experimental/symbolic_shapes.py", line 8866, in _evaluate_expr
+    raise self._make_data_dependent_error(
+torch.fx.experimental.symbolic_shapes.GuardOnDataDependentSymNode: Could not guard on data-dependent expression u539 < 0 (unhinted: u539 < 0).  (Size-like symbols: none)
+
+consider using data-dependent friendly APIs such as guard_or_false, guard_or_true and statically_known_true.
+Caused by: (_decomp/decompositions.py:779 in slice_forward)
+For more information, run with TORCH_LOGS="dynamic"
+For extended logs when we create symbols, also add TORCHDYNAMO_EXTENDED_DEBUG_CREATE_SYMBOL="u539"
+If you suspect the guard was triggered from C++, add TORCHDYNAMO_EXTENDED_DEBUG_CPP=1
+For more debugging help, see https://docs.google.com/document/d/1HSuTTVvYH1pTew89Rtpeu84Ht3nQEFTYhAX3Ypa_xJs/edit?usp=sharing
+
+For C++ stack trace, run with TORCHDYNAMO_EXTENDED_DEBUG_CPP=1
+
+While executing %aten_slice_copy_tensor : [num_users=2] = call_function[target=executorch.exir.dialects.edge._ops.aten.slice_copy.Tensor](args = (%b_rope_freqs_cos, 0, %_local_scalar_dense, %add), kwargs = {})
+Original traceback:
+  File "/content/venv/lib/python3.11/site-packages/torch/_dynamo/functional_export.py", line 243, in forward
+    res = self._export_root(*args, **kwargs)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/content/venv/lib/python3.11/site-packages/executorch/examples/models/llama/llama_transformer.py", line 420, in forward
+    freqs_cos, freqs_sin = self.rope.get_freqs(
+                           ^^^^^^^^^^^^^^^^^^^^
+  File "/content/venv/lib/python3.11/site-packages/executorch/examples/models/llama/rope.py", line 375, in get_freqs
+    freqs_cos = self.freqs_cos.narrow(0, input_pos_item, seq_len)
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Use tlparse to see full graph. (https://github.com/pytorch/tlparse?tab=readme-ov-file#tlparse-parse-structured-pt2-logs)
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/content/venv/lib/python3.11/site-packages/executorch/extension/llm/export/export_llm.py", line 88, in hydra_main
+    export_llama(llm_config_obj)
+  File "/content/venv/lib/python3.11/site-packages/executorch/examples/models/llama/export_llama_lib.py", line 742, in export_llama
+    builder = _export_llama(llm_config)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/content/venv/lib/python3.11/site-packages/executorch/examples/models/llama/export_llama_lib.py", line 1871, in _export_llama
+    builder = _to_edge_and_lower_llama(
+              ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/content/venv/lib/python3.11/site-packages/executorch/examples/models/llama/export_llama_lib.py", line 1594, in _to_edge_and_lower_llama
+    builder = builder_exported_to_edge.to_backend(partitioners)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/content/venv/lib/python3.11/site-packages/executorch/extension/llm/export/builder.py", line 494, in to_backend
+    self.edge_manager = self.edge_manager.to_backend(partitioner)
+                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/content/venv/lib/python3.11/site-packages/executorch/exir/program/_program.py", line 116, in wrapper
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/content/venv/lib/python3.11/site-packages/executorch/exir/program/_program.py", line 1689, in to_backend
+    new_edge_programs = to_backend(method_to_programs_and_partitioners)
+                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/.local/share/uv/python/cpython-3.11.18-linux-x86_64-gnu/lib/python3.11/functools.py", line 909, in wrapper
+    return dispatch(args[0].__class__)(*args, **kw)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/content/venv/lib/python3.11/site-packages/executorch/exir/backend/backend_api.py", line 768, in _
+    lower_all_submodules_to_backend(
+  File "/content/venv/lib/python3.11/site-packages/executorch/exir/backend/backend_api.py", line 597, in lower_all_submodules_to_backend
+    backend_cls.preprocess_multimethod(
+  File "/content/venv/lib/python3.11/site-packages/executorch/exir/backend/backend_details.py", line 155, in preprocess_multimethod
+    preprocess_result = cls.preprocess(program, compile_spec_for_program)
+                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/content/venv/lib/python3.11/site-packages/executorch/backends/vulkan/vulkan_preprocess.py", line 185, in preprocess
+    program = apply_passes(
+              ^^^^^^^^^^^^^
+  File "/content/venv/lib/python3.11/site-packages/executorch/backends/vulkan/vulkan_preprocess.py", line 81, in apply_passes
+    program = _transform(program, p, override_verifiers=[_any_op])
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/content/venv/lib/python3.11/site-packages/executorch/exir/program/_program.py", line 161, in _transform
+    return _transform_with_pass_manager(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/content/venv/lib/python3.11/site-packages/executorch/exir/program/_program.py", line 186, in _transform_with_pass_manager
+    res = pass_manager(self, override_verifiers)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/content/venv/lib/python3.11/site-packages/executorch/exir/pass_manager.py", line 268, in __call__
+    raise Exception(msg) from e  # noqa: TRY002
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Exception: An error occurred when running the 'FuseBatchNormPass' pass after the following passes: []
+
+Set the environment variable HYDRA_FULL_ERROR=1 for a complete stack trace.
+==> converting checkpoint
+==> export_llm (codes: gptq, state fix: False, lfm3: False)
+{"model": "meta-llama/Llama-3.2-1B-Instruct", "kv": "int8", "context": 2048, "host": {"cpu": "Intel(R) Xeon(R) CPU @ 2.20GHz", "avx512fp16": false, "avx512_fp16": false, "f16c": true, "avx512f": true, "amx_fp16": false}, "smoke": {"passed": false, "error": "ExportError: export_llm exited with status 1; its output above says why"}, "seconds": 246, "error": "no .pte written"}

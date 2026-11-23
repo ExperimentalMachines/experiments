@@ -1,0 +1,21 @@
+You are a critical reviewer of a finished on-device benchmark study. Do not edit any file; read only. Report problems, not praise.
+
+Study: int8 vs fp32 KV cache for four small LLMs (Llama-3.2-1B, LFM2.5-1.2B, Qwen3-1.7B, Gemma-3-1B), ExecuTorch 1.5.1 CPU (XNNPACK) files with identical 4-bit GPTQ weights per pair, windows 2k/8k/32k, measured on a Snapdragon SM8975 phone.
+
+Read these:
+- scripts/kvstudy/reference.py: builds PG-19 token streams with RULER needles and the fp32 Hugging Face reference (top-64 logprobs at targets t in [d-128, d) for d in 1900, 7900, 32500), and HF greedy needle answers.
+- scripts/kvstudy/phone/StudyBench.java: the phone harness (Module API): chunked prefill, teacher-forced decode steps scored against the reference, needle questions by rewinding, app questions.
+- scripts/kvstudy/appref.py, scripts/awq_compare.py (_kl, evaluate): the app-question reference and KL definition the harness mirrors.
+- scripts/kvstudy/analyze.py and scripts/kvstudy/report.py: statistics and tables (paired bootstrap over positions).
+- work/kvstudy/report.md: the computed tables. work/kvstudy/phone-out/*.json: raw phone results (large; sample a few). work/kvstudy/phone-out/progress.log: run order and timestamps.
+- work/kvstudy/report/narrative.html: the written claims and verdict.
+
+Check, with file:line evidence:
+1. Off-by-one or alignment errors between the reference targets (reference.py) and what StudyBench scores (which logits predict which token, positions passed to forward, the prefill boundary at d-128, the rewind for needles).
+2. KL / NLL / top-1 computed the same way on phone and reference; any numerical issue (log-softmax, tail bucket).
+3. Whether the statistics support the claims (bootstrap over correlated positions, 1-book cells at 32k, multiple comparisons, the paired design).
+4. Every number and claim in narrative.html against report.md; flag anything unsupported, overstated, or wrong.
+5. Confounds: run order/thermal, first-call warm-up in prefill, memory pressure (Qwen 32k fp32 at 8.4 GB), concurrent downloads during some runs, harness vs runner speed differences.
+6. Anything else that would make a reader distrust the verdict.
+
+Output: a ranked list of findings (severity: critical / major / minor), each with evidence and a concrete fix. End with a one-paragraph overall assessment of whether the verdict ("ship the int8 KV cache in every CPU build") is supported.

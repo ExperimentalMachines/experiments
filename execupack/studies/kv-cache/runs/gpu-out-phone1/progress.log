@@ -1,0 +1,14 @@
+09:25:39 fetched urls-colab-012441.txt
+09:26:04 start stream 2k llama f32kv skin=35.91672 battery=38.0 CPU3=39.1 CPU7=39.3 CPU6=41.1 CPU5=38.8 CPU0=38.8 CPU2=39.1 CPU1=38.8 CPU4=41.6 
+09:26:05 end stream 2k llama f32kv rc=137
+09:27:44 start stream 2k llama f32kv skin=35.10024 battery=38.0 CPU3=39.4 CPU7=38.4 CPU6=39.9 CPU5=39.1 CPU0=38.5 CPU2=38.8 CPU1=38.5 CPU4=41.2 
+09:28:05 end stream 2k llama f32kv rc=0
+09:29:27 fetched urls-colab-012816.txt
+09:32:04 start stream 2k llama f32kv skin=35.36316 battery=38.0 CPU3=41.6 CPU7=40.5 CPU6=42.0 CPU5=42.5 CPU0=40.9 CPU2=41.2 CPU1=41.2 CPU4=44.0 
+09:32:25 end stream 2k llama f32kv rc=0
+09:33:27 start stream 2k llama f32kv skin=37.55472 battery=38.0 CPU3=41.2 CPU7=41.1 CPU6=42.9 CPU5=41.2 CPU0=40.3 CPU2=40.6 CPU1=40.9 CPU4=43.4 
+09:33:48 end stream 2k llama f32kv rc=0
+09:35:04 fetched urls-colab-013415.txt
+09:35:18 start stream 2k llama f16kv skin=38.74836 battery=38.0 CPU3=43.1 CPU7=42.6 CPU6=43.2 CPU5=41.9 CPU0=42.2 CPU2=42.5 CPU1=42.5 CPU4=44.3 
+09:35:35 end stream 2k llama f16kv rc=0
+09:36:05 start app 2k llama f16kv skin=41.59176 battery=38.0 CPU3=45.6 CPU7=45.9 CPU6=46.5 CPU5=44.9 CPU0=45.3 CPU2=45.6 CPU1=45.3 CPU4=46.8 

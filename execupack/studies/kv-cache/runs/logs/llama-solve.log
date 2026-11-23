@@ -1,0 +1,26 @@
+uploaded 1 input(s) to execupack-runs:/local-1-61051c9c/in
+Modal Sandbox: 40960 MiB, 8 cores, timeout 330 min
+Failed to load /usr/local/lib/python3.11/site-packages/torchao/_C_cutlass_90a.abi3.so: Could not load this library: /usr/local/lib/python3.11/site-packages/torchao/_C_cutlass_90a.abi3.so
+Failed to load /usr/local/lib/python3.11/site-packages/torchao/_C_mxfp8.cpython-310-x86_64-linux-gnu.so: Could not load this library: /usr/local/lib/python3.11/site-packages/torchao/_C_mxfp8.cpython-310-x86_64-linux-gnu.so
+W1120 11:11:53.042000 5 site-packages/torch/utils/_pytree.py:630] <enum 'KernelPreference'> is an Enum subclass and is now natively supported by torch.compile as an opaque value type. Calling register_constant() on Enum subclasses is deprecated and will be an error in a future release.
+W1120 11:11:53.169000 5 site-packages/torch/utils/_pytree.py:630] <enum 'ScaleCalculationMode'> is an Enum subclass and is now natively supported by torch.compile as an opaque value type. Calling register_constant() on Enum subclasses is deprecated and will be an error in a future release.
+layer 0 solved, 50s
+layer 1 solved, 95s
+layer 2 solved, 140s
+layer 3 solved, 187s
+layer 4 solved, 236s
+layer 5 solved, 288s
+layer 6 solved, 346s
+layer 7 solved, 399s
+layer 8 solved, 446s
+layer 9 solved, 494s
+layer 10 solved, 540s
+layer 11 solved, 587s
+layer 12 solved, 631s
+layer 13 solved, 677s
+layer 14 solved, 724s
+layer 15 solved, 771s
+output head solved, 790s
+{"model": "meta-llama/Llama-3.2-1B-Instruct", "revision": "9213176726f574b556790deb65791e0c5aa438b6", "codes": "/vol/study/codes/llama-codes-gptq.pt", "rows": 104, "download_convert_s": 6, "solve_s": 793, "host": "x86_64"}
+Modal Sandbox exited 0 after 13.5 min
+downloaded 1 file(s) to /Users/alpha/execupack-kvstudy/work/kvstudy/res/llama-solve

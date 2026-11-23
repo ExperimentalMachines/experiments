@@ -1,0 +1,21 @@
+{
+  "model": "LiquidAI/LFM2.5-1.2B-Instruct",
+  "kv": "int8",
+  "context": 32768,
+  "host": {
+    "cpu": "unknown",
+    "avx512fp16": false,
+    "avx512_fp16": true,
+    "f16c": true,
+    "avx512f": true,
+    "amx_fp16": false
+  },
+  "smoke": {
+    "passed": true,
+    "reply": "Paris<|im_end|>",
+    "problems": []
+  },
+  "seconds": 350,
+  "pte": "q8kv-LFM2.5-1.2B-Instruct-8da4w-gptq-32k.pte",
+  "bytes": 827164672
+}

@@ -1,0 +1,15 @@
+You are reviewing, read-only, the third round of a KV-cache study of on-device LLMs (ExecuTorch 1.5.1 on two Qualcomm SM8975 phones). Be critical and independent: recompute numbers from the raw JSON yourself rather than trusting the page or the scripts, and report anything wrong, overstated or unsupported, ranked by severity, with file:line references. Do not edit files.
+
+What is new since your last review (work/kvstudy/codex-review2.md):
+1. A CPU re-run on a second phone (results: work/kvstudy/phone-out2/*.json; harness scripts/kvstudy/phone/StudyBench.java and phone/cpu2.sh) that stores each file's log-probabilities on the reference's 64 tokens (ref_lp), giving a direct KL(fp32-cache file || int8-cache file), coarsened to 64 tokens plus a tail bucket. LFM2's needles were answered from a fresh model with the full prefix.
+2. A GPU (Vulkan) pass, fp32 against fp16 (force_fp16), on the second phone (results: work/kvstudy/gpu-out/; earlier throttled runs set aside in gpu-out/throttled and gpu-out-phone1 holds the first phone's partial run). Runs were gated on GPU temperature and thermal cap (phone/gpu.sh), each book of Qwen 2k and Llama 8k ran as its own process, and scripts/kvstudy/merge_books.py merges the per-book files and attributes a GPU thermal level to each checkpoint's decode from phase.log (2 s samples) or the .therm files (5 s).
+3. The report generator scripts/kvstudy/report.py (new rerun_block, GPU thermal-level column) and the narrative work/kvstudy/report/narrative.html (verdict, setup, rerun_intro, gpu_intro, gpu_speed, gpu_memory, gpu_quality, notes). The generated page is work/kvstudy/report/index.html.
+
+Check in particular:
+- Every number in the narrative's verdict, rerun_intro and gpu_* sections against the raw JSON (direct KL means/maxima, top-token agreement, decode/prefill speeds and ratios, GPU memory from kgsl kernel_max, needle counts, app-question figures, the cross-phone reproduction claims).
+- Whether the direct-KL computation (report.py, and the coarsening) is correct and in the stated direction.
+- Whether the thermal gating and the clock attribution in merge_books.py are sound, and whether the page's speed comparisons (especially Llama 8k at 7.9k, where the two files ran under different thermal caps) are described honestly.
+- The memory explanation (attention buffers sized by prefill chunk x window) and the 32k abort explanation: are they stated with the right confidence for the evidence (no logcat was captured)?
+- The claim that fp16 raised Llama 8k's divergence from the HF model with intervals excluding zero: is the bootstrap appropriate with three books, and is the wording right?
+- Anything in the verdict that the data does not support, and anything important the page omits.
+End with a short overall judgement of whether the page's conclusions are supported.

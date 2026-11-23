@@ -1,0 +1,221 @@
+diff --git a/scripts/awq_compare.py b/scripts/awq_compare.py
+index 87c5603..7d3c389 100644
+--- a/scripts/awq_compare.py
++++ b/scripts/awq_compare.py
+@@ -22,6 +22,7 @@ from __future__ import annotations
+ import argparse
+ import gc
+ import json
++import os
+ import sys
+ import time
+ from pathlib import Path
+@@ -31,7 +32,9 @@ sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
+ TOP = 64
+ REPLY_EVERY = 3  # every third held-out question also gets its fp32 reply teacher-forced
+ REPLY_TOKENS = 48
+-WINDOW = 2048
++
++# The export window. 2048 for the first rounds; the long-text round builds 8k files so the books reach 7,900 tokens.
++WINDOW = int(os.environ.get("AWQ_WINDOW", "2048"))
+ PUBLISHED_ORG = "experimentalmachines"
+ 
+ 
+@@ -273,7 +276,111 @@ def evaluate(pte: Path, tokenizer_path: Path, tokenizer, evalref: dict, scratch:
+     }
+ 
+ 
++def _find_pte(out: Path, work: Path, result: dict) -> Path:
++    """The file an arm measured: one built elsewhere (an absolute published path), the published one it downloaded,
++    or its own export (kept with --keep-pte)."""
++    published = result.get("published")
++    if published and published.startswith("/"):
++        return Path(published)
++    found = sorted((work / "published").rglob("*.pte")) if published else sorted((out / "export").rglob("*.pte"))
++    if not found:
++        raise SystemExit(f"no .pte for {out}: was the arm run with --keep-pte?")
++    return found[0]
++
++
++def _stops(tokenizer) -> set[int]:
++    """The tokens that end a reply: the tokenizer's end of sequence and each chat format's end of turn."""
++    ids = {tokenizer.eos_token_id} if tokenizer.eos_token_id is not None else set()
++    for t in ("<|im_end|>", "<|eot_id|>", "<|end_of_text|>", "<|endoftext|>"):
++        i = tokenizer.convert_tokens_to_ids(t)
++        if isinstance(i, int) and i != tokenizer.unk_token_id and i >= 0:
++            ids.add(i)
++    return ids
++
++
++def _lcs(a: list[int], b: list[int]) -> int:
++    prev = [0] * (len(b) + 1)
++    for x in a:
++        cur = [0]
++        for j, y in enumerate(b):
++            cur.append(prev[j] + 1 if x == y else max(prev[j + 1], cur[j]))
++        prev = cur
++    return prev[-1]
++
++
++def generate(args) -> int:
++    """Free-running replies. The file writes its own reply to each of the reference's reply prompts, greedily, for as
++    many tokens as the original model's greedy reply (both cut at the first end of turn), and each is set beside the
++    original's: how many tokens match before the first difference, whether the whole reply is the same, and the
++    overlap of the two (ROUGE-L F1 over tokens). Teacher forcing (evaluate) feeds the original's tokens back at every
++    step, so it cannot show errors that compound once a file follows its own text; free generations compared with the
++    original's are how Kurtic et al. ("Give Me BF16 or Give Me Death"?, ACL 2025) check this."""
++    import torch
++    from transformers import AutoTokenizer
++
++    out, work, ref_dir = Path(args.out), Path(args.work), Path(args.ref)
++    result = json.loads((out / f"result-{args.method}.json").read_text(encoding="utf-8"))
++    pte = _find_pte(out, work, result)
++    src_dir = work / "solve" / "source"
++    tokenizer = AutoTokenizer.from_pretrained(str(src_dir))
++    tokenizer_path = src_dir / "tokenizer.json"
++    stops = _stops(tokenizer)
++    evalref = torch.load(ref_dir / "evalref.pt", weights_only=True)
++    scratch = work / "eval"
++    scratch.mkdir(parents=True, exist_ok=True)
++    vocab = len(tokenizer)
++
++    def cut(ids):
++        ids = [int(x) for x in ids]
++        for k, x in enumerate(ids):
++            if x in stops:
++                return ids[: k + 1]
++        return ids
++
++    t = time.time()
++    replies = []
++    for r in evalref["replies"]:
++        want = cut(r["reply"])
++        # A fresh runner per prompt, as evaluate: an LFM2 file carries convolution state.
++        runner = _runner(pte, tokenizer_path, vocab, scratch)
++        prompt = list(r["prompt"])
++        logits = _last(runner.forward(torch.tensor([prompt]), torch.tensor([0])))
++        gen: list[int] = []
++        while len(gen) < len(want):
++            gen.append(int(logits.argmax()))
++            if gen[-1] in stops or len(gen) == len(want):
++                break
++            logits = _last(runner.forward(torch.tensor([[gen[-1]]]), torch.tensor([len(prompt) + len(gen) - 1])))
++        del runner
++        prefix = next((k for k, (x, y) in enumerate(zip(gen, want, strict=False)) if x != y), min(len(gen), len(want)))
++        common = _lcs(gen, want)
++        f1 = 2 * common / (len(gen) + len(want)) if gen or want else 1.0
++        replies.append(
++            {"question": r["question"], "want": want, "gen": gen, "prefix": prefix, "same": gen == want, "lcsF1": f1}
++        )
++    n = len(replies)
++    summary = {
++        "replies": n,
++        "same": sum(x["same"] for x in replies),
++        "mean_prefix": sum(x["prefix"] for x in replies) / n,
++        "mean_ref_len": sum(len(x["want"]) for x in replies) / n,
++        "mean_lcs_f1": sum(x["lcsF1"] for x in replies) / n,
++        "seconds": round(time.time() - t, 1),
++        "pte": str(pte),
++    }
++    (out / f"gen-{args.method}.json").write_text(
++        json.dumps({"summary": summary, "replies": replies}) + "\n", encoding="utf-8"
++    )
++    print(json.dumps(summary, indent=2))
++    return 0
++
++
+ def arm(args) -> int:
++    # Runs moved to another machine mid-round are listed (by --out) in /content/skip.txt and end here, nonzero.
++    skip = Path("/content/skip.txt")
++    if skip.exists() and args.out in skip.read_text().split():
++        print("SKIPPED: listed in", skip)
++        return 3
+     import torch
+     from transformers import AutoTokenizer
+ 
+@@ -330,9 +437,20 @@ def arm(args) -> int:
+ 
+         repo = f"{PUBLISHED_ORG}/{args.model.split('/')[-1]}-ExecuTorch"
+         t = time.time()
+-        pte = Path(hf_hub_download(repo, args.published_file, local_dir=str(work / "published")))
++        if args.published_file.startswith("/"):
++            # A file built elsewhere (the KV study's own GPTQ solve), measured the same way as the published one.
++            # Colab's upload takes about 64 MB at most, so it may arrive as name.part00, name.part01, ... to join here.
++            pte = Path(args.published_file)
++            parts = sorted(pte.parent.glob(pte.name + ".part*"))
++            if not pte.exists() and parts:
++                with open(pte, "wb") as joined:
++                    for part in parts:
++                        joined.write(part.read_bytes())
++            result["published"] = str(pte)
++        else:
++            pte = Path(hf_hub_download(repo, args.published_file, local_dir=str(work / "published")))
++            result["published"] = f"{repo}/{args.published_file}"
+         timings["download_published"] = time.time() - t
+-        result["published"] = f"{repo}/{args.published_file}"
+     else:
+         t = time.time()
+         report = export_xnnpack.run(
+@@ -359,6 +477,32 @@ def arm(args) -> int:
+     ev = evaluate(pte, tokenizer_path, tokenizer, evalref, scratch)
+     timings["eval"] = time.time() - t
+     result.update({k: ev[k] for k in ("heldout", "replies")})
++    if args.books:
++        # The KV study's long-text measurements on this same file (scripts/awq_books.py).
++        import awq_books
++
++        def prefill_len() -> int:
++            try:
++                runner = _runner(pte, tokenizer_path, vocab_size, scratch)
++                return int(runner.model.run_method("get_max_seq_len", ())[0]) - 1
++            except Exception:  # the recipe's prefill chunk, 2,048, less the one position the harness keeps
++                return 2047
++
++        vocab_size = len(tokenizer)
++        t = time.time()
++        bk = awq_books.books(
++            lambda: _runner(pte, tokenizer_path, vocab_size, scratch),
++            Path(args.books),
++            WINDOW,
++            args.book_ids.split(","),
++            args.fresh_needles,
++            prefill_len(),
++        )
++        timings["books"] = time.time() - t
++        (out / f"books-{args.method}.json").write_text(
++            json.dumps({"window": WINDOW, "books": bk}) + "\n", encoding="utf-8"
++        )
++    result["window"] = WINDOW
+     result["timings_s"] = {k: round(v, 1) for k, v in timings.items()}
+     (out / f"result-{args.method}.json").write_text(json.dumps(result, indent=2) + "\n", encoding="utf-8")
+     (out / f"rows-{args.method}.json").write_text(
+@@ -395,12 +539,28 @@ def main(argv=None) -> int:
+     a.add_argument("--revision", default="main")
+     a.add_argument("--method", required=True, choices=("rtn", "gptq", "awq", "awq_gptq", "published"))
+     a.add_argument("--ref", required=True, help="the reference command's --out")
+-    a.add_argument("--published-file", help="the published .pte's path in its repo (method published)")
++    a.add_argument(
++        "--published-file",
++        help="method published: the .pte's path in its repo, or an absolute path to a file built elsewhere",
++    )
+     a.add_argument("--keep-pte", action="store_true")
+     a.add_argument("--reuse-codes", action="store_true", help="reuse work/codes-METHOD.pt from an earlier run")
++    a.add_argument(
++        "--books", help="the KV study's data dir for this model (bookN.*): also run the long-text measurements"
++    )
++    a.add_argument("--book-ids", default="10321,10356,10762")
++    a.add_argument(
++        "--fresh-needles", action="store_true", help="answer needles from a fresh file (LFM2's convolution state)"
++    )
+     a.add_argument("--out", required=True)
+     a.add_argument("--work", required=True)
+     a.set_defaults(func=arm)
++    g = sub.add_parser("generate", help="free-running replies from an arm's kept file, against the original's")
++    g.add_argument("--out", required=True, help="the arm's --out")
++    g.add_argument("--work", required=True, help="the arm's --work")
++    g.add_argument("--ref", required=True, help="the reference command's --out")
++    g.add_argument("--method", required=True)
++    g.set_defaults(func=generate)
+     args = p.parse_args(argv)
+     return args.func(args)
+ 

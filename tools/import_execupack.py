@@ -105,16 +105,60 @@ A16W4 = Source(
     rewrite="prose",
 )
 
+# Round 2 (20 to 22 Nov) added the second GPTQ files, the published files, Qwen3's thinking-off arms, the
+# books and the Colab runs, and the scripts that queued them and wrote the site's numbers. Those scripts
+# were never committed: the new ones come across as files, the edit to awq_compare.py as a patch.
+AWQ_SCRIPTS = ["scripts/awq_books.py", "scripts/awq_colab.py", "scripts/awq_full.py", "scripts/awq_queue.py",
+               "scripts/awq_site.py"]
+
 AWQ = Source(
-    label="execupack-awq work/awq (gitignored, 2026-11-19)",
+    label="execupack-awq work/awq and uncommitted scripts (gitignored, 2026-11-19 to 22)",
     checkout=HOME / "execupack-awq",
     commit=None,
-    roots=["work/awq"],
-    moves=[("work/awq", f"{E}/studies/awq/runs")],
+    roots=["work/awq", *AWQ_SCRIPTS],
+    moves=[("work/awq", f"{E}/studies/awq/runs"), ("scripts", f"{E}/studies/awq/harness")],
     suffixes=TEXT,
     exclude={**BINARY_JUNK, "work/awq/t135/*work/*": "solve and export working folders: weights and checkpoints"},
     max_bytes=6_000_000,
+    patches={f"{E}/studies/awq/uncommitted.patch": ["diff", "HEAD"]},
+    # The Colab run's log printed the tunnel its files went out through.
+    redact=[("*.log", r"https?://[a-z0-9-]+\.trycloudflare\.com\S*", "<tunnel>")],
     rewrite="none",  # run records: the scripts ran from the execupack-awq checkout as written
+)
+
+# The KV-cache study (20 and 21 Nov): fp32 against an 8-bit cache on the CPU and against 16-bit mode on
+# the GPU, on three Qualcomm Device Cloud phones. Its scripts and the pipeline edits it needed were never
+# committed. The phones' serials become pseudonyms; the tunnels and the Modal account are redacted.
+KV_SERIALS = serials.replacer({"b3ba6e19", "ac41dea9"})
+KV_SCRIPTS = ["scripts/kv_compare.py", "scripts/kv_eval.py", "scripts/kv_export.py", "scripts/kv_solve.py",
+              "scripts/gemma3_check.py", "scripts/gemma3_pte_check.py", "pipeline/gemma3_model.py"]
+
+KV = Source(
+    label="execupack-kvstudy worktree (kv-study at 34c55110, uncommitted, 2026-11-20 to 21)",
+    checkout=HOME / "execupack-kvstudy",
+    commit=None,
+    roots=["scripts/kvstudy", *KV_SCRIPTS, "work/kvstudy"],
+    moves=[("scripts/kvstudy", f"{E}/studies/kv-cache/harness"),
+           *[(p, f"{E}/studies/kv-cache/harness/{p.split('/')[-1]}") for p in KV_SCRIPTS],
+           ("work/kvstudy", f"{E}/studies/kv-cache/runs")],
+    suffixes=TEXT | {".therm", ".stdout", ".html", ".sha256"},
+    exclude={**BINARY_JUNK,
+             "*/__pycache__/*": "bytecode",
+             "work/kvstudy/pg19": "the PG-19 book texts, public at github.com/google-deepmind/pg19",
+             "work/kvstudy/data": "token streams and reference logits, rebuilt from the books and models by reference.py",
+             "work/kvstudy/refs": "reference tensors, rebuilt by reference.py",
+             "urls-*.txt": "tunnel addresses and nothing else",
+             "tunnel-base.txt": "a tunnel address",
+             "*shipped*.txt": "lists of files sent over a tunnel, with its addresses",
+             "codex-review*.err": "the review tool's raw stderr; each review's text is in its .md",
+             "*.logcat-full": "whole-device logs; the abort lines they show are quoted in the report",
+             "work/kvstudy/logs/reference-llama.log": "rewritten in place and half NUL bytes; reference.log logs the same build"},
+    max_bytes=6_000_000,
+    patches={f"{E}/studies/kv-cache/uncommitted.patch": ["diff", "HEAD"]},
+    redact=[("*", r"https?://[a-z0-9-]+\.trycloudflare\.com\S*", "<tunnel>"),
+            ("*", r"alphacoma\w*", "<modal-account>")],
+    hooks=[KV_SERIALS],
+    rewrite="prose",
 )
 
 ARCHIVE = Source(
@@ -139,7 +183,7 @@ ARCHIVE = Source(
     rewrite="none",
 )
 
-PROJECT = Project(E, [RESEARCH, A16W4, AWQ, ARCHIVE])
+PROJECT = Project(E, [RESEARCH, A16W4, AWQ, KV, ARCHIVE])
 
 if __name__ == "__main__":
     main(PROJECT)

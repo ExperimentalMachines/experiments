@@ -1,0 +1,76 @@
+03:38:15 start stream 2k lfm f32kv skin=44.3772 battery=38.0 CPU3=49.6 CPU7=49.5 CPU6=50.4 CPU5=49.0 CPU0=49.0 CPU2=49.9 CPU1=49.3 CPU4=51.4 
+03:38:38 end stream 2k lfm f32kv rc=0
+03:40:01 fetched urls-b1.txt
+03:46:43 fetched urls-b2.txt
+03:46:54 not here yet: 2k lfm q8kv
+03:46:54 not here yet: 2k lfm q8kv
+03:46:54 start app 2k lfm f32kv skin=38.3124 battery=38.0 CPU3=42.2 CPU7=42.6 CPU6=42.9 CPU5=41.6 CPU0=41.9 CPU2=42.5 CPU1=41.9 CPU4=43.7 
+03:54:31 end app 2k lfm f32kv rc=0
+03:55:01 not here yet: 2k llama q8kv
+03:55:01 start stream 2k llama f32kv skin=47.24244 battery=38.0 CPU3=51.1 CPU7=51.9 CPU6=52.8 CPU5=50.8 CPU0=51.7 CPU2=52.0 CPU1=51.1 CPU4=53.3 
+03:55:37 end stream 2k llama f32kv rc=0
+03:56:07 start app 2k llama f32kv skin=47.20548 battery=38.0 CPU3=50.8 CPU7=51.3 CPU6=52.2 CPU5=50.2 CPU0=51.4 CPU2=51.1 CPU1=50.5 CPU4=53.3 
+04:06:53 end app 2k llama f32kv rc=0
+04:07:23 not here yet: 2k llama q8kv
+04:07:23 not here yet: 2k qwen f32kv
+04:07:23 not here yet: 2k qwen q8kv
+04:07:23 not here yet: 2k qwen q8kv
+04:07:23 not here yet: 2k qwen f32kv
+04:07:23 start stream 8k lfm q8kv skin=49.62972 battery=38.0 CPU3=54.8 CPU7=54.9 CPU6=56.1 CPU5=54.2 CPU0=54.5 CPU2=54.8 CPU1=54.5 CPU4=57.0 
+04:09:50 end stream 8k lfm q8kv rc=0
+04:10:20 not here yet: 8k lfm f32kv
+04:10:20 start stream 8k llama f32kv skin=50.20176 battery=38.0 CPU3=55.4 CPU7=55.2 CPU6=56.1 CPU5=54.8 CPU0=54.8 CPU2=55.4 CPU1=55.1 CPU4=56.7 
+04:15:52 end stream 8k llama f32kv rc=0
+04:16:22 not here yet: 8k llama q8kv
+04:16:22 not here yet: 8k qwen q8kv
+04:16:22 not here yet: 8k qwen f32kv
+04:16:22 start stream 32k lfm f32kv skin=50.75196 battery=38.0 CPU3=56.0 CPU7=56.4 CPU6=57.3 CPU5=56.0 CPU0=56.0 CPU2=57.0 CPU1=56.4 CPU4=58.5 
+04:39:52 end stream 32k lfm f32kv rc=0
+04:40:22 start stream 32k lfm q8kv skin=50.8116 battery=38.0 CPU3=56.0 CPU7=57.9 CPU6=57.3 CPU5=55.1 CPU0=57.3 CPU2=57.6 CPU1=57.0 CPU4=57.9 
+05:23:48 start stream 2k lfm q8kv skin=37.4598 battery=38.0 CPU3=41.9 CPU7=41.1 CPU6=42.3 CPU5=42.2 CPU0=40.9 CPU2=41.6 CPU1=41.6 CPU4=44.0 
+05:24:10 end stream 2k lfm q8kv rc=0
+05:33:44 start stream 2k lfm q8kv skin=36.7248 battery=38.0 CPU3=40.9 CPU7=41.1 CPU6=41.7 CPU5=40.6 CPU0=40.3 CPU2=40.6 CPU1=40.9 CPU4=42.8 
+05:34:06 end stream 2k lfm q8kv rc=0
+05:34:36 start app 2k lfm q8kv skin=40.28052 battery=38.0 CPU3=44.6 CPU7=44.7 CPU6=45.6 CPU5=45.3 CPU0=45.3 CPU2=45.6 CPU1=45.3 CPU4=46.8 
+05:36:39 fetched urls-colab-212512.txt
+05:36:46 fetched urls-colab-212916.txt
+05:42:31 end app 2k lfm q8kv rc=0
+05:43:01 start stream 2k llama q8kv skin=47.21808 battery=38.0 CPU3=52.0 CPU7=51.9 CPU6=52.8 CPU5=51.7 CPU0=52.0 CPU2=52.0 CPU1=51.7 CPU4=53.6 
+05:43:03 fetched urls-colab-214209.txt
+05:43:33 end stream 2k llama q8kv rc=0
+05:44:03 start app 2k llama q8kv skin=47.0526 battery=38.0 CPU3=51.4 CPU7=51.3 CPU6=52.5 CPU5=51.1 CPU0=51.1 CPU2=51.4 CPU1=51.1 CPU4=53.9 
+05:54:53 end app 2k llama q8kv rc=0
+05:55:23 start stream 2k qwen f32kv skin=48.68808 battery=38.0 CPU3=53.9 CPU7=53.7 CPU6=54.6 CPU5=53.0 CPU0=54.2 CPU2=53.6 CPU1=53.6 CPU4=55.1 
+05:56:35 end stream 2k qwen f32kv rc=0
+05:57:06 start stream 2k qwen q8kv skin=50.38404 battery=38.0 CPU3=55.4 CPU7=55.8 CPU6=56.7 CPU5=55.1 CPU0=55.1 CPU2=56.0 CPU1=55.4 CPU4=57.3 
+05:58:16 end stream 2k qwen q8kv rc=0
+05:58:46 start app 2k qwen q8kv skin=49.79856 battery=38.0 CPU3=54.8 CPU7=55.5 CPU6=56.4 CPU5=54.8 CPU0=55.1 CPU2=55.1 CPU1=55.1 CPU4=57.3 
+06:03:10 fetched urls-colab-220215.txt
+06:16:55 end app 2k qwen q8kv rc=0
+06:17:25 start app 2k qwen f32kv skin=48.57468 battery=38.0 CPU3=53.9 CPU7=53.7 CPU6=54.9 CPU5=54.2 CPU0=55.1 CPU2=54.5 CPU1=54.2 CPU4=55.4 
+06:35:52 end app 2k qwen f32kv rc=0
+06:36:22 start stream 2k gemma q8kv skin=48.8796 battery=38.0 CPU3=54.8 CPU7=54.9 CPU6=55.8 CPU5=54.5 CPU0=54.5 CPU2=54.5 CPU1=54.2 CPU4=56.7 
+06:36:49 end stream 2k gemma q8kv rc=0
+06:37:19 start stream 2k gemma f32kv skin=48.99048 battery=38.0 CPU3=53.9 CPU7=54.3 CPU6=55.2 CPU5=54.5 CPU0=53.3 CPU2=53.9 CPU1=53.9 CPU4=56.0 
+06:37:49 end stream 2k gemma f32kv rc=0
+06:38:19 start app 2k gemma f32kv skin=49.12656 battery=38.0 CPU3=53.3 CPU7=54.6 CPU6=54.9 CPU5=53.0 CPU0=53.9 CPU2=54.2 CPU1=53.9 CPU4=55.4 
+06:45:55 end app 2k gemma f32kv rc=0
+06:46:25 start app 2k gemma q8kv skin=49.1652 battery=38.0 CPU3=55.1 CPU7=55.2 CPU6=55.2 CPU5=55.1 CPU0=55.1 CPU2=55.1 CPU1=54.8 CPU4=56.4 
+06:54:16 end app 2k gemma q8kv rc=0
+06:54:46 start stream 8k lfm f32kv skin=48.54612 battery=38.0 CPU3=54.5 CPU7=54.3 CPU6=54.9 CPU5=54.2 CPU0=54.5 CPU2=54.5 CPU1=54.2 CPU4=56.7 
+06:57:36 end stream 8k lfm f32kv rc=0
+06:58:06 start stream 8k llama q8kv skin=50.55624 battery=38.0 CPU3=55.4 CPU7=55.8 CPU6=56.7 CPU5=55.1 CPU0=55.4 CPU2=55.7 CPU1=55.7 CPU4=56.7 
+07:02:19 end stream 8k llama q8kv rc=0
+07:02:49 start stream 8k qwen f32kv skin=50.41344 battery=38.0 CPU3=57.6 CPU7=56.7 CPU6=57.9 CPU5=57.9 CPU0=57.6 CPU2=57.9 CPU1=57.3 CPU4=60.4 
+07:11:45 end stream 8k qwen f32kv rc=0
+07:12:15 start stream 8k qwen q8kv skin=51.25848 battery=38.0 CPU3=56.4 CPU7=57.0 CPU6=57.9 CPU5=56.4 CPU0=57.0 CPU2=56.7 CPU1=56.4 CPU4=57.9 
+07:18:09 end stream 8k qwen q8kv rc=0
+07:18:39 start stream 8k gemma q8kv skin=50.80404 battery=38.0 CPU3=54.8 CPU7=55.8 CPU6=56.4 CPU5=55.4 CPU0=55.1 CPU2=55.7 CPU1=55.1 CPU4=57.6 
+07:20:36 end stream 8k gemma q8kv rc=0
+07:21:06 start stream 8k gemma f32kv skin=50.02452 battery=38.0 CPU3=54.5 CPU7=54.9 CPU6=55.5 CPU5=54.2 CPU0=54.2 CPU2=54.8 CPU1=54.2 CPU4=56.4 
+07:23:22 end stream 8k gemma f32kv rc=0
+07:23:52 start stream 32k llama q8kv skin=49.91532 battery=38.0 CPU3=54.5 CPU7=54.9 CPU6=55.8 CPU5=54.2 CPU0=53.9 CPU2=54.2 CPU1=54.8 CPU4=56.4 
+07:36:15 end stream 32k llama q8kv rc=0
+07:36:45 start stream 32k llama f32kv skin=50.16648 battery=38.0 CPU3=54.5 CPU7=54.3 CPU6=55.2 CPU5=54.5 CPU0=54.5 CPU2=54.5 CPU1=54.2 CPU4=55.7 
+07:52:26 end stream 32k llama f32kv rc=0
+07:52:56 start stream 32k qwen f32kv skin=50.68392 battery=38.0 CPU3=56.0 CPU7=56.7 CPU6=57.0 CPU5=56.0 CPU0=57.0 CPU2=56.7 CPU1=57.0 CPU4=58.2 

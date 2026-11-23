@@ -1,0 +1,39 @@
+19:16:52 setup: installing
+19:17:11 TUNNEL <tunnel>
+19:18:02 setup: done
+19:18:18 READY 2k/f32kv-LFM2.5-1.2B-Instruct-8da4w-gptq-2k.pte from the Volume
+19:18:33 READY 2k/f32kv-Llama-3.2-1B-Instruct-8da4w-gptq-2k.pte from the Volume
+19:18:48 READY 2k/f32kv-Qwen3-1.7B-8da4w-gptq-2k.pte from the Volume
+19:19:04 READY 2k/f32kv-gemma-3-1b-it-8da4w-gptq-2k.pte from the Volume
+19:19:25 READY 2k/q8kv-LFM2.5-1.2B-Instruct-8da4w-gptq-2k.pte from the Volume
+19:19:39 READY 2k/q8kv-Llama-3.2-1B-Instruct-8da4w-gptq-2k.pte from the Volume
+19:19:53 READY 2k/q8kv-Qwen3-1.7B-8da4w-gptq-2k.pte from the Volume
+19:20:07 READY 2k/q8kv-gemma-3-1b-it-8da4w-gptq-2k.pte from the Volume
+19:20:22 READY 8k/f32kv-LFM2.5-1.2B-Instruct-8da4w-gptq-8k.pte from the Volume
+19:20:36 READY 8k/f32kv-Llama-3.2-1B-Instruct-8da4w-gptq-8k.pte from the Volume
+19:20:53 READY 8k/f32kv-Qwen3-1.7B-8da4w-gptq-8k.pte from the Volume
+19:21:06 READY 8k/f32kv-gemma-3-1b-it-8da4w-gptq-8k.pte from the Volume
+19:21:22 READY 8k/q8kv-LFM2.5-1.2B-Instruct-8da4w-gptq-8k.pte from the Volume
+19:21:40 READY 8k/q8kv-Llama-3.2-1B-Instruct-8da4w-gptq-8k.pte from the Volume
+19:21:55 READY 8k/q8kv-Qwen3-1.7B-8da4w-gptq-8k.pte from the Volume
+19:28:07 READY 2k/f32kv-Llama-3.2-1B-Instruct-vulkan-8da4w-gptq-2k.pte 1196MB 370s ''
+19:31:03 READY 2k/f32kv-Qwen3-1.7B-vulkan-8da4w-gptq-2k.pte 1616MB 543s ''
+19:32:51 READY 2k/f16kv-Llama-3.2-1B-Instruct-vulkan-8da4w-gptq-2k.pte 1116MB 281s ''
+19:37:35 READY 8k/f32kv-Llama-3.2-1B-Instruct-vulkan-8da4w-gptq-8k.pte 1211MB 280s ''
+19:38:47 READY 2k/f16kv-Qwen3-1.7B-vulkan-8da4w-gptq-2k.pte 1502MB 461s ''
+19:42:30 READY 8k/f16kv-Llama-3.2-1B-Instruct-vulkan-8da4w-gptq-8k.pte 1124MB 291s ''
+19:43:36 READY 8k/q8kv-gemma-3-1b-it-8da4w-gptq-8k.pte 1299
+19:43:37 FAILED export-vk-llama-f32kv-32k rc 1 | {"model": "meta-llama/Llama-3.2-1B-Instruct", "kv": "fp32", "context": 32768, "host": {"cpu": "Intel(R) Xeon(R) CPU @ 2.20GHz", "avx512fp16": false, "avx512_fp16": false, "f16c": true, "avx512f": true, "amx_fp16": false}
+19:43:37 NO-FILE vk-llama-f32kv-32k 'SkipExport: a 32768-token export needs about 60,839,684,336 B with headroom (causal masks alone 17,179,869,184 B); this host has 55,863,301,632 B'
+19:43:38 FAILED export-vk-llama-f16kv-32k rc 1 | {"model": "meta-llama/Llama-3.2-1B-Instruct", "kv": "fp16", "context": 32768, "host": {"cpu": "Intel(R) Xeon(R) CPU @ 2.20GHz", "avx512fp16": false, "avx512_fp16": false, "f16c": true, "avx512f": true, "amx_fp16": false}
+19:43:38 NO-FILE vk-llama-f16kv-32k 'SkipExport: a 32768-token export needs about 60,839,684,336 B with headroom (causal masks alone 17,179,869,184 B); this host has 55,863,301,632 B'
+19:47:11 READY 8k/f32kv-Qwen3-1.7B-vulkan-8da4w-gptq-8k.pte 1653MB 500s ''
+19:55:14 READY 8k/f16kv-Qwen3-1.7B-vulkan-8da4w-gptq-8k.pte 1520MB 480s ''
+19:55:14 ALL BUILT; serving until /content/serve.done
+19:56:14 serving
+19:57:14 serving
+19:58:14 serving
+19:59:14 serving
+20:00:14 serving
+20:01:14 serving
+20:02:14 serving

@@ -10,7 +10,7 @@ Every number traces back to a run file in this repository, and most runs can be 
 | Project | What it is | Here |
 |---|---|---|
 | [**OpenWeights**](https://github.com/ExperimentalMachines/openweights) | An Android app that runs open-weight chat models entirely on the phone, through llama.cpp and ExecuTorch | [10 studies](openweights/) |
-| [**ExecuPack**](https://github.com/ExperimentalMachines/execupack) | A pipeline that compiles those models for a phone's CPU, GPU and NPU, and publishes them | [a 49-finding research log and 5 studies](execupack/) |
+| [**ExecuPack**](https://github.com/ExperimentalMachines/execupack) | A pipeline that compiles those models for a phone's CPU, GPU and NPU, and publishes them | [a 49-finding research log and 6 studies](execupack/) |
 | [**ExecuServe**](https://github.com/ExperimentalMachines/execuserve) | An Android app that serves the compiled models to other apps through OpenAI- and Anthropic-compatible endpoints | [5 studies](execuserve/) |
 
 **Jump to:** [What we found](#what-we-found) · [All studies](#all-studies) ·
@@ -90,7 +90,8 @@ to the study with the data, the method and the caveats.
 |---|---|---|
 | [Research log](execupack/research/) | What breaks, costs memory or loses accuracy when compiling models for phones? | 49 dated findings, each with its evidence and the pipeline change it caused |
 | [MediaTek A16W4](execupack/studies/mtk-a16w4/) | Can MediaTek's NPU take 4-bit weights? | 3 to 170 times further from the original model than 8-bit, even with GPTQ; 8-bit stays |
-| [AWQ](execupack/studies/awq/) | Does AWQ beat GPTQ at 4 bits? | It depends on the model; unpublished |
+| [AWQ](execupack/studies/awq/) | Does AWQ beat GPTQ at 4 bits? | Closer on long text, further on short questions; it failed the publish gate on 2 of 3 models, so files stay GPTQ |
+| [KV cache](execupack/studies/kv-cache/) | Does an 8-bit cache make long chats faster without changing answers? | On the CPU, 1.7 to 3.8 times faster 7.9k tokens in, answers barely moved; GPU 16-bit mode broke Llama at 32.5k |
 | [Calibration corpus](execupack/studies/calibration-corpus/) | Does a bigger calibration set make better 4-bit files? | Not settled: size and content changed at once |
 | [Published audit](execupack/studies/published-audit/) | Do already-published files still decide like the original model? | A workflow to check them; the one audit kept failed |
 | [AWS runs, November 2026](execupack/studies/aws-runs-2026-11/) | What did the four export machines produce and check before shutdown? | Most models kept their tool decisions; Qwen3 0.6B kept 0 of 4 and shipped with full-precision layers |

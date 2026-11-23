@@ -1,0 +1,21 @@
+{
+  "model": "meta-llama/Llama-3.2-1B-Instruct",
+  "kv": "fp32",
+  "context": 2048,
+  "host": {
+    "cpu": "unknown",
+    "avx512fp16": false,
+    "avx512_fp16": false,
+    "f16c": true,
+    "avx512f": true,
+    "amx_fp16": false
+  },
+  "smoke": {
+    "passed": true,
+    "reply": "Paris.<|eot_id|>",
+    "problems": []
+  },
+  "seconds": 417,
+  "pte": "f32kv-Llama-3.2-1B-Instruct-8da4w-gptq-2k.pte",
+  "bytes": 959972864
+}

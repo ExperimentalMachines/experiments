@@ -1,0 +1,7 @@
+12:19:52 int8 lane started
+12:40:53 READY 2k/q8kv-Qwen3-1.7B-8da4w-gptq-2k.pte 1259
+12:59:21 READY 8k/q8kv-Qwen3-1.7B-8da4w-gptq-8k.pte 1106
+13:19:32 READY 2k/q8kv-gemma-3-1b-it-8da4w-gptq-2k.pte 1188
+13:40:58 READY 8k/q8kv-gemma-3-1b-it-8da4w-gptq-8k.pte 1284
+14:01:26 READY 32k/q8kv-gemma-3-1b-it-8da4w-gptq-32k.pte 1225
+14:01:27 int8 lane done

@@ -1,0 +1,7 @@
+11:17:24 setup: installing cpus=8
+11:17:33 setup: done
+11:17:33 START qwen3-1.7b-awq-nothink
+11:17:33 START lfm25-1.2b-awq
+15:03:24 RESULT lfm25-1.2b-awq gate=FAIL app_kl=0.2660 book_kl@1900=0.2090 book_kl@7900=0.1814 solve=7581.8s books=3541.8s
+15:31:52 RESULT qwen3-1.7b-awq-nothink gate=PASS app_kl=3.8841 book_kl@1900=0.0923 book_kl@7900=0.0969 solve=9558.3s books=728.1s
+15:31:52 ALL DONE

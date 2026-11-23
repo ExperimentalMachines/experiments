@@ -1,0 +1,21 @@
+{
+  "model": "Qwen/Qwen3-1.7B",
+  "kv": "fp32",
+  "context": 32768,
+  "host": {
+    "cpu": "unknown",
+    "avx512fp16": false,
+    "avx512_fp16": false,
+    "f16c": true,
+    "avx512f": true,
+    "amx_fp16": false
+  },
+  "smoke": {
+    "passed": true,
+    "reply": "<think>\nOkay, the user is asking for the capital of France and wants the answer in one word. Let me think. I know that France's capital is Paris. But wait, sometimes people might confuse it with another city. Let me double-check. Paris is the largest city and the political, cultural, and economic center of France. Yes, that's correct. The answer should be \"Paris\". I should make sure there's no other capital, but I remember that France's capital is definitely Paris. No need to add anything else here.\n</think>\n\nParis<|im_end|>",
+    "problems": []
+  },
+  "seconds": 881,
+  "pte": "f32kv-Qwen3-1.7B-8da4w-gptq-32k.pte",
+  "bytes": 1347820160
+}

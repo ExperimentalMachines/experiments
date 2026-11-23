@@ -1,0 +1,489 @@
+diff --git a/pipeline/convert.py b/pipeline/convert.py
+index cbc8119..ca3553a 100644
+--- a/pipeline/convert.py
++++ b/pipeline/convert.py
+@@ -113,6 +113,23 @@ _PHI4_FUSED = {
+     "attention.wqkv.weight": ("attention.wq.weight", "attention.wk.weight", "attention.wv.weight"),
+     "feed_forward.w13.weight": ("feed_forward.w1.weight", "feed_forward.w3.weight"),
+ }
++# Gemma 3 (pipeline/gemma3_model.py), as ExecuTorch 1.5.1's examples/models/gemma3/convert_weights.py
++# maps it: four norms per layer (the "sandwich"), q/k norms, HF RoPE layout (no un-permute).
++_GEMMA3_LAYER_KEYS = {
++    "self_attn.q_proj.weight": "attention.wq.weight",
++    "self_attn.k_proj.weight": "attention.wk.weight",
++    "self_attn.v_proj.weight": "attention.wv.weight",
++    "self_attn.o_proj.weight": "attention.wo.weight",
++    "self_attn.q_norm.weight": "attention.q_norm_fn.weight",
++    "self_attn.k_norm.weight": "attention.k_norm_fn.weight",
++    "input_layernorm.weight": "attention_norm.weight",
++    "post_attention_layernorm.weight": "post_attention_norm.weight",
++    "pre_feedforward_layernorm.weight": "ffn_norm.weight",
++    "post_feedforward_layernorm.weight": "post_ffn_norm.weight",
++    "mlp.gate_proj.weight": "feed_forward.w1.weight",
++    "mlp.down_proj.weight": "feed_forward.w2.weight",
++    "mlp.up_proj.weight": "feed_forward.w3.weight",
++}
+ # Buffers some checkpoints carry that the model recomputes.
+ _IGNORED = re.compile(r"(rotary_emb\.inv_freq|\.masked_bias|\.attn\.bias)$")
+ 
+@@ -127,9 +144,10 @@ CONVERTERS = {
+     "lfm3": (_LFM3_LAYER_KEYS, False),
+     # HF RoPE (use_hf_rope), so q and k stay in HF's layout.
+     "phi4": (_PHI4_LAYER_KEYS, False),
++    "gemma3": (_GEMMA3_LAYER_KEYS, False),
+ }
+ # Converters whose per-layer map stands alone instead of extending _LAYER_KEYS.
+-_STANDALONE = {"lfm2", "lfm3", "phi4"}
++_STANDALONE = {"lfm2", "lfm3", "phi4", "gemma3"}
+ # A conv layer and an attention layer carry different tensors, so the per-layer count that
+ # the other families check cannot apply; LFM2 is checked by total instead.
+ _MIXED_LAYERS = {"lfm2", "lfm3"}
+@@ -237,6 +255,18 @@ def convert(model_dir: Path, output: Path, converter: str, config: dict) -> dict
+         if not config.get("tie_word_embeddings", True):
+             raise KeyError("checkpoint has no lm_head.weight but config says embeddings are untied")
+         state["output.weight"] = state["tok_embeddings.weight"]
++    if converter == "gemma3":
++        # Gemma3TextScaledWordEmbedding multiplies the looked-up rows by sqrt(hidden_size), in
++        # fp32 for an fp32 model; ExecuTorch 1.5.1's transformer declares embedding_scale_factor
++        # and never applies it, so the scale goes into the table. The tied head stays unscaled,
++        # which unties the two (the export quantizes them separately in any case).
++        import math
++
++        scale = torch.tensor(math.sqrt(int(config["hidden_size"])), dtype=torch.float32)
++        state["tok_embeddings.weight"] = state["tok_embeddings.weight"].float() * scale
++        # The scaled table is fp32 (bf16 would round HF's fp32 product); the rest follows, so
++        # the checkpoint has one dtype (examples/models/llama/model.py warns on a mixed one).
++        state = {key: tensor.float() for key, tensor in state.items()}
+ 
+     n_layers = int(config["num_hidden_layers"])
+     per_layer = sum(1 for k in state if k.startswith("layers."))
+@@ -253,9 +283,13 @@ def convert(model_dir: Path, output: Path, converter: str, config: dict) -> dict
+         if not widths or min(widths) < 6:
+             raise ValueError(f"a layer is missing tensors: widths {widths}")
+     else:
+-        # Phi-4-mini's six HF tensors per layer become Llama's nine.
+-        extra = 0 if converter == "phi4" else len(CONVERTERS[converter][0])
+-        expected_per_layer = len(_LAYER_KEYS) + extra
++        # Phi-4-mini's six HF tensors per layer become Llama's nine; Gemma 3's map stands alone.
++        if converter == "phi4":
++            expected_per_layer = len(_LAYER_KEYS)
++        elif converter in _STANDALONE:
++            expected_per_layer = len(CONVERTERS[converter][0])
++        else:
++            expected_per_layer = len(_LAYER_KEYS) + len(CONVERTERS[converter][0])
+         if per_layer != n_layers * expected_per_layer:
+             raise ValueError(f"expected {n_layers} layers x {expected_per_layer} tensors, found {per_layer}")
+ 
+diff --git a/pipeline/export_with_codes.py b/pipeline/export_with_codes.py
+index ffb36a1..5011e33 100644
+--- a/pipeline/export_with_codes.py
++++ b/pipeline/export_with_codes.py
+@@ -2,6 +2,7 @@
+ solved int4 codes in place of its own rounding.
+ 
+     python -m pipeline.export_with_codes --config <export_llm.yaml> [--codes <codes.pt>] [--lfm2-state-fix] [--lfm3]
++        [--gemma3]
+ 
+ A separate entry point, invoked as a subprocess like plain ``export_llm``, so the exporter
+ keeps measuring a child's peak RSS and an out-of-memory export still fails as a process
+@@ -135,6 +136,11 @@ def main(argv: list[str] | None = None) -> int:
+         action="store_true",
+         help="build LFM3 params with pipeline/lfm3_model.py, the definition ExecuTorch 1.5.1 lacks",
+     )
++    parser.add_argument(
++        "--gemma3",
++        action="store_true",
++        help="build Gemma 3 params with pipeline/gemma3_model.py (post norms, GELU, local RoPE)",
++    )
+     args = parser.parse_args(argv)
+ 
+     import torch
+@@ -151,6 +157,12 @@ def main(argv: list[str] | None = None) -> int:
+         lfm3_model.apply()
+         print("applied the LFM3 model definition (pipeline/lfm3_model.py)")
+ 
++    if args.gemma3:
++        from pipeline import gemma3_model
++
++        gemma3_model.apply()
++        print("applied the Gemma 3 model definition (pipeline/gemma3_model.py)")
++
+     if args.codes or args.output_int8:
+         from executorch.examples.models.llama.source_transformation import quantize as quantize_module
+ 
+diff --git a/pipeline/export_xnnpack.py b/pipeline/export_xnnpack.py
+index 71d66ee..800d105 100644
+--- a/pipeline/export_xnnpack.py
++++ b/pipeline/export_xnnpack.py
+@@ -93,8 +93,15 @@ def export_llm_config(
+         "model": {
+             "use_kv_cache": True,
+             "use_sdpa_with_kv_cache": True,
+-            "dtype_override": "fp32",
++            # Experiment only (scripts/kv_export.py): fp16 is the only way to a 16-bit cache, since
++            # the cache follows the model's dtype (examples/models/llama/export_llama_lib.py).
++            "dtype_override": os.environ.get("DTYPE_OVERRIDE", "fp32"),
+             "enable_dynamic_shape": True,
++            # Experiment only (scripts/kv_compare.py): ExecuTorch's int8 per-token KV cache
++            # with its quantized SDPA, examples/models/llama/export_llama_lib.py.
++            **({"quantize_kv_cache": True} if os.environ.get("KV_CACHE_INT8") == "1" else {}),
++            # Gemma 3's sliding layers as rings (custom_kv_cache.replace_kv_cache_with_ring_kv_cache).
++            **({"local_global_attention": list(plan.local_global_attention)} if plan.local_global_attention else {}),
+         },
+         "quantization": {
+             "qmode": QMODES[recipe.qmode],
+@@ -111,7 +118,10 @@ def export_llm_config(
+             "max_context_length": context,
+             "output_name": str(output),
+         },
+-        "backend": BACKEND_CONFIG[backend],
++        # Experiment only (KV study GPU pass): Vulkan's force_fp16 runs and stores everything in fp16 inside the
++        # delegate, KV cache included (extension/llm/export/partitioner_lib.py); the only 16-bit cache on GPU.
++        "backend": {**BACKEND_CONFIG[backend], **({"vulkan": {"enabled": True, "force_fp16": True}}
++                                                  if backend == "vulkan" and os.environ.get("VULKAN_FORCE_FP16") == "1" else {})},
+     }
+ 
+ 
+@@ -273,9 +283,17 @@ def run(
+ 
+     family = families.family_for(source.config)
+     plan = families.xnnpack_plan(family, source.config)
++    # The settings' prefill chunk, unless the model needs its own (Gemma 3's ring caches).
++    prefill_chunk = plan.prefill_chunk or cfg.prefill_chunk
+     arch = families.architecture(source.config, source.total_params)
+     host = host_info()
+     budget = host_budget(host)
++    # Experiment only (KV study, Gemma 3 at 32k on a 52 GB Colab VM): sizing.export_peak_bytes counts every
++    # layer's causal mask at the full window, but 22 of Gemma 3 1B's 26 layers attend through 512-token rings,
++    # so its estimate (~90 GB) is far above the real peak. An explicit override lets that one export run; a
++    # wrong guess ends in an out-of-memory kill, not a silent result.
++    if os.environ.get("KV_STUDY_HOST_BUDGET_BYTES"):
++        budget = int(os.environ["KV_STUDY_HOST_BUDGET_BYTES"])
+     # The recipe is settled before sizing: an fp32 file is eight times an 8da4w one per linear
+     # weight, and the report's sizing and wording must describe the file actually built.
+     recipe = cfg.xnnpack if backend == "xnnpack" else cfg.vulkan
+@@ -329,7 +347,9 @@ def run(
+         shutil.copyfile(codes, private)
+         codes, codes_sha256 = private, sha256(private)
+     proxy = None
+-    if backend == "vulkan" and codes is not None:
++    # Experiment only (KV study GPU pass): the gate proxy guards publishing; the study's Vulkan files are measured
++    # on the phone against the fp32 model instead, so KV_STUDY_NO_GATE_PROXY=1 skips it.
++    if backend == "vulkan" and codes is not None and os.environ.get("KV_STUDY_NO_GATE_PROXY") != "1":
+         # Checked before the export, which takes the better part of an hour at 32k.
+         expected = {
+             "source_id": source.id,
+@@ -342,7 +362,7 @@ def run(
+                 "embedding_hqq": recipe.embedding_hqq,
+                 "embedding_quantize": recipe.embedding_quantize,
+                 "group_size": recipe.group_size,
+-                "prefill_chunk": min(cfg.prefill_chunk, window),
++                "prefill_chunk": min(prefill_chunk, window),
+                 "output_head": "int8 per channel" if output_bits == 8 else None,
+             },
+         }
+@@ -382,7 +402,7 @@ def run(
+     params_path.write_text(json.dumps(plan.params, indent=2), encoding="utf-8")
+     bos, eos = hub.special_token_ids(source)
+     pte = backend_dir / pte_name
+-    config = export_llm_config(plan, params_path, checkpoint, pte, window, cfg.prefill_chunk, recipe, bos, eos, backend)
++    config = export_llm_config(plan, params_path, checkpoint, pte, window, prefill_chunk, recipe, bos, eos, backend)
+     config_path = work_dir / "export_llm.yaml"
+     config_path.write_text(yaml.safe_dump(config, sort_keys=False), encoding="utf-8")
+ 
+@@ -393,7 +413,7 @@ def run(
+     # through the wrapper too; its convolution clears its own state at position zero.
+     state_fix = plan.converter == "lfm2"
+     output_int8 = plan.output_bits == 8 and recipe.qmode == "8da4w"
+-    if codes is not None or state_fix or plan.lfm3 or output_int8:
++    if codes is not None or state_fix or plan.lfm3 or plan.gemma3 or output_int8:
+         command = [sys.executable, "-m", "pipeline.export_with_codes", "--config", str(config_path)]
+         if codes is not None:
+             command += ["--codes", str(codes)]
+@@ -401,11 +421,13 @@ def run(
+             command += ["--lfm2-state-fix"]
+         if plan.lfm3:
+             command += ["--lfm3"]
++        if plan.gemma3:
++            command += ["--gemma3"]
+         if output_int8:
+             command += ["--output-int8"]
+         print(
+             f"==> export_llm (codes: {'gptq' if codes else 'round to nearest'}, state fix: {state_fix}, "
+-            f"lfm3: {plan.lfm3})"
++            f"lfm3: {plan.lfm3}, gemma3: {plan.gemma3})"
+         )
+     else:
+         command = [sys.executable, "-m", "executorch.extension.llm.export.export_llm", "--config", str(config_path)]
+@@ -429,7 +451,7 @@ def run(
+     mismatches = []
+     if method_values.get("get_max_context_len") != window:
+         mismatches.append(f"get_max_context_len {method_values.get('get_max_context_len')} != {window}")
+-    if method_values.get("get_max_seq_len") != min(cfg.prefill_chunk, window):
++    if method_values.get("get_max_seq_len") != min(prefill_chunk, window):
+         mismatches.append(f"get_max_seq_len {method_values.get('get_max_seq_len')}")
+     if bos is not None and method_values.get("get_bos_id") != bos:
+         mismatches.append(f"get_bos_id {method_values.get('get_bos_id')} != {bos}")
+@@ -455,7 +477,7 @@ def run(
+         print(f"    reply: {smoke_result['reply']!r}")
+ 
+     kv_per_token = sizing.kv_bytes_per_token(arch)
+-    kv_ring = sizing.kv_ring_bytes(arch, window, cfg.prefill_chunk)
++    kv_ring = sizing.kv_ring_bytes(arch, window, prefill_chunk)
+     report = {
+         "backend": backend,
+         "target": None,
+@@ -474,7 +496,7 @@ def run(
+                 qmode_label,
+                 codes is not None,
+                 backend,
+-                min(cfg.prefill_chunk, window),
++                min(prefill_chunk, window),
+                 output_bits=output_bits,
+             ),
+             **({"codes_sha256": codes_sha256} if codes_sha256 else {}),
+diff --git a/pipeline/families.py b/pipeline/families.py
+index 9eac725..e4b8e18 100644
+--- a/pipeline/families.py
++++ b/pipeline/families.py
+@@ -9,6 +9,8 @@ generating the params from its HF config.json, not by waiting for ExecuTorch to
+ 
+ from __future__ import annotations
+ 
++import os
++
+ from dataclasses import dataclass, field
+ 
+ from pipeline.sizing import Architecture
+@@ -99,11 +101,13 @@ FAMILIES: tuple[Family, ...] = (
+     Family("qwen2_5", ("Qwen2ForCausalLM",), {"mtk": _MTK_QWEN2_MASK}),
+     Family("llama", ("LlamaForCausalLM",)),
+     # Gemma 3 on MediaTek: examples/mediatek/model_export_scripts/gemma.py with the config
+-    # mtk_model_config writes (HF's gemma3_text keys in MediaTek's spelling).
++    # mtk_model_config writes (HF's gemma3_text keys in MediaTek's spelling). On XNNPACK through
++    # pipeline/gemma3_model.py (KV-cache study, branch kv-study); Vulkan is not validated.
+     Family(
+         "gemma3",
+         ("Gemma3ForCausalLM",),
+-        {"xnnpack": _NOT_IN_EXPORT_LLM, "vulkan": _NOT_IN_EXPORT_LLM},
++        # Experiment only (KV study GPU pass): KV_STUDY_GEMMA_VULKAN=1 tries the CPU port on the Vulkan delegate.
++        {} if os.environ.get("KV_STUDY_GEMMA_VULKAN") == "1" else {"vulkan": _NOT_IN_EXPORT_LLM},
+     ),
+     # Gemma 2: MediaTek only (gemma.py's Gemma2ModelChunk), and ahead of both apps, neither of
+     # which has a Gemma 2 chat template yet (naming.AHEAD_OF_APP).
+@@ -472,6 +476,16 @@ class XnnpackPlan:
+     # Bits for the output head's weights in an 8da4w export: 4 like every other linear,
+     # or 8 (per channel) where the int4 head is what costs the model its decisions.
+     output_bits: int = 4
++    # The prefill chunk (export max_seq_length) when the settings' one does not fit the model:
++    # Gemma 3's ring caches take at most one sliding window per update.
++    prefill_chunk: int | None = None
++    # export_llm's model.local_global_attention: per-layer ring sizes, 0 for a full cache.
++    local_global_attention: tuple[int, ...] | None = None
++
++    @property
++    def gemma3(self) -> bool:
++        """The model is built by pipeline/gemma3_model.py, which every process tracing it applies."""
++        return self.converter == "gemma3"
+ 
+     @property
+     def lfm3(self) -> bool:
+@@ -493,6 +507,8 @@ def xnnpack_plan(family: Family, config: dict) -> XnnpackPlan:
+     if family.key == "lfm3":
+         # Two RoPE thetas, so no top-level rope_theta for _common_params to read.
+         return _lfm3_plan(c)
++    if family.key == "gemma3":
++        return _gemma3_plan(c)
+     params = _common_params(c)
+ 
+     if family.key == "qwen3":
+@@ -676,3 +692,85 @@ def _lfm3_plan(c: dict) -> XnnpackPlan:
+     }
+     # model_class only picks export_llm's example directory; LFM2's is the nearest relative.
+     return XnnpackPlan("lfm2_5_1_2b", params, "lfm3")
++
++
++def gemma3_layer_types(c: dict) -> list[str]:
++    """Gemma 3's per-layer attention, from ``layer_types`` or (transformers v4 configs, as
++    google/gemma-3-1b-it ships) ``sliding_window_pattern``: every period-th layer is global."""
++    layer_types = c.get("layer_types")
++    if layer_types:
++        return list(layer_types)
++    period = int(c.get("sliding_window_pattern") or 0)
++    _require(period > 0, "Gemma 3 config names neither layer_types nor sliding_window_pattern")
++    return [
++        "full_attention" if (i + 1) % period == 0 else "sliding_attention" for i in range(int(c["num_hidden_layers"]))
++    ]
++
++
++def _gemma3_local_theta(c: dict) -> float:
++    if c.get("rope_local_base_freq") is not None:
++        return float(c["rope_local_base_freq"])
++    rope = (c.get("rope_parameters") or {}).get("sliding_attention") or {}
++    _require("rope_theta" in rope, "Gemma 3 config names no local RoPE theta")
++    return float(rope["rope_theta"])
++
++
++def _gemma3_global_theta(c: dict) -> float:
++    if c.get("rope_theta") is not None:
++        return float(c["rope_theta"])
++    rope = (c.get("rope_parameters") or {}).get("full_attention") or {}
++    _require("rope_theta" in rope, "Gemma 3 config names no global RoPE theta")
++    return float(rope["rope_theta"])
++
++
++def _gemma3_plan(c: dict) -> XnnpackPlan:
++    """Gemma 3 (text) params for pipeline/gemma3_model.py, as ExecuTorch 1.5.1's
++    examples/models/gemma3/config/1b_config.json spells Gemma 3 1B, from the checkpoint's config.
++
++    Only what the 1B needs is validated: no RoPE scaling (the 4B and larger scale their global
++    layers' RoPE), no soft-capping, the query scaled by 1/sqrt(head_dim). The sliding window
++    becomes ring caches through export_llm's local_global_attention, and the prefill chunk is the
++    window, the most a ring takes per update (pipeline/gemma3_model.py).
++    """
++    _require(c.get("model_type") in ("gemma3_text", "gemma3"), f"model_type {c.get('model_type')!r}")
++    _require(c.get("hidden_activation", "gelu_pytorch_tanh") == "gelu_pytorch_tanh", "Gemma 3 activation")
++    _require(rope_scaling(c) is None and not c.get("rope_scaling"), "Gemma 3 with RoPE scaling is not validated")
++    _require(c.get("attn_logit_softcapping") is None, "attention logit soft-capping is not implemented")
++    _require(c.get("final_logit_softcapping") is None, "final logit soft-capping is not implemented")
++    _require(not c.get("attention_bias"), "Gemma 3 with attention biases is not supported")
++    _require(bool(c.get("tie_word_embeddings", True)), "Gemma 3 with untied embeddings is not validated")
++    head_dim = int(c["head_dim"])
++    _require(int(c.get("query_pre_attn_scalar") or head_dim) == head_dim, "query_pre_attn_scalar != head_dim")
++    window = int(c.get("sliding_window") or 0)
++    _require(window > 0, "Gemma 3 config names no sliding_window")
++    layer_types = gemma3_layer_types(c)
++    _require(len(layer_types) == int(c["num_hidden_layers"]), "layer_types does not match num_hidden_layers")
++    _require(set(layer_types) <= {"sliding_attention", "full_attention"}, f"layer types {sorted(set(layer_types))}")
++    n_heads = int(c["num_attention_heads"])
++    params = {
++        "dim": int(c["hidden_size"]),
++        "ffn_dim_multiplier": 1,
++        "hidden_dim": int(c["intermediate_size"]),
++        "n_heads": n_heads,
++        "head_dim": head_dim,
++        "n_kv_heads": int(c.get("num_key_value_heads") or n_heads),
++        "n_layers": int(c["num_hidden_layers"]),
++        "norm_eps": float(c["rms_norm_eps"]),
++        "rope_theta": _gemma3_global_theta(c),
++        "local_rope_theta": _gemma3_local_theta(c),
++        "vocab_size": int(c["vocab_size"]),
++        "use_scaled_rope": False,
++        "use_hf_rope": True,
++        "attention_qkv_bias": False,
++        "use_qk_norm": True,
++        "qk_norm_before_rope": True,
++        "rms_norm_add_unit_offset": True,
++        "act_fn": "gelu_approx",
++        "post_attention_norm": True,
++        "post_ffn_norm": True,
++        "layer_types": layer_types,
++        "sliding_window": window,
++    }
++    rings = tuple(window if t == "sliding_attention" else 0 for t in layer_types)
++    # model_class only picks export_llm's example directory; the params define the model.
++    return XnnpackPlan("llama3_2", params, "gemma3", prefill_chunk=window, local_global_attention=rings)
+diff --git a/pipeline/solve.py b/pipeline/solve.py
+index ae527a2..118717f 100644
+--- a/pipeline/solve.py
++++ b/pipeline/solve.py
+@@ -164,6 +164,12 @@ def eager_model(
+         from pipeline import lfm3_model
+ 
+         lfm3_model.apply()
++    if params.get("act_fn") == "gelu_approx" and "sliding_attention" in (params.get("layer_types") or ()):
++        # Gemma 3 (pipeline/gemma3_model.py), which the export applies with --gemma3; it only
++        # routes Gemma 3 params, so no other model is affected.
++        from pipeline import gemma3_model
++
++        gemma3_model.apply()
+     params_path = work_dir / "solve-params.json"
+     params_path.write_text(json.dumps(params))
+     cfg = LlmConfig()
+diff --git a/tests/test_eligibility.py b/tests/test_eligibility.py
+index 0e3f6b3..2d06239 100644
+--- a/tests/test_eligibility.py
++++ b/tests/test_eligibility.py
+@@ -84,11 +84,12 @@ def test_llama_family_covers_llama32_and_smollm2():
+     assert evaluate("HuggingFaceTB/SmolLM2-360M-Instruct").eligible
+ 
+ 
+-def test_gemma3_goes_to_qnn_and_mediatek():
++def test_gemma3_goes_to_xnnpack_qnn_and_mediatek():
++    # XNNPACK through pipeline/gemma3_model.py (KV-cache study branch); Vulkan is not validated.
+     verdict = evaluate("google/gemma-3-1b-it")
+     assert verdict.reasons == []
+-    assert verdict.export_backends == ["qnn", "mtk"]
+-    assert "export_llm" in verdict.backends["xnnpack"]
++    assert verdict.export_backends == ["xnnpack", "qnn", "mtk"]
++    assert "export_llm" in verdict.backends["vulkan"]
+ 
+ 
+ def test_gemma2_goes_nowhere_its_head_is_over_mediateks_2gb_converter_cap(source):
+diff --git a/tests/test_families.py b/tests/test_families.py
+index 93c4a87..68cd5b4 100644
+--- a/tests/test_families.py
++++ b/tests/test_families.py
+@@ -1,5 +1,7 @@
+ import copy
+ import dataclasses
++import json
++from pathlib import Path
+ 
+ import pytest
+ from conftest import hf_config, load_json
+@@ -88,12 +90,50 @@ def test_moe_detection():
+         assert not families.is_moe(hf_config(model_id)), model_id
+ 
+ 
+-def test_gemma3_has_a_family_but_no_xnnpack_recipe_yet():
+-    family = families.family_for(hf_config("google/gemma-3-1b-it"))
++def test_gemma3_xnnpack_plan_matches_executorch_gemma3_1b_config():
++    """The params pipeline/gemma3_model.py reads, against ExecuTorch 1.5.1's own Gemma 3 1B
++    params (examples/models/gemma3/config/1b_config.json, vendored), where they overlap."""
++    config = hf_config("google/gemma-3-1b-it")
++    family = families.family_for(config)
+     assert family.key == "gemma3"
+-    assert not family.supports("xnnpack")
++    assert family.supports("xnnpack") and not family.supports("vulkan")
++    plan = families.xnnpack_plan(family, config)
++    assert plan.gemma3 and plan.converter == "gemma3"
++    vendored = Path(__file__).resolve().parents[1] / "third_party/executorch/examples/models/gemma3/config"
++    upstream = json.loads((vendored / "1b_config.json").read_text(encoding="utf-8"))
++    for key in (
++        "dim",
++        "hidden_dim",
++        "n_heads",
++        "head_dim",
++        "n_kv_heads",
++        "n_layers",
++        "norm_eps",
++        "rope_theta",
++        "local_rope_theta",
++        "vocab_size",
++        "use_hf_rope",
++        "use_qk_norm",
++        "qk_norm_before_rope",
++        "post_attention_norm",
++        "post_ffn_norm",
++        "layer_types",
++        "sliding_window",
++        "act_fn",
++    ):
++        assert plan.params[key] == upstream[key], key
++    # Upstream says norm_type "gemma3"; the 1.5.1 transformer reads rms_norm_add_unit_offset.
++    assert plan.params["rms_norm_add_unit_offset"] is True
++    # A ring takes at most one window per update, so the prefill chunk is the window.
++    assert plan.prefill_chunk == 512
++    assert plan.local_global_attention == tuple(0 if t == "full_attention" else 512 for t in upstream["layer_types"])
++
++
++def test_gemma3_4b_rope_scaling_is_refused():
++    config = copy.deepcopy(hf_config("google/gemma-3-1b-it"))
++    config["rope_scaling"] = {"rope_type": "linear", "factor": 8.0}
+     with pytest.raises(families.UnsupportedModel):
+-        families.xnnpack_plan(family, hf_config("google/gemma-3-1b-it"))
++        families.xnnpack_plan(families.family_for(config), config)
+ 
+ 
+ def _lfm2_config(**overrides):

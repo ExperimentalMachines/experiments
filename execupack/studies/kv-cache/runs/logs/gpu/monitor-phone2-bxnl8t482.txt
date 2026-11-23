@@ -1,0 +1,4 @@
+gpu: 14:19:32 end stream 8k qwen f16kv book 10321 rc=0 worst_pwrlevel=12 min_clk=222000000
+phone not reachable
+
+[killed]

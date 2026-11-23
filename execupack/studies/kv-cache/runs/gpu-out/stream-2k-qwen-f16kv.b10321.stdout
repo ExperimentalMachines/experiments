@@ -1,0 +1,3 @@
+I tokenizers:regex.cpp:40] Registering override fallback regex
+book 10321 checkpoint 1900 done
+wrote /data/local/tmp/kvq/gpu/out/stream-2k-qwen-f16kv.b10321.json

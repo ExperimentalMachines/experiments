@@ -1,0 +1,23 @@
+shipped 2 file(s)
+shipped 6 file(s)
+cpu re-run: 11:20:53 end stream 2k lfm f32kv rc=0
+shipped 7 file(s)
+cpu re-run: 11:24:42 end stream 2k lfm q8kv rc=0
+cpu re-run: 11:25:39 end stream 2k llama q8kv rc=0
+cpu re-run: 11:26:42 end stream 2k llama f32kv rc=0
+shipped 1 file(s)
+cpu re-run: 11:28:16 end stream 2k qwen f32kv rc=0
+cpu re-run: 11:29:34 end stream 2k qwen q8kv rc=0
+cpu re-run: 11:30:31 end stream 2k gemma q8kv rc=0
+shipped 1 file(s)
+cpu re-run: 11:31:31 end stream 2k gemma f32kv rc=0
+shipped 1 file(s)
+shipped 1 file(s)
+shipped 1 file(s)
+shipped 1 file(s)
+19:43:37 FAILED export-vk-llama-f32kv-32k rc 1 | {"model": "meta-llama/Llama-3.2-1B-Instruct", "kv": "fp32", "context": 32768, "host": {"cpu": "Intel(R) Xeon(R)
+19:43:37 NO-FILE vk-llama-f32kv-32k 'SkipExport: a 32768-token export needs about 60,839,684,336 B with headroom (causal masks alone 17,179,869,184 B); this hos
+19:43:38 FAILED export-vk-llama-f16kv-32k rc 1 | {"model": "meta-llama/Llama-3.2-1B-Instruct", "kv": "fp16", "context": 32768, "host": {"cpu": "Intel(R) Xeon(R)
+19:43:38 NO-FILE vk-llama-f16kv-32k 'SkipExport: a 32768-token export needs about 60,839,684,336 B with headroom (causal masks alone 17,179,869,184 B); this hos
+
+[killed]

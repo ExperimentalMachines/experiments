@@ -1,0 +1,23 @@
+09:48:18 setup: installing cpus=8
+09:48:30 setup: done
+09:48:30 START lfm25-1.2b-rtn
+09:48:30 START llama32-1b-rtn
+11:07:40 RESULT llama32-1b-rtn gate=FAIL app_kl=3.1033 book_kl@1900=0.2130 book_kl@7900=0.2045 solve=Nones books=1178.8s
+11:07:40 START llama32-1b-published
+11:46:20 RESULT lfm25-1.2b-rtn gate=FAIL app_kl=0.2125 book_kl@1900=0.2694 book_kl@7900=0.2254 solve=Nones books=4193.9s
+11:46:20 START lfm25-1.2b-published
+12:26:50 RESULT llama32-1b-published gate=PASS app_kl=0.2385 book_kl@1900=0.1486 book_kl@7900=0.1925 solve=Nones books=1003.0s
+12:26:50 START llama32-1b-gptq
+13:34:58 RESULT lfm25-1.2b-published gate=PASS app_kl=0.1128 book_kl@1900=0.2524 book_kl@7900=0.2391 solve=Nones books=3634.0s
+13:34:58 START lfm25-1.2b-gptq
+14:53:42 RESULT llama32-1b-gptq gate=PASS app_kl=0.0670 book_kl@1900=0.1896 book_kl@7900=0.2729 solve=4685.3s books=951.1s
+14:53:42 START llama32-1b-awq
+14:53:42 FAILED run-llama32-1b-awq rc 3 | SKIPPED: listed in /content/skip.txt
+14:53:42 START llama32-1b-awq_gptq
+14:53:42 FAILED run-llama32-1b-awq_gptq rc 3 | SKIPPED: listed in /content/skip.txt
+16:05:38 RESULT lfm25-1.2b-gptq gate=PASS app_kl=0.1313 book_kl@1900=0.2994 book_kl@7900=0.2233 solve=3131.2s books=3148.9s
+16:05:38 START lfm25-1.2b-awq
+16:05:38 FAILED run-lfm25-1.2b-awq rc 3 | SKIPPED: listed in /content/skip.txt
+16:05:38 START lfm25-1.2b-awq_gptq
+16:05:38 FAILED run-lfm25-1.2b-awq_gptq rc 3 | SKIPPED: listed in /content/skip.txt
+16:05:38 ALL DONE

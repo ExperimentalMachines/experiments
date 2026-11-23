@@ -1,0 +1,95 @@
+17:18:23 setup: installing
+17:18:40 TUNNEL <tunnel>
+17:19:30 setup: done
+17:19:33 FAILED export-vk-gemma-f32kv-2k rc 1 | {"model": "google/gemma-3-1b-it", "kv": "fp32", "context": 2048, "host": {"cpu": "Intel(R) Xeon(R) CPU @ 2.20GHz", "avx512fp16": false, "avx512_fp16": false, "f16c": true, "avx512f": true, "amx_fp16": false}, "smoke": {"
+17:19:33 NO-FILE vk-gemma-f32kv-2k "ExportError: google/gemma-3-1b-it cannot be exported to vulkan: not in ExecuTorch 1.5.1 export_llm's model list; needs a validated export path (optimum-executorch or params support) before it is published"
+17:19:34 FAILED export-vk-gemma-q8kv-2k rc 1 | {"model": "google/gemma-3-1b-it", "kv": "int8", "context": 2048, "host": {"cpu": "Intel(R) Xeon(R) CPU @ 2.20GHz", "avx512fp16": false, "avx512_fp16": false, "f16c": true, "avx512f": true, "amx_fp16": false}, "smoke": {"
+17:19:34 NO-FILE vk-gemma-q8kv-2k "ExportError: google/gemma-3-1b-it cannot be exported to vulkan: not in ExecuTorch 1.5.1 export_llm's model list; needs a validated export path (optimum-executorch or params support) before it is published"
+17:19:35 FAILED export-vk-gemma-f16kv-2k rc 1 | {"model": "google/gemma-3-1b-it", "kv": "fp16", "context": 2048, "host": {"cpu": "Intel(R) Xeon(R) CPU @ 2.20GHz", "avx512fp16": false, "avx512_fp16": false, "f16c": true, "avx512f": true, "amx_fp16": false}, "smoke": {"
+17:19:35 NO-FILE vk-gemma-f16kv-2k "ExportError: google/gemma-3-1b-it cannot be exported to vulkan: not in ExecuTorch 1.5.1 export_llm's model list; needs a validated export path (optimum-executorch or params support) before it is published"
+17:19:36 FAILED export-vk-gemma-f32kv-8k rc 1 | {"model": "google/gemma-3-1b-it", "kv": "fp32", "context": 8192, "host": {"cpu": "Intel(R) Xeon(R) CPU @ 2.20GHz", "avx512fp16": false, "avx512_fp16": false, "f16c": true, "avx512f": true, "amx_fp16": false}, "smoke": {"
+17:19:36 NO-FILE vk-gemma-f32kv-8k "ExportError: google/gemma-3-1b-it cannot be exported to vulkan: not in ExecuTorch 1.5.1 export_llm's model list; needs a validated export path (optimum-executorch or params support) before it is published"
+17:19:36 FAILED export-vk-gemma-q8kv-8k rc 1 | {"model": "google/gemma-3-1b-it", "kv": "int8", "context": 8192, "host": {"cpu": "Intel(R) Xeon(R) CPU @ 2.20GHz", "avx512fp16": false, "avx512_fp16": false, "f16c": true, "avx512f": true, "amx_fp16": false}, "smoke": {"
+17:19:36 NO-FILE vk-gemma-q8kv-8k "ExportError: google/gemma-3-1b-it cannot be exported to vulkan: not in ExecuTorch 1.5.1 export_llm's model list; needs a validated export path (optimum-executorch or params support) before it is published"
+17:24:31 READY 2k/f32kv-Llama-3.2-1B-Instruct-vulkan-8da4w-gptq-2k.pte 1196MB 298s ''
+17:27:24 READY 2k/f32kv-Qwen3-1.7B-vulkan-8da4w-gptq-2k.pte 1616MB 470s ''
+17:28:38 FAILED export-vk-llama-q8kv-2k rc 1 | ==> converting checkpoint / ==> export_llm (codes: gptq, state fix: False, lfm3: False) / {"model": "meta-llama/Llama-3.2-1B-Instruct", "kv": "int8", "context": 2048, "host": {"cpu": "Intel(R) Xeon(R) CPU @ 2.20GHz", "avx512fp16": false, "avx512_fp16": false, "f16c": true, "avx512f": true, "amx_fp16": false},
+17:28:38 NO-FILE vk-llama-q8kv-2k 'ExportError: export_llm exited with status 1; its output above says why'
+17:33:13 READY 2k/f16kv-Llama-3.2-1B-Instruct-vulkan-8da4w-gptq-2k.pte 1116MB 273s ''
+17:36:12 FAILED export-vk-qwen-q8kv-2k rc 1 | ==> converting checkpoint / ==> export_llm (codes: gptq, state fix: False, lfm3: False) / {"model": "Qwen/Qwen3-1.7B", "kv": "int8", "context": 2048, "host": {"cpu": "Intel(R) Xeon(R) CPU @ 2.20GHz", "avx512fp16": false, "avx512_fp16": false, "f16c": true, "avx512f": true, "amx_fp16": false}, "smoke": {"passe
+17:36:13 NO-FILE vk-qwen-q8kv-2k 'ExportError: export_llm exited with status 1; its output above says why'
+17:38:05 READY 8k/f32kv-Llama-3.2-1B-Instruct-vulkan-8da4w-gptq-8k.pte 1211MB 289s ''
+17:42:09 FAILED export-vk-llama-q8kv-8k rc 1 | ==> converting checkpoint / ==> export_llm (codes: gptq, state fix: False, lfm3: False) / {"model": "meta-llama/Llama-3.2-1B-Instruct", "kv": "int8", "context": 8192, "host": {"cpu": "Intel(R) Xeon(R) CPU @ 2.20GHz", "avx512fp16": false, "avx512_fp16": false, "f16c": true, "avx512f": true, "amx_fp16": false},
+17:42:10 NO-FILE vk-llama-q8kv-8k 'ExportError: export_llm exited with status 1; its output above says why'
+17:44:08 READY 2k/f16kv-Qwen3-1.7B-vulkan-8da4w-gptq-2k.pte 1502MB 472s ''
+17:51:47 READY 8k/f32kv-Qwen3-1.7B-vulkan-8da4w-gptq-8k.pte 1653MB 456s ''
+18:00:06 FAILED export-vk-qwen-q8kv-8k rc 1 | ==> converting checkpoint / ==> export_llm (codes: gptq, state fix: False, lfm3: False) / {"model": "Qwen/Qwen3-1.7B", "kv": "int8", "context": 8192, "host": {"cpu": "Intel(R) Xeon(R) CPU @ 2.20GHz", "avx512fp16": false, "avx512_fp16": false, "f16c": true, "avx512f": true, "amx_fp16": false}, "smoke": {"passe
+18:00:06 NO-FILE vk-qwen-q8kv-8k 'ExportError: export_llm exited with status 1; its output above says why'
+18:05:07 READY 32k/f32kv-Llama-3.2-1B-Instruct-vulkan-8da4w-gptq-32k.pte 1274MB 298s ''
+18:09:28 FAILED export-vk-llama-q8kv-32k rc 1 | ==> converting checkpoint / ==> export_llm (codes: gptq, state fix: False, lfm3: False) / {"model": "meta-llama/Llama-3.2-1B-Instruct", "kv": "int8", "context": 32768, "host": {"cpu": "Intel(R) Xeon(R) CPU @ 2.20GHz", "avx512fp16": false, "avx512_fp16": false, "f16c": true, "avx512f": true, "amx_fp16": false}
+18:09:29 NO-FILE vk-llama-q8kv-32k 'ExportError: export_llm exited with status 1; its output above says why'
+18:09:30 FAILED export-vk-gemma-f32kv-32k rc 1 | {"model": "google/gemma-3-1b-it", "kv": "fp32", "context": 32768, "host": {"cpu": "Intel(R) Xeon(R) CPU @ 2.20GHz", "avx512fp16": false, "avx512_fp16": false, "f16c": true, "avx512f": true, "amx_fp16": false}, "smoke": {
+18:09:30 NO-FILE vk-gemma-f32kv-32k "ExportError: google/gemma-3-1b-it cannot be exported to vulkan: not in ExecuTorch 1.5.1 export_llm's model list; needs a validated export path (optimum-executorch or params support) before it is published"
+18:09:31 FAILED export-vk-gemma-q8kv-32k rc 1 | {"model": "google/gemma-3-1b-it", "kv": "int8", "context": 32768, "host": {"cpu": "Intel(R) Xeon(R) CPU @ 2.20GHz", "avx512fp16": false, "avx512_fp16": false, "f16c": true, "avx512f": true, "amx_fp16": false}, "smoke": {
+18:09:31 NO-FILE vk-gemma-q8kv-32k "ExportError: google/gemma-3-1b-it cannot be exported to vulkan: not in ExecuTorch 1.5.1 export_llm's model list; needs a validated export path (optimum-executorch or params support) before it is published"
+18:10:59 FAILED export-vk-qwen-f32kv-32k rc 1 | ==> converting checkpoint / ==> export_llm (codes: gptq, state fix: False, lfm3: False) / {"model": "Qwen/Qwen3-1.7B", "kv": "fp32", "context": 32768, "host": {"cpu": "Intel(R) Xeon(R) CPU @ 2.20GHz", "avx512fp16": false, "avx512_fp16": false, "f16c": true, "avx512f": true, "amx_fp16": false}, "smoke": {"pass
+18:10:59 NO-FILE vk-qwen-f32kv-32k 'ExportError: export_llm exited with status -9; its output above says why'
+18:12:28 FAILED export-vk-qwen-q8kv-32k rc 1 | ==> converting checkpoint / ==> export_llm (codes: gptq, state fix: False, lfm3: False) / {"model": "Qwen/Qwen3-1.7B", "kv": "int8", "context": 32768, "host": {"cpu": "Intel(R) Xeon(R) CPU @ 2.20GHz", "avx512fp16": false, "avx512_fp16": false, "f16c": true, "avx512f": true, "amx_fp16": false}, "smoke": {"pass
+18:12:28 NO-FILE vk-qwen-q8kv-32k 'ExportError: export_llm exited with status -9; its output above says why'
+18:12:28 ALL BUILT; serving until /content/serve.done
+18:13:28 serving
+18:14:28 serving
+18:15:28 serving
+18:16:28 serving
+18:17:28 serving
+18:18:28 serving
+18:19:28 serving
+18:20:28 serving
+18:21:28 serving
+18:22:28 serving
+18:23:28 serving
+18:24:28 serving
+18:25:28 serving
+18:26:28 serving
+18:27:28 serving
+18:28:28 serving
+18:29:28 serving
+18:30:28 serving
+18:31:28 serving
+18:32:28 serving
+18:33:28 serving
+18:34:28 serving
+18:35:28 serving
+18:36:28 serving
+18:37:28 serving
+18:38:28 serving
+18:39:28 serving
+18:40:28 serving
+18:41:28 serving
+18:42:28 serving
+18:43:28 serving
+18:44:28 serving
+18:45:28 serving
+18:46:28 serving
+18:47:28 serving
+18:48:28 serving
+18:49:28 serving
+18:50:28 serving
+18:51:28 serving
+18:52:28 serving
+18:53:28 serving
+18:54:28 serving
+18:55:28 serving
+18:56:28 serving
+18:57:28 serving
+18:58:28 serving
+18:59:28 serving
+19:00:28 serving
+19:01:28 serving
+19:02:28 serving
+19:03:28 serving
+19:04:28 serving
+19:05:28 serving
+19:06:28 serving
+19:07:28 serving
+19:08:28 serving

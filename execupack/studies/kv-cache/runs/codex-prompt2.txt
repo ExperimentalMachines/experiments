@@ -1,0 +1,10 @@
+You reviewed an earlier draft of this study (your findings: work/kvstudy/codex-review.md). It has been revised. Do not edit anything; read only. Be critical and concrete.
+
+Read: work/kvstudy/report/narrative.html (all prose and claims), work/kvstudy/report/index.html (the generated page with every table), scripts/kvstudy/report.py and scripts/kvstudy/analyze.py (how the tables and intervals are computed now: block bootstrap, reply clusters, paired needle outcomes, direct KL), work/kvstudy/phone-out/*.json (CPU raw results) and work/kvstudy/gpu-out/*.json (GPU raw results, Llama 2k only).
+
+1. For each of your earlier findings, say whether the revision fixes it, partly fixes it, or not, with evidence.
+2. Check every number in narrative.html against index.html or the raw JSON. List any that are wrong or unsupported.
+3. Check the new GPU claims (Vulkan library, int8 export failure, fp16 = whole model fp16, Gemma/LFM on Vulkan, direct KL 0.0013, speeds, GPU memory from the kgsl counter) against the data and code; flag overreach.
+4. Is the revised verdict (CPU: int8 for 8k and 32k windows, optional at 2k, confirm through the app runner; GPU: no int8, fp16 works on Llama 2k) supported by the evidence as now stated?
+
+Output: a short ranked list (critical / major / minor) with file:line evidence and fixes, then a one-paragraph assessment.

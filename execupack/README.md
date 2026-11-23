@@ -3,7 +3,7 @@
 **The measurements behind [ExecuPack](https://github.com/ExperimentalMachines/execupack), the
 pipeline that compiles open-weight chat models for phones and publishes them.**
 
-`49 findings` `5 studies` `Sep to Nov 2026`
+`49 findings` `6 studies` `Sep to Nov 2026`
 
 ExecuPack takes models from Hugging Face and exports them to ExecuTorch [`.pte`](../docs/glossary.md#pte)
 files for a phone's CPU ([XNNPACK](../docs/glossary.md#xnnpack)), its GPU
@@ -140,7 +140,8 @@ Experiments that are not, or not yet, a finding in the research log.
 | Study | The question | What we found | Source |
 |---|---|---|---|
 | [MediaTek A16W4](studies/mtk-a16w4/) | Can MediaTek's NPU take 4-bit weights, with GPTQ? | 3 to 170 times further from the original than 8-bit; GPTQ restores the decision gate on two of three models. Not yet run on a phone. | The `mtk-a16w4` worktree (finding 49) |
-| [AWQ](studies/awq/) | Does AWQ keep more of the model than GPTQ at 4 bits? | It depends on the model: worse on LFM2.5 1.2B, better on Qwen3 1.7B, best combined with GPTQ on Llama 3.2 1B. Unpublished. | The local-only branch `awq-compare` |
+| [AWQ](studies/awq/) | Does AWQ keep more of the model than GPTQ at 4 bits? | No method won everywhere: AWQ was 25% to 62% closer to the original on long text, but further on the app's short questions and failed the publish gate on 2 of 3 models. Published files stay GPTQ. | The local-only branch `awq-compare` and its uncommitted round-2 scripts |
+| [KV cache](studies/kv-cache/) | Does an 8-bit cache on the CPU, or 16-bit mode on the GPU, keep speed and answers? | On the CPU, 1.7 to 3.8 times faster 7.9k tokens in and up to 5.3 GB less memory, answers barely moved. On the GPU, 16-bit mode is faster but broke Llama at 32.5k tokens; published GPU files above 8k do not load. | The `kv-study` worktree, uncommitted |
 | [Calibration corpus](studies/calibration-corpus/) | Does GPTQ keep more of a model with a larger calibration set? | Not settled: size and content changed at once, and the run that would separate them left no result here. | The pushed `experiment/extended-calibration*` and `publish/lfm12b-gptq257` branches |
 | [Published audit](studies/published-audit/) | Do files published before any gate existed still decide like the original model? | A workflow that checks them without rebuilding; the one audit log kept failed (Qwen3 0.6B, 0 of 4). | The pushed `experiment/audit-published` branch |
 | [AWS runs, November 2026](studies/aws-runs-2026-11/) | What did the four EC2 export machines produce and check before they were shut down? | The rollout of GPTQ-solved files: all 120 byte checks matched; Qwen3 0.6B failed its gate at every window and Phi-4-mini shipped under a recorded override. | The archive of the four machines, text only |

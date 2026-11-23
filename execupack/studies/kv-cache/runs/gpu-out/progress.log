@@ -1,0 +1,23 @@
+11:29:58 fetched urls-r3gpu-032908.txt
+11:32:47 fetched urls-r3gpu-033143.txt
+11:34:01 fetched urls-r3gpu-033315.txt
+11:38:52 fetched urls-r3gpu-033757.txt
+11:40:37 fetched urls-r3gpu-033928.txt
+11:44:07 fetched urls-r3gpu-034308.txt
+11:48:42 fetched urls-r3gpu-034721.txt
+11:53:42 fetched urls-r3gpu-035247.txt
+11:56:36 fetched urls-r3gpu-035522.txt
+12:02:43 fetched urls-r3gpu-040142.txt
+12:41:24 start stream 2k llama f32kv skin=50.253 CPU4=56.7 CPU3=56.7 CPU2=55.2 CPU7=56.0 CPU6=56.3 CPU5=56.7 battery=38.0 CPU1=56.7 CPU0=55.5 
+12:42:24 end stream 2k llama f32kv rc=0
+12:42:54 start stream 2k llama f16kv skin=48.3924 CPU4=53.3 CPU3=52.4 CPU2=52.4 CPU7=53.6 CPU6=53.9 CPU5=52.7 battery=38.0 CPU1=53.0 CPU0=52.7 
+12:43:28 end stream 2k llama f16kv rc=0
+12:43:58 start app 2k llama f16kv skin=47.98752 CPU4=53.6 CPU3=52.7 CPU2=52.1 CPU7=53.6 CPU6=53.6 CPU5=53.0 battery=38.0 CPU1=53.0 CPU0=52.4 
+12:48:52 end app 2k llama f16kv rc=0
+12:49:22 start app 2k llama f32kv skin=49.03836 CPU4=55.2 CPU3=53.6 CPU2=53.3 CPU7=54.5 CPU6=54.8 CPU5=53.0 battery=38.0 CPU1=53.9 CPU0=53.0 
+12:54:49 end app 2k llama f32kv rc=0
+12:55:20 start stream 2k qwen f16kv skin=49.3584 CPU4=55.5 CPU3=54.9 CPU2=53.3 CPU7=54.8 CPU6=55.1 CPU5=54.9 battery=38.0 CPU1=54.3 CPU0=53.3 
+12:56:15 end stream 2k qwen f16kv rc=0
+12:56:45 start stream 2k qwen f32kv skin=48.57132 CPU4=53.6 CPU3=53.0 CPU2=52.4 CPU7=53.9 CPU6=53.9 CPU5=52.4 battery=38.0 CPU1=53.0 CPU0=51.5 
+12:57:37 end stream 2k qwen f32kv rc=0
+12:58:07 start app 2k qwen f32kv skin=48.65196 CPU4=54.6 CPU3=53.0 CPU2=54.3 CPU7=54.2 CPU6=54.2 CPU5=53.3 battery=38.0 CPU1=54.6 CPU0=53.9 

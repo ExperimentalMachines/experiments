@@ -1,0 +1,21 @@
+{
+  "model": "Qwen/Qwen3-1.7B",
+  "kv": "int8",
+  "context": 32768,
+  "host": {
+    "cpu": "unknown",
+    "avx512fp16": false,
+    "avx512_fp16": false,
+    "f16c": true,
+    "avx512f": true,
+    "amx_fp16": false
+  },
+  "smoke": {
+    "passed": true,
+    "reply": "<think>\nOkay, the user is asking for the capital of France and wants the answer in one word. Let me think. I know that France's capital is Paris. But I should make sure I'm not mixing it up with another city. Sometimes people confuse Paris with other major cities like Rome or Berlin. But no, Paris is definitely the capital. Let me double-check. Yes, France's capital is Paris. The answer should be \"Paris\" in one word.\n</think>\n\nParis<|im_end|>",
+    "problems": []
+  },
+  "seconds": 806,
+  "pte": "q8kv-Qwen3-1.7B-8da4w-gptq-32k.pte",
+  "bytes": 1347908608
+}

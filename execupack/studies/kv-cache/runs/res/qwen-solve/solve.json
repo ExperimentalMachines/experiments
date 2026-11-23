@@ -1,0 +1,9 @@
+{
+  "model": "Qwen/Qwen3-1.7B",
+  "revision": "70d244cc86ccca08cf5af4e1e306ecf908b1ad5e",
+  "codes": "/vol/study/codes/qwen-codes-gptq.pt",
+  "rows": 104,
+  "download_convert_s": 9,
+  "solve_s": 1079,
+  "host": "x86_64"
+}

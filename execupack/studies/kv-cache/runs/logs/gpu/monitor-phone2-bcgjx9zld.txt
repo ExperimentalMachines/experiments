@@ -1,0 +1,12 @@
+gpu: 13:47:57 end stream 2k qwen f32kv book 10356 rc=0 worst_pwrlevel=0 min_clk=125000000
+gpu: 13:48:48 end stream 2k qwen f32kv book 10762 rc=0 worst_pwrlevel=0 min_clk=222000000
+gpu: 13:55:27 end app rc=0 worst_pwrlevel=12 min_clk=222000000
+gpu: 14:02:56 end app rc=0 worst_pwrlevel=12 min_clk=222000000
+gpu: 14:05:28 end stream 8k llama f32kv book 10321 rc=0 worst_pwrlevel=12 min_clk=222000000
+gpu: 14:08:00 end stream 8k llama f32kv book 10356 rc=0 worst_pwrlevel=12 min_clk=222000000
+gpu: 14:10:30 end stream 8k llama f32kv book 10762 rc=0 worst_pwrlevel=12 min_clk=222000000
+gpu: 14:12:49 end stream 8k llama f16kv book 10321 rc=0 worst_pwrlevel=12 min_clk=222000000
+gpu: 14:14:52 end stream 8k llama f16kv book 10356 rc=0 worst_pwrlevel=12 min_clk=222000000
+gpu: 14:16:55 end stream 8k llama f16kv book 10762 rc=0 worst_pwrlevel=12 min_clk=222000000
+
+[killed]

@@ -1,0 +1,15 @@
+04:57:55 setup: installing
+04:58:12 TUNNEL <tunnel>
+04:58:35 setup: done
+04:58:55 READY 32k/f16kv-Llama-3.2-1B-Instruct-vulkan-8da4w-gptq-32k-pc256.pte from the Volume
+04:59:09 READY 32k/f32kv-Llama-3.2-1B-Instruct-vulkan-8da4w-gptq-32k-pc256.pte from the Volume
+05:07:24 READY 8k/f16kv-Qwen3-1.7B-vulkan-8da4w-gptq-8k.pte 1520MB 492s ''
+05:07:35 READY 8k/f32kv-Qwen3-1.7B-vulkan-8da4w-gptq-8k.pte 1653MB 498s ''
+05:15:10 READY 2k/f16kv-Qwen3-1.7B-vulkan-8da4w-gptq-2k.pte 1502MB 463s ''
+05:15:26 READY 2k/f32kv-Qwen3-1.7B-vulkan-8da4w-gptq-2k.pte 1616MB 466s ''
+05:15:26 ALL BUILT
+05:15:51 SAVED study/gpu/f16kv-Qwen3-1.7B-vulkan-8da4w-gptq-2k.pte
+05:16:15 SAVED study/gpu/f32kv-Qwen3-1.7B-vulkan-8da4w-gptq-2k.pte
+05:16:50 SAVED study/gpu/f16kv-Qwen3-1.7B-vulkan-8da4w-gptq-8k.pte
+05:17:20 SAVED study/gpu/f32kv-Qwen3-1.7B-vulkan-8da4w-gptq-8k.pte
+05:17:20 serving until /content/serve.done

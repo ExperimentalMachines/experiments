@@ -1,0 +1,10 @@
+cpu re-run: 12:19:35 end stream 8k llama f32kv rc=0
+cpu re-run: 12:29:04 end stream 8k qwen f32kv rc=0
+cpu re-run: 12:35:37 end stream 8k qwen q8kv rc=0
+cpu re-run: 12:38:06 end stream 8k gemma q8kv rc=0
+cpu re-run: 12:40:54 end stream 8k gemma f32kv rc=0
+cpu re-run: 12:41:24 PASS DONE 2k 8k / lfm llama qwen gemma
+gpu: 12:42:24 end stream 2k llama f32kv rc=0
+gpu: 12:43:28 end stream 2k llama f16kv rc=0
+
+[killed]

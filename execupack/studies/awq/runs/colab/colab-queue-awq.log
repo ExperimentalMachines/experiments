@@ -1,0 +1,9 @@
+11:25:34 START qwen3-1.7b-gptq-nothink
+11:25:34 START lfm25-1.2b-awq_gptq
+11:25:34 START llama32-1b-awq_gptq
+13:27:18 RESULT qwen3-1.7b-gptq-nothink gate=PASS app_kl=0.8308 book_kl@1900=0.1378 book_kl@7900=0.1490 solve=1902.8s books=1457.1s
+13:27:18 START qwen3-1.7b-gptq-kv
+15:09:34 RESULT qwen3-1.7b-gptq-kv gate=PASS app_kl=0.3433 book_kl@1900=0.1680 book_kl@7900=0.1498 solve=Nones books=1419.8s
+16:38:22 RESULT llama32-1b-awq_gptq gate=PASS app_kl=0.0784 book_kl@1900=0.1162 book_kl@7900=0.1132 solve=13775.7s books=1303.6s
+17:16:11 RESULT lfm25-1.2b-awq_gptq gate=FAIL app_kl=0.2350 book_kl@1900=0.2265 book_kl@7900=0.2367 solve=14189.2s books=3248.1s
+17:16:11 ALL DONE

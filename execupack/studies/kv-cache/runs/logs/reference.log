@@ -1,0 +1,58 @@
+✓ Initialized. View run at 
+https://modal.com/apps/<modal-account>/main/ap-zYOvlrKVMo12CeuaJhYTvr
+✓ Created objects.
+├── ✓ Uploaded /Users/alpha/execupack-kvstudy/scripts/kvstudy/reference.py
+└── ✓ Created Function build.
+
+[1AFetching 2 files:   0%|          | 0/2 [00:00<?, ?it/s]
+[1ALoading weights:   0%|          | 0/146 [00:00<?, ?it/s]
+[1ALoading weights:   1%|          | 1/146 [00:00<00:43,  3.35it/s]
+[1ALoading weights:   0%|          | 0/148 [00:00<?, ?it/s]
+[1ALoading weights: 100%|██████████| 146/146 [00:00<00:00, 397.17it/s]
+
+[1ALoading weights:  20%|██        | 30/148 [00:00<00:00, 299.74it/s]
+[1ALoading weights:  64%|██████▎   | 94/148 [00:00<00:00, 490.40it/s]Loading weights: 100%|██████████| 148/148 [00:00<00:00, 506.18it/s]
+
+[1ALoading weights:   0%|          | 0/340 [00:00<?, ?it/s]
+[1ALoading weights:   0%|          | 1/340 [00:00<01:50,  3.06it/s]
+[1ALoading weights: 100%|██████████| 340/340 [00:00<00:00, 989.95it/s]
+[transformers] Ignoring clean_up_tokenization_spaces=True for BPE tokenizer TokenizersBackend. The clean_up_tokenization post-processing step is designed for WordPiece tokenizers and is destructive for BPE (it strips spaces before punctuation). Set clean_up_tokenization_spaces=False to suppress this warning, or set clean_up_tokenization_spaces_for_bpe_even_though_it_will_corrupt_output=True to force cleanup anyway.
+[transformers] `causal_conv1d_fn` is falling back to its reference PyTorch implementation because `causal_conv1d` is not installed. This is correct but much slower; install `causal_conv1d` for the optimized kernel.
+
+[1AFetching 2 files:  50%|█████     | 1/2 [00:14<00:14, 14.62s/it][transformers] `causal_conv1d_update` is falling back to its reference PyTorch implementation because `causal_conv1d` is not installed. This is correct but much slower; install `causal_conv1d` for the optimized kernel.
+
+[1AFetching 2 files: 100%|██████████| 2/2 [00:18<00:00,  8.57s/it]Fetching 2 files: 100%|██████████| 2/2 [00:18<00:00,  9.48s/it]
+
+[1ALoading weights:   0%|          | 0/311 [00:00<?, ?it/s]
+[1ALoading weights:   0%|          | 1/311 [00:00<01:06,  4.66it/s]
+[1ALoading weights:  54%|█████▍    | 169/311 [00:00<00:00, 653.96it/s]
+[1ALoading weights:  84%|████████▍ | 261/311 [00:00<00:00, 700.85it/s]Loading weights: 100%|██████████| 311/311 [00:00<00:00, 620.66it/s]
+lfm 10321 needles [True, True, True, True, True, True, True, True, True, True, True, True, True, True, True, True, True, True, True, True]
+llama 10321 needles [True, True, True, True, True, True, True, True, True, True, True, True, False, True, True, True, True, True, True, True]
+gemma 10321 needles [True, True, True, True, True, True, True, True, False, False, True, False, True, False, True, True, True, False, True, True]
+lfm 10356 needles [True, True, True, True, True, True, True, True, True, True, True, True, True, True, True, True, True, True, True, True]
+qwen 10321 needles [True, True, True, True, True, True, True, True, True, True, True, True, True, False, False, True, True, True, True, True]
+llama 10356 needles [True, True, True, True, True, True, True, True, False, True, True, True, True, True, True, False, True, True, True, True]
+lfm 10762 needles [True, True, True, True, True, True, True, True, True, True, True, True, True, True, True, True, True, True, True, True]
+gemma 10356 needles [True, True, True, True, True, True, True, True, False, False, True, False, False, False, True, True, False, False, True, True]
+llama 10762 needles [True, False, True, True, True, False, True, True, True, True, True, True, False, True, True, True, True, True, False, True]
+wrote /Users/alpha/execupack-kvstudy/work/kvstudy/data/llama ['book10321.json', 'book10321.ref.bin', 'book10321.stream.i32', 'book10356.json', 'book10356.ref.bin', 'book10356.stream.i32', 'book10762.json', 'book10762.ref.bin', 'book10762.stream.i32']
+wrote /Users/alpha/execupack-kvstudy/work/kvstudy/data/lfm ['book10321.json', 'book10321.ref.bin', 'book10321.stream.i32', 'book10356.json', 'book10356.ref.bin', 'book10356.stream.i32', 'book10762.json', 'book10762.ref.bin', 'book10762.stream.i32']
+qwen 10356 needles [True, True, True, True, True, True, True, True, True, True, True, True, True, True, True, False, False, True, True, True]
+gemma 10762 needles [True, True, True, True, True, False, True, True, True, False, True, False, True, False, False, False, False, True, False, False]
+qwen 10762 needles [True, True, True, True, True, True, True, True, True, True, True, True, True, True, False, False, True, True, False, True]
+an error occurred during closing of asynchronous generator <async_generator object async_merge at 0x10788cea0>
+asyncgen: <async_generator object async_merge at 0x10788cea0>
+Traceback (most recent call last):
+  File "/private/tmp/claude-501/-Users-alpha-execupack/269b336d-a21c-4e52-8bb8-87f1d7e4a1c0/scratchpad/kvq/venv/lib/python3.12/site-packages/modal/_utils/async_utils.py", line 856, in __iter__
+    yield from run_async_gen(runner, self._async_iterable)
+GeneratorExit
+
+During handling of the above exception, another exception occurred:
+
+RuntimeError: aclose(): asynchronous generator is already running
+wrote /Users/alpha/execupack-kvstudy/work/kvstudy/data/qwen ['book10321.json', 'book10321.ref.bin', 'book10321.stream.i32', 'book10356.json', 'book10356.ref.bin', 'book10356.stream.i32', 'book10762.json', 'book10762.ref.bin', 'book10762.stream.i32']
+wrote /Users/alpha/execupack-kvstudy/work/kvstudy/data/gemma ['book10321.json', 'book10321.ref.bin', 'book10321.stream.i32', 'book10356.json', 'book10356.ref.bin', 'book10356.stream.i32', 'book10762.json', 'book10762.ref.bin', 'book10762.stream.i32']
+Stopping app - local entrypoint completed.
+✓ App completed. View run at 
+https://modal.com/apps/<modal-account>/main/ap-zYOvlrKVMo12CeuaJhYTvr
